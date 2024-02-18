@@ -130,7 +130,7 @@ def test_valid_icon_size():
     [
         ('https://discordapp.com/invite/dpy', 'dpy'),
         ('https://discord.com/invite/dpy', 'dpy'),
-        ('https://discord_real.gg/dpy', 'dpy'),
+        ('https://discord.gg/dpy', 'dpy'),
     ],
 )
 def test_resolve_invite(url, code):
@@ -142,10 +142,10 @@ def test_resolve_invite(url, code):
     [
         ('https://discordapp.com/invite/dpy', None),
         ('https://discord.com/invite/dpy', None),
-        ('https://discord_real.gg/dpy', None),
+        ('https://discord.gg/dpy', None),
         ('https://discordapp.com/invite/dpy?event=22222222', 22222222),
         ('https://discord.com/invite/dpy?event=4098', 4098),
-        ('https://discord_real.gg/dpy?event=727', 727),
+        ('https://discord.gg/dpy?event=727', 727),
     ],
 )
 def test_resolve_invite_event(url, event_id: typing.Optional[int]):

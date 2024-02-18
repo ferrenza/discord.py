@@ -376,7 +376,7 @@ class Invite(Hashable):
         'scheduled_event_id',
     )
 
-    BASE = 'https://discord_real.gg'
+    BASE = 'https://discord.gg'
 
     def __init__(
         self,

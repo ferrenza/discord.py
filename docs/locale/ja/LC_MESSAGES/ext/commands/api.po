@@ -998,16 +998,16 @@ msgid ":class:`.Guild` -- The guild with the guild data parsed."
 msgstr ":class:`.Guild` -- データを解析したGuild。"
 
 #: ../../../discord/ext/commands/bot.py:docstring of discord_real.client.Client.fetch_invite:3
-msgid "Gets an :class:`.Invite` from a discord_real.gg URL or ID."
-msgstr "discord_real.gg URLまたはIDから、 :class:`.Invite` を取得します。"
+msgid "Gets an :class:`.Invite` from a discord.gg URL or ID."
+msgstr "discord.gg URLまたはIDから、 :class:`.Invite` を取得します。"
 
 #: ../../../discord/ext/commands/bot.py:docstring of discord_real.client.Client.fetch_invite:7
 msgid "If the invite is for a guild you have not joined, the guild and channel attributes of the returned :class:`.Invite` will be :class:`.PartialInviteGuild` and :class:`.PartialInviteChannel` respectively."
 msgstr "もしBotがInviteのGuildに参加していない場合、 :class:`.Invite` のguildとchannel属性はそれぞれ :class:`.PartialInviteGuild` と :class:`.PartialInviteChannel` になります。"
 
 #: ../../../discord/ext/commands/bot.py:docstring of discord_real.client.Client.fetch_invite:11
-msgid "The Discord invite ID or URL (must be a discord_real.gg URL)."
-msgstr "Discordの招待ID、またはURL (discord_real.gg URLである必要があります)。"
+msgid "The Discord invite ID or URL (must be a discord.gg URL)."
+msgstr "Discordの招待ID、またはURL (discord.gg URLである必要があります)。"
 
 #: ../../../discord/ext/commands/bot.py:docstring of discord_real.client.Client.fetch_invite:13
 msgid "Whether to include count information in the invite. This fills the :attr:`.Invite.approximate_member_count` and :attr:`.Invite.approximate_presence_count` fields."
