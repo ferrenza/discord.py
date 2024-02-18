@@ -26,7 +26,7 @@ from __future__ import annotations
 from typing import Optional
 from typing_extensions import Annotated
 
-import discord
+import discord_real
 from discord import app_commands
 from discord_real.ext import commands
 

@@ -2,7 +2,7 @@
 
 from discord_real.ext import commands
 
-import discord
+import discord_real
 
 
 class EphemeralCounterBot(commands.Bot):

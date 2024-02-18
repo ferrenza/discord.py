@@ -40,7 +40,7 @@ as seen in the example above. The second is using the :func:`~ext.commands.comma
 
 Essentially, these two are equivalent: ::
 
-    import discord
+    import discord_real
     from discord_real.ext import commands
 
     intents = discord_real.Intents.default()
@@ -656,7 +656,7 @@ Consider the following example:
 
 .. code-block:: python3
 
-    import discord
+    import discord_real
 
     @bot.command()
     async def upload(ctx, attachment: discord_real.Attachment):
@@ -668,7 +668,7 @@ When this command is invoked, the user must directly upload a file for the comma
 .. code-block:: python3
 
     import typing
-    import discord
+    import discord_real
 
     @bot.command()
     async def upload(ctx, attachment: typing.Optional[discord_real.Attachment]):
@@ -683,7 +683,7 @@ This also works with multiple attachments:
 .. code-block:: python3
 
     import typing
-    import discord
+    import discord_real
 
     @bot.command()
     async def upload_many(
@@ -705,7 +705,7 @@ As a special case, using :class:`~ext.commands.Greedy` will return the remaining
 
 .. code-block:: python3
 
-    import discord
+    import discord_real
     from discord_real.ext import commands
 
     @bot.command()
@@ -738,7 +738,7 @@ For example, the following code:
 .. code-block:: python3
 
     from discord_real.ext import commands
-    import discord
+    import discord_real
 
     class BanFlags(commands.FlagConverter):
         member: discord_real.Member
@@ -822,7 +822,7 @@ For example, augmenting the example above:
 
     from discord_real.ext import commands
     from typing import List
-    import discord
+    import discord_real
 
     class BanFlags(commands.FlagConverter):
         members: List[discord_real.Member] = commands.flag(name='member')
@@ -852,7 +852,7 @@ allows for "greedy-like" semantics using a variadic tuple:
 
     from discord_real.ext import commands
     from typing import Tuple
-    import discord
+    import discord_real
 
     class BanFlags(commands.FlagConverter):
         members: Tuple[discord_real.Member, ...]

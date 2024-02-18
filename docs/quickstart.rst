@@ -21,7 +21,7 @@ It looks something like this:
 
     # This example requires the 'message_content' intent.
 
-    import discord
+    import discord_real
 
     intents = discord_real.Intents.default()
     intents.message_content = True

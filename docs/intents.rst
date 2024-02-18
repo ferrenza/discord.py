@@ -21,7 +21,7 @@ For example, if you want a bot that functions without spammy events like presenc
 .. code-block:: python3
    :emphasize-lines: 7,9,10
 
-    import discord
+    import discord_real
     intents = discord_real.Intents.default()
     intents.typing = False
     intents.presences = False
@@ -39,7 +39,7 @@ Another example showing a bot that only deals with messages and guild informatio
 .. code-block:: python3
    :emphasize-lines: 7,9,10
 
-    import discord
+    import discord_real
     intents = discord_real.Intents(messages=True, guilds=True)
     # If you also want reaction events enable the following:
     # intents.reactions = True
@@ -171,7 +171,7 @@ For example:
 .. code-block:: python3
    :emphasize-lines: 3,6,8,9
 
-    import discord
+    import discord_real
     intents = discord_real.Intents.default()
     intents.members = True
 

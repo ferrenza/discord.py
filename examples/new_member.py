@@ -1,6 +1,6 @@
 # This example requires the 'members' privileged intent to function.
 
-import discord
+import discord_real
 
 
 class MyClient(discord_real.Client):

@@ -53,7 +53,7 @@ If you want to setup logging using the library provided configuration without us
 
 .. code-block:: python3
 
-    import discord
+    import discord_real
 
     discord_real.utils.setup_logging()
 
@@ -64,7 +64,7 @@ More advanced setups are possible with the :mod:`logging` module. The example be
 
 .. code-block:: python3
 
-    import discord
+    import discord_real
     import logging
     import logging.handlers
 

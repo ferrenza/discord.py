@@ -1,4 +1,4 @@
-import discord
+import discord_real
 from discord import app_commands
 
 import traceback

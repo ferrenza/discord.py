@@ -1,6 +1,6 @@
 # This example requires the 'message_content' privileged intent to function.
 
-import discord
+import discord_real
 import random
 import asyncio
 

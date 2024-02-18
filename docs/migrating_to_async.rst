@@ -300,7 +300,7 @@ event loop then doing so is quite straightforward:
 
 .. code-block:: python3
 
-    import discord
+    import discord_real
     import asyncio
 
     client = discord_real.Client()

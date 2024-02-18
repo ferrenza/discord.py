@@ -106,7 +106,7 @@ A quick example to showcase how events work:
 
     # This example requires the 'message_content' intent.
 
-    import discord
+    import discord_real
 
     class MyClient(discord_real.Client):
         async def on_ready(self):

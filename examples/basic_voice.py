@@ -2,7 +2,7 @@
 
 import asyncio
 
-import discord
+import discord_real
 import youtube_dl
 
 from discord_real.ext import commands

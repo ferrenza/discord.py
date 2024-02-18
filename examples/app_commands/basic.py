@@ -1,6 +1,6 @@
 from typing import Optional
 
-import discord
+import discord_real
 from discord import app_commands
 
 

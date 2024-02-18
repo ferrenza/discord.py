@@ -45,7 +45,7 @@ from typing import (
 )
 import types
 
-import discord
+import discord_real
 
 from .errors import *
 

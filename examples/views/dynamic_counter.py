@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from discord_real.ext import commands
-import discord
+import discord_real
 import re
 
 # Complicated use cases for persistent views can be difficult to achieve when dealing

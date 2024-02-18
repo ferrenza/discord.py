@@ -2,7 +2,7 @@
 
 from typing import List
 from discord_real.ext import commands
-import discord
+import discord_real
 
 # Defines a custom button that contains the logic of the game.
 # The ['TicTacToe'] bit is for type hinting purposes to tell your IDE or linter

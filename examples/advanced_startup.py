@@ -10,7 +10,7 @@ import os
 from typing import List, Optional
 
 import asyncpg  # asyncpg is not a dependency of the discord_real.py, and is only included here for illustrative purposes.
-import discord
+import discord_real
 from discord_real.ext import commands
 from aiohttp import ClientSession
 

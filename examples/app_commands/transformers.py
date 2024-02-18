@@ -4,7 +4,7 @@
 from typing import Literal, Union, NamedTuple
 from enum import Enum
 
-import discord
+import discord_real
 from discord import app_commands
 
 

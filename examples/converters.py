@@ -4,7 +4,7 @@
 import traceback
 import typing
 
-import discord
+import discord_real
 from discord_real.ext import commands
 
 intents = discord_real.Intents.default()

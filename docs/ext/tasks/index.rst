@@ -63,7 +63,7 @@ Looping a certain amount of times before exiting:
 .. code-block:: python3
 
     from discord_real.ext import tasks
-    import discord
+    import discord_real
 
     @tasks.loop(seconds=5.0, count=5)
     async def slow_count():

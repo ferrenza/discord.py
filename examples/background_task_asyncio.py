@@ -1,4 +1,4 @@
-import discord
+import discord_real
 import asyncio
 
 

@@ -1,6 +1,6 @@
 # This example requires the 'members' and 'message_content' privileged intents to function.
 
-import discord
+import discord_real
 from discord_real.ext import commands
 import random
 

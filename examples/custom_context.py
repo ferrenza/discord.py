@@ -3,7 +3,7 @@
 
 import random
 
-import discord
+import discord_real
 from discord_real.ext import commands
 
 

@@ -70,7 +70,7 @@ Linuxで音声サポートを導入するには、前述のコマンドを実行
 
 .. code:: py
 
-    import discord
+    import discord_real
 
     class MyClient(discord_real.Client):
         async def on_ready(self):
@@ -94,7 +94,7 @@ Botの例
 
 .. code:: py
 
-    import discord
+    import discord_real
     from discord_real.ext import commands
 
     intents = discord_real.Intents.default()

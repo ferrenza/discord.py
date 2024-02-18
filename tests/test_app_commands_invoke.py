@@ -28,7 +28,7 @@ from functools import wraps
 import pytest
 from typing import Awaitable, TYPE_CHECKING, Callable, Coroutine, Optional, TypeVar, Any, Type, List, Union
 
-import discord
+import discord_real
 
 if TYPE_CHECKING:
 

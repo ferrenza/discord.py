@@ -2,7 +2,7 @@
 from __future__ import annotations
 
 from discord_real.ext import commands
-import discord
+import discord_real
 import re
 
 

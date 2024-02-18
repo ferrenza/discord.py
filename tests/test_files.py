@@ -26,7 +26,7 @@ from __future__ import annotations
 
 from io import BytesIO
 
-import discord
+import discord_real
 
 
 FILE = BytesIO()

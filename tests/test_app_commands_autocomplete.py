@@ -25,7 +25,7 @@ DEALINGS IN THE SOFTWARE.
 from __future__ import annotations
 from typing import List
 
-import discord
+import discord_real
 import pytest
 from discord import app_commands
 from discord_real.utils import MISSING

@@ -38,7 +38,7 @@ from typing import (
     Optional,
 )
 
-import discord
+import discord_real
 import inspect
 from discord import app_commands
 from discord_real.utils import MISSING, maybe_coroutine, async_all

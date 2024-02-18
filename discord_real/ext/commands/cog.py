@@ -24,7 +24,7 @@ DEALINGS IN THE SOFTWARE.
 from __future__ import annotations
 
 import inspect
-import discord
+import discord_real
 import logging
 from discord import app_commands
 from discord_real.utils import maybe_coroutine, _to_kebab_case
