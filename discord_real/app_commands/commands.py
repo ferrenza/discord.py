@@ -1341,7 +1341,7 @@ class Group:
 
     .. code-block:: python3
 
-        from discord import app_commands
+        from discord_real import app_commands
 
         @app_commands.guild_only()
         class MyGroup(app_commands.Group):

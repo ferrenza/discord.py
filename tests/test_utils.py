@@ -16,7 +16,7 @@ import typing
 
 import pytest
 
-from discord import utils
+from discord_real import utils
 
 
 # Async generator for async support

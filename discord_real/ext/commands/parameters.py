@@ -33,7 +33,7 @@ from discord_real.utils import MISSING, maybe_coroutine
 from .errors import NoPrivateMessage
 from .converter import GuildConverter
 
-from discord import (
+from discord_real import (
     Member,
     User,
     TextChannel,
@@ -45,7 +45,7 @@ from discord import (
 if TYPE_CHECKING:
     from typing_extensions import Self
 
-    from discord import Guild
+    from discord_real import Guild
 
     from .context import Context
 

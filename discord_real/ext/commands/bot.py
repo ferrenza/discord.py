@@ -51,7 +51,7 @@ from typing import (
 )
 
 import discord_real
-from discord import app_commands
+from discord_real import app_commands
 from discord_real.app_commands.tree import _retrieve_guild_ids
 from discord_real.utils import MISSING, _is_submodule
 

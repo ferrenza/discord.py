@@ -28,7 +28,7 @@ from typing import TYPE_CHECKING, Any, Dict, Generator, Generic, List, Optional,
 
 import discord_real.abc
 import discord_real.utils
-from discord import Interaction, Message, Attachment, MessageType, User, PartialMessageable, Permissions, ChannelType, Thread
+from discord_real import Interaction, Message, Attachment, MessageType, User, PartialMessageable, Permissions, ChannelType, Thread
 from discord_real.context_managers import Typing
 from .view import StringView
 

@@ -40,7 +40,7 @@ from typing import (
 
 import discord_real
 import inspect
-from discord import app_commands
+from discord_real import app_commands
 from discord_real.utils import MISSING, maybe_coroutine, async_all
 from .core import Command, Group
 from .errors import BadArgument, CommandRegistrationError, CommandError, HybridCommandError, ConversionError

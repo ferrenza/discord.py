@@ -26,7 +26,7 @@ from __future__ import annotations
 import inspect
 import discord_real
 import logging
-from discord import app_commands
+from discord_real import app_commands
 from discord_real.utils import maybe_coroutine, _to_kebab_case
 
 from typing import (
@@ -794,7 +794,7 @@ class GroupCog(Cog):
 
     .. code-block:: python3
 
-        from discord import app_commands
+        from discord_real import app_commands
         from discord_real.ext import commands
 
         @app_commands.guild_only()

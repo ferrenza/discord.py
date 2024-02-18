@@ -12,7 +12,7 @@ import datetime
 import pytest
 import sys
 
-from discord import utils
+from discord_real import utils
 from discord_real.ext import tasks
 
 

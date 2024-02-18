@@ -183,7 +183,7 @@ There are two ways to register an event, the first way is through the use of
 :meth:`Client.event`. The second way is through subclassing :class:`Client` and
 overriding the specific events. For example: ::
 
-    import discord
+    import discord_real
 
     class MyClient(discord_real.Client):
         async def on_message(self, message):

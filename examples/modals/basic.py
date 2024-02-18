@@ -1,5 +1,5 @@
 import discord_real
-from discord import app_commands
+from discord_real import app_commands
 
 import traceback
 

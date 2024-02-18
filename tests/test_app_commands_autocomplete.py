@@ -27,7 +27,7 @@ from typing import List
 
 import discord_real
 import pytest
-from discord import app_commands
+from discord_real import app_commands
 from discord_real.utils import MISSING
 
 

@@ -1,7 +1,7 @@
 from typing import Optional
 
 import discord_real
-from discord import app_commands
+from discord_real import app_commands
 
 
 MY_GUILD = discord_real.Object(id=0)  # replace with your guild id
