@@ -8,8 +8,8 @@ skip-string-normalization = true
 
 [tool.coverage.run]
 omit = [
-    "discord/__main__.py",
-    "discord/types/*",
+    "discord_real/__main__.py",
+    "discord_real/types/*",
     "*/_types.py",
 ]
 
@@ -27,13 +27,13 @@ line_length = 125
 
 [tool.pyright]
 include = [
-    "discord",
-    "discord/app_commands",
-    "discord/types",
-    "discord/ui",
-    "discord/ext",
-    "discord/ext/commands",
-    "discord/ext/tasks",
+    "discord_real",
+    "discord_real/app_commands",
+    "discord_real/types",
+    "discord_real/ui",
+    "discord_real/ext",
+    "discord_real/ext/commands",
+    "discord_real/ext/tasks",
 ]
 exclude = [
     "**/__pycache__",
