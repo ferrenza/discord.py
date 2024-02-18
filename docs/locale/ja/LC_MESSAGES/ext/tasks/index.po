@@ -18,20 +18,20 @@ msgstr ""
 "Language: ja_JP\n"
 
 #: ../../index.rst:59
-msgid "discord.ext.commands API Reference"
-msgstr "discord.ext.commands API リファレンス"
+msgid "discord_real.ext.commands API Reference"
+msgstr "discord_real.ext.commands API リファレンス"
 
 #: ../../index.rst:59
-msgid "discord.ext.tasks API Reference"
-msgstr "discord.ext.tasks API リファレンス"
+msgid "discord_real.ext.tasks API Reference"
+msgstr "discord_real.ext.tasks API リファレンス"
 
 #: ../../index.rst:7
-msgid "Welcome to discord.py"
-msgstr "discord.py へようこそ。"
+msgid "Welcome to discord_real.py"
+msgstr "discord_real.py へようこそ。"
 
 #: ../../index.rst:12
-msgid "discord.py is a modern, easy to use, feature-rich, and async ready API wrapper for Discord."
-msgstr "discord.py は機能豊富かつモダンで使いやすい、非同期処理にも対応したDiscord用のAPIラッパーです。"
+msgid "discord_real.py is a modern, easy to use, feature-rich, and async ready API wrapper for Discord."
+msgstr "discord_real.py は機能豊富かつモダンで使いやすい、非同期処理にも対応したDiscord用のAPIラッパーです。"
 
 #: ../../index.rst:15
 msgid "**Features:**"

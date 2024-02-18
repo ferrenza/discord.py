@@ -207,11 +207,11 @@ class User(Snowflake, Protocol):
 
     The following implement this ABC:
 
-    - :class:`~discord.User`
-    - :class:`~discord.ClientUser`
-    - :class:`~discord.Member`
+    - :class:`~discord_real.User`
+    - :class:`~discord_real.ClientUser`
+    - :class:`~discord_real.Member`
 
-    This ABC must also implement :class:`~discord.abc.Snowflake`.
+    This ABC must also implement :class:`~discord_real.abc.Snowflake`.
 
     Attributes
     -----------
@@ -245,12 +245,12 @@ class User(Snowflake, Protocol):
 
     @property
     def avatar(self) -> Optional[Asset]:
-        """Optional[:class:`~discord.Asset`]: Returns an Asset that represents the user's avatar, if present."""
+        """Optional[:class:`~discord_real.Asset`]: Returns an Asset that represents the user's avatar, if present."""
         raise NotImplementedError
 
     @property
     def avatar_decoration(self) -> Optional[Asset]:
-        """Optional[:class:`~discord.Asset`]: Returns an Asset that represents the user's avatar decoration, if present.
+        """Optional[:class:`~discord_real.Asset`]: Returns an Asset that represents the user's avatar decoration, if present.
 
         .. versionadded:: 2.4
         """
@@ -266,12 +266,12 @@ class User(Snowflake, Protocol):
 
     @property
     def default_avatar(self) -> Asset:
-        """:class:`~discord.Asset`: Returns the default avatar for a given user."""
+        """:class:`~discord_real.Asset`: Returns the default avatar for a given user."""
         raise NotImplementedError
 
     @property
     def display_avatar(self) -> Asset:
-        """:class:`~discord.Asset`: Returns the user's display avatar.
+        """:class:`~discord_real.Asset`: Returns the user's display avatar.
 
         For regular users this is just their default avatar or uploaded avatar.
 
@@ -284,7 +284,7 @@ class User(Snowflake, Protocol):
 
         Parameters
         -----------
-        message: :class:`~discord.Message`
+        message: :class:`~discord_real.Message`
             The message to check if you're mentioned in.
 
         Returns
@@ -300,14 +300,14 @@ class PrivateChannel:
 
     The following implement this ABC:
 
-    - :class:`~discord.DMChannel`
-    - :class:`~discord.GroupChannel`
+    - :class:`~discord_real.DMChannel`
+    - :class:`~discord_real.GroupChannel`
 
-    This ABC must also implement :class:`~discord.abc.Snowflake`.
+    This ABC must also implement :class:`~discord_real.abc.Snowflake`.
 
     Attributes
     -----------
-    me: :class:`~discord.ClientUser`
+    me: :class:`~discord_real.ClientUser`
         The user presenting yourself.
     """
 
@@ -349,19 +349,19 @@ class GuildChannel:
 
     The following implement this ABC:
 
-    - :class:`~discord.TextChannel`
-    - :class:`~discord.VoiceChannel`
-    - :class:`~discord.CategoryChannel`
-    - :class:`~discord.StageChannel`
-    - :class:`~discord.ForumChannel`
+    - :class:`~discord_real.TextChannel`
+    - :class:`~discord_real.VoiceChannel`
+    - :class:`~discord_real.CategoryChannel`
+    - :class:`~discord_real.StageChannel`
+    - :class:`~discord_real.ForumChannel`
 
-    This ABC must also implement :class:`~discord.abc.Snowflake`.
+    This ABC must also implement :class:`~discord_real.abc.Snowflake`.
 
     Attributes
     -----------
     name: :class:`str`
         The channel name.
-    guild: :class:`~discord.Guild`
+    guild: :class:`~discord_real.Guild`
         The guild the channel belongs to.
     position: :class:`int`
         The position in the channel list. This is a number that starts at 0.
@@ -553,8 +553,8 @@ class GuildChannel:
 
     @property
     def changed_roles(self) -> List[Role]:
-        """List[:class:`~discord.Role`]: Returns a list of roles that have been overridden from
-        their default values in the :attr:`~discord.Guild.roles` attribute."""
+        """List[:class:`~discord_real.Role`]: Returns a list of roles that have been overridden from
+        their default values in the :attr:`~discord_real.Guild.roles` attribute."""
         ret = []
         g = self.guild
         for overwrite in filter(lambda o: o.is_role(), self._overwrites):
@@ -578,7 +578,7 @@ class GuildChannel:
 
         .. versionadded:: 2.0
         """
-        return f'https://discord.com/channels/{self.guild.id}/{self.id}'
+        return f'https://discord_real.com/channels/{self.guild.id}/{self.id}'
 
     @property
     def created_at(self) -> datetime:
@@ -590,12 +590,12 @@ class GuildChannel:
 
         Parameters
         -----------
-        obj: Union[:class:`~discord.Role`, :class:`~discord.abc.User`, :class:`~discord.Object`]
+        obj: Union[:class:`~discord_real.Role`, :class:`~discord_real.abc.User`, :class:`~discord_real.Object`]
             The role or user denoting whose overwrite to get.
 
         Returns
         ---------
-        :class:`~discord.PermissionOverwrite`
+        :class:`~discord_real.PermissionOverwrite`
             The permission overwrites for this object.
         """
 
@@ -619,15 +619,15 @@ class GuildChannel:
         """Returns all of the channel's overwrites.
 
         This is returned as a dictionary where the key contains the target which
-        can be either a :class:`~discord.Role` or a :class:`~discord.Member` and the value is the
-        overwrite as a :class:`~discord.PermissionOverwrite`.
+        can be either a :class:`~discord_real.Role` or a :class:`~discord_real.Member` and the value is the
+        overwrite as a :class:`~discord_real.PermissionOverwrite`.
 
         .. versionchanged:: 2.0
-            Overwrites can now be type-aware :class:`~discord.Object` in case of cache lookup failure
+            Overwrites can now be type-aware :class:`~discord_real.Object` in case of cache lookup failure
 
         Returns
         --------
-        Dict[Union[:class:`~discord.Role`, :class:`~discord.Member`, :class:`~discord.Object`], :class:`~discord.PermissionOverwrite`]
+        Dict[Union[:class:`~discord_real.Role`, :class:`~discord_real.Member`, :class:`~discord_real.Object`], :class:`~discord_real.PermissionOverwrite`]
             The channel's permission overwrites.
         """
         ret = {}
@@ -651,7 +651,7 @@ class GuildChannel:
 
     @property
     def category(self) -> Optional[CategoryChannel]:
-        """Optional[:class:`~discord.CategoryChannel`]: The category this channel belongs to.
+        """Optional[:class:`~discord_real.CategoryChannel`]: The category this channel belongs to.
 
         If there is no category then this is ``None``.
         """
@@ -687,8 +687,8 @@ class GuildChannel:
             base.value &= ~denied.value
 
     def permissions_for(self, obj: Union[Member, Role], /) -> Permissions:
-        """Handles permission resolution for the :class:`~discord.Member`
-        or :class:`~discord.Role`.
+        """Handles permission resolution for the :class:`~discord_real.Member`
+        or :class:`~discord_real.Role`.
 
         This function takes into consideration the following cases:
 
@@ -699,7 +699,7 @@ class GuildChannel:
         - Implicit permissions
         - Member timeout
 
-        If a :class:`~discord.Role` is passed, then it checks the permissions
+        If a :class:`~discord_real.Role` is passed, then it checks the permissions
         someone with that role would have, which is essentially:
 
         - The default role permissions
@@ -715,14 +715,14 @@ class GuildChannel:
 
         Parameters
         ----------
-        obj: Union[:class:`~discord.Member`, :class:`~discord.Role`]
+        obj: Union[:class:`~discord_real.Member`, :class:`~discord_real.Role`]
             The object to resolve permissions for. This could be either
             a member or a role. If it's a role then member overwrites
             are not computed.
 
         Returns
         -------
-        :class:`~discord.Permissions`
+        :class:`~discord_real.Permissions`
             The resolved permissions for the member or role.
         """
 
@@ -825,7 +825,7 @@ class GuildChannel:
 
         Deletes the channel.
 
-        You must have :attr:`~discord.Permissions.manage_channels` to do this.
+        You must have :attr:`~discord_real.Permissions.manage_channels` to do this.
 
         Parameters
         -----------
@@ -835,11 +835,11 @@ class GuildChannel:
 
         Raises
         -------
-        ~discord.Forbidden
+        ~discord_real.Forbidden
             You do not have proper permissions to delete the channel.
-        ~discord.NotFound
+        ~discord_real.NotFound
             The channel was not found or was already deleted.
-        ~discord.HTTPException
+        ~discord_real.HTTPException
             Deleting the channel failed.
         """
         await self._state.http.delete_channel(self.id, reason=reason)
@@ -877,19 +877,19 @@ class GuildChannel:
         Sets the channel specific permission overwrites for a target in the
         channel.
 
-        The ``target`` parameter should either be a :class:`~discord.Member` or a
-        :class:`~discord.Role` that belongs to guild.
+        The ``target`` parameter should either be a :class:`~discord_real.Member` or a
+        :class:`~discord_real.Role` that belongs to guild.
 
         The ``overwrite`` parameter, if given, must either be ``None`` or
-        :class:`~discord.PermissionOverwrite`. For convenience, you can pass in
-        keyword arguments denoting :class:`~discord.Permissions` attributes. If this is
+        :class:`~discord_real.PermissionOverwrite`. For convenience, you can pass in
+        keyword arguments denoting :class:`~discord_real.Permissions` attributes. If this is
         done, then you cannot mix the keyword arguments with the ``overwrite``
         parameter.
 
         If the ``overwrite`` parameter is ``None``, then the permission
         overwrites are deleted.
 
-        You must have :attr:`~discord.Permissions.manage_roles` to do this.
+        You must have :attr:`~discord_real.Permissions.manage_roles` to do this.
 
         .. note::
 
@@ -907,9 +907,9 @@ class GuildChannel:
 
             await channel.set_permissions(member, overwrite=None)
 
-        Using :class:`~discord.PermissionOverwrite` ::
+        Using :class:`~discord_real.PermissionOverwrite` ::
 
-            overwrite = discord.PermissionOverwrite()
+            overwrite = discord_real.PermissionOverwrite()
             overwrite.send_messages = False
             overwrite.read_messages = True
             await channel.set_permissions(member, overwrite=overwrite)
@@ -921,9 +921,9 @@ class GuildChannel:
 
         Parameters
         -----------
-        target: Union[:class:`~discord.Member`, :class:`~discord.Role`]
+        target: Union[:class:`~discord_real.Member`, :class:`~discord_real.Role`]
             The member or role to overwrite permissions for.
-        overwrite: Optional[:class:`~discord.PermissionOverwrite`]
+        overwrite: Optional[:class:`~discord_real.PermissionOverwrite`]
             The permissions to allow and deny to the target, or ``None`` to
             delete the overwrite.
         \*\*permissions
@@ -934,15 +934,15 @@ class GuildChannel:
 
         Raises
         -------
-        ~discord.Forbidden
+        ~discord_real.Forbidden
             You do not have permissions to edit channel specific permissions.
-        ~discord.HTTPException
+        ~discord_real.HTTPException
             Editing channel specific permissions failed.
-        ~discord.NotFound
+        ~discord_real.NotFound
             The role or member being edited is not part of the guild.
         TypeError
             The ``overwrite`` parameter was invalid or the target type was not
-            :class:`~discord.Role` or :class:`~discord.Member`.
+            :class:`~discord_real.Role` or :class:`~discord_real.Member`.
         ValueError
             The ``overwrite`` parameter and ``positions`` parameters were both
             unset.
@@ -1003,7 +1003,7 @@ class GuildChannel:
         Clones this channel. This creates a channel with the same properties
         as this channel.
 
-        You must have :attr:`~discord.Permissions.manage_channels` to do this.
+        You must have :attr:`~discord_real.Permissions.manage_channels` to do this.
 
         .. versionadded:: 1.1
 
@@ -1017,9 +1017,9 @@ class GuildChannel:
 
         Raises
         -------
-        ~discord.Forbidden
+        ~discord_real.Forbidden
             You do not have the proper permissions to create this channel.
-        ~discord.HTTPException
+        ~discord_real.HTTPException
             Creating the channel failed.
 
         Returns
@@ -1084,7 +1084,7 @@ class GuildChannel:
 
         If exact position movement is required, ``edit`` should be used instead.
 
-        You must have :attr:`~discord.Permissions.manage_channels` to do this.
+        You must have :attr:`~discord_real.Permissions.manage_channels` to do this.
 
         .. note::
 
@@ -1107,10 +1107,10 @@ class GuildChannel:
             Whether to move the channel to the end of the
             channel list (or category if given).
             This is mutually exclusive with ``beginning``, ``before``, and ``after``.
-        before: :class:`~discord.abc.Snowflake`
+        before: :class:`~discord_real.abc.Snowflake`
             The channel that should be before our current channel.
             This is mutually exclusive with ``beginning``, ``end``, and ``after``.
-        after: :class:`~discord.abc.Snowflake`
+        after: :class:`~discord_real.abc.Snowflake`
             The channel that should be after our current channel.
             This is mutually exclusive with ``beginning``, ``end``, and ``before``.
         offset: :class:`int`
@@ -1120,7 +1120,7 @@ class GuildChannel:
             while a negative number moves it above. Note that this
             number is relative and computed after the ``beginning``,
             ``end``, ``before``, and ``after`` parameters.
-        category: Optional[:class:`~discord.abc.Snowflake`]
+        category: Optional[:class:`~discord_real.abc.Snowflake`]
             The category to move this channel under.
             If ``None`` is given then it moves it out of the category.
             This parameter is ignored if moving a category channel.
@@ -1221,7 +1221,7 @@ class GuildChannel:
 
         Creates an instant invite from a text or voice channel.
 
-        You must have :attr:`~discord.Permissions.create_instant_invite` to do this.
+        You must have :attr:`~discord_real.Permissions.create_instant_invite` to do this.
 
         Parameters
         ------------
@@ -1257,15 +1257,15 @@ class GuildChannel:
 
         Raises
         -------
-        ~discord.HTTPException
+        ~discord_real.HTTPException
             Invite creation failed.
 
-        ~discord.NotFound
+        ~discord_real.NotFound
             The channel that was passed is a category or an invalid channel.
 
         Returns
         --------
-        :class:`~discord.Invite`
+        :class:`~discord_real.Invite`
             The invite that was created.
         """
         if target_type is InviteTarget.unknown:
@@ -1289,18 +1289,18 @@ class GuildChannel:
 
         Returns a list of all active instant invites from this channel.
 
-        You must have :attr:`~discord.Permissions.manage_channels` to get this information.
+        You must have :attr:`~discord_real.Permissions.manage_channels` to get this information.
 
         Raises
         -------
-        ~discord.Forbidden
+        ~discord_real.Forbidden
             You do not have proper permissions to get the information.
-        ~discord.HTTPException
+        ~discord_real.HTTPException
             An error occurred while fetching the information.
 
         Returns
         -------
-        List[:class:`~discord.Invite`]
+        List[:class:`~discord_real.Invite`]
             The list of invites that are currently active.
         """
 
@@ -1315,16 +1315,16 @@ class Messageable:
 
     The following classes implement this ABC:
 
-    - :class:`~discord.TextChannel`
-    - :class:`~discord.VoiceChannel`
-    - :class:`~discord.StageChannel`
-    - :class:`~discord.DMChannel`
-    - :class:`~discord.GroupChannel`
-    - :class:`~discord.PartialMessageable`
-    - :class:`~discord.User`
-    - :class:`~discord.Member`
-    - :class:`~discord.ext.commands.Context`
-    - :class:`~discord.Thread`
+    - :class:`~discord_real.TextChannel`
+    - :class:`~discord_real.VoiceChannel`
+    - :class:`~discord_real.StageChannel`
+    - :class:`~discord_real.DMChannel`
+    - :class:`~discord_real.GroupChannel`
+    - :class:`~discord_real.PartialMessageable`
+    - :class:`~discord_real.User`
+    - :class:`~discord_real.Member`
+    - :class:`~discord_real.ext.commands.Context`
+    - :class:`~discord_real.Thread`
     """
 
     __slots__ = ()
@@ -1441,13 +1441,13 @@ class Messageable:
         be provided.
 
         To upload a single file, the ``file`` parameter should be used with a
-        single :class:`~discord.File` object. To upload multiple files, the ``files``
-        parameter should be used with a :class:`list` of :class:`~discord.File` objects.
+        single :class:`~discord_real.File` object. To upload multiple files, the ``files``
+        parameter should be used with a :class:`list` of :class:`~discord_real.File` objects.
         **Specifying both parameters will lead to an exception**.
 
         To upload a single embed, the ``embed`` parameter should be used with a
-        single :class:`~discord.Embed` object. To upload multiple embeds, the ``embeds``
-        parameter should be used with a :class:`list` of :class:`~discord.Embed` objects.
+        single :class:`~discord_real.Embed` object. To upload multiple embeds, the ``embeds``
+        parameter should be used with a :class:`list` of :class:`~discord_real.Embed` objects.
         **Specifying both parameters will lead to an exception**.
 
         .. versionchanged:: 2.0
@@ -1460,15 +1460,15 @@ class Messageable:
             The content of the message to send.
         tts: :class:`bool`
             Indicates if the message should be sent using text-to-speech.
-        embed: :class:`~discord.Embed`
+        embed: :class:`~discord_real.Embed`
             The rich embed for the content.
-        embeds: List[:class:`~discord.Embed`]
+        embeds: List[:class:`~discord_real.Embed`]
             A list of embeds to upload. Must be a maximum of 10.
 
             .. versionadded:: 2.0
-        file: :class:`~discord.File`
+        file: :class:`~discord_real.File`
             The file to upload.
-        files: List[:class:`~discord.File`]
+        files: List[:class:`~discord_real.File`]
             A list of files to upload. Must be a maximum of 10.
         nonce: :class:`int`
             The nonce to use for sending this message. If the message was successfully sent,
@@ -1477,33 +1477,33 @@ class Messageable:
             If provided, the number of seconds to wait in the background
             before deleting the message we just sent. If the deletion fails,
             then it is silently ignored.
-        allowed_mentions: :class:`~discord.AllowedMentions`
+        allowed_mentions: :class:`~discord_real.AllowedMentions`
             Controls the mentions being processed in this message. If this is
-            passed, then the object is merged with :attr:`~discord.Client.allowed_mentions`.
+            passed, then the object is merged with :attr:`~discord_real.Client.allowed_mentions`.
             The merging behaviour only overrides attributes that have been explicitly passed
-            to the object, otherwise it uses the attributes set in :attr:`~discord.Client.allowed_mentions`.
-            If no object is passed at all then the defaults given by :attr:`~discord.Client.allowed_mentions`
+            to the object, otherwise it uses the attributes set in :attr:`~discord_real.Client.allowed_mentions`.
+            If no object is passed at all then the defaults given by :attr:`~discord_real.Client.allowed_mentions`
             are used instead.
 
             .. versionadded:: 1.4
 
-        reference: Union[:class:`~discord.Message`, :class:`~discord.MessageReference`, :class:`~discord.PartialMessage`]
-            A reference to the :class:`~discord.Message` to which you are replying, this can be created using
-            :meth:`~discord.Message.to_reference` or passed directly as a :class:`~discord.Message`. You can control
-            whether this mentions the author of the referenced message using the :attr:`~discord.AllowedMentions.replied_user`
+        reference: Union[:class:`~discord_real.Message`, :class:`~discord_real.MessageReference`, :class:`~discord_real.PartialMessage`]
+            A reference to the :class:`~discord_real.Message` to which you are replying, this can be created using
+            :meth:`~discord_real.Message.to_reference` or passed directly as a :class:`~discord_real.Message`. You can control
+            whether this mentions the author of the referenced message using the :attr:`~discord_real.AllowedMentions.replied_user`
             attribute of ``allowed_mentions`` or by setting ``mention_author``.
 
             .. versionadded:: 1.6
 
         mention_author: Optional[:class:`bool`]
-            If set, overrides the :attr:`~discord.AllowedMentions.replied_user` attribute of ``allowed_mentions``.
+            If set, overrides the :attr:`~discord_real.AllowedMentions.replied_user` attribute of ``allowed_mentions``.
 
             .. versionadded:: 1.6
-        view: :class:`discord.ui.View`
+        view: :class:`discord_real.ui.View`
             A Discord UI View to add to the message.
 
             .. versionadded:: 2.0
-        stickers: Sequence[Union[:class:`~discord.GuildSticker`, :class:`~discord.StickerItem`]]
+        stickers: Sequence[Union[:class:`~discord_real.GuildSticker`, :class:`~discord_real.StickerItem`]]
             A list of stickers to upload. Must be a maximum of 3.
 
             .. versionadded:: 2.0
@@ -1519,21 +1519,21 @@ class Messageable:
 
         Raises
         --------
-        ~discord.HTTPException
+        ~discord_real.HTTPException
             Sending the message failed.
-        ~discord.Forbidden
+        ~discord_real.Forbidden
             You do not have the proper permissions to send the message.
         ValueError
             The ``files`` or ``embeds`` list is not of the appropriate size.
         TypeError
             You specified both ``file`` and ``files``,
             or you specified both ``embed`` and ``embeds``,
-            or the ``reference`` object is not a :class:`~discord.Message`,
-            :class:`~discord.MessageReference` or :class:`~discord.PartialMessage`.
+            or the ``reference`` object is not a :class:`~discord_real.Message`,
+            :class:`~discord_real.MessageReference` or :class:`~discord_real.PartialMessage`.
 
         Returns
         ---------
-        :class:`~discord.Message`
+        :class:`~discord_real.Message`
             The message that was sent.
         """
 
@@ -1623,7 +1623,7 @@ class Messageable:
     async def fetch_message(self, id: int, /) -> Message:
         """|coro|
 
-        Retrieves a single :class:`~discord.Message` from the destination.
+        Retrieves a single :class:`~discord_real.Message` from the destination.
 
         Parameters
         ------------
@@ -1632,16 +1632,16 @@ class Messageable:
 
         Raises
         --------
-        ~discord.NotFound
+        ~discord_real.NotFound
             The specified message was not found.
-        ~discord.Forbidden
+        ~discord_real.Forbidden
             You do not have the permissions required to get a message.
-        ~discord.HTTPException
+        ~discord_real.HTTPException
             Retrieving the message failed.
 
         Returns
         --------
-        :class:`~discord.Message`
+        :class:`~discord_real.Message`
             The message asked for.
         """
 
@@ -1662,14 +1662,14 @@ class Messageable:
 
         Raises
         -------
-        ~discord.Forbidden
+        ~discord_real.Forbidden
             You do not have the permission to retrieve pinned messages.
-        ~discord.HTTPException
+        ~discord_real.HTTPException
             Retrieving the pinned messages failed.
 
         Returns
         --------
-        List[:class:`~discord.Message`]
+        List[:class:`~discord_real.Message`]
             The messages that are currently pinned.
         """
 
@@ -1689,7 +1689,7 @@ class Messageable:
     ) -> AsyncIterator[Message]:
         """Returns an :term:`asynchronous iterator` that enables receiving the destination's message history.
 
-        You must have :attr:`~discord.Permissions.read_message_history` to do this.
+        You must have :attr:`~discord_real.Permissions.read_message_history` to do this.
 
         Examples
         ---------
@@ -1714,15 +1714,15 @@ class Messageable:
             The number of messages to retrieve.
             If ``None``, retrieves every message in the channel. Note, however,
             that this would make it a slow operation.
-        before: Optional[Union[:class:`~discord.abc.Snowflake`, :class:`datetime.datetime`]]
+        before: Optional[Union[:class:`~discord_real.abc.Snowflake`, :class:`datetime.datetime`]]
             Retrieve messages before this date or message.
             If a datetime is provided, it is recommended to use a UTC aware datetime.
             If the datetime is naive, it is assumed to be local time.
-        after: Optional[Union[:class:`~discord.abc.Snowflake`, :class:`datetime.datetime`]]
+        after: Optional[Union[:class:`~discord_real.abc.Snowflake`, :class:`datetime.datetime`]]
             Retrieve messages after this date or message.
             If a datetime is provided, it is recommended to use a UTC aware datetime.
             If the datetime is naive, it is assumed to be local time.
-        around: Optional[Union[:class:`~discord.abc.Snowflake`, :class:`datetime.datetime`]]
+        around: Optional[Union[:class:`~discord_real.abc.Snowflake`, :class:`datetime.datetime`]]
             Retrieve messages around this date or message.
             If a datetime is provided, it is recommended to use a UTC aware datetime.
             If the datetime is naive, it is assumed to be local time.
@@ -1734,14 +1734,14 @@ class Messageable:
 
         Raises
         ------
-        ~discord.Forbidden
+        ~discord_real.Forbidden
             You do not have permissions to get channel message history.
-        ~discord.HTTPException
+        ~discord_real.HTTPException
             The request to get message history failed.
 
         Yields
         -------
-        :class:`~discord.Message`
+        :class:`~discord_real.Message`
             The message with the message data parsed.
         """
 
@@ -1849,8 +1849,8 @@ class Connectable(Protocol):
 
     The following implement this ABC:
 
-    - :class:`~discord.VoiceChannel`
-    - :class:`~discord.StageChannel`
+    - :class:`~discord_real.VoiceChannel`
+    - :class:`~discord_real.StageChannel`
     """
 
     __slots__ = ()
@@ -1873,10 +1873,10 @@ class Connectable(Protocol):
     ) -> T:
         """|coro|
 
-        Connects to voice and creates a :class:`~discord.VoiceClient` to establish
+        Connects to voice and creates a :class:`~discord_real.VoiceClient` to establish
         your connection to the voice server.
 
-        This requires :attr:`~discord.Intents.voice_states`.
+        This requires :attr:`~discord_real.Intents.voice_states`.
 
         Parameters
         -----------
@@ -1886,9 +1886,9 @@ class Connectable(Protocol):
             Whether the bot should automatically attempt
             a reconnect if a part of the handshake fails
             or the gateway goes down.
-        cls: Type[:class:`~discord.VoiceProtocol`]
-            A type that subclasses :class:`~discord.VoiceProtocol` to connect with.
-            Defaults to :class:`~discord.VoiceClient`.
+        cls: Type[:class:`~discord_real.VoiceProtocol`]
+            A type that subclasses :class:`~discord_real.VoiceProtocol` to connect with.
+            Defaults to :class:`~discord_real.VoiceClient`.
         self_mute: :class:`bool`
             Indicates if the client should be self-muted.
 
@@ -1902,14 +1902,14 @@ class Connectable(Protocol):
         -------
         asyncio.TimeoutError
             Could not connect to the voice channel in time.
-        ~discord.ClientException
+        ~discord_real.ClientException
             You are already connected to a voice channel.
-        ~discord.opus.OpusNotLoaded
+        ~discord_real.opus.OpusNotLoaded
             The opus library has not been loaded.
 
         Returns
         --------
-        :class:`~discord.VoiceProtocol`
+        :class:`~discord_real.VoiceProtocol`
             A voice client that is fully connected to the voice server.
         """
 

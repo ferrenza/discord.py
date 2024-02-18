@@ -3,7 +3,7 @@
 API Reference
 ===============
 
-The following section outlines the API of discord.py's command extension module.
+The following section outlines the API of discord_real.py's command extension module.
 
 .. _ext_commands_api_bot:
 
@@ -13,9 +13,9 @@ Bots
 Bot
 ~~~~
 
-.. attributetable:: discord.ext.commands.Bot
+.. attributetable:: discord_real.ext.commands.Bot
 
-.. autoclass:: discord.ext.commands.Bot
+.. autoclass:: discord_real.ext.commands.Bot
     :members:
     :inherited-members:
     :exclude-members: after_invoke, before_invoke, check, check_once, command, event, group, hybrid_command, hybrid_group, listen
@@ -53,17 +53,17 @@ Bot
 AutoShardedBot
 ~~~~~~~~~~~~~~~~
 
-.. attributetable:: discord.ext.commands.AutoShardedBot
+.. attributetable:: discord_real.ext.commands.AutoShardedBot
 
-.. autoclass:: discord.ext.commands.AutoShardedBot
+.. autoclass:: discord_real.ext.commands.AutoShardedBot
     :members:
 
 Prefix Helpers
 ----------------
 
-.. autofunction:: discord.ext.commands.when_mentioned
+.. autofunction:: discord_real.ext.commands.when_mentioned
 
-.. autofunction:: discord.ext.commands.when_mentioned_or
+.. autofunction:: discord_real.ext.commands.when_mentioned_or
 
 .. _ext_commands_api_events:
 
@@ -73,7 +73,7 @@ Event Reference
 These events function similar to :ref:`the regular events <discord-api-events>`, except they
 are custom to the command extension module.
 
-.. function:: discord.ext.commands.on_command_error(ctx, error)
+.. function:: discord_real.ext.commands.on_command_error(ctx, error)
 
     An error handler that is called when an error is raised
     inside a command either through user input error, check
@@ -86,7 +86,7 @@ are custom to the command extension module.
     :param error: The error that was raised.
     :type error: :class:`.CommandError` derived
 
-.. function:: discord.ext.commands.on_command(ctx)
+.. function:: discord_real.ext.commands.on_command(ctx)
 
     An event that is called when a command is found and is about to be invoked.
 
@@ -96,7 +96,7 @@ are custom to the command extension module.
     :param ctx: The invocation context.
     :type ctx: :class:`.Context`
 
-.. function:: discord.ext.commands.on_command_completion(ctx)
+.. function:: discord_real.ext.commands.on_command_completion(ctx)
 
     An event that is called when a command has completed its invocation.
 
@@ -114,25 +114,25 @@ Commands
 Decorators
 ~~~~~~~~~~~~
 
-.. autofunction:: discord.ext.commands.command
+.. autofunction:: discord_real.ext.commands.command
     :decorator:
 
-.. autofunction:: discord.ext.commands.group
+.. autofunction:: discord_real.ext.commands.group
     :decorator:
 
-.. autofunction:: discord.ext.commands.hybrid_command
+.. autofunction:: discord_real.ext.commands.hybrid_command
     :decorator:
 
-.. autofunction:: discord.ext.commands.hybrid_group
+.. autofunction:: discord_real.ext.commands.hybrid_group
     :decorator:
 
 
 Command
 ~~~~~~~~~
 
-.. attributetable:: discord.ext.commands.Command
+.. attributetable:: discord_real.ext.commands.Command
 
-.. autoclass:: discord.ext.commands.Command
+.. autoclass:: discord_real.ext.commands.Command
     :members:
     :special-members: __call__
     :exclude-members: after_invoke, before_invoke, error
@@ -149,9 +149,9 @@ Command
 Group
 ~~~~~~
 
-.. attributetable:: discord.ext.commands.Group
+.. attributetable:: discord_real.ext.commands.Group
 
-.. autoclass:: discord.ext.commands.Group
+.. autoclass:: discord_real.ext.commands.Group
     :members:
     :inherited-members:
     :exclude-members: after_invoke, before_invoke, command, error, group
@@ -174,9 +174,9 @@ Group
 GroupMixin
 ~~~~~~~~~~~
 
-.. attributetable:: discord.ext.commands.GroupMixin
+.. attributetable:: discord_real.ext.commands.GroupMixin
 
-.. autoclass:: discord.ext.commands.GroupMixin
+.. autoclass:: discord_real.ext.commands.GroupMixin
     :members:
     :exclude-members: command, group
 
@@ -189,9 +189,9 @@ GroupMixin
 HybridCommand
 ~~~~~~~~~~~~~~
 
-.. attributetable:: discord.ext.commands.HybridCommand
+.. attributetable:: discord_real.ext.commands.HybridCommand
 
-.. autoclass:: discord.ext.commands.HybridCommand
+.. autoclass:: discord_real.ext.commands.HybridCommand
     :members:
     :special-members: __call__
     :exclude-members: after_invoke, autocomplete, before_invoke, error
@@ -211,9 +211,9 @@ HybridCommand
 HybridGroup
 ~~~~~~~~~~~~
 
-.. attributetable:: discord.ext.commands.HybridGroup
+.. attributetable:: discord_real.ext.commands.HybridGroup
 
-.. autoclass:: discord.ext.commands.HybridGroup
+.. autoclass:: discord_real.ext.commands.HybridGroup
     :members:
     :inherited-members:
     :exclude-members: after_invoke, autocomplete, before_invoke, command, error, group
@@ -245,26 +245,26 @@ Cogs
 Cog
 ~~~~
 
-.. attributetable:: discord.ext.commands.Cog
+.. attributetable:: discord_real.ext.commands.Cog
 
-.. autoclass:: discord.ext.commands.Cog
+.. autoclass:: discord_real.ext.commands.Cog
     :members:
 
 GroupCog
 ~~~~~~~~~
 
-.. attributetable:: discord.ext.commands.GroupCog
+.. attributetable:: discord_real.ext.commands.GroupCog
 
-.. autoclass:: discord.ext.commands.GroupCog
+.. autoclass:: discord_real.ext.commands.GroupCog
     :members: interaction_check
 
 
 CogMeta
 ~~~~~~~~
 
-.. attributetable:: discord.ext.commands.CogMeta
+.. attributetable:: discord_real.ext.commands.CogMeta
 
-.. autoclass:: discord.ext.commands.CogMeta
+.. autoclass:: discord_real.ext.commands.CogMeta
     :members:
 
 .. _ext_commands_help_command:
@@ -275,42 +275,42 @@ Help Commands
 HelpCommand
 ~~~~~~~~~~~~
 
-.. attributetable:: discord.ext.commands.HelpCommand
+.. attributetable:: discord_real.ext.commands.HelpCommand
 
-.. autoclass:: discord.ext.commands.HelpCommand
+.. autoclass:: discord_real.ext.commands.HelpCommand
     :members:
 
 DefaultHelpCommand
 ~~~~~~~~~~~~~~~~~~~
 
-.. attributetable:: discord.ext.commands.DefaultHelpCommand
+.. attributetable:: discord_real.ext.commands.DefaultHelpCommand
 
-.. autoclass:: discord.ext.commands.DefaultHelpCommand
+.. autoclass:: discord_real.ext.commands.DefaultHelpCommand
     :members:
     :exclude-members: send_bot_help, send_cog_help, send_group_help, send_command_help, prepare_help_command
 
 MinimalHelpCommand
 ~~~~~~~~~~~~~~~~~~~
 
-.. attributetable:: discord.ext.commands.MinimalHelpCommand
+.. attributetable:: discord_real.ext.commands.MinimalHelpCommand
 
-.. autoclass:: discord.ext.commands.MinimalHelpCommand
+.. autoclass:: discord_real.ext.commands.MinimalHelpCommand
     :members:
     :exclude-members: send_bot_help, send_cog_help, send_group_help, send_command_help, prepare_help_command
 
 Paginator
 ~~~~~~~~~~
 
-.. attributetable:: discord.ext.commands.Paginator
+.. attributetable:: discord_real.ext.commands.Paginator
 
-.. autoclass:: discord.ext.commands.Paginator
+.. autoclass:: discord_real.ext.commands.Paginator
     :members:
 
 Enums
 ------
 
 .. class:: BucketType
-    :module: discord.ext.commands
+    :module: discord_real.ext.commands
 
     Specifies a type of bucket for, e.g. a cooldown.
 
@@ -344,61 +344,61 @@ Enums
 Checks
 -------
 
-.. autofunction:: discord.ext.commands.check(predicate)
+.. autofunction:: discord_real.ext.commands.check(predicate)
     :decorator:
 
-.. autofunction:: discord.ext.commands.check_any(*checks)
+.. autofunction:: discord_real.ext.commands.check_any(*checks)
     :decorator:
 
-.. autofunction:: discord.ext.commands.has_role(item)
+.. autofunction:: discord_real.ext.commands.has_role(item)
     :decorator:
 
-.. autofunction:: discord.ext.commands.has_permissions(**perms)
+.. autofunction:: discord_real.ext.commands.has_permissions(**perms)
     :decorator:
 
-.. autofunction:: discord.ext.commands.has_guild_permissions(**perms)
+.. autofunction:: discord_real.ext.commands.has_guild_permissions(**perms)
     :decorator:
 
-.. autofunction:: discord.ext.commands.has_any_role(*items)
+.. autofunction:: discord_real.ext.commands.has_any_role(*items)
     :decorator:
 
-.. autofunction:: discord.ext.commands.bot_has_role(item)
+.. autofunction:: discord_real.ext.commands.bot_has_role(item)
     :decorator:
 
-.. autofunction:: discord.ext.commands.bot_has_permissions(**perms)
+.. autofunction:: discord_real.ext.commands.bot_has_permissions(**perms)
     :decorator:
 
-.. autofunction:: discord.ext.commands.bot_has_guild_permissions(**perms)
+.. autofunction:: discord_real.ext.commands.bot_has_guild_permissions(**perms)
     :decorator:
 
-.. autofunction:: discord.ext.commands.bot_has_any_role(*items)
+.. autofunction:: discord_real.ext.commands.bot_has_any_role(*items)
     :decorator:
 
-.. autofunction:: discord.ext.commands.cooldown(rate, per, type=discord.ext.commands.BucketType.default)
+.. autofunction:: discord_real.ext.commands.cooldown(rate, per, type=discord_real.ext.commands.BucketType.default)
     :decorator:
 
-.. autofunction:: discord.ext.commands.dynamic_cooldown(cooldown, type)
+.. autofunction:: discord_real.ext.commands.dynamic_cooldown(cooldown, type)
     :decorator:
 
-.. autofunction:: discord.ext.commands.max_concurrency(number, per=discord.ext.commands.BucketType.default, *, wait=False)
+.. autofunction:: discord_real.ext.commands.max_concurrency(number, per=discord_real.ext.commands.BucketType.default, *, wait=False)
     :decorator:
 
-.. autofunction:: discord.ext.commands.before_invoke(coro)
+.. autofunction:: discord_real.ext.commands.before_invoke(coro)
     :decorator:
 
-.. autofunction:: discord.ext.commands.after_invoke(coro)
+.. autofunction:: discord_real.ext.commands.after_invoke(coro)
     :decorator:
 
-.. autofunction:: discord.ext.commands.guild_only(,)
+.. autofunction:: discord_real.ext.commands.guild_only(,)
     :decorator:
 
-.. autofunction:: discord.ext.commands.dm_only(,)
+.. autofunction:: discord_real.ext.commands.dm_only(,)
     :decorator:
 
-.. autofunction:: discord.ext.commands.is_owner(,)
+.. autofunction:: discord_real.ext.commands.is_owner(,)
     :decorator:
 
-.. autofunction:: discord.ext.commands.is_nsfw(,)
+.. autofunction:: discord_real.ext.commands.is_nsfw(,)
     :decorator:
 
 .. _ext_commands_api_context:
@@ -406,14 +406,14 @@ Checks
 Context
 --------
 
-.. attributetable:: discord.ext.commands.Context
+.. attributetable:: discord_real.ext.commands.Context
 
-.. autoclass:: discord.ext.commands.Context
+.. autoclass:: discord_real.ext.commands.Context
     :members:
     :inherited-members:
     :exclude-members: typing
 
-    .. automethod:: discord.ext.commands.Context.typing
+    .. automethod:: discord_real.ext.commands.Context.typing
         :async-with:
 
 .. _ext_commands_api_converters:
@@ -421,174 +421,174 @@ Context
 Converters
 ------------
 
-.. attributetable:: discord.ext.commands.Converter
+.. attributetable:: discord_real.ext.commands.Converter
 
-.. autoclass:: discord.ext.commands.Converter
+.. autoclass:: discord_real.ext.commands.Converter
     :members:
 
-.. attributetable:: discord.ext.commands.ObjectConverter
+.. attributetable:: discord_real.ext.commands.ObjectConverter
 
-.. autoclass:: discord.ext.commands.ObjectConverter
+.. autoclass:: discord_real.ext.commands.ObjectConverter
     :members:
 
-.. attributetable:: discord.ext.commands.MemberConverter
+.. attributetable:: discord_real.ext.commands.MemberConverter
 
-.. autoclass:: discord.ext.commands.MemberConverter
+.. autoclass:: discord_real.ext.commands.MemberConverter
     :members:
 
-.. attributetable:: discord.ext.commands.UserConverter
+.. attributetable:: discord_real.ext.commands.UserConverter
 
-.. autoclass:: discord.ext.commands.UserConverter
+.. autoclass:: discord_real.ext.commands.UserConverter
     :members:
 
-.. attributetable:: discord.ext.commands.MessageConverter
+.. attributetable:: discord_real.ext.commands.MessageConverter
 
-.. autoclass:: discord.ext.commands.MessageConverter
+.. autoclass:: discord_real.ext.commands.MessageConverter
     :members:
 
-.. attributetable:: discord.ext.commands.PartialMessageConverter
+.. attributetable:: discord_real.ext.commands.PartialMessageConverter
 
-.. autoclass:: discord.ext.commands.PartialMessageConverter
+.. autoclass:: discord_real.ext.commands.PartialMessageConverter
     :members:
 
-.. attributetable:: discord.ext.commands.GuildChannelConverter
+.. attributetable:: discord_real.ext.commands.GuildChannelConverter
 
-.. autoclass:: discord.ext.commands.GuildChannelConverter
+.. autoclass:: discord_real.ext.commands.GuildChannelConverter
     :members:
 
-.. attributetable:: discord.ext.commands.TextChannelConverter
+.. attributetable:: discord_real.ext.commands.TextChannelConverter
 
-.. autoclass:: discord.ext.commands.TextChannelConverter
+.. autoclass:: discord_real.ext.commands.TextChannelConverter
     :members:
 
-.. attributetable:: discord.ext.commands.VoiceChannelConverter
+.. attributetable:: discord_real.ext.commands.VoiceChannelConverter
 
-.. autoclass:: discord.ext.commands.VoiceChannelConverter
+.. autoclass:: discord_real.ext.commands.VoiceChannelConverter
     :members:
 
-.. attributetable:: discord.ext.commands.StageChannelConverter
+.. attributetable:: discord_real.ext.commands.StageChannelConverter
 
-.. autoclass:: discord.ext.commands.StageChannelConverter
+.. autoclass:: discord_real.ext.commands.StageChannelConverter
     :members:
 
-.. attributetable:: discord.ext.commands.CategoryChannelConverter
+.. attributetable:: discord_real.ext.commands.CategoryChannelConverter
 
-.. autoclass:: discord.ext.commands.CategoryChannelConverter
+.. autoclass:: discord_real.ext.commands.CategoryChannelConverter
     :members:
 
-.. attributetable:: discord.ext.commands.ForumChannelConverter
+.. attributetable:: discord_real.ext.commands.ForumChannelConverter
 
-.. autoclass:: discord.ext.commands.ForumChannelConverter
+.. autoclass:: discord_real.ext.commands.ForumChannelConverter
     :members:
 
-.. attributetable:: discord.ext.commands.InviteConverter
+.. attributetable:: discord_real.ext.commands.InviteConverter
 
-.. autoclass:: discord.ext.commands.InviteConverter
+.. autoclass:: discord_real.ext.commands.InviteConverter
     :members:
 
-.. attributetable:: discord.ext.commands.GuildConverter
+.. attributetable:: discord_real.ext.commands.GuildConverter
 
-.. autoclass:: discord.ext.commands.GuildConverter
+.. autoclass:: discord_real.ext.commands.GuildConverter
     :members:
 
-.. attributetable:: discord.ext.commands.RoleConverter
+.. attributetable:: discord_real.ext.commands.RoleConverter
 
-.. autoclass:: discord.ext.commands.RoleConverter
+.. autoclass:: discord_real.ext.commands.RoleConverter
     :members:
 
-.. attributetable:: discord.ext.commands.GameConverter
+.. attributetable:: discord_real.ext.commands.GameConverter
 
-.. autoclass:: discord.ext.commands.GameConverter
+.. autoclass:: discord_real.ext.commands.GameConverter
     :members:
 
-.. attributetable:: discord.ext.commands.ColourConverter
+.. attributetable:: discord_real.ext.commands.ColourConverter
 
-.. autoclass:: discord.ext.commands.ColourConverter
+.. autoclass:: discord_real.ext.commands.ColourConverter
     :members:
 
-.. attributetable:: discord.ext.commands.EmojiConverter
+.. attributetable:: discord_real.ext.commands.EmojiConverter
 
-.. autoclass:: discord.ext.commands.EmojiConverter
+.. autoclass:: discord_real.ext.commands.EmojiConverter
     :members:
 
-.. attributetable:: discord.ext.commands.PartialEmojiConverter
+.. attributetable:: discord_real.ext.commands.PartialEmojiConverter
 
-.. autoclass:: discord.ext.commands.PartialEmojiConverter
+.. autoclass:: discord_real.ext.commands.PartialEmojiConverter
     :members:
 
-.. attributetable:: discord.ext.commands.ThreadConverter
+.. attributetable:: discord_real.ext.commands.ThreadConverter
 
-.. autoclass:: discord.ext.commands.ThreadConverter
+.. autoclass:: discord_real.ext.commands.ThreadConverter
     :members:
 
-.. attributetable:: discord.ext.commands.GuildStickerConverter
+.. attributetable:: discord_real.ext.commands.GuildStickerConverter
 
-.. autoclass:: discord.ext.commands.GuildStickerConverter
+.. autoclass:: discord_real.ext.commands.GuildStickerConverter
     :members:
 
-.. attributetable:: discord.ext.commands.ScheduledEventConverter
+.. attributetable:: discord_real.ext.commands.ScheduledEventConverter
 
-.. autoclass:: discord.ext.commands.ScheduledEventConverter
+.. autoclass:: discord_real.ext.commands.ScheduledEventConverter
     :members:
 
-.. attributetable:: discord.ext.commands.clean_content
+.. attributetable:: discord_real.ext.commands.clean_content
 
-.. autoclass:: discord.ext.commands.clean_content
+.. autoclass:: discord_real.ext.commands.clean_content
     :members:
 
-.. attributetable:: discord.ext.commands.Greedy
+.. attributetable:: discord_real.ext.commands.Greedy
 
-.. autoclass:: discord.ext.commands.Greedy()
+.. autoclass:: discord_real.ext.commands.Greedy()
 
-.. attributetable:: discord.ext.commands.Range
+.. attributetable:: discord_real.ext.commands.Range
 
-.. autoclass:: discord.ext.commands.Range()
+.. autoclass:: discord_real.ext.commands.Range()
 
-.. autofunction:: discord.ext.commands.run_converters
+.. autofunction:: discord_real.ext.commands.run_converters
 
 Flag Converter
 ~~~~~~~~~~~~~~~
 
-.. attributetable:: discord.ext.commands.FlagConverter
+.. attributetable:: discord_real.ext.commands.FlagConverter
 
-.. autoclass:: discord.ext.commands.FlagConverter
+.. autoclass:: discord_real.ext.commands.FlagConverter
     :members:
 
-.. attributetable:: discord.ext.commands.Flag
+.. attributetable:: discord_real.ext.commands.Flag
 
-.. autoclass:: discord.ext.commands.Flag()
+.. autoclass:: discord_real.ext.commands.Flag()
     :members:
 
-.. autofunction:: discord.ext.commands.flag
+.. autofunction:: discord_real.ext.commands.flag
 
 
 Defaults
 --------
 
-.. attributetable:: discord.ext.commands.Parameter
+.. attributetable:: discord_real.ext.commands.Parameter
 
-.. autoclass:: discord.ext.commands.Parameter()
+.. autoclass:: discord_real.ext.commands.Parameter()
     :members:
 
-.. autofunction:: discord.ext.commands.parameter
+.. autofunction:: discord_real.ext.commands.parameter
 
-.. autofunction:: discord.ext.commands.param
+.. autofunction:: discord_real.ext.commands.param
 
-.. data:: discord.ext.commands.Author
+.. data:: discord_real.ext.commands.Author
 
     A default :class:`Parameter` which returns the :attr:`~.Context.author` for this context.
 
     .. versionadded:: 2.0
 
-.. data:: discord.ext.commands.CurrentChannel
+.. data:: discord_real.ext.commands.CurrentChannel
 
     A default :class:`Parameter` which returns the :attr:`~.Context.channel` for this context.
 
     .. versionadded:: 2.0
 
-.. data:: discord.ext.commands.CurrentGuild
+.. data:: discord_real.ext.commands.CurrentGuild
 
-    A default :class:`Parameter` which returns the :attr:`~.Context.guild` for this context. This will never be ``None``. If the command is called in a DM context then :exc:`~discord.ext.commands.NoPrivateMessage` is raised to the error handlers.
+    A default :class:`Parameter` which returns the :attr:`~.Context.guild` for this context. This will never be ``None``. If the command is called in a DM context then :exc:`~discord_real.ext.commands.NoPrivateMessage` is raised to the error handlers.
 
     .. versionadded:: 2.0
 
@@ -597,181 +597,181 @@ Defaults
 Exceptions
 -----------
 
-.. autoexception:: discord.ext.commands.CommandError
+.. autoexception:: discord_real.ext.commands.CommandError
     :members:
 
-.. autoexception:: discord.ext.commands.ConversionError
+.. autoexception:: discord_real.ext.commands.ConversionError
     :members:
 
-.. autoexception:: discord.ext.commands.MissingRequiredArgument
+.. autoexception:: discord_real.ext.commands.MissingRequiredArgument
     :members:
 
-.. autoexception:: discord.ext.commands.MissingRequiredAttachment
+.. autoexception:: discord_real.ext.commands.MissingRequiredAttachment
     :members:
 
-.. autoexception:: discord.ext.commands.ArgumentParsingError
+.. autoexception:: discord_real.ext.commands.ArgumentParsingError
     :members:
 
-.. autoexception:: discord.ext.commands.UnexpectedQuoteError
+.. autoexception:: discord_real.ext.commands.UnexpectedQuoteError
     :members:
 
-.. autoexception:: discord.ext.commands.InvalidEndOfQuotedStringError
+.. autoexception:: discord_real.ext.commands.InvalidEndOfQuotedStringError
     :members:
 
-.. autoexception:: discord.ext.commands.ExpectedClosingQuoteError
+.. autoexception:: discord_real.ext.commands.ExpectedClosingQuoteError
     :members:
 
-.. autoexception:: discord.ext.commands.BadArgument
+.. autoexception:: discord_real.ext.commands.BadArgument
     :members:
 
-.. autoexception:: discord.ext.commands.BadUnionArgument
+.. autoexception:: discord_real.ext.commands.BadUnionArgument
     :members:
 
-.. autoexception:: discord.ext.commands.BadLiteralArgument
+.. autoexception:: discord_real.ext.commands.BadLiteralArgument
     :members:
 
-.. autoexception:: discord.ext.commands.PrivateMessageOnly
+.. autoexception:: discord_real.ext.commands.PrivateMessageOnly
     :members:
 
-.. autoexception:: discord.ext.commands.NoPrivateMessage
+.. autoexception:: discord_real.ext.commands.NoPrivateMessage
     :members:
 
-.. autoexception:: discord.ext.commands.CheckFailure
+.. autoexception:: discord_real.ext.commands.CheckFailure
     :members:
 
-.. autoexception:: discord.ext.commands.CheckAnyFailure
+.. autoexception:: discord_real.ext.commands.CheckAnyFailure
     :members:
 
-.. autoexception:: discord.ext.commands.CommandNotFound
+.. autoexception:: discord_real.ext.commands.CommandNotFound
     :members:
 
-.. autoexception:: discord.ext.commands.DisabledCommand
+.. autoexception:: discord_real.ext.commands.DisabledCommand
     :members:
 
-.. autoexception:: discord.ext.commands.CommandInvokeError
+.. autoexception:: discord_real.ext.commands.CommandInvokeError
     :members:
 
-.. autoexception:: discord.ext.commands.TooManyArguments
+.. autoexception:: discord_real.ext.commands.TooManyArguments
     :members:
 
-.. autoexception:: discord.ext.commands.UserInputError
+.. autoexception:: discord_real.ext.commands.UserInputError
     :members:
 
-.. autoexception:: discord.ext.commands.CommandOnCooldown
+.. autoexception:: discord_real.ext.commands.CommandOnCooldown
     :members:
 
-.. autoexception:: discord.ext.commands.MaxConcurrencyReached
+.. autoexception:: discord_real.ext.commands.MaxConcurrencyReached
     :members:
 
-.. autoexception:: discord.ext.commands.NotOwner
+.. autoexception:: discord_real.ext.commands.NotOwner
     :members:
 
-.. autoexception:: discord.ext.commands.MessageNotFound
+.. autoexception:: discord_real.ext.commands.MessageNotFound
     :members:
 
-.. autoexception:: discord.ext.commands.MemberNotFound
+.. autoexception:: discord_real.ext.commands.MemberNotFound
     :members:
 
-.. autoexception:: discord.ext.commands.GuildNotFound
+.. autoexception:: discord_real.ext.commands.GuildNotFound
     :members:
 
-.. autoexception:: discord.ext.commands.UserNotFound
+.. autoexception:: discord_real.ext.commands.UserNotFound
     :members:
 
-.. autoexception:: discord.ext.commands.ChannelNotFound
+.. autoexception:: discord_real.ext.commands.ChannelNotFound
     :members:
 
-.. autoexception:: discord.ext.commands.ChannelNotReadable
+.. autoexception:: discord_real.ext.commands.ChannelNotReadable
     :members:
 
-.. autoexception:: discord.ext.commands.ThreadNotFound
+.. autoexception:: discord_real.ext.commands.ThreadNotFound
     :members:
 
-.. autoexception:: discord.ext.commands.BadColourArgument
+.. autoexception:: discord_real.ext.commands.BadColourArgument
     :members:
 
-.. autoexception:: discord.ext.commands.RoleNotFound
+.. autoexception:: discord_real.ext.commands.RoleNotFound
     :members:
 
-.. autoexception:: discord.ext.commands.BadInviteArgument
+.. autoexception:: discord_real.ext.commands.BadInviteArgument
     :members:
 
-.. autoexception:: discord.ext.commands.EmojiNotFound
+.. autoexception:: discord_real.ext.commands.EmojiNotFound
     :members:
 
-.. autoexception:: discord.ext.commands.PartialEmojiConversionFailure
+.. autoexception:: discord_real.ext.commands.PartialEmojiConversionFailure
     :members:
 
-.. autoexception:: discord.ext.commands.GuildStickerNotFound
+.. autoexception:: discord_real.ext.commands.GuildStickerNotFound
     :members:
 
-.. autoexception:: discord.ext.commands.ScheduledEventNotFound
+.. autoexception:: discord_real.ext.commands.ScheduledEventNotFound
     :members:
 
-.. autoexception:: discord.ext.commands.BadBoolArgument
+.. autoexception:: discord_real.ext.commands.BadBoolArgument
     :members:
 
-.. autoexception:: discord.ext.commands.RangeError
+.. autoexception:: discord_real.ext.commands.RangeError
     :members:
 
-.. autoexception:: discord.ext.commands.MissingPermissions
+.. autoexception:: discord_real.ext.commands.MissingPermissions
     :members:
 
-.. autoexception:: discord.ext.commands.BotMissingPermissions
+.. autoexception:: discord_real.ext.commands.BotMissingPermissions
     :members:
 
-.. autoexception:: discord.ext.commands.MissingRole
+.. autoexception:: discord_real.ext.commands.MissingRole
     :members:
 
-.. autoexception:: discord.ext.commands.BotMissingRole
+.. autoexception:: discord_real.ext.commands.BotMissingRole
     :members:
 
-.. autoexception:: discord.ext.commands.MissingAnyRole
+.. autoexception:: discord_real.ext.commands.MissingAnyRole
     :members:
 
-.. autoexception:: discord.ext.commands.BotMissingAnyRole
+.. autoexception:: discord_real.ext.commands.BotMissingAnyRole
     :members:
 
-.. autoexception:: discord.ext.commands.NSFWChannelRequired
+.. autoexception:: discord_real.ext.commands.NSFWChannelRequired
     :members:
 
-.. autoexception:: discord.ext.commands.FlagError
+.. autoexception:: discord_real.ext.commands.FlagError
     :members:
 
-.. autoexception:: discord.ext.commands.BadFlagArgument
+.. autoexception:: discord_real.ext.commands.BadFlagArgument
     :members:
 
-.. autoexception:: discord.ext.commands.MissingFlagArgument
+.. autoexception:: discord_real.ext.commands.MissingFlagArgument
     :members:
 
-.. autoexception:: discord.ext.commands.TooManyFlags
+.. autoexception:: discord_real.ext.commands.TooManyFlags
     :members:
 
-.. autoexception:: discord.ext.commands.MissingRequiredFlag
+.. autoexception:: discord_real.ext.commands.MissingRequiredFlag
     :members:
 
-.. autoexception:: discord.ext.commands.ExtensionError
+.. autoexception:: discord_real.ext.commands.ExtensionError
     :members:
 
-.. autoexception:: discord.ext.commands.ExtensionAlreadyLoaded
+.. autoexception:: discord_real.ext.commands.ExtensionAlreadyLoaded
     :members:
 
-.. autoexception:: discord.ext.commands.ExtensionNotLoaded
+.. autoexception:: discord_real.ext.commands.ExtensionNotLoaded
     :members:
 
-.. autoexception:: discord.ext.commands.NoEntryPointError
+.. autoexception:: discord_real.ext.commands.NoEntryPointError
     :members:
 
-.. autoexception:: discord.ext.commands.ExtensionFailed
+.. autoexception:: discord_real.ext.commands.ExtensionFailed
     :members:
 
-.. autoexception:: discord.ext.commands.ExtensionNotFound
+.. autoexception:: discord_real.ext.commands.ExtensionNotFound
     :members:
 
-.. autoexception:: discord.ext.commands.CommandRegistrationError
+.. autoexception:: discord_real.ext.commands.CommandRegistrationError
     :members:
 
-.. autoexception:: discord.ext.commands.HybridCommandError
+.. autoexception:: discord_real.ext.commands.HybridCommandError
     :members:
 
 

@@ -26,14 +26,14 @@ from __future__ import annotations
 
 import discord
 from discord import app_commands
-from discord.ext import commands
+from discord_real.ext import commands
 
 
 def test_descriptions_describe():
     @app_commands.command(description='This is the short description that will appear.')
     @app_commands.describe(arg='Decorator description of arg.')
     @app_commands.describe(arg2='Decorator description of arg2.')
-    async def describe(interaction: discord.Interaction, arg: str, arg2: int) -> None:
+    async def describe(interaction: discord_real.Interaction, arg: str, arg2: int) -> None:
         ...
 
     assert describe.description == 'This is the short description that will appear.'
@@ -43,7 +43,7 @@ def test_descriptions_describe():
 
 def test_descriptions_no_args():
     @app_commands.command()
-    async def no_args(interaction: discord.Interaction) -> None:
+    async def no_args(interaction: discord_real.Interaction) -> None:
         """This is the short description that will appear."""
 
     assert no_args.description == 'This is the short description that will appear.'
@@ -51,7 +51,7 @@ def test_descriptions_no_args():
 
 def test_descriptions_numpy():
     @app_commands.command()
-    async def numpy(interaction: discord.Interaction, arg: str, arg2: int) -> None:
+    async def numpy(interaction: discord_real.Interaction, arg: str, arg2: int) -> None:
         """This is the short description that will appear.
 
         This extended description will not appear in the command description.
@@ -72,14 +72,14 @@ def test_descriptions_numpy():
 
 def test_descriptions_numpy_extras():
     @app_commands.command()
-    async def numpy(interaction: discord.Interaction, arg: str, arg2: int) -> None:
+    async def numpy(interaction: discord_real.Interaction, arg: str, arg2: int) -> None:
         """This is the short description that will appear.
 
         This extended description will not appear in the command description.
 
         Parameters
         ----------
-        interaction: discord.Interaction
+        interaction: discord_real.Interaction
             The interaction object.
         arg: str
             Docstring description of arg.
@@ -100,7 +100,7 @@ def test_descriptions_numpy_extras():
 
 def test_descriptions_google():
     @app_commands.command()
-    async def google(interaction: discord.Interaction, arg: str, arg2: int) -> None:
+    async def google(interaction: discord_real.Interaction, arg: str, arg2: int) -> None:
         """This is the short description that will appear.
 
         This extended description will not appear in the command description.
@@ -118,13 +118,13 @@ def test_descriptions_google():
 
 def test_descriptions_google_extras():
     @app_commands.command()
-    async def google(interaction: discord.Interaction, arg: str, arg2: int) -> None:
+    async def google(interaction: discord_real.Interaction, arg: str, arg2: int) -> None:
         """This is the short description that will appear.
 
         This extended description will not appear in the command description.
 
         Args:
-            interaction: discord.Interaction
+            interaction: discord_real.Interaction
                 The interaction object.
             arg: Docstring description of arg.
                 This is the second line of the arg docstring.
@@ -142,7 +142,7 @@ def test_descriptions_google_extras():
 
 def test_descriptions_sphinx():
     @app_commands.command()
-    async def sphinx(interaction: discord.Interaction, arg: str, arg2: int) -> None:
+    async def sphinx(interaction: discord_real.Interaction, arg: str, arg2: int) -> None:
         """This is the short description that will appear.
 
         This extended description will not appear in the command description.
@@ -161,13 +161,13 @@ def test_descriptions_sphinx():
 
 def test_descriptions_sphinx_extras():
     @app_commands.command()
-    async def sphinx(interaction: discord.Interaction, arg: str, arg2: int) -> None:
+    async def sphinx(interaction: discord_real.Interaction, arg: str, arg2: int) -> None:
         """This is the short description that will appear.
 
         This extended description will not appear in the command description.
 
         :param interaction: The interaction object.
-        :type interaction: :class:`discord.Interaction`
+        :type interaction: :class:`discord_real.Interaction`
         :param arg: Docstring description of arg.
             This is the second line of the arg docstring.
         :type arg: :class:`str`
@@ -185,7 +185,7 @@ def test_descriptions_sphinx_extras():
 def test_descriptions_docstring_and_describe():
     @app_commands.command(description='This is the short description that will appear.')
     @app_commands.describe(arg='Decorator description of arg.')
-    async def describe(interaction: discord.Interaction, arg: str, arg2: int) -> None:
+    async def describe(interaction: discord_real.Interaction, arg: str, arg2: int) -> None:
         """This description will not appear since it is overriden by the decorator.
 
         This extended description will not appear in the command description.
@@ -205,7 +205,7 @@ def test_descriptions_group_no_args():
     my_group = app_commands.Group(name='mygroup', description='My group')
 
     @my_group.command()
-    async def my_command(interaction: discord.Interaction) -> None:
+    async def my_command(interaction: discord_real.Interaction) -> None:
         """Test slash command"""
 
     assert my_command.description == 'Test slash command'
@@ -215,7 +215,7 @@ def test_descriptions_group_args():
     my_group = app_commands.Group(name='mygroup', description='My group')
 
     @my_group.command()
-    async def my_command(interaction: discord.Interaction, arg: str, arg2: int) -> None:
+    async def my_command(interaction: discord_real.Interaction, arg: str, arg2: int) -> None:
         """Test slash command
 
         Parameters
@@ -235,7 +235,7 @@ def test_descriptions_group_args():
 def test_descriptions_cog_commands():
     class MyCog(commands.Cog):
         @app_commands.command()
-        async def test(self, interaction: discord.Interaction, arg: str, arg2: int) -> None:
+        async def test(self, interaction: discord_real.Interaction, arg: str, arg2: int) -> None:
             """Test slash command
 
             Parameters

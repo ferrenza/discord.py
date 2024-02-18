@@ -376,7 +376,7 @@ class Invite(Hashable):
         'scheduled_event_id',
     )
 
-    BASE = 'https://discord.gg'
+    BASE = 'https://discord_real.gg'
 
     def __init__(
         self,
@@ -524,7 +524,7 @@ class Invite(Hashable):
 
         Parameters
         ----------
-        scheduled_event: :class:`~discord.abc.Snowflake`
+        scheduled_event: :class:`~discord_real.abc.Snowflake`
             The ID of the scheduled event.
 
         Returns

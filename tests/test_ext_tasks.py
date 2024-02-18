@@ -2,7 +2,7 @@
 
 """
 
-Tests for discord.ext.tasks
+Tests for discord_real.ext.tasks
 
 """
 
@@ -13,7 +13,7 @@ import pytest
 import sys
 
 from discord import utils
-from discord.ext import tasks
+from discord_real.ext import tasks
 
 
 @pytest.mark.asyncio

@@ -175,9 +175,9 @@ After:
 
 .. code-block:: python3
 
-    server.region == discord.ServerRegion.us_west
-    member.status = discord.Status.online
-    channel.type == discord.ChannelType.text
+    server.region == discord_real.ServerRegion.us_west
+    member.status = discord_real.Status.online
+    channel.type == discord_real.ChannelType.text
 
 The main reason for this change was to reduce the use of finicky strings in the API as this
 could give users a false sense of power. More information can be found in the :ref:`discord-api-enums` page.
@@ -270,7 +270,7 @@ in the function signature.
 Running the Client
 --------------------
 
-In earlier versions of discord.py, ``client.run()`` was a blocking call to the main thread
+In earlier versions of discord_real.py, ``client.run()`` was a blocking call to the main thread
 that called it. In v0.10.0 it is still a blocking call but it handles the event loop for you.
 However, in order to do that you must pass in your credentials to :meth:`Client.run`.
 
@@ -303,7 +303,7 @@ event loop then doing so is quite straightforward:
     import discord
     import asyncio
 
-    client = discord.Client()
+    client = discord_real.Client()
 
     @asyncio.coroutine
     def main_task():

@@ -30,7 +30,7 @@ import itertools
 from operator import attrgetter
 from typing import Any, Awaitable, Callable, Collection, Dict, List, Optional, TYPE_CHECKING, Tuple, TypeVar, Union
 
-import discord.abc
+import discord_real.abc
 
 from . import utils
 from .asset import Asset
@@ -251,7 +251,7 @@ def flatten_user(cls: T) -> T:
 
 
 @flatten_user
-class Member(discord.abc.Messageable, _UserTag):
+class Member(discord_real.abc.Messageable, _UserTag):
     """Represents a Discord member to a :class:`Guild`.
 
     This implements a lot of the functionality of :class:`User`.
@@ -791,7 +791,7 @@ class Member(discord.abc.Messageable, _UserTag):
         mute: bool = MISSING,
         deafen: bool = MISSING,
         suppress: bool = MISSING,
-        roles: Collection[discord.abc.Snowflake] = MISSING,
+        roles: Collection[discord_real.abc.Snowflake] = MISSING,
         voice_channel: Optional[VocalGuildChannel] = MISSING,
         timed_out_until: Optional[datetime.datetime] = MISSING,
         bypass_verification: bool = MISSING,
@@ -923,7 +923,7 @@ class Member(discord.abc.Messageable, _UserTag):
             else:
                 if timed_out_until.tzinfo is None:
                     raise TypeError(
-                        'timed_out_until must be an aware datetime. Consider using discord.utils.utcnow() or datetime.datetime.now().astimezone() for local time.'
+                        'timed_out_until must be an aware datetime. Consider using discord_real.utils.utcnow() or datetime.datetime.now().astimezone() for local time.'
                     )
                 payload['communication_disabled_until'] = timed_out_until.isoformat()
 

@@ -55,7 +55,7 @@ from .converter import Greedy, run_converters
 from .cooldowns import BucketType, Cooldown, CooldownMapping, DynamicCooldownMapping, MaxConcurrency
 from .errors import *
 from .parameters import Parameter, Signature
-from discord.app_commands.commands import NUMPY_DOCSTRING_ARG_REGEX
+from discord_real.app_commands.commands import NUMPY_DOCSTRING_ARG_REGEX
 
 if TYPE_CHECKING:
     from typing_extensions import Concatenate, ParamSpec, Self
@@ -90,7 +90,7 @@ __all__ = (
     'bot_has_guild_permissions',
 )
 
-MISSING: Any = discord.utils.MISSING
+MISSING: Any = discord_real.utils.MISSING
 
 T = TypeVar('T')
 CommandT = TypeVar('CommandT', bound='Command[Any, ..., Any]')
@@ -124,8 +124,8 @@ def get_signature_parameters(
     signature = Signature.from_callable(function)
     params: Dict[str, Parameter] = {}
     cache: Dict[str, Any] = {}
-    eval_annotation = discord.utils.evaluate_annotation
-    required_params = discord.utils.is_inside_class(function) + 1 if skip_parameters is None else skip_parameters
+    eval_annotation = discord_real.utils.evaluate_annotation
+    required_params = discord_real.utils.is_inside_class(function) + 1 if skip_parameters is None else skip_parameters
     if len(signature.parameters) < required_params:
         raise TypeError(f'Command signature requires at least {required_params - 1} parameter(s)')
 
@@ -197,7 +197,7 @@ def extract_descriptions_from_docstring(function: Callable[..., Any], params: Di
         name = match.group('name')
 
         if name not in params:
-            is_display_name = discord.utils.get(params.values(), displayed_name=name)
+            is_display_name = discord_real.utils.get(params.values(), displayed_name=name)
             if is_display_name:
                 name = is_display_name.name
             else:
@@ -273,14 +273,14 @@ class _CaseInsensitiveDict(dict):
 
 
 class _AttachmentIterator:
-    def __init__(self, data: List[discord.Attachment]):
-        self.data: List[discord.Attachment] = data
+    def __init__(self, data: List[discord_real.Attachment]):
+        self.data: List[discord_real.Attachment] = data
         self.index: int = 0
 
     def __iter__(self) -> Self:
         return self
 
-    def __next__(self) -> discord.Attachment:
+    def __next__(self) -> discord_real.Attachment:
         try:
             value = self.data[self.index]
         except IndexError:
@@ -523,7 +523,7 @@ class Command(_BaseCommand, Generic[CogT, P, T]):
 
             ``func`` parameter is now positional-only.
 
-        .. seealso:: The :func:`~discord.ext.commands.check` decorator
+        .. seealso:: The :func:`~discord_real.ext.commands.check` decorator
 
         Parameters
         -----------
@@ -559,7 +559,7 @@ class Command(_BaseCommand, Generic[CogT, P, T]):
     def update(self, **kwargs: Any) -> None:
         """Updates :class:`Command` instance with updated attribute.
 
-        This works similarly to the :func:`~discord.ext.commands.command` decorator in terms
+        This works similarly to the :func:`~discord_real.ext.commands.command` decorator in terms
         of parameters in that they are passed to the :class:`Command` or
         subclass constructors, sans the name and callback.
         """
@@ -658,8 +658,8 @@ class Command(_BaseCommand, Generic[CogT, P, T]):
         # The greedy converter is simple -- it keeps going until it fails in which case,
         # it undos the view ready for the next parameter to use instead
         if isinstance(converter, Greedy):
-            # Special case for Greedy[discord.Attachment] to consume the attachments iterator
-            if converter.converter is discord.Attachment:
+            # Special case for Greedy[discord_real.Attachment] to consume the attachments iterator
+            if converter.converter is discord_real.Attachment:
                 return list(attachments)
 
             if param.kind in (param.POSITIONAL_OR_KEYWORD, param.POSITIONAL_ONLY):
@@ -672,16 +672,16 @@ class Command(_BaseCommand, Generic[CogT, P, T]):
                 # into just X and do the parsing that way.
                 converter = converter.constructed_converter
 
-        # Try to detect Optional[discord.Attachment] or discord.Attachment special converter
-        if converter is discord.Attachment:
+        # Try to detect Optional[discord_real.Attachment] or discord_real.Attachment special converter
+        if converter is discord_real.Attachment:
             try:
                 return next(attachments)
             except StopIteration:
                 raise MissingRequiredAttachment(param)
 
-        if self._is_typing_optional(param.annotation) and param.annotation.__args__[0] is discord.Attachment:
+        if self._is_typing_optional(param.annotation) and param.annotation.__args__[0] is discord_real.Attachment:
             if attachments.is_empty():
-                # I have no idea who would be doing Optional[discord.Attachment] = 1
+                # I have no idea who would be doing Optional[discord_real.Attachment] = 1
                 # but for those cases then 1 should be returned instead of None
                 return None if param.default is param.empty else param.default
             return next(attachments)
@@ -758,7 +758,7 @@ class Command(_BaseCommand, Generic[CogT, P, T]):
 
     @property
     def cooldown(self) -> Optional[Cooldown]:
-        """Optional[:class:`~discord.app_commands.Cooldown`]: The cooldown of a command when invoked
+        """Optional[:class:`~discord_real.app_commands.Cooldown`]: The cooldown of a command when invoked
         or ``None`` if the command doesn't have a registered cooldown.
 
         .. versionadded:: 2.0
@@ -1191,8 +1191,8 @@ class Command(_BaseCommand, Generic[CogT, P, T]):
                     annotation = union_args[0]
                     origin = getattr(annotation, '__origin__', None)
 
-            if annotation is discord.Attachment:
-                # For discord.Attachment we need to signal to the user that it's an attachment
+            if annotation is discord_real.Attachment:
+                # For discord_real.Attachment we need to signal to the user that it's an attachment
                 # It's not exactly pretty but it's enough to differentiate
                 if optional:
                     result.append(f'[{name} (upload a file)]')
@@ -1276,7 +1276,7 @@ class Command(_BaseCommand, Generic[CogT, P, T]):
             if cog is not None:
                 local_check = Cog._get_overridden_method(cog.cog_check)
                 if local_check is not None:
-                    ret = await discord.utils.maybe_coroutine(local_check, ctx)
+                    ret = await discord_real.utils.maybe_coroutine(local_check, ctx)
                     if not ret:
                         return False
 
@@ -1285,7 +1285,7 @@ class Command(_BaseCommand, Generic[CogT, P, T]):
                 # since we have no checks, then we just return True.
                 return True
 
-            return await discord.utils.async_all(predicate(ctx) for predicate in predicates)
+            return await discord_real.utils.async_all(predicate(ctx) for predicate in predicates)
         finally:
             ctx.command = original
 
@@ -1505,7 +1505,7 @@ class GroupMixin(Generic[CogT]):
         *args: Any,
         **kwargs: Any,
     ) -> Any:
-        """A shortcut decorator that invokes :func:`~discord.ext.commands.command` and adds it to
+        """A shortcut decorator that invokes :func:`~discord_real.ext.commands.command` and adds it to
         the internal command list via :meth:`~.GroupMixin.add_command`.
 
         Returns
@@ -1827,7 +1827,7 @@ def group(
 ) -> Any:
     """A decorator that transforms a function into a :class:`.Group`.
 
-    This is similar to the :func:`~discord.ext.commands.command` decorator but the ``cls``
+    This is similar to the :func:`~discord_real.ext.commands.command` decorator but the ``cls``
     parameter is set to :class:`Group` by default.
 
     .. versionchanged:: 1.1
@@ -2046,7 +2046,7 @@ def has_role(item: Union[int, str], /) -> Check[Any]:
         if isinstance(item, int):
             role = ctx.author.get_role(item)  # type: ignore
         else:
-            role = discord.utils.get(ctx.author.roles, name=item)  # type: ignore
+            role = discord_real.utils.get(ctx.author.roles, name=item)  # type: ignore
         if role is None:
             raise MissingRole(item)
         return True
@@ -2094,7 +2094,7 @@ def has_any_role(*items: Union[int, str]) -> Callable[[T], T]:
         if any(
             ctx.author.get_role(item) is not None
             if isinstance(item, int)
-            else discord.utils.get(ctx.author.roles, name=item) is not None
+            else discord_real.utils.get(ctx.author.roles, name=item) is not None
             for item in items
         ):
             return True
@@ -2128,7 +2128,7 @@ def bot_has_role(item: int, /) -> Callable[[T], T]:
         if isinstance(item, int):
             role = ctx.me.get_role(item)
         else:
-            role = discord.utils.get(ctx.me.roles, name=item)
+            role = discord_real.utils.get(ctx.me.roles, name=item)
         if role is None:
             raise BotMissingRole(item)
         return True
@@ -2156,7 +2156,7 @@ def bot_has_any_role(*items: int) -> Callable[[T], T]:
 
         me = ctx.me
         if any(
-            me.get_role(item) is not None if isinstance(item, int) else discord.utils.get(me.roles, name=item) is not None
+            me.get_role(item) is not None if isinstance(item, int) else discord_real.utils.get(me.roles, name=item) is not None
             for item in items
         ):
             return True
@@ -2173,7 +2173,7 @@ def has_permissions(**perms: bool) -> Check[Any]:
     guild wide permissions.
 
     The permissions passed in must be exactly like the properties shown under
-    :class:`.discord.Permissions`.
+    :class:`.discord_real.Permissions`.
 
     This check raises a special exception, :exc:`.MissingPermissions`
     that is inherited from :exc:`.CheckFailure`.
@@ -2195,7 +2195,7 @@ def has_permissions(**perms: bool) -> Check[Any]:
 
     """
 
-    invalid = set(perms) - set(discord.Permissions.VALID_FLAGS)
+    invalid = set(perms) - set(discord_real.Permissions.VALID_FLAGS)
     if invalid:
         raise TypeError(f"Invalid permission(s): {', '.join(invalid)}")
 
@@ -2220,7 +2220,7 @@ def bot_has_permissions(**perms: bool) -> Check[Any]:
     that is inherited from :exc:`.CheckFailure`.
     """
 
-    invalid = set(perms) - set(discord.Permissions.VALID_FLAGS)
+    invalid = set(perms) - set(discord_real.Permissions.VALID_FLAGS)
     if invalid:
         raise TypeError(f"Invalid permission(s): {', '.join(invalid)}")
 
@@ -2247,7 +2247,7 @@ def has_guild_permissions(**perms: bool) -> Check[Any]:
     .. versionadded:: 1.3
     """
 
-    invalid = set(perms) - set(discord.Permissions.VALID_FLAGS)
+    invalid = set(perms) - set(discord_real.Permissions.VALID_FLAGS)
     if invalid:
         raise TypeError(f"Invalid permission(s): {', '.join(invalid)}")
 
@@ -2273,7 +2273,7 @@ def bot_has_guild_permissions(**perms: bool) -> Check[Any]:
     .. versionadded:: 1.3
     """
 
-    invalid = set(perms) - set(discord.Permissions.VALID_FLAGS)
+    invalid = set(perms) - set(discord_real.Permissions.VALID_FLAGS)
     if invalid:
         raise TypeError(f"Invalid permission(s): {', '.join(invalid)}")
 
@@ -2320,7 +2320,7 @@ def guild_only() -> Check[Any]:
     that is inherited from :exc:`.CheckFailure`.
 
     If used on hybrid commands, this will be equivalent to the
-    :func:`discord.app_commands.guild_only` decorator. In an unsupported
+    :func:`discord_real.app_commands.guild_only` decorator. In an unsupported
     context, such as a subcommand, this will still fallback to applying the
     check.
     """
@@ -2403,7 +2403,7 @@ def is_nsfw() -> Check[Any]:
     def predicate(ctx: Context[BotT]) -> bool:
         ch = ctx.channel
         if ctx.guild is None or (
-            isinstance(ch, (discord.TextChannel, discord.Thread, discord.VoiceChannel)) and ch.is_nsfw()
+            isinstance(ch, (discord_real.TextChannel, discord_real.Thread, discord_real.VoiceChannel)) and ch.is_nsfw()
         ):
             return True
         raise NSFWChannelRequired(ch)  # type: ignore
@@ -2469,7 +2469,7 @@ def cooldown(
 
         .. versionchanged:: 2.0
             When passing a callable, it now needs to accept :class:`.Context`
-            rather than :class:`~discord.Message` as its only argument.
+            rather than :class:`~discord_real.Message` as its only argument.
     """
 
     def decorator(func: Union[Command, CoroFunc]) -> Union[Command, CoroFunc]:
@@ -2490,7 +2490,7 @@ def dynamic_cooldown(
 
     This differs from :func:`.cooldown` in that it takes a function that
     accepts a single parameter of type :class:`.Context` and must
-    return a :class:`~discord.app_commands.Cooldown` or ``None``.
+    return a :class:`~discord_real.app_commands.Cooldown` or ``None``.
     If ``None`` is returned then that cooldown is effectively bypassed.
 
     A cooldown allows a command to only be used a specific amount
@@ -2508,7 +2508,7 @@ def dynamic_cooldown(
 
     Parameters
     ------------
-    cooldown: Callable[[:class:`.Context`], Optional[:class:`~discord.app_commands.Cooldown`]]
+    cooldown: Callable[[:class:`.Context`], Optional[:class:`~discord_real.app_commands.Cooldown`]]
         A function that takes a message and returns a cooldown that will
         apply to this invocation or ``None`` if the cooldown should be bypassed.
     type: :class:`.BucketType`

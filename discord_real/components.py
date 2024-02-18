@@ -150,7 +150,7 @@ class Button(Component):
 
     .. note::
 
-        The user constructible and usable type to create a button is :class:`discord.ui.Button`
+        The user constructible and usable type to create a button is :class:`discord_real.ui.Button`
         not this one.
 
     .. versionadded:: 2.0
@@ -231,7 +231,7 @@ class SelectMenu(Component):
     .. note::
 
         The user constructible and usable type to create a select menu is
-        :class:`discord.ui.Select` not this one.
+        :class:`discord_real.ui.Select` not this one.
 
     .. versionadded:: 2.0
 
@@ -435,7 +435,7 @@ class TextInput(Component):
 
     .. note::
         The user constructible and usable type to create a text input is
-        :class:`discord.ui.TextInput` not this one.
+        :class:`discord_real.ui.TextInput` not this one.
 
     .. versionadded:: 2.0
 
@@ -577,7 +577,7 @@ class SelectDefaultValue:
 
         Parameters
         -----------
-        channel: :class:`~discord.abc.Snowflake`
+        channel: :class:`~discord_real.abc.Snowflake`
             The channel to create the default value for.
 
         Returns
@@ -596,7 +596,7 @@ class SelectDefaultValue:
 
         Parameters
         -----------
-        role: :class:`~discord.abc.Snowflake`
+        role: :class:`~discord_real.abc.Snowflake`
             The role to create the default value for.
 
         Returns
@@ -615,7 +615,7 @@ class SelectDefaultValue:
 
         Parameters
         -----------
-        user: :class:`~discord.abc.Snowflake`
+        user: :class:`~discord_real.abc.Snowflake`
             The user to create the default value for.
 
         Returns

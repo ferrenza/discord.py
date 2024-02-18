@@ -26,14 +26,14 @@ from __future__ import annotations
 
 from discord import app_commands
 import discord
-from discord.ext import commands
+from discord_real.ext import commands
 
 
 def test_group_with_commands():
     my_group = app_commands.Group(name='mygroup', description='My group')
 
     @my_group.command()
-    async def my_command(interaction: discord.Interaction) -> None:
+    async def my_command(interaction: discord_real.Interaction) -> None:
         ...
 
     assert my_command.binding is None
@@ -44,7 +44,7 @@ def test_group_with_commands():
 def test_group_subclass_with_commands():
     class MyGroup(app_commands.Group, name='mygroup'):
         @app_commands.command()
-        async def my_command(self, interaction: discord.Interaction) -> None:
+        async def my_command(self, interaction: discord_real.Interaction) -> None:
             ...
 
     my_group = MyGroup()
@@ -58,7 +58,7 @@ def test_group_subclass_with_group():
         sub_group = app_commands.Group(name='mysubgroup', description='My sub-group')
 
         @sub_group.command()
-        async def my_command(self, interaction: discord.Interaction) -> None:
+        async def my_command(self, interaction: discord_real.Interaction) -> None:
             ...
 
     my_group = MyGroup()
@@ -75,14 +75,14 @@ def test_group_subclass_with_group():
 def test_group_subclass_with_group_subclass():
     class MySubGroup(app_commands.Group, name='mysubgroup'):
         @app_commands.command()
-        async def my_sub_group_command(self, interaction: discord.Interaction) -> None:
+        async def my_sub_group_command(self, interaction: discord_real.Interaction) -> None:
             ...
 
     class MyGroup(app_commands.Group, name='mygroup'):
         sub_group = MySubGroup()
 
         @app_commands.command()
-        async def my_group_command(self, interaction: discord.Interaction) -> None:
+        async def my_group_command(self, interaction: discord_real.Interaction) -> None:
             ...
 
     my_group = MyGroup()
@@ -102,7 +102,7 @@ def test_group_subclass_with_group_subclass():
 def test_cog_with_commands():
     class MyCog(commands.Cog):
         @app_commands.command()
-        async def my_command(self, interaction: discord.Interaction) -> None:
+        async def my_command(self, interaction: discord_real.Interaction) -> None:
             ...
 
     cog = MyCog()
@@ -115,7 +115,7 @@ def test_cog_with_group_with_commands():
         my_group = app_commands.Group(name='mygroup', description='My group')
 
         @my_group.command()
-        async def my_command(self, interaction: discord.Interaction) -> None:
+        async def my_command(self, interaction: discord_real.Interaction) -> None:
             ...
 
     cog = MyCog()
@@ -132,11 +132,11 @@ def test_cog_with_nested_group_with_commands():
         second = app_commands.Group(name='test2', parent=first, description='Test 2')
 
         @first.command(name='cmd')
-        async def test_cmd(self, interaction: discord.Interaction) -> None:
+        async def test_cmd(self, interaction: discord_real.Interaction) -> None:
             ...
 
         @second.command(name='cmd2')
-        async def test2_cmd(self, interaction: discord.Interaction) -> None:
+        async def test2_cmd(self, interaction: discord_real.Interaction) -> None:
             ...
 
     cog = MyCog()
@@ -155,14 +155,14 @@ def test_cog_with_nested_group_with_commands():
 def test_cog_with_group_subclass_with_commands():
     class MyGroup(app_commands.Group, name='mygroup'):
         @app_commands.command()
-        async def my_command(self, interaction: discord.Interaction) -> None:
+        async def my_command(self, interaction: discord_real.Interaction) -> None:
             ...
 
     class MyCog(commands.Cog):
         my_group = MyGroup()
 
         @my_group.command()
-        async def my_cog_command(self, interaction: discord.Interaction) -> None:
+        async def my_cog_command(self, interaction: discord_real.Interaction) -> None:
             ...
 
     cog = MyCog()
@@ -183,14 +183,14 @@ def test_cog_with_group_subclass_with_group():
         sub_group = app_commands.Group(name='mysubgroup', description='My sub-group')
 
         @sub_group.command()
-        async def my_command(self, interaction: discord.Interaction) -> None:
+        async def my_command(self, interaction: discord_real.Interaction) -> None:
             ...
 
     class MyCog(commands.Cog):
         my_group = MyGroup()
 
         @my_group.command()
-        async def my_cog_command(self, interaction: discord.Interaction) -> None:
+        async def my_cog_command(self, interaction: discord_real.Interaction) -> None:
             ...
 
     cog = MyCog()
@@ -213,25 +213,25 @@ def test_cog_with_group_subclass_with_group():
 def test_cog_with_group_subclass_with_group_subclass():
     class MySubGroup(app_commands.Group, name='mysubgroup'):
         @app_commands.command()
-        async def my_sub_group_command(self, interaction: discord.Interaction) -> None:
+        async def my_sub_group_command(self, interaction: discord_real.Interaction) -> None:
             ...
 
     class MyGroup(app_commands.Group, name='mygroup'):
         sub_group = MySubGroup()
 
         @app_commands.command()
-        async def my_group_command(self, interaction: discord.Interaction) -> None:
+        async def my_group_command(self, interaction: discord_real.Interaction) -> None:
             ...
 
     class MyCog(commands.Cog):
         my_group = MyGroup()
 
         @my_group.command()
-        async def my_cog_command(self, interaction: discord.Interaction) -> None:
+        async def my_cog_command(self, interaction: discord_real.Interaction) -> None:
             ...
 
         @my_group.sub_group.command()
-        async def my_sub_group_cog_command(self, interaction: discord.Interaction) -> None:
+        async def my_sub_group_cog_command(self, interaction: discord_real.Interaction) -> None:
             ...
 
     cog = MyCog()
@@ -262,7 +262,7 @@ def test_cog_with_group_subclass_with_group_subclass():
 def test_cog_group_with_commands():
     class MyCog(commands.GroupCog):
         @app_commands.command()
-        async def my_command(self, interaction: discord.Interaction) -> None:
+        async def my_command(self, interaction: discord_real.Interaction) -> None:
             ...
 
     cog = MyCog()
@@ -279,7 +279,7 @@ def test_cog_group_with_group():
         sub_group = app_commands.Group(name='mysubgroup', description='My sub-group')
 
         @sub_group.command()
-        async def my_command(self, interaction: discord.Interaction) -> None:
+        async def my_command(self, interaction: discord_real.Interaction) -> None:
             ...
 
     cog = MyCog()
@@ -296,14 +296,14 @@ def test_cog_group_with_group():
 def test_cog_group_with_subclass_group():
     class MyGroup(app_commands.Group, name='mygroup'):
         @app_commands.command()
-        async def my_command(self, interaction: discord.Interaction) -> None:
+        async def my_command(self, interaction: discord_real.Interaction) -> None:
             ...
 
     class MyCog(commands.GroupCog):
         sub_group = MyGroup()
 
         @sub_group.command()
-        async def my_cog_command(self, interaction: discord.Interaction) -> None:
+        async def my_cog_command(self, interaction: discord_real.Interaction) -> None:
             ...
 
     cog = MyCog()
@@ -325,7 +325,7 @@ def test_cog_group_with_subclass_group():
 def test_cog_group_with_subclassed_subclass_group():
     class MyGroup(app_commands.Group):
         @app_commands.command()
-        async def my_command(self, interaction: discord.Interaction) -> None:
+        async def my_command(self, interaction: discord_real.Interaction) -> None:
             ...
 
     class MySubclassedGroup(MyGroup, name='mygroup'):
@@ -335,7 +335,7 @@ def test_cog_group_with_subclassed_subclass_group():
         sub_group = MySubclassedGroup()
 
         @sub_group.command()
-        async def my_cog_command(self, interaction: discord.Interaction) -> None:
+        async def my_cog_command(self, interaction: discord_real.Interaction) -> None:
             ...
 
     cog = MyCog()
@@ -363,18 +363,18 @@ def test_cog_group_with_custom_state_issue9383():
             self.state: int = 20
 
         @app_commands.command()
-        async def my_command(self, interaction: discord.Interaction) -> None:
+        async def my_command(self, interaction: discord_real.Interaction) -> None:
             ...
 
     class MyCog(commands.GroupCog):
         inner = InnerGroup()
 
         @app_commands.command()
-        async def my_regular_command(self, interaction: discord.Interaction) -> None:
+        async def my_regular_command(self, interaction: discord_real.Interaction) -> None:
             ...
 
         @inner.command()
-        async def my_inner_command(self, interaction: discord.Interaction) -> None:
+        async def my_inner_command(self, interaction: discord_real.Interaction) -> None:
             ...
 
     cog = MyCog()
@@ -410,10 +410,10 @@ def test_cog_hybrid_group_manual_command():
             ...
 
         @first.app_command.command(name='second')
-        async def second_app(self, interaction: discord.Interaction) -> None:
+        async def second_app(self, interaction: discord_real.Interaction) -> None:
             ...
 
-    client = discord.Client(intents=discord.Intents.default())
+    client = discord_real.Client(intents=discord_real.Intents.default())
     tree = app_commands.CommandTree(client)
 
     cog = MyCog()
@@ -452,10 +452,10 @@ def test_cog_hybrid_group_manual_nested_command():
             pass
 
         @second.app_command.command()
-        async def third(self, interaction: discord.Interaction) -> None:
+        async def third(self, interaction: discord_real.Interaction) -> None:
             pass
 
-    client = discord.Client(intents=discord.Intents.default())
+    client = discord_real.Client(intents=discord_real.Intents.default())
     tree = app_commands.CommandTree(client)
 
     cog = MyCog()
@@ -496,7 +496,7 @@ def test_cog_hybrid_group_wrapped_instance():
             pass
 
         @nested.app_command.command()
-        async def child(self, interaction: discord.Interaction) -> None:
+        async def child(self, interaction: discord_real.Interaction) -> None:
             pass
 
     cog = MyCog()

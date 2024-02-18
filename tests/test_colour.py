@@ -47,7 +47,7 @@ import pytest
     ],
 )
 def test_from_str(value, expected):
-    assert discord.Colour.from_str(value) == discord.Colour(expected)
+    assert discord_real.Colour.from_str(value) == discord_real.Colour(expected)
 
 
 @pytest.mark.parametrize(
@@ -66,4 +66,4 @@ def test_from_str(value, expected):
 )
 def test_from_str_failures(value):
     with pytest.raises(ValueError):
-        discord.Colour.from_str(value)
+        discord_real.Colour.from_str(value)

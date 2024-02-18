@@ -22,16 +22,16 @@ msgid "Introduction"
 msgstr "はじめに"
 
 #: ../../intro.rst:10
-msgid "This is the documentation for discord.py, a library for Python to aid in creating applications that utilise the Discord API."
-msgstr "これはDiscord APIを利用したアプリケーションを作成するのに便利なPythonライブラリ、discord.pyのドキュメントです。"
+msgid "This is the documentation for discord_real.py, a library for Python to aid in creating applications that utilise the Discord API."
+msgstr "これはDiscord APIを利用したアプリケーションを作成するのに便利なPythonライブラリ、discord_real.pyのドキュメントです。"
 
 #: ../../intro.rst:14
 msgid "Prerequisites"
 msgstr "前提"
 
 #: ../../intro.rst:16
-msgid "discord.py works with Python 3.8 or higher. Support for earlier versions of Python is not provided. Python 2.7 or lower is not supported. Python 3.7 or lower is not supported."
-msgstr "discord.py は Python 3.8 以降で動作します。それ以前のPython に対するサポートは提供されていません。 Python 2.7 以下はサポートされていません。Python 3.7 以下はサポートされていません。"
+msgid "discord_real.py works with Python 3.8 or higher. Support for earlier versions of Python is not provided. Python 2.7 or lower is not supported. Python 3.7 or lower is not supported."
+msgstr "discord_real.py は Python 3.8 以降で動作します。それ以前のPython に対するサポートは提供されていません。 Python 2.7 以下はサポートされていません。Python 3.7 以下はサポートされていません。"
 
 #: ../../intro.rst:23
 msgid "Installing"
@@ -46,8 +46,8 @@ msgid "If you are using Windows, then the following should be used instead: ::"
 msgstr "Windowsを使用している場合は、以下のコマンドで実行してください。"
 
 #: ../../intro.rst:34
-msgid "To get voice support, you should use ``discord.py[voice]`` instead of ``discord.py``, e.g. ::"
-msgstr "音声のサポートが必要な場合は、 ``discord.py`` ではなく、以下の例のように ``discord.py[voice]`` を使うべきです。"
+msgid "To get voice support, you should use ``discord_real.py[voice]`` instead of ``discord_real.py``, e.g. ::"
+msgstr "音声のサポートが必要な場合は、 ``discord_real.py`` ではなく、以下の例のように ``discord_real.py[voice]`` を使うべきです。"
 
 #: ../../intro.rst:38
 msgid "On Linux environments, installing voice requires getting the following dependencies:"
@@ -118,8 +118,8 @@ msgid "Basic Concepts"
 msgstr "基本概念"
 
 #: ../../intro.rst:99
-msgid "discord.py revolves around the concept of :ref:`events <discord-api-events>`. An event is something you listen to and then respond to. For example, when a message happens, you will receive an event about it that you can respond to."
-msgstr "discord.pyは :ref:`イベント <discord-api-events>` の概念を中心としています。イベントは何かを受け取り、それに対する応答を行います。例えば、メッセージが発生すると、メッセージの発生に関連するイベントを受け取り、そのイベントに対して応答を返すことができます。"
+msgid "discord_real.py revolves around the concept of :ref:`events <discord-api-events>`. An event is something you listen to and then respond to. For example, when a message happens, you will receive an event about it that you can respond to."
+msgstr "discord_real.pyは :ref:`イベント <discord-api-events>` の概念を中心としています。イベントは何かを受け取り、それに対する応答を行います。例えば、メッセージが発生すると、メッセージの発生に関連するイベントを受け取り、そのイベントに対して応答を返すことができます。"
 
 #: ../../intro.rst:103
 msgid "A quick example to showcase how events work:"

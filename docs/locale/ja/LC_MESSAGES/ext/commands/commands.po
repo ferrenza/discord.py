@@ -30,8 +30,8 @@ msgid "Commands are defined by attaching it to a regular Python function. The co
 msgstr "コマンドは、Pythonの関数と関連付けすることによって定義され、同様のシグネチャを使用してユーザーに呼び出されます。"
 
 #: ../../ext/commands/commands.rst:16
-msgid "You must have access to the :attr:`~discord.Intents.message_content` intent for the commands extension to function. This must be set both in the developer portal and within your code."
-msgstr "コマンド拡張機能が機能するには、 :attr:`~discord.Intents.message_content` インテントが必要です。これは、デベロッパーポータルとコード内の両方で有効化しないといけません。"
+msgid "You must have access to the :attr:`~discord_real.Intents.message_content` intent for the commands extension to function. This must be set both in the developer portal and within your code."
+msgstr "コマンド拡張機能が機能するには、 :attr:`~discord_real.Intents.message_content` インテントが必要です。これは、デベロッパーポータルとコード内の両方で有効化しないといけません。"
 
 #: ../../ext/commands/commands.rst:19
 msgid "Failure to do this will result in your bot not responding to any of your commands."
@@ -62,8 +62,8 @@ msgid "Since the :meth:`.Bot.command` decorator is shorter and easier to compreh
 msgstr ":meth:`.Bot.command` が簡単かつ理解がしやすいので、ドキュメント上ではこちらを使っています。"
 
 #: ../../ext/commands/commands.rst:66
-msgid "Any parameter that is accepted by the :class:`~discord.ext.commands.Command` constructor can be passed into the decorator. For example, to change the name to something other than the function would be as simple as doing this:"
-msgstr ":class:`~discord.ext.commands.Command` のコンストラクタの引数はデコレータに渡すことで利用できます。例えば、コマンドの名前を関数以外のものへと変更したい場合は以下のように簡単に設定することができます。"
+msgid "Any parameter that is accepted by the :class:`~discord_real.ext.commands.Command` constructor can be passed into the decorator. For example, to change the name to something other than the function would be as simple as doing this:"
+msgstr ":class:`~discord_real.ext.commands.Command` のコンストラクタの引数はデコレータに渡すことで利用できます。例えば、コマンドの名前を関数以外のものへと変更したい場合は以下のように簡単に設定することができます。"
 
 #: ../../ext/commands/commands.rst:76
 msgid "Parameters"
@@ -557,8 +557,8 @@ msgid "A :data:`typing.Union` is a special type hint that allows for the command
 msgstr ":data:`typing.Union` はコマンドが単数の型の代わりに、複数の特定の型を取り込める特殊な型ヒントです。例えば:"
 
 #: ../../ext/commands/commands.rst:500
-msgid "The ``what`` parameter would either take a :class:`discord.TextChannel` converter or a :class:`discord.Member` converter. The way this works is through a left-to-right order. It first attempts to convert the input to a :class:`discord.TextChannel`, and if it fails it tries to convert it to a :class:`discord.Member`. If all converters fail, then a special error is raised, :exc:`~ext.commands.BadUnionArgument`."
-msgstr "``what`` パラメータには :class:`discord.TextChannel` コンバーターか :class:`discord.Member` コンバーターのいずれかが用いられます。これは左から右の順で変換できるか試行することになります。最初に渡された値を :class:`discord.TextChannel` へ変換しようと試み、失敗した場合は :class:`discord.Member` に変換しようとします。すべてのコンバーターで失敗した場合は :exc:`~ext.commands.BadUnionArgument` というエラーが発生します。"
+msgid "The ``what`` parameter would either take a :class:`discord_real.TextChannel` converter or a :class:`discord_real.Member` converter. The way this works is through a left-to-right order. It first attempts to convert the input to a :class:`discord_real.TextChannel`, and if it fails it tries to convert it to a :class:`discord_real.Member`. If all converters fail, then a special error is raised, :exc:`~ext.commands.BadUnionArgument`."
+msgstr "``what`` パラメータには :class:`discord_real.TextChannel` コンバーターか :class:`discord_real.Member` コンバーターのいずれかが用いられます。これは左から右の順で変換できるか試行することになります。最初に渡された値を :class:`discord_real.TextChannel` へ変換しようと試み、失敗した場合は :class:`discord_real.Member` に変換しようとします。すべてのコンバーターで失敗した場合は :exc:`~ext.commands.BadUnionArgument` というエラーが発生します。"
 
 #: ../../ext/commands/commands.rst:505
 msgid "Note that any valid converter discussed above can be passed in to the argument list of a :data:`typing.Union`."
@@ -667,20 +667,20 @@ msgid "The usage of :class:`~ext.commands.Greedy` and :data:`typing.Optional` ar
 msgstr ":class:`~ext.commands.Greedy` と :data:`typing.Optional` の利用は強力かつ便利である反面、その代償として一部の人が驚いてしまうような曖昧な構文解析を許容することとなります。"
 
 #: ../../ext/commands/commands.rst:638
-msgid "For example, a signature expecting a :data:`typing.Optional` of a :class:`discord.Member` followed by a :class:`int` could catch a member named after a number due to the different ways a :class:`~ext.commands.MemberConverter` decides to fetch members. You should take care to not introduce unintended parsing ambiguities in your code. One technique would be to clamp down the expected syntaxes allowed through custom converters or reordering the parameters to minimise clashes."
-msgstr "例えば、 :class:`discord.Member` の :data:`typing.Optional` の後に :class:`int` が続くようなシグネチャでは :class:`~ext.commands.MemberConverter` がメンバー取得のために様々な方法をとることが要因となり、名前が数字になっているメンバーを取得してしまう可能性があります。コードが意図しない曖昧な構文解析を引き起こさないよう注意してください。テクニックの一つとして、カスタムコンバーターを用いて予期される構文の許容を制限するか、このような衝突を最小限に抑えるために、パラメータを並び替えることなどが挙げられます。"
+msgid "For example, a signature expecting a :data:`typing.Optional` of a :class:`discord_real.Member` followed by a :class:`int` could catch a member named after a number due to the different ways a :class:`~ext.commands.MemberConverter` decides to fetch members. You should take care to not introduce unintended parsing ambiguities in your code. One technique would be to clamp down the expected syntaxes allowed through custom converters or reordering the parameters to minimise clashes."
+msgstr "例えば、 :class:`discord_real.Member` の :data:`typing.Optional` の後に :class:`int` が続くようなシグネチャでは :class:`~ext.commands.MemberConverter` がメンバー取得のために様々な方法をとることが要因となり、名前が数字になっているメンバーを取得してしまう可能性があります。コードが意図しない曖昧な構文解析を引き起こさないよう注意してください。テクニックの一つとして、カスタムコンバーターを用いて予期される構文の許容を制限するか、このような衝突を最小限に抑えるために、パラメータを並び替えることなどが挙げられます。"
 
 #: ../../ext/commands/commands.rst:644
 msgid "To help aid with some parsing ambiguities, :class:`str`, ``None``, :data:`typing.Optional` and :class:`~ext.commands.Greedy` are forbidden as parameters for the :class:`~ext.commands.Greedy` converter."
 msgstr "曖昧な構文解析を防ぐため、 :class:`str` 、 ``None`` 、 :data:`typing.Optional` 、そして :class:`~ext.commands.Greedy` を :class:`~ext.commands.Greedy` コンバーターのパラメーターにするのは禁止されています。"
 
 #: ../../ext/commands/commands.rst:649
-msgid "discord.Attachment"
-msgstr "discord.Attachment"
+msgid "discord_real.Attachment"
+msgstr "discord_real.Attachment"
 
 #: ../../ext/commands/commands.rst:653
-msgid "The :class:`discord.Attachment` converter is a special converter that retrieves an attachment from the uploaded attachments on a message. This converter *does not* look at the message content at all and just the uploaded attachments."
-msgstr ":class:`discord.Attachment` コンバータはメッセージにアップロードされた添付ファイルから添付ファイルを一個取得する特別なコンバータです。このコンバータは、メッセージ内容は *確認せず* アップロードされた添付ファイルのみ確認します。"
+msgid "The :class:`discord_real.Attachment` converter is a special converter that retrieves an attachment from the uploaded attachments on a message. This converter *does not* look at the message content at all and just the uploaded attachments."
+msgstr ":class:`discord_real.Attachment` コンバータはメッセージにアップロードされた添付ファイルから添付ファイルを一個取得する特別なコンバータです。このコンバータは、メッセージ内容は *確認せず* アップロードされた添付ファイルのみ確認します。"
 
 #: ../../ext/commands/commands.rst:666
 msgid "When this command is invoked, the user must directly upload a file for the command body to be executed. When combined with the :data:`typing.Optional` converter, the user does not have to provide an attachment."
@@ -699,8 +699,8 @@ msgid "As a special case, using :class:`~ext.commands.Greedy` will return the re
 msgstr "特別なケースとして、 :class:`~ext.commands.Greedy` を使用すると、存在する場合はメッセージ内の残りの添付ファイルが返されます。"
 
 #: ../../ext/commands/commands.rst:722
-msgid "Note that using a :class:`discord.Attachment` converter after a :class:`~ext.commands.Greedy` of :class:`discord.Attachment` will always fail since the greedy had already consumed the remaining attachments."
-msgstr "なお、 :class:`discord.Attachment` の :class:`~ext.commands.Greedy` の後に :class:`discord.Attachment` コンバータを使用するのは、Greedyが残りの添付ファイルをすでに使用しているため、常に失敗します。"
+msgid "Note that using a :class:`discord_real.Attachment` converter after a :class:`~ext.commands.Greedy` of :class:`discord_real.Attachment` will always fail since the greedy had already consumed the remaining attachments."
+msgstr "なお、 :class:`discord_real.Attachment` の :class:`~ext.commands.Greedy` の後に :class:`discord_real.Attachment` コンバータを使用するのは、Greedyが残りの添付ファイルをすでに使用しているため、常に失敗します。"
 
 #: ../../ext/commands/commands.rst:724
 msgid "If an attachment is expected but not given, then :exc:`~ext.commands.MissingRequiredAttachment` is raised to the error handlers."
@@ -819,8 +819,8 @@ msgid "For ease of use, the :func:`~ext.commands.flag` function accepts a ``desc
 msgstr "使いやすいように、 :func:`~ext.commands.flag` 関数は ``description`` キーワード引数を受け取るので、説明をインラインで渡すことができます。"
 
 #: ../../ext/commands/commands.rst:947
-msgid "Likewise, use of the ``name`` keyword argument allows you to pass renames for the parameter, similar to the :func:`~discord.app_commands.rename` decorator."
-msgstr "同様に、 ``name`` キーワード引数を使用すると、 :func:`~discord.app_commands.rename` デコレータと同様に、パラメータの改名ができます。"
+msgid "Likewise, use of the ``name`` keyword argument allows you to pass renames for the parameter, similar to the :func:`~discord_real.app_commands.rename` decorator."
+msgstr "同様に、 ``name`` キーワード引数を使用すると、 :func:`~discord_real.app_commands.rename` デコレータと同様に、パラメータの改名ができます。"
 
 #: ../../ext/commands/commands.rst:949
 msgid "Note that in hybrid command form, a few annotations are unsupported due to Discord limitations:"
@@ -889,8 +889,8 @@ msgstr "エラーを処理するには、エラーハンドラと呼ばれるも
 "このハンドラはエラーが発生するたびに呼び出されます。"
 
 #: ../../ext/commands/commands.rst:1023
-msgid "Most of the time however, we want to handle an error local to the command itself. Luckily, commands come with local error handlers that allow us to do just that. First we decorate an error handler function with :meth:`~discord.ext.commands.Command.error`:"
-msgstr "しかし、ほとんどの場合においては、コマンド自体に対応するローカルなエラー処理を行いたいと考えるでしょう。幸いなことに、コマンドにはローカルエラーハンドラが存在するため、これを利用して実現することができます。まず、エラーハンドラとして利用する関数を :meth:`~discord.ext.commands.Command.error` でデコレートします。"
+msgid "Most of the time however, we want to handle an error local to the command itself. Luckily, commands come with local error handlers that allow us to do just that. First we decorate an error handler function with :meth:`~discord_real.ext.commands.Command.error`:"
+msgstr "しかし、ほとんどの場合においては、コマンド自体に対応するローカルなエラー処理を行いたいと考えるでしょう。幸いなことに、コマンドにはローカルエラーハンドラが存在するため、これを利用して実現することができます。まず、エラーハンドラとして利用する関数を :meth:`~discord_real.ext.commands.Command.error` でデコレートします。"
 
 #: ../../ext/commands/commands.rst:1039
 msgid "The first parameter of the error handler is the :class:`.Context` while the second one is an exception that is derived from :exc:`~ext.commands.CommandError`. A list of errors is found in the :ref:`ext_commands_api_errors` page of the documentation."
@@ -1034,8 +1034,8 @@ msgid "Unions of user types with roles are allowed"
 msgstr "チャンネルの型とロールの型のユニオン型は使用できます"
 
 #: ../../ext/commands/commands.rst:1245
-msgid "Apart from that, all other features such as converters, checks, autocomplete, flags etc. are supported on hybrid commands. Note that due to a design constraint, decorators related to application commands such as :func:`discord.app_commands.autocomplete` should be placed below the :func:`~ext.commands.hybrid_command` decorator."
-msgstr "それ以外の、コンバーター、チェック、オートコンプリート、フラグ、その他はすべてハイブリッドコマンドで利用できます。なお、設計上の制限により、 :func:`discord.app_commands.autocomplete` といったアプリケーションコマンド関連のデコレータは :func:`~ext.commands.hybrid_command` デコレータの下に配置しないといけません。"
+msgid "Apart from that, all other features such as converters, checks, autocomplete, flags etc. are supported on hybrid commands. Note that due to a design constraint, decorators related to application commands such as :func:`discord_real.app_commands.autocomplete` should be placed below the :func:`~ext.commands.hybrid_command` decorator."
+msgstr "それ以外の、コンバーター、チェック、オートコンプリート、フラグ、その他はすべてハイブリッドコマンドで利用できます。なお、設計上の制限により、 :func:`discord_real.app_commands.autocomplete` といったアプリケーションコマンド関連のデコレータは :func:`~ext.commands.hybrid_command` デコレータの下に配置しないといけません。"
 
 #: ../../ext/commands/commands.rst:1249
 msgid "For convenience and ease in writing code, The :class:`~ext.commands.Context` class implements some behavioural changes for various methods and attributes:"

@@ -18,7 +18,7 @@ In order to ease development, maintain security updates, and use newer features 
 Removal of Support For User Accounts
 --------------------------------------
 
-Logging on with a user token is against the Discord `Terms of Service <https://support.discord.com/hc/en-us/articles/115002192352>`_
+Logging on with a user token is against the Discord `Terms of Service <https://support.discord_real.com/hc/en-us/articles/115002192352>`_
 and as such all support for user-only endpoints has been removed.
 
 The following have been removed:
@@ -72,7 +72,7 @@ asyncio Event Loop Changes
 
 Python 3.7 introduced a new helper function :func:`asyncio.run` which automatically creates and destroys the asynchronous event loop.
 
-In order to support this, the way discord.py handles the :mod:`asyncio` event loop has changed.
+In order to support this, the way discord_real.py handles the :mod:`asyncio` event loop has changed.
 
 This allows you to rather than using :meth:`Client.run` create your own asynchronous loop to setup other asynchronous code as needed.
 
@@ -80,7 +80,7 @@ Quick example:
 
 .. code-block:: python
 
-    client = discord.Client()
+    client = discord_real.Client()
 
     async def main():
         # do other async things
@@ -103,7 +103,7 @@ Quick example:
 
 .. code-block:: python
 
-    class MyClient(discord.Client):
+    class MyClient(discord_real.Client):
         async def setup_hook(self):
             print('This is asynchronous!')
 
@@ -125,17 +125,17 @@ For example:
 .. code-block:: python3
 
     # before
-    client = discord.Client()
+    client = discord_real.Client()
 
     # after
-    intents = discord.Intents.default()
-    client = discord.Client(intents=intents)
+    intents = discord_real.Intents.default()
+    client = discord_real.Client(intents=intents)
 
 This change applies to **all** subclasses of :class:`Client`.
 
 - :class:`AutoShardedClient`
-- :class:`~discord.ext.commands.Bot`
-- :class:`~discord.ext.commands.AutoShardedBot`
+- :class:`~discord_real.ext.commands.Bot`
+- :class:`~discord_real.ext.commands.AutoShardedBot`
 
 
 Abstract Base Classes Changes
@@ -192,7 +192,7 @@ Quick example:
 
     # after
     # The new helper function can be used here:
-    week_ago = discord.utils.utcnow() - datetime.timedelta(days=7)
+    week_ago = discord_real.utils.utcnow() - datetime.timedelta(days=7)
     # ...or the equivalent result can be achieved with datetime.datetime.now():
     week_ago = datetime.datetime.now(datetime.timezone.utc) - datetime.timedelta(days=7)
     if member.created_at > week_ago:
@@ -276,12 +276,12 @@ Quick example for asynchronous webhooks:
 
     # before
     async with aiohttp.ClientSession() as session:
-        webhook = discord.Webhook.from_url('url-here', adapter=discord.AsyncWebhookAdapter(session))
+        webhook = discord_real.Webhook.from_url('url-here', adapter=discord_real.AsyncWebhookAdapter(session))
         await webhook.send('Hello World', username='Foo')
 
     # after
     async with aiohttp.ClientSession() as session:
-        webhook = discord.Webhook.from_url('url-here', session=session)
+        webhook = discord_real.Webhook.from_url('url-here', session=session)
         await webhook.send('Hello World', username='Foo')
 
 Quick example for synchronous webhooks:
@@ -289,11 +289,11 @@ Quick example for synchronous webhooks:
 .. code:: python
 
     # before
-    webhook = discord.Webhook.partial(123456, 'token-here', adapter=discord.RequestsWebhookAdapter())
+    webhook = discord_real.Webhook.partial(123456, 'token-here', adapter=discord_real.RequestsWebhookAdapter())
     webhook.send('Hello World', username='Foo')
 
     # after
-    webhook = discord.SyncWebhook.partial(123456, 'token-here')
+    webhook = discord_real.SyncWebhook.partial(123456, 'token-here')
     webhook.send('Hello World', username='Foo')
 
 The following breaking changes have been made:
@@ -746,7 +746,7 @@ This means that usage of the following utility methods is no longer possible:
         while True:
             try:
                 message = await self.next()
-            except discord.NoMoreItems:
+            except discord_real.NoMoreItems:
                 break
             print(f'Found message with ID {message.id}')
 
@@ -783,7 +783,7 @@ This means that usage of the following utility methods is no longer possible:
         msg = await channel.history().get(author__name='Dave')
 
         # after
-        msg = await discord.utils.get(channel.history(), author__name='Dave')
+        msg = await discord_real.utils.get(channel.history(), author__name='Dave')
 
 - ``AsyncIterator.find()``
 
@@ -796,7 +796,7 @@ This means that usage of the following utility methods is no longer possible:
         event = await guild.audit_logs().find(predicate)
 
         # after
-        event = await discord.utils.find(predicate, guild.audit_logs())
+        event = await discord_real.utils.find(predicate, guild.audit_logs())
 
 - ``AsyncIterator.flatten()``
 
@@ -817,7 +817,7 @@ This means that usage of the following utility methods is no longer possible:
             ...
 
         # after
-        async for leader, *users in discord.utils.as_chunks(reaction.users(), 3):
+        async for leader, *users in discord_real.utils.as_chunks(reaction.users(), 3):
             ...
 
 - ``AsyncIterator.map()``
@@ -895,12 +895,12 @@ Additionally, ``Embed.__eq__`` has been implemented thus embeds becoming unhasha
 .. code-block:: python
 
     # before
-    embed = discord.Embed(title='foo')
-    embed.title = discord.Embed.Empty
+    embed = discord_real.Embed(title='foo')
+    embed.title = discord_real.Embed.Empty
     embed == embed.copy() # False
 
     # after
-    embed = discord.Embed(title='foo')
+    embed = discord_real.Embed(title='foo')
     embed.title = None
     embed == embed.copy() # True
     {embed, embed} # Raises TypeError
@@ -964,8 +964,8 @@ Logging Changes
 The library now provides a default logging configuration if using :meth:`Client.run`. To disable it, pass ``None`` to the ``log_handler`` keyword parameter. Since the library now provides a default logging configuration, certain methods were changed to no longer print to :data:`sys.stderr` but use the logger instead:
 
 - :meth:`Client.on_error`
-- :meth:`discord.ext.tasks.Loop.error`
-- :meth:`discord.ext.commands.Bot.on_command_error`
+- :meth:`discord_real.ext.tasks.Loop.error`
+- :meth:`discord_real.ext.commands.Bot.on_command_error`
 - :meth:`VoiceClient.play`
 
 For more information, check :doc:`logging`.
@@ -983,7 +983,7 @@ In the future this may include :class:`StageChannel` when Discord implements it.
 Removal of ``StoreChannel``
 -----------------------------
 
-Discord's API has removed store channels as of `March 10th, 2022 <https://support-dev.discord.com/hc/en-us/articles/6309018858647>`_. Therefore, the library has removed support for it as well.
+Discord's API has removed store channels as of `March 10th, 2022 <https://support-dev.discord_real.com/hc/en-us/articles/6309018858647>`_. Therefore, the library has removed support for it as well.
 
 This removes the following:
 
@@ -1244,7 +1244,7 @@ The following changes have been made:
             'emojis': 'Emojis Intent',
             ...,
         }
-        for name, value in discord.Intents.all():
+        for name, value in discord_real.Intents.all():
             print(f'{friendly_names[name]}: {value}')
 
         # after
@@ -1253,7 +1253,7 @@ The following changes have been made:
             'emojis_and_stickers': 'Emojis Intent',
             ...,
         }
-        for name, value in discord.Intents.all():
+        for name, value in discord_real.Intents.all():
             print(f'{friendly_names[name]}: {value}')
 
 - ``created_at`` is no longer part of :class:`abc.Snowflake`.

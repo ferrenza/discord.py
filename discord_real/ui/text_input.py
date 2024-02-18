@@ -70,7 +70,7 @@ class TextInput(Item[V]):
         The ID of the text input that gets received during an interaction.
         If not given then one is generated for you.
         Can only be up to 100 characters.
-    style: :class:`discord.TextStyle`
+    style: :class:`discord_real.TextStyle`
         The style of the text input.
     placeholder: Optional[:class:`str`]
         The placeholder text to display when the text input is empty.
@@ -204,7 +204,7 @@ class TextInput(Item[V]):
 
     @property
     def style(self) -> TextStyle:
-        """:class:`discord.TextStyle`: The style of the text input."""
+        """:class:`discord_real.TextStyle`: The style of the text input."""
         return self._underlying.style
 
     @style.setter

@@ -112,22 +112,22 @@ class Namespace:
     +-------------------------------------------+-------------------------------------------------------------------------------+
     | :attr:`.AppCommandOptionType.number`      | :class:`float`                                                                |
     +-------------------------------------------+-------------------------------------------------------------------------------+
-    | :attr:`.AppCommandOptionType.user`        | :class:`~discord.User` or :class:`~discord.Member`                            |
+    | :attr:`.AppCommandOptionType.user`        | :class:`~discord_real.User` or :class:`~discord_real.Member`                            |
     +-------------------------------------------+-------------------------------------------------------------------------------+
     | :attr:`.AppCommandOptionType.channel`     | :class:`.AppCommandChannel` or :class:`.AppCommandThread`                     |
     +-------------------------------------------+-------------------------------------------------------------------------------+
-    | :attr:`.AppCommandOptionType.role`        | :class:`~discord.Role`                                                        |
+    | :attr:`.AppCommandOptionType.role`        | :class:`~discord_real.Role`                                                        |
     +-------------------------------------------+-------------------------------------------------------------------------------+
-    | :attr:`.AppCommandOptionType.mentionable` | :class:`~discord.User` or :class:`~discord.Member`, or :class:`~discord.Role` |
+    | :attr:`.AppCommandOptionType.mentionable` | :class:`~discord_real.User` or :class:`~discord_real.Member`, or :class:`~discord_real.Role` |
     +-------------------------------------------+-------------------------------------------------------------------------------+
-    | :attr:`.AppCommandOptionType.attachment`  | :class:`~discord.Attachment`                                                  |
+    | :attr:`.AppCommandOptionType.attachment`  | :class:`~discord_real.Attachment`                                                  |
     +-------------------------------------------+-------------------------------------------------------------------------------+
 
     .. note::
 
         In autocomplete interactions, the namespace might not be validated or filled in. Discord does not
         send the resolved data as well, so this means that certain fields end up just as IDs rather than
-        the resolved data. In these cases, a :class:`discord.Object` is returned instead.
+        the resolved data. In these cases, a :class:`discord_real.Object` is returned instead.
 
         This is a Discord limitation.
     """

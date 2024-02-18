@@ -3,18 +3,18 @@
 import discord
 
 
-class MyClient(discord.Client):
+class MyClient(discord_real.Client):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
         self.role_message_id = 0  # ID of the message that can be reacted to to add/remove a role.
         self.emoji_to_role = {
-            discord.PartialEmoji(name='🔴'): 0,  # ID of the role associated with unicode emoji '🔴'.
-            discord.PartialEmoji(name='🟡'): 0,  # ID of the role associated with unicode emoji '🟡'.
-            discord.PartialEmoji(name='green', id=0): 0,  # ID of the role associated with a partial emoji's ID.
+            discord_real.PartialEmoji(name='🔴'): 0,  # ID of the role associated with unicode emoji '🔴'.
+            discord_real.PartialEmoji(name='🟡'): 0,  # ID of the role associated with unicode emoji '🟡'.
+            discord_real.PartialEmoji(name='green', id=0): 0,  # ID of the role associated with a partial emoji's ID.
         }
 
-    async def on_raw_reaction_add(self, payload: discord.RawReactionActionEvent):
+    async def on_raw_reaction_add(self, payload: discord_real.RawReactionActionEvent):
         """Gives a role based on a reaction emoji."""
         # Make sure that the message the user is reacting to is the one we care about.
         if payload.message_id != self.role_message_id:
@@ -39,11 +39,11 @@ class MyClient(discord.Client):
         try:
             # Finally, add the role.
             await payload.member.add_roles(role)
-        except discord.HTTPException:
+        except discord_real.HTTPException:
             # If we want to do something in case of errors we'd do it here.
             pass
 
-    async def on_raw_reaction_remove(self, payload: discord.RawReactionActionEvent):
+    async def on_raw_reaction_remove(self, payload: discord_real.RawReactionActionEvent):
         """Removes a role based on a reaction emoji."""
         # Make sure that the message the user is reacting to is the one we care about.
         if payload.message_id != self.role_message_id:
@@ -75,12 +75,12 @@ class MyClient(discord.Client):
         try:
             # Finally, remove the role.
             await member.remove_roles(role)
-        except discord.HTTPException:
+        except discord_real.HTTPException:
             # If we want to do something in case of errors we'd do it here.
             pass
 
 
-intents = discord.Intents.default()
+intents = discord_real.Intents.default()
 intents.members = True
 
 client = MyClient(intents=intents)

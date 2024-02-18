@@ -306,8 +306,8 @@ msgid "Implement :class:`abc.Messageable` for :class:`StageChannel` (:issue:`924
 msgstr ":class:`StageChannel` が :class:`abc.Messageable` を実装するようにしました。 (:issue:`9248`)"
 
 #: ../../whats_new.rst:123
-msgid "Add setter for :attr:`discord.ui.ChannelSelect.channel_types` (:issue:`9068`)"
-msgstr ":attr:`discord.ui.ChannelSelect.channel_types` のセッターを追加しました。 (:issue:`9068`)"
+msgid "Add setter for :attr:`discord_real.ui.ChannelSelect.channel_types` (:issue:`9068`)"
+msgstr ":attr:`discord_real.ui.ChannelSelect.channel_types` のセッターを追加しました。 (:issue:`9068`)"
 
 #: ../../whats_new.rst:124
 msgid "Add support for custom messages in automod via :attr:`AutoModRuleAction.custom_message` (:issue:`9267`)"
@@ -518,8 +518,8 @@ msgid ":class:`Interaction` can now optionally take a generic parameter, ``Clien
 msgstr ":class:`Interaction` は、オプションでジェネリックのパラメータ ``ClientT`` をとり、 :attr:`Interaction.client` の型を指定できるようになりました。"
 
 #: ../../whats_new.rst:187
-msgid "|commands| Respect :attr:`~ext.commands.Command.ignore_extra` for :class:`~discord.ext.commands.FlagConverter` keyword-only parameters"
-msgstr "|commands| :class:`~discord.ext.commands.FlagConverter` キーワードのみのパラメータでも、 :attr:`~ext.commands.Command.ignore_extra` に従うようにしました。"
+msgid "|commands| Respect :attr:`~ext.commands.Command.ignore_extra` for :class:`~discord_real.ext.commands.FlagConverter` keyword-only parameters"
+msgstr "|commands| :class:`~discord_real.ext.commands.FlagConverter` キーワードのみのパラメータでも、 :attr:`~ext.commands.Command.ignore_extra` に従うようにしました。"
 
 #: ../../whats_new.rst:188
 msgid "|commands| Change :attr:`Paginator.pages <ext.commands.Paginator.pages>` to not prematurely close (:issue:`9257`)"
@@ -574,12 +574,12 @@ msgid "Add support for new select types (:issue:`9013`, :issue:`9003`)."
 msgstr "新しい選択メニューの種類のサポートを追加しました。 (:issue:`9013`, :issue:`9003`)"
 
 #: ../../whats_new.rst:218
-msgid "These are split into separate classes, :class:`~discord.ui.ChannelSelect`, :class:`~discord.ui.RoleSelect`, :class:`~discord.ui.UserSelect`, :class:`~discord.ui.MentionableSelect`."
-msgstr "これらは、 :class:`~discord.ui.ChannelSelect` 、 :class:`~discord.ui.RoleSelect` 、 :class:`~discord.ui.UserSelect` 、 :class:`~discord.ui.MentionableSelect` に分割されています。"
+msgid "These are split into separate classes, :class:`~discord_real.ui.ChannelSelect`, :class:`~discord_real.ui.RoleSelect`, :class:`~discord_real.ui.UserSelect`, :class:`~discord_real.ui.MentionableSelect`."
+msgstr "これらは、 :class:`~discord_real.ui.ChannelSelect` 、 :class:`~discord_real.ui.RoleSelect` 、 :class:`~discord_real.ui.UserSelect` 、 :class:`~discord_real.ui.MentionableSelect` に分割されています。"
 
 #: ../../whats_new.rst:219
-msgid "The decorator still uses a single function, :meth:`~discord.ui.select`. Changing the select type is done by the ``cls`` keyword parameter."
-msgstr "デコレータはこれまで通り単一の関数 :meth:`~discord.ui.select` を使用しています。選択メニューの種類の変更は ``cls`` キーワード引数によって行われます。"
+msgid "The decorator still uses a single function, :meth:`~discord_real.ui.select`. Changing the select type is done by the ``cls`` keyword parameter."
+msgstr "デコレータはこれまで通り単一の関数 :meth:`~discord_real.ui.select` を使用しています。選択メニューの種類の変更は ``cls`` キーワード引数によって行われます。"
 
 #: ../../whats_new.rst:221
 msgid "Add support for toggling discoverable and invites_disabled features in :meth:`Guild.edit` (:issue:`8390`)."
@@ -606,24 +606,24 @@ msgid "Add support for :attr:`AutoModTrigger.regex_patterns`."
 msgstr ":attr:`AutoModTrigger.regex_patterns` のサポートを追加しました。"
 
 #: ../../whats_new.rst:227
-msgid "|commands| Add :attr:`GroupCog.group_extras <discord.ext.commands.GroupCog.group_extras>` to set :attr:`app_commands.Group.extras` (:issue:`8405`)."
-msgstr "|commands| :attr:`app_commands.Group.extras` を設定できる :attr:`GroupCog.group_extras <discord.ext.commands.GroupCog.group_extras>` を追加しました。 (:issue:`8405`)"
+msgid "|commands| Add :attr:`GroupCog.group_extras <discord_real.ext.commands.GroupCog.group_extras>` to set :attr:`app_commands.Group.extras` (:issue:`8405`)."
+msgstr "|commands| :attr:`app_commands.Group.extras` を設定できる :attr:`GroupCog.group_extras <discord_real.ext.commands.GroupCog.group_extras>` を追加しました。 (:issue:`8405`)"
 
 #: ../../whats_new.rst:228
 msgid "|commands| Add support for NumPy style docstrings for regular commands to set parameter descriptions."
 msgstr "|commands| 通常のコマンドでパラメータの説明を設定するのに NumPy スタイルの docstring が利用できるようになりました。"
 
 #: ../../whats_new.rst:229
-msgid "|commands| Allow :class:`~discord.ext.commands.Greedy` to potentially maintain state between calls."
-msgstr "|commands| :class:`~discord.ext.commands.Greedy` が呼び出し間で状態を維持できるようにしました。"
+msgid "|commands| Allow :class:`~discord_real.ext.commands.Greedy` to potentially maintain state between calls."
+msgstr "|commands| :class:`~discord_real.ext.commands.Greedy` が呼び出し間で状態を維持できるようにしました。"
 
 #: ../../whats_new.rst:230
-msgid "|commands| Add :meth:`Cog.has_app_command_error_handler <discord.ext.commands.Cog.has_app_command_error_handler>` (:issue:`8991`)."
-msgstr "|commands| :meth:`Cog.has_app_command_error_handler <discord.ext.commands.Cog.has_app_command_error_handler>` を追加しました。 (:issue:`8991`)"
+msgid "|commands| Add :meth:`Cog.has_app_command_error_handler <discord_real.ext.commands.Cog.has_app_command_error_handler>` (:issue:`8991`)."
+msgstr "|commands| :meth:`Cog.has_app_command_error_handler <discord_real.ext.commands.Cog.has_app_command_error_handler>` を追加しました。 (:issue:`8991`)"
 
 #: ../../whats_new.rst:231
-msgid "|commands| Allow ``delete_after`` in :meth:`Context.send <discord.ext.commands.Context.send>` on ephemeral messages (:issue:`9021`)."
-msgstr "|commands| :meth:`Context.send <discord.ext.commands.Context.send>` で ``delete_after`` が利用できるようになりました。 (:issue:`9021`)"
+msgid "|commands| Allow ``delete_after`` in :meth:`Context.send <discord_real.ext.commands.Context.send>` on ephemeral messages (:issue:`9021`)."
+msgstr "|commands| :meth:`Context.send <discord_real.ext.commands.Context.send>` で ``delete_after`` が利用できるようになりました。 (:issue:`9021`)"
 
 #: ../../whats_new.rst:236
 msgid "Fix an :exc:`KeyError` being raised when constructing :class:`app_commands.Group` with no module (:issue:`8411`)."
@@ -662,12 +662,12 @@ msgid "Fix ``on_scheduled_event_delete`` occasionally dispatching with too many 
 msgstr "``on_scheduled_event_delete`` に渡されるパラメータが多すぎる場合がある問題を修正しました。 (:issue:`9019`)"
 
 #: ../../whats_new.rst:245
-msgid "|commands| Fix :meth:`Context.from_interaction <discord.ext.commands.Context.from_interaction>` ignoring :attr:`~discord.ext.commands.Context.command_failed`."
-msgstr "|commands| :meth:`Context.from_interaction <discord.ext.commands.Context.from_interaction>` が :attr:`~discord.ext.commands.Context.command_failed` を無視する問題を修正しました。"
+msgid "|commands| Fix :meth:`Context.from_interaction <discord_real.ext.commands.Context.from_interaction>` ignoring :attr:`~discord_real.ext.commands.Context.command_failed`."
+msgstr "|commands| :meth:`Context.from_interaction <discord_real.ext.commands.Context.from_interaction>` が :attr:`~discord_real.ext.commands.Context.command_failed` を無視する問題を修正しました。"
 
 #: ../../whats_new.rst:246
-msgid "|commands| Fix :class:`~discord.ext.commands.Range` to allow 3.10 Union syntax (:issue:`8446`)."
-msgstr "|commands| :class:`~discord.ext.commands.Range` で 3.10 Union 構文が利用できるようになりました。 (:issue:`8446`)."
+msgid "|commands| Fix :class:`~discord_real.ext.commands.Range` to allow 3.10 Union syntax (:issue:`8446`)."
+msgstr "|commands| :class:`~discord_real.ext.commands.Range` で 3.10 Union 構文が利用できるようになりました。 (:issue:`8446`)."
 
 #: ../../whats_new.rst:247
 msgid "|commands| Fix ``before_invoke`` not triggering for fallback commands in a hybrid group command (:issue:`8461`, :issue:`8462`)."
@@ -718,8 +718,8 @@ msgid "This required a change in the :ref:`version_guarantees`"
 msgstr "これに伴い :ref:`version_guarantees` が改訂されました。"
 
 #: ../../whats_new.rst:272
-msgid "|commands| Fix Python 3.10 union types not working with :class:`commands.Greedy <discord.ext.commands.Greedy>`."
-msgstr "|commands| Python 3.10 のユニオン型が :class:`commands.Greedy <discord.ext.commands.Greedy>` で動作しない問題を修正しました。"
+msgid "|commands| Fix Python 3.10 union types not working with :class:`commands.Greedy <discord_real.ext.commands.Greedy>`."
+msgstr "|commands| Python 3.10 のユニオン型が :class:`commands.Greedy <discord_real.ext.commands.Greedy>` で動作しない問題を修正しました。"
 
 #: ../../whats_new.rst:277
 msgid "v2.0.0"
@@ -1267,8 +1267,8 @@ msgid "|commands| :class:`MemberConverter <ext.commands.MemberConverter>` now pr
 msgstr "|commands| :class:`MemberConverter <ext.commands.MemberConverter>` は、memberがキャッシュから利用できない場合に遅延ロードでmemberを取得するようになりました。"
 
 #: ../../whats_new.rst:492
-msgid "This is the same as having ``discord.Member`` as the type-hint."
-msgstr "これは ``discord.Member`` を型ヒントとして使うのと同じです。"
+msgid "This is the same as having ``discord_real.Member`` as the type-hint."
+msgstr "これは ``discord_real.Member`` を型ヒントとして使うのと同じです。"
 
 #: ../../whats_new.rst:493
 msgid ":meth:`Guild.chunk` now allows concurrent calls without spamming the gateway with requests."
@@ -1792,8 +1792,8 @@ msgid "The blocking logging message now shows the stack trace of where the main 
 msgstr "ブロッキングのログメッセージは、メインスレッドがブロッキングしていた場所のスタックトレースを表示するようになりました"
 
 #: ../../whats_new.rst:699
-msgid "The domain name was changed from ``discordapp.com`` to ``discord.com`` to prepare for the required domain migration"
-msgstr "必要なドメイン移行の準備のため、ドメイン名を ``discordapp.com`` から ``discord.com`` に変更しました。"
+msgid "The domain name was changed from ``discordapp.com`` to ``discord_real.com`` to prepare for the required domain migration"
+msgstr "必要なドメイン移行の準備のため、ドメイン名を ``discordapp.com`` から ``discord_real.com`` に変更しました。"
 
 #: ../../whats_new.rst:700
 msgid "Reduce memory usage when reconnecting due to stale references being held by the message cache (:issue:`5133`)"
@@ -2578,8 +2578,8 @@ msgstr ":meth:`Member.move_to` に ``None`` を渡すことでボイスチャン
 #: ../../whats_new.rst:1036
 #: ../../whats_new.rst:1057
 #: ../../whats_new.rst:1076
-msgid "``discord.ext.commands``"
-msgstr "``discord.ext.commands``"
+msgid "``discord_real.ext.commands``"
+msgstr "``discord_real.ext.commands``"
 
 #: ../../whats_new.rst:1038
 msgid "Add new :func:`~.commands.dm_only` check."
@@ -3295,8 +3295,8 @@ msgid "Login credentials are now cached to have a faster login experience. You c
 msgstr "ログイン情報をキャッシュすることで、より高速にログインできるようになりました。これを無効にするには、 :class:`Client` を作成する際に ``cache_auth=False`` を渡します。"
 
 #: ../../whats_new.rst:1413
-msgid "New utility function, :func:`discord.utils.get` to simplify retrieval of items based on attributes."
-msgstr "新しいユーティリティ関数 :func:`discord.utils.get` は、属性に基づいたアイテムの取得を簡素化します。"
+msgid "New utility function, :func:`discord_real.utils.get` to simplify retrieval of items based on attributes."
+msgstr "新しいユーティリティ関数 :func:`discord_real.utils.get` は、属性に基づいたアイテムの取得を簡素化します。"
 
 #: ../../whats_new.rst:1414
 msgid "All data classes now support ``!=``, ``==``, ``hash(obj)`` and ``str(obj)``."
@@ -3335,8 +3335,8 @@ msgid "Added :meth:`Client.wait_until_login` to facilitate easy creation of task
 msgstr "クライアントのログインを必要とするタスクを簡単に作成できるように :meth:`Client.wait_until_login` を追加しました。"
 
 #: ../../whats_new.rst:1423
-msgid "Add :class:`discord.Game` to represent any game with custom text to send to :meth:`Client.change_status`."
-msgstr ":class:`Client.change_status` に送信する、カスタムテキストを含む任意のゲームを表す :meth:`discord.Game` を追加しました。"
+msgid "Add :class:`discord_real.Game` to represent any game with custom text to send to :meth:`Client.change_status`."
+msgstr ":class:`Client.change_status` に送信する、カスタムテキストを含む任意のゲームを表す :meth:`discord_real.Game` を追加しました。"
 
 #: ../../whats_new.rst:1424
 msgid "Add :attr:`Message.nonce` attribute."

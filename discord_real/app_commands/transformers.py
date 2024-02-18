@@ -193,11 +193,11 @@ class CommandParameter:
 
 class Transformer:
     """The base class that allows a type annotation in an application command parameter
-    to map into a :class:`~discord.AppCommandOptionType` and transform the raw value into one
+    to map into a :class:`~discord_real.AppCommandOptionType` and transform the raw value into one
     from this type.
 
     This class is customisable through the overriding of methods and properties in the class
-    and by using it as the second type parameter of the :class:`~discord.app_commands.Transform`
+    and by using it as the second type parameter of the :class:`~discord_real.app_commands.Transform`
     class. For example, to convert a string into a custom pair type:
 
     .. code-block:: python3
@@ -207,13 +207,13 @@ class Transformer:
             y: int
 
         class PointTransformer(app_commands.Transformer):
-            async def transform(self, interaction: discord.Interaction, value: str) -> Point:
+            async def transform(self, interaction: discord_real.Interaction, value: str) -> Point:
                 (x, _, y) = value.partition(',')
                 return Point(x=int(x.strip()), y=int(y.strip()))
 
         @app_commands.command()
         async def graph(
-            interaction: discord.Interaction,
+            interaction: discord_real.Interaction,
             point: app_commands.Transform[Point, PointTransformer],
         ):
             await interaction.response.send_message(str(point))
@@ -237,19 +237,19 @@ class Transformer:
 
     @property
     def type(self) -> AppCommandOptionType:
-        """:class:`~discord.AppCommandOptionType`: The option type associated with this transformer.
+        """:class:`~discord_real.AppCommandOptionType`: The option type associated with this transformer.
 
         This must be a :obj:`property`.
 
-        Defaults to :attr:`~discord.AppCommandOptionType.string`.
+        Defaults to :attr:`~discord_real.AppCommandOptionType.string`.
         """
         return AppCommandOptionType.string
 
     @property
     def channel_types(self) -> List[ChannelType]:
-        """List[:class:`~discord.ChannelType`]: A list of channel types that are allowed to this parameter.
+        """List[:class:`~discord_real.ChannelType`]: A list of channel types that are allowed to this parameter.
 
-        Only valid if the :meth:`type` returns :attr:`~discord.AppCommandOptionType.channel`.
+        Only valid if the :meth:`type` returns :attr:`~discord_real.AppCommandOptionType.channel`.
 
         This must be a :obj:`property`.
 
@@ -261,8 +261,8 @@ class Transformer:
     def min_value(self) -> Optional[Union[int, float]]:
         """Optional[:class:`int`]: The minimum supported value for this parameter.
 
-        Only valid if the :meth:`type` returns :attr:`~discord.AppCommandOptionType.number`
-        :attr:`~discord.AppCommandOptionType.integer`, or :attr:`~discord.AppCommandOptionType.string`.
+        Only valid if the :meth:`type` returns :attr:`~discord_real.AppCommandOptionType.number`
+        :attr:`~discord_real.AppCommandOptionType.integer`, or :attr:`~discord_real.AppCommandOptionType.string`.
 
         This must be a :obj:`property`.
 
@@ -274,8 +274,8 @@ class Transformer:
     def max_value(self) -> Optional[Union[int, float]]:
         """Optional[:class:`int`]: The maximum supported value for this parameter.
 
-        Only valid if the :meth:`type` returns :attr:`~discord.AppCommandOptionType.number`
-        :attr:`~discord.AppCommandOptionType.integer`, or :attr:`~discord.AppCommandOptionType.string`.
+        Only valid if the :meth:`type` returns :attr:`~discord_real.AppCommandOptionType.number`
+        :attr:`~discord_real.AppCommandOptionType.integer`, or :attr:`~discord_real.AppCommandOptionType.string`.
 
         This must be a :obj:`property`.
 
@@ -285,10 +285,10 @@ class Transformer:
 
     @property
     def choices(self) -> Optional[List[Choice[Union[int, float, str]]]]:
-        """Optional[List[:class:`~discord.app_commands.Choice`]]: A list of up to 25 choices that are allowed to this parameter.
+        """Optional[List[:class:`~discord_real.app_commands.Choice`]]: A list of up to 25 choices that are allowed to this parameter.
 
-        Only valid if the :meth:`type` returns :attr:`~discord.AppCommandOptionType.number`
-        :attr:`~discord.AppCommandOptionType.integer`, or :attr:`~discord.AppCommandOptionType.string`.
+        Only valid if the :meth:`type` returns :attr:`~discord_real.AppCommandOptionType.number`
+        :attr:`~discord_real.AppCommandOptionType.integer`, or :attr:`~discord_real.AppCommandOptionType.string`.
 
         This must be a :obj:`property`.
 
@@ -310,15 +310,15 @@ class Transformer:
         Transforms the converted option value into another value.
 
         The value passed into this transform function is the same as the
-        one in the :class:`conversion table <discord.app_commands.Namespace>`.
+        one in the :class:`conversion table <discord_real.app_commands.Namespace>`.
 
         Parameters
         -----------
-        interaction: :class:`~discord.Interaction`
+        interaction: :class:`~discord_real.Interaction`
             The interaction being handled.
         value: Any
             The value of the given argument after being resolved.
-            See the :class:`conversion table <discord.app_commands.Namespace>`
+            See the :class:`conversion table <discord_real.app_commands.Namespace>`
             for how certain option types correspond to certain values.
         """
         raise NotImplementedError('Derived classes need to implement this.')
@@ -332,20 +332,20 @@ class Transformer:
 
         .. note::
 
-            Autocomplete is only supported for options with a :meth:`~discord.app_commands.Transformer.type`
-            of :attr:`~discord.AppCommandOptionType.string`, :attr:`~discord.AppCommandOptionType.integer`,
-            or :attr:`~discord.AppCommandOptionType.number`.
+            Autocomplete is only supported for options with a :meth:`~discord_real.app_commands.Transformer.type`
+            of :attr:`~discord_real.AppCommandOptionType.string`, :attr:`~discord_real.AppCommandOptionType.integer`,
+            or :attr:`~discord_real.AppCommandOptionType.number`.
 
         Parameters
         -----------
-        interaction: :class:`~discord.Interaction`
+        interaction: :class:`~discord_real.Interaction`
             The autocomplete interaction being handled.
         value: Union[:class:`str`, :class:`int`, :class:`float`]
             The current value entered by the user.
 
         Returns
         --------
-        List[:class:`~discord.app_commands.Choice`]
+        List[:class:`~discord_real.app_commands.Choice`]
             A list of choices to be displayed to the user, a maximum of 25.
 
         """
@@ -566,7 +566,7 @@ else:
         .. code-block:: python3
 
             @app_commands.command()
-            async def range(interaction: discord.Interaction, value: app_commands.Range[int, 10, 12]):
+            async def range(interaction: discord_real.Interaction, value: app_commands.Range[int, 10, 12]):
                 await interaction.response.send_message(f'Your value is {value}', ephemeral=True)
         """
 

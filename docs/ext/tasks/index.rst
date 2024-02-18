@@ -1,6 +1,6 @@
 .. _discord_ext_tasks:
 
-``discord.ext.tasks`` -- asyncio.Task helpers
+``discord_real.ext.tasks`` -- asyncio.Task helpers
 ====================================================
 
 .. versionadded:: 1.1.0
@@ -11,16 +11,16 @@ One of the most common operations when making a bot is having a loop run in the 
 - What do I do if the internet goes out?
 - What is the maximum number of seconds I can sleep anyway?
 
-The goal of this discord.py extension is to abstract all these worries away from you.
+The goal of this discord_real.py extension is to abstract all these worries away from you.
 
 Recipes
 ---------
 
-A simple background task in a :class:`~discord.ext.commands.Cog`:
+A simple background task in a :class:`~discord_real.ext.commands.Cog`:
 
 .. code-block:: python3
 
-    from discord.ext import tasks, commands
+    from discord_real.ext import tasks, commands
 
     class MyCog(commands.Cog):
         def __init__(self):
@@ -40,7 +40,7 @@ Adding an exception to handle during reconnect:
 .. code-block:: python3
 
     import asyncpg
-    from discord.ext import tasks, commands
+    from discord_real.ext import tasks, commands
 
     class MyCog(commands.Cog):
         def __init__(self, bot):
@@ -62,7 +62,7 @@ Looping a certain amount of times before exiting:
 
 .. code-block:: python3
 
-    from discord.ext import tasks
+    from discord_real.ext import tasks
     import discord
 
     @tasks.loop(seconds=5.0, count=5)
@@ -73,7 +73,7 @@ Looping a certain amount of times before exiting:
     async def after_slow_count():
         print('done!')
 
-    class MyClient(discord.Client):
+    class MyClient(discord_real.Client):
         async def setup_hook(self):
             slow_count.start()
 
@@ -81,7 +81,7 @@ Waiting until the bot is ready before the loop starts:
 
 .. code-block:: python3
 
-    from discord.ext import tasks, commands
+    from discord_real.ext import tasks, commands
 
     class MyCog(commands.Cog):
         def __init__(self, bot):
@@ -106,7 +106,7 @@ Doing something during cancellation:
 
 .. code-block:: python3
 
-    from discord.ext import tasks, commands
+    from discord_real.ext import tasks, commands
     import asyncio
 
     class MyCog(commands.Cog):
@@ -140,7 +140,7 @@ Doing something at a specific time each day:
 .. code-block:: python3
 
     import datetime
-    from discord.ext import commands, tasks
+    from discord_real.ext import commands, tasks
 
     utc = datetime.timezone.utc
 
@@ -164,7 +164,7 @@ Doing something at multiple specific times each day:
 .. code-block:: python3
 
     import datetime
-    from discord.ext import commands, tasks
+    from discord_real.ext import commands, tasks
 
     utc = datetime.timezone.utc
 
@@ -192,9 +192,9 @@ Doing something at multiple specific times each day:
 API Reference
 ---------------
 
-.. attributetable:: discord.ext.tasks.Loop
+.. attributetable:: discord_real.ext.tasks.Loop
 
-.. autoclass:: discord.ext.tasks.Loop()
+.. autoclass:: discord_real.ext.tasks.Loop()
     :members:
     :special-members: __call__
     :exclude-members: after_loop, before_loop, error
@@ -208,5 +208,5 @@ API Reference
     .. automethod:: Loop.error()
         :decorator:
 
-.. autofunction:: discord.ext.tasks.loop
+.. autofunction:: discord_real.ext.tasks.loop
     :decorator:

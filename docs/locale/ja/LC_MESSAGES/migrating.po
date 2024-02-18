@@ -38,8 +38,8 @@ msgid "Removal of Support For User Accounts"
 msgstr "ユーザーアカウント（セルフボット）のサポートの削除"
 
 #: ../../migrating.rst:21
-msgid "Logging on with a user token is against the Discord `Terms of Service <https://support.discord.com/hc/en-us/articles/115002192352>`_ and as such all support for user-only endpoints has been removed."
-msgstr "ユーザートークンを用いてのログインはDiscordの `利用規約 <https://support.discord.com/hc/en-us/articles/115002192352>`_ に反しているため、ユーザーのみのエンドポイントに対するサポートはすべて削除されました。"
+msgid "Logging on with a user token is against the Discord `Terms of Service <https://support.discord_real.com/hc/en-us/articles/115002192352>`_ and as such all support for user-only endpoints has been removed."
+msgstr "ユーザートークンを用いてのログインはDiscordの `利用規約 <https://support.discord_real.com/hc/en-us/articles/115002192352>`_ に反しているため、ユーザーのみのエンドポイントに対するサポートはすべて削除されました。"
 
 #: ../../migrating.rst:24
 #: ../../migrating.rst:1165
@@ -219,8 +219,8 @@ msgid "Python 3.7 introduced a new helper function :func:`asyncio.run` which aut
 msgstr "Python 3.7で、自動的に非同期のイベントループを作成し破壊する :func:`asyncio.run` ヘルパー関数が導入されました。"
 
 #: ../../migrating.rst:75
-msgid "In order to support this, the way discord.py handles the :mod:`asyncio` event loop has changed."
-msgstr "これをサポートするために、discord.pyの :mod:`asyncio` のイベントループの扱い方が変更されました。"
+msgid "In order to support this, the way discord_real.py handles the :mod:`asyncio` event loop has changed."
+msgstr "これをサポートするために、discord_real.pyの :mod:`asyncio` のイベントループの扱い方が変更されました。"
 
 #: ../../migrating.rst:77
 msgid "This allows you to rather than using :meth:`Client.run` create your own asynchronous loop to setup other asynchronous code as needed."
@@ -275,12 +275,12 @@ msgid ":class:`AutoShardedClient`"
 msgstr ":class:`AutoShardedClient`"
 
 #: ../../migrating.rst:137
-msgid ":class:`~discord.ext.commands.Bot`"
-msgstr ":class:`~discord.ext.commands.Bot`"
+msgid ":class:`~discord_real.ext.commands.Bot`"
+msgstr ":class:`~discord_real.ext.commands.Bot`"
 
 #: ../../migrating.rst:138
-msgid ":class:`~discord.ext.commands.AutoShardedBot`"
-msgstr ":class:`~discord.ext.commands.AutoShardedBot`"
+msgid ":class:`~discord_real.ext.commands.AutoShardedBot`"
+msgstr ":class:`~discord_real.ext.commands.AutoShardedBot`"
 
 #: ../../migrating.rst:142
 msgid "Abstract Base Classes Changes"
@@ -1758,12 +1758,12 @@ msgid ":meth:`Client.on_error`"
 msgstr ":meth:`Client.on_error`"
 
 #: ../../migrating.rst:967
-msgid ":meth:`discord.ext.tasks.Loop.error`"
-msgstr ":meth:`discord.ext.tasks.Loop.error`"
+msgid ":meth:`discord_real.ext.tasks.Loop.error`"
+msgstr ":meth:`discord_real.ext.tasks.Loop.error`"
 
 #: ../../migrating.rst:968
-msgid ":meth:`discord.ext.commands.Bot.on_command_error`"
-msgstr ":meth:`discord.ext.commands.Bot.on_command_error`"
+msgid ":meth:`discord_real.ext.commands.Bot.on_command_error`"
+msgstr ":meth:`discord_real.ext.commands.Bot.on_command_error`"
 
 #: ../../migrating.rst:969
 msgid ":meth:`VoiceClient.play`"
@@ -1798,8 +1798,8 @@ msgid "Removal of ``StoreChannel``"
 msgstr "``StoreChannel`` の削除"
 
 #: ../../migrating.rst:986
-msgid "Discord's API has removed store channels as of `March 10th, 2022 <https://support-dev.discord.com/hc/en-us/articles/6309018858647>`_. Therefore, the library has removed support for it as well."
-msgstr "DiscordのAPIは、 `2022年3月10日 <https://support-dev.discord.com/hc/ja/articles/6309018858647>`_ をもって、ストアチャンネルを削除しました。そのため、ライブラリもそれに対するサポートを削除しました。"
+msgid "Discord's API has removed store channels as of `March 10th, 2022 <https://support-dev.discord_real.com/hc/en-us/articles/6309018858647>`_. Therefore, the library has removed support for it as well."
+msgstr "DiscordのAPIは、 `2022年3月10日 <https://support-dev.discord_real.com/hc/ja/articles/6309018858647>`_ をもって、ストアチャンネルを削除しました。そのため、ライブラリもそれに対するサポートを削除しました。"
 
 #: ../../migrating.rst:988
 msgid "This removes the following:"

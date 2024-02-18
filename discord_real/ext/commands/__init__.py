@@ -1,5 +1,5 @@
 """
-discord.ext.commands
+discord_real.ext.commands
 ~~~~~~~~~~~~~~~~~~~~~
 
 An extension module to facilitate creation of bot commands.

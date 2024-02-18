@@ -92,65 +92,65 @@ TextInput
 AppCommand
 ~~~~~~~~~~~
 
-.. attributetable:: discord.app_commands.AppCommand
+.. attributetable:: discord_real.app_commands.AppCommand
 
-.. autoclass:: discord.app_commands.AppCommand()
+.. autoclass:: discord_real.app_commands.AppCommand()
     :members:
 
 AppCommandGroup
 ~~~~~~~~~~~~~~~~
 
-.. attributetable:: discord.app_commands.AppCommandGroup
+.. attributetable:: discord_real.app_commands.AppCommandGroup
 
-.. autoclass:: discord.app_commands.AppCommandGroup()
+.. autoclass:: discord_real.app_commands.AppCommandGroup()
     :members:
 
 AppCommandChannel
 ~~~~~~~~~~~~~~~~~~
 
-.. attributetable:: discord.app_commands.AppCommandChannel
+.. attributetable:: discord_real.app_commands.AppCommandChannel
 
-.. autoclass:: discord.app_commands.AppCommandChannel()
+.. autoclass:: discord_real.app_commands.AppCommandChannel()
     :members:
 
 AppCommandThread
 ~~~~~~~~~~~~~~~~~
 
-.. attributetable:: discord.app_commands.AppCommandThread
+.. attributetable:: discord_real.app_commands.AppCommandThread
 
-.. autoclass:: discord.app_commands.AppCommandThread()
+.. autoclass:: discord_real.app_commands.AppCommandThread()
     :members:
 
 AppCommandPermissions
 ~~~~~~~~~~~~~~~~~~~~~~
 
-.. attributetable:: discord.app_commands.AppCommandPermissions
+.. attributetable:: discord_real.app_commands.AppCommandPermissions
 
-.. autoclass:: discord.app_commands.AppCommandPermissions()
+.. autoclass:: discord_real.app_commands.AppCommandPermissions()
     :members:
 
 GuildAppCommandPermissions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. attributetable:: discord.app_commands.GuildAppCommandPermissions
+.. attributetable:: discord_real.app_commands.GuildAppCommandPermissions
 
-.. autoclass:: discord.app_commands.GuildAppCommandPermissions()
+.. autoclass:: discord_real.app_commands.GuildAppCommandPermissions()
     :members:
 
 Argument
 ~~~~~~~~~~
 
-.. attributetable:: discord.app_commands.Argument
+.. attributetable:: discord_real.app_commands.Argument
 
-.. autoclass:: discord.app_commands.Argument()
+.. autoclass:: discord_real.app_commands.Argument()
     :members:
 
 AllChannels
 ~~~~~~~~~~~~
 
-.. attributetable:: discord.app_commands.AllChannels
+.. attributetable:: discord_real.app_commands.AllChannels
 
-.. autoclass:: discord.app_commands.AllChannels()
+.. autoclass:: discord_real.app_commands.AllChannels()
     :members:
 
 Data Classes
@@ -177,9 +177,9 @@ SelectDefaultValue
 Choice
 ~~~~~~~
 
-.. attributetable:: discord.app_commands.Choice
+.. attributetable:: discord_real.app_commands.Choice
 
-.. autoclass:: discord.app_commands.Choice
+.. autoclass:: discord_real.app_commands.Choice
     :members:
 
 
@@ -423,53 +423,53 @@ Enumerations
 Bot UI Kit
 -------------
 
-The library has helpers to aid in creating component-based UIs. These are all in the ``discord.ui`` package.
+The library has helpers to aid in creating component-based UIs. These are all in the ``discord_real.ui`` package.
 
 
 View
 ~~~~~~~
 
-.. attributetable:: discord.ui.View
+.. attributetable:: discord_real.ui.View
 
-.. autoclass:: discord.ui.View
+.. autoclass:: discord_real.ui.View
     :members:
 
 Modal
 ~~~~~~
 
-.. attributetable:: discord.ui.Modal
+.. attributetable:: discord_real.ui.Modal
 
-.. autoclass:: discord.ui.Modal
+.. autoclass:: discord_real.ui.Modal
     :members:
     :inherited-members:
 
 Item
 ~~~~~~~
 
-.. attributetable:: discord.ui.Item
+.. attributetable:: discord_real.ui.Item
 
-.. autoclass:: discord.ui.Item
+.. autoclass:: discord_real.ui.Item
     :members:
 
 DynamicItem
 ~~~~~~~~~~~~
 
-.. attributetable:: discord.ui.DynamicItem
+.. attributetable:: discord_real.ui.DynamicItem
 
-.. autoclass:: discord.ui.DynamicItem
+.. autoclass:: discord_real.ui.DynamicItem
     :members:
     :inherited-members:
 
 Button
 ~~~~~~~
 
-.. attributetable:: discord.ui.Button
+.. attributetable:: discord_real.ui.Button
 
-.. autoclass:: discord.ui.Button
+.. autoclass:: discord_real.ui.Button
     :members:
     :inherited-members:
 
-.. autofunction:: discord.ui.button
+.. autofunction:: discord_real.ui.button
     :decorator:
 
 Select Menus
@@ -480,60 +480,60 @@ The library provides classes to help create the different types of select menus.
 Select
 +++++++
 
-.. attributetable:: discord.ui.Select
+.. attributetable:: discord_real.ui.Select
 
-.. autoclass:: discord.ui.Select
+.. autoclass:: discord_real.ui.Select
     :members:
     :inherited-members:
 
 ChannelSelect
 ++++++++++++++
 
-.. attributetable:: discord.ui.ChannelSelect
+.. attributetable:: discord_real.ui.ChannelSelect
 
-.. autoclass:: discord.ui.ChannelSelect
+.. autoclass:: discord_real.ui.ChannelSelect
     :members:
     :inherited-members:
 
 RoleSelect
 ++++++++++
 
-.. attributetable:: discord.ui.RoleSelect
+.. attributetable:: discord_real.ui.RoleSelect
 
-.. autoclass:: discord.ui.RoleSelect
+.. autoclass:: discord_real.ui.RoleSelect
     :members:
     :inherited-members:
 
 MentionableSelect
 ++++++++++++++++++
 
-.. attributetable:: discord.ui.MentionableSelect
+.. attributetable:: discord_real.ui.MentionableSelect
 
-.. autoclass:: discord.ui.MentionableSelect
+.. autoclass:: discord_real.ui.MentionableSelect
     :members:
     :inherited-members:
 
 UserSelect
 +++++++++++
 
-.. attributetable:: discord.ui.UserSelect
+.. attributetable:: discord_real.ui.UserSelect
 
-.. autoclass:: discord.ui.UserSelect
+.. autoclass:: discord_real.ui.UserSelect
     :members:
     :inherited-members:
 
 select
 +++++++
-.. autofunction:: discord.ui.select
+.. autofunction:: discord_real.ui.select
     :decorator:
 
 
 TextInput
 ~~~~~~~~~~~
 
-.. attributetable:: discord.ui.TextInput
+.. attributetable:: discord_real.ui.TextInput
 
-.. autoclass:: discord.ui.TextInput
+.. autoclass:: discord_real.ui.TextInput
     :members:
     :inherited-members:
 
@@ -542,14 +542,14 @@ TextInput
 Application Commands
 ----------------------
 
-The library has helpers to aid in creation of application commands. These are all in the ``discord.app_commands`` package.
+The library has helpers to aid in creation of application commands. These are all in the ``discord_real.app_commands`` package.
 
 CommandTree
 ~~~~~~~~~~~~
 
-.. attributetable:: discord.app_commands.CommandTree
+.. attributetable:: discord_real.app_commands.CommandTree
 
-.. autoclass:: discord.app_commands.CommandTree
+.. autoclass:: discord_real.app_commands.CommandTree
     :members:
     :exclude-members: error, command, context_menu
 
@@ -568,9 +568,9 @@ Commands
 Command
 ++++++++
 
-.. attributetable:: discord.app_commands.Command
+.. attributetable:: discord_real.app_commands.Command
 
-.. autoclass:: discord.app_commands.Command
+.. autoclass:: discord_real.app_commands.Command
     :members:
     :exclude-members: error, autocomplete
 
@@ -583,17 +583,17 @@ Command
 Parameter
 ++++++++++
 
-.. attributetable:: discord.app_commands.Parameter
+.. attributetable:: discord_real.app_commands.Parameter
 
-.. autoclass:: discord.app_commands.Parameter()
+.. autoclass:: discord_real.app_commands.Parameter()
     :members:
 
 ContextMenu
 ++++++++++++
 
-.. attributetable:: discord.app_commands.ContextMenu
+.. attributetable:: discord_real.app_commands.ContextMenu
 
-.. autoclass:: discord.app_commands.ContextMenu
+.. autoclass:: discord_real.app_commands.ContextMenu
     :members:
     :exclude-members: error
 
@@ -603,9 +603,9 @@ ContextMenu
 Group
 ++++++
 
-.. attributetable:: discord.app_commands.Group
+.. attributetable:: discord_real.app_commands.Group
 
-.. autoclass:: discord.app_commands.Group
+.. autoclass:: discord_real.app_commands.Group
     :members:
     :exclude-members: error, command
 
@@ -618,72 +618,72 @@ Group
 Decorators
 ~~~~~~~~~~~
 
-.. autofunction:: discord.app_commands.command
+.. autofunction:: discord_real.app_commands.command
     :decorator:
 
-.. autofunction:: discord.app_commands.context_menu
+.. autofunction:: discord_real.app_commands.context_menu
     :decorator:
 
-.. autofunction:: discord.app_commands.describe
+.. autofunction:: discord_real.app_commands.describe
     :decorator:
 
-.. autofunction:: discord.app_commands.rename
+.. autofunction:: discord_real.app_commands.rename
     :decorator:
 
-.. autofunction:: discord.app_commands.choices
+.. autofunction:: discord_real.app_commands.choices
     :decorator:
 
-.. autofunction:: discord.app_commands.autocomplete
+.. autofunction:: discord_real.app_commands.autocomplete
     :decorator:
 
-.. autofunction:: discord.app_commands.guilds
+.. autofunction:: discord_real.app_commands.guilds
     :decorator:
 
-.. autofunction:: discord.app_commands.guild_only
+.. autofunction:: discord_real.app_commands.guild_only
     :decorator:
 
-.. autofunction:: discord.app_commands.default_permissions
+.. autofunction:: discord_real.app_commands.default_permissions
     :decorator:
 
 Checks
 ~~~~~~~
 
-.. autofunction:: discord.app_commands.check
+.. autofunction:: discord_real.app_commands.check
     :decorator:
 
-.. autofunction:: discord.app_commands.checks.has_role
+.. autofunction:: discord_real.app_commands.checks.has_role
     :decorator:
 
-.. autofunction:: discord.app_commands.checks.has_any_role
+.. autofunction:: discord_real.app_commands.checks.has_any_role
     :decorator:
 
-.. autofunction:: discord.app_commands.checks.has_permissions
+.. autofunction:: discord_real.app_commands.checks.has_permissions
     :decorator:
 
-.. autofunction:: discord.app_commands.checks.bot_has_permissions
+.. autofunction:: discord_real.app_commands.checks.bot_has_permissions
     :decorator:
 
-.. autofunction:: discord.app_commands.checks.cooldown
+.. autofunction:: discord_real.app_commands.checks.cooldown
     :decorator:
 
-.. autofunction:: discord.app_commands.checks.dynamic_cooldown
+.. autofunction:: discord_real.app_commands.checks.dynamic_cooldown
     :decorator:
 
 Cooldown
 ~~~~~~~~~
 
-.. attributetable:: discord.app_commands.Cooldown
+.. attributetable:: discord_real.app_commands.Cooldown
 
-.. autoclass:: discord.app_commands.Cooldown
+.. autoclass:: discord_real.app_commands.Cooldown
     :members:
 
 
 Namespace
 ~~~~~~~~~~
 
-.. attributetable:: discord.app_commands.Namespace
+.. attributetable:: discord_real.app_commands.Namespace
 
-.. autoclass:: discord.app_commands.Namespace()
+.. autoclass:: discord_real.app_commands.Namespace()
     :members:
 
 Transformers
@@ -692,25 +692,25 @@ Transformers
 Transformer
 ++++++++++++
 
-.. attributetable:: discord.app_commands.Transformer
+.. attributetable:: discord_real.app_commands.Transformer
 
-.. autoclass:: discord.app_commands.Transformer
+.. autoclass:: discord_real.app_commands.Transformer
     :members:
 
 Transform
 ++++++++++
 
-.. attributetable:: discord.app_commands.Transform
+.. attributetable:: discord_real.app_commands.Transform
 
-.. autoclass:: discord.app_commands.Transform
+.. autoclass:: discord_real.app_commands.Transform
     :members:
 
 Range
 ++++++
 
-.. attributetable:: discord.app_commands.Range
+.. attributetable:: discord_real.app_commands.Range
 
-.. autoclass:: discord.app_commands.Range
+.. autoclass:: discord_real.app_commands.Range
     :members:
 
 Translations
@@ -719,32 +719,32 @@ Translations
 Translator
 +++++++++++
 
-.. attributetable:: discord.app_commands.Translator
+.. attributetable:: discord_real.app_commands.Translator
 
-.. autoclass:: discord.app_commands.Translator
+.. autoclass:: discord_real.app_commands.Translator
     :members:
 
 locale_str
 +++++++++++
 
-.. attributetable:: discord.app_commands.locale_str
+.. attributetable:: discord_real.app_commands.locale_str
 
-.. autoclass:: discord.app_commands.locale_str
+.. autoclass:: discord_real.app_commands.locale_str
     :members:
 
 TranslationContext
 +++++++++++++++++++
 
-.. attributetable:: discord.app_commands.TranslationContext
+.. attributetable:: discord_real.app_commands.TranslationContext
 
-.. autoclass:: discord.app_commands.TranslationContext
+.. autoclass:: discord_real.app_commands.TranslationContext
     :members:
 
 TranslationContextLocation
 +++++++++++++++++++++++++++
 
 .. class:: TranslationContextLocation
-    :module: discord.app_commands
+    :module: discord_real.app_commands
 
     An enum representing the location context that the translation occurs in when requested for translation.
 
@@ -780,55 +780,55 @@ TranslationContextLocation
 Exceptions
 ~~~~~~~~~~~
 
-.. autoexception:: discord.app_commands.AppCommandError
+.. autoexception:: discord_real.app_commands.AppCommandError
     :members:
 
-.. autoexception:: discord.app_commands.CommandInvokeError
+.. autoexception:: discord_real.app_commands.CommandInvokeError
     :members:
 
-.. autoexception:: discord.app_commands.TransformerError
+.. autoexception:: discord_real.app_commands.TransformerError
     :members:
 
-.. autoexception:: discord.app_commands.TranslationError
+.. autoexception:: discord_real.app_commands.TranslationError
     :members:
 
-.. autoexception:: discord.app_commands.CheckFailure
+.. autoexception:: discord_real.app_commands.CheckFailure
     :members:
 
-.. autoexception:: discord.app_commands.NoPrivateMessage
+.. autoexception:: discord_real.app_commands.NoPrivateMessage
     :members:
 
-.. autoexception:: discord.app_commands.MissingRole
+.. autoexception:: discord_real.app_commands.MissingRole
     :members:
 
-.. autoexception:: discord.app_commands.MissingAnyRole
+.. autoexception:: discord_real.app_commands.MissingAnyRole
     :members:
 
-.. autoexception:: discord.app_commands.MissingPermissions
+.. autoexception:: discord_real.app_commands.MissingPermissions
     :members:
 
-.. autoexception:: discord.app_commands.BotMissingPermissions
+.. autoexception:: discord_real.app_commands.BotMissingPermissions
     :members:
 
-.. autoexception:: discord.app_commands.CommandOnCooldown
+.. autoexception:: discord_real.app_commands.CommandOnCooldown
     :members:
 
-.. autoexception:: discord.app_commands.CommandLimitReached
+.. autoexception:: discord_real.app_commands.CommandLimitReached
     :members:
 
-.. autoexception:: discord.app_commands.CommandAlreadyRegistered
+.. autoexception:: discord_real.app_commands.CommandAlreadyRegistered
     :members:
 
-.. autoexception:: discord.app_commands.CommandSignatureMismatch
+.. autoexception:: discord_real.app_commands.CommandSignatureMismatch
     :members:
 
-.. autoexception:: discord.app_commands.CommandNotFound
+.. autoexception:: discord_real.app_commands.CommandNotFound
     :members:
 
-.. autoexception:: discord.app_commands.MissingApplicationID
+.. autoexception:: discord_real.app_commands.MissingApplicationID
     :members:
 
-.. autoexception:: discord.app_commands.CommandSyncFailure
+.. autoexception:: discord_real.app_commands.CommandSyncFailure
     :members:
 
 Exception Hierarchy
@@ -836,23 +836,23 @@ Exception Hierarchy
 
 .. exception_hierarchy::
 
-    - :exc:`~discord.DiscordException`
-        - :exc:`~discord.app_commands.AppCommandError`
-            - :exc:`~discord.app_commands.CommandInvokeError`
-            - :exc:`~discord.app_commands.TransformerError`
-            - :exc:`~discord.app_commands.TranslationError`
-            - :exc:`~discord.app_commands.CheckFailure`
-                - :exc:`~discord.app_commands.NoPrivateMessage`
-                - :exc:`~discord.app_commands.MissingRole`
-                - :exc:`~discord.app_commands.MissingAnyRole`
-                - :exc:`~discord.app_commands.MissingPermissions`
-                - :exc:`~discord.app_commands.BotMissingPermissions`
-                - :exc:`~discord.app_commands.CommandOnCooldown`
-            - :exc:`~discord.app_commands.CommandLimitReached`
-            - :exc:`~discord.app_commands.CommandAlreadyRegistered`
-            - :exc:`~discord.app_commands.CommandSignatureMismatch`
-            - :exc:`~discord.app_commands.CommandNotFound`
-            - :exc:`~discord.app_commands.MissingApplicationID`
-            - :exc:`~discord.app_commands.CommandSyncFailure`
-        - :exc:`~discord.HTTPException`
-            - :exc:`~discord.app_commands.CommandSyncFailure`
+    - :exc:`~discord_real.DiscordException`
+        - :exc:`~discord_real.app_commands.AppCommandError`
+            - :exc:`~discord_real.app_commands.CommandInvokeError`
+            - :exc:`~discord_real.app_commands.TransformerError`
+            - :exc:`~discord_real.app_commands.TranslationError`
+            - :exc:`~discord_real.app_commands.CheckFailure`
+                - :exc:`~discord_real.app_commands.NoPrivateMessage`
+                - :exc:`~discord_real.app_commands.MissingRole`
+                - :exc:`~discord_real.app_commands.MissingAnyRole`
+                - :exc:`~discord_real.app_commands.MissingPermissions`
+                - :exc:`~discord_real.app_commands.BotMissingPermissions`
+                - :exc:`~discord_real.app_commands.CommandOnCooldown`
+            - :exc:`~discord_real.app_commands.CommandLimitReached`
+            - :exc:`~discord_real.app_commands.CommandAlreadyRegistered`
+            - :exc:`~discord_real.app_commands.CommandSignatureMismatch`
+            - :exc:`~discord_real.app_commands.CommandNotFound`
+            - :exc:`~discord_real.app_commands.MissingApplicationID`
+            - :exc:`~discord_real.app_commands.CommandSyncFailure`
+        - :exc:`~discord_real.HTTPException`
+            - :exc:`~discord_real.app_commands.CommandSyncFailure`

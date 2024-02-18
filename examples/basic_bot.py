@@ -1,15 +1,15 @@
 # This example requires the 'members' and 'message_content' privileged intents to function.
 
 import discord
-from discord.ext import commands
+from discord_real.ext import commands
 import random
 
-description = '''An example bot to showcase the discord.ext.commands extension
+description = '''An example bot to showcase the discord_real.ext.commands extension
 module.
 
 There are a number of utility commands being showcased here.'''
 
-intents = discord.Intents.default()
+intents = discord_real.Intents.default()
 intents.members = True
 intents.message_content = True
 
@@ -55,9 +55,9 @@ async def repeat(ctx, times: int, content='repeating...'):
 
 
 @bot.command()
-async def joined(ctx, member: discord.Member):
+async def joined(ctx, member: discord_real.Member):
     """Says when a member joined."""
-    await ctx.send(f'{member.name} joined {discord.utils.format_dt(member.joined_at)}')
+    await ctx.send(f'{member.name} joined {discord_real.utils.format_dt(member.joined_at)}')
 
 
 @bot.group()

@@ -764,7 +764,7 @@ class WebhookMessage(Message):
     This allows you to edit or delete a message sent by your
     webhook.
 
-    This inherits from :class:`discord.Message` with changes to
+    This inherits from :class:`discord_real.Message` with changes to
     :meth:`edit` and :meth:`delete` to work.
 
     .. versionadded:: 1.6
@@ -816,7 +816,7 @@ class WebhookMessage(Message):
         allowed_mentions: :class:`AllowedMentions`
             Controls the mentions being processed in this message.
             See :meth:`.abc.Messageable.send` for more information.
-        view: Optional[:class:`~discord.ui.View`]
+        view: Optional[:class:`~discord_real.ui.View`]
             The updated view to update this message with. If ``None`` is passed then
             the view is removed.
 
@@ -1160,7 +1160,7 @@ class Webhook(BaseWebhook):
     @property
     def url(self) -> str:
         """:class:`str` : Returns the webhook's url."""
-        return f'https://discord.com/api/webhooks/{self.id}/{self.token}'
+        return f'https://discord_real.com/api/webhooks/{self.id}/{self.token}'
 
     @classmethod
     def partial(
@@ -1700,20 +1700,20 @@ class Webhook(BaseWebhook):
             Controls the mentions being processed in this message.
 
             .. versionadded:: 1.4
-        view: :class:`discord.ui.View`
+        view: :class:`discord_real.ui.View`
             The view to send with the message. You can only send a view
             if this webhook is not partial and has state attached. A
             webhook has state attached if the webhook is managed by the
             library.
 
             .. versionadded:: 2.0
-        thread: :class:`~discord.abc.Snowflake`
+        thread: :class:`~discord_real.abc.Snowflake`
             The thread to send this webhook to.
 
             .. versionadded:: 2.0
         thread_name: :class:`str`
             The thread name to create with this webhook if the webhook belongs
-            to a :class:`~discord.ForumChannel`. Note that this is mutually
+            to a :class:`~discord_real.ForumChannel`. Note that this is mutually
             exclusive with the ``thread`` parameter, as this will create a
             new thread with the given name.
 
@@ -1728,7 +1728,7 @@ class Webhook(BaseWebhook):
 
             .. versionadded:: 2.2
         applied_tags: List[:class:`ForumTag`]
-            Tags to apply to the thread if the webhook belongs to a :class:`~discord.ForumChannel`.
+            Tags to apply to the thread if the webhook belongs to a :class:`~discord_real.ForumChannel`.
 
             .. versionadded:: 2.4
 
@@ -1841,7 +1841,7 @@ class Webhook(BaseWebhook):
     async def fetch_message(self, id: int, /, *, thread: Snowflake = MISSING) -> WebhookMessage:
         """|coro|
 
-        Retrieves a single :class:`~discord.WebhookMessage` owned by this webhook.
+        Retrieves a single :class:`~discord_real.WebhookMessage` owned by this webhook.
 
         .. versionadded:: 2.0
 
@@ -1849,23 +1849,23 @@ class Webhook(BaseWebhook):
         ------------
         id: :class:`int`
             The message ID to look for.
-        thread: :class:`~discord.abc.Snowflake`
+        thread: :class:`~discord_real.abc.Snowflake`
             The thread to look in.
 
         Raises
         --------
-        ~discord.NotFound
+        ~discord_real.NotFound
             The specified message was not found.
-        ~discord.Forbidden
+        ~discord_real.Forbidden
             You do not have the permissions required to get a message.
-        ~discord.HTTPException
+        ~discord_real.HTTPException
             Retrieving the message failed.
         ValueError
             There was no token associated with this webhook.
 
         Returns
         --------
-        :class:`~discord.WebhookMessage`
+        :class:`~discord_real.WebhookMessage`
             The message asked for.
         """
 
@@ -1935,13 +1935,13 @@ class Webhook(BaseWebhook):
         allowed_mentions: :class:`AllowedMentions`
             Controls the mentions being processed in this message.
             See :meth:`.abc.Messageable.send` for more information.
-        view: Optional[:class:`~discord.ui.View`]
+        view: Optional[:class:`~discord_real.ui.View`]
             The updated view to update this message with. If ``None`` is passed then
             the view is removed. The webhook must have state attached, similar to
             :meth:`send`.
 
             .. versionadded:: 2.0
-        thread: :class:`~discord.abc.Snowflake`
+        thread: :class:`~discord_real.abc.Snowflake`
             The thread the webhook message belongs to.
 
             .. versionadded:: 2.0
@@ -2029,7 +2029,7 @@ class Webhook(BaseWebhook):
         ------------
         message_id: :class:`int`
             The message ID to delete.
-        thread: :class:`~discord.abc.Snowflake`
+        thread: :class:`~discord_real.abc.Snowflake`
             The thread the webhook message belongs to.
 
             .. versionadded:: 2.0

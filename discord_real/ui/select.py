@@ -190,11 +190,11 @@ class BaseSelect(Item[V]):
 
     The following implement this class:
 
-    - :class:`~discord.ui.Select`
-    - :class:`~discord.ui.ChannelSelect`
-    - :class:`~discord.ui.RoleSelect`
-    - :class:`~discord.ui.MentionableSelect`
-    - :class:`~discord.ui.UserSelect`
+    - :class:`~discord_real.ui.Select`
+    - :class:`~discord_real.ui.ChannelSelect`
+    - :class:`~discord_real.ui.RoleSelect`
+    - :class:`~discord_real.ui.MentionableSelect`
+    - :class:`~discord_real.ui.UserSelect`
 
     .. versionadded:: 2.1
 
@@ -376,7 +376,7 @@ class Select(BaseSelect[V]):
     max_values: :class:`int`
         The maximum number of items that must be chosen for this select menu.
         Defaults to 1 and must be between 1 and 25.
-    options: List[:class:`discord.SelectOption`]
+    options: List[:class:`discord_real.SelectOption`]
         A list of options that can be selected in this menu.
         Can only contain up to 25 items.
     disabled: :class:`bool`
@@ -425,7 +425,7 @@ class Select(BaseSelect[V]):
 
     @property
     def options(self) -> List[SelectOption]:
-        """List[:class:`discord.SelectOption`]: A list of options that can be selected in this menu."""
+        """List[:class:`discord_real.SelectOption`]: A list of options that can be selected in this menu."""
         return self._underlying.options
 
     @options.setter
@@ -448,7 +448,7 @@ class Select(BaseSelect[V]):
     ) -> None:
         """Adds an option to the select menu.
 
-        To append a pre-existing :class:`discord.SelectOption` use the
+        To append a pre-existing :class:`discord_real.SelectOption` use the
         :meth:`append_option` method instead.
 
         Parameters
@@ -490,7 +490,7 @@ class Select(BaseSelect[V]):
 
         Parameters
         -----------
-        option: :class:`discord.SelectOption`
+        option: :class:`discord_real.SelectOption`
             The option to append to the select menu.
 
         Raises
@@ -510,7 +510,7 @@ class UserSelect(BaseSelect[V]):
 
     If this is sent a private message, it will only allow the user to select the client
     or themselves. Every selected option in a private message will resolve to
-    a :class:`discord.User`.
+    a :class:`discord_real.User`.
 
     .. versionadded:: 2.1
 
@@ -531,7 +531,7 @@ class UserSelect(BaseSelect[V]):
         Defaults to 1 and must be between 1 and 25.
     disabled: :class:`bool`
         Whether the select is disabled or not.
-    default_values: Sequence[:class:`~discord.abc.Snowflake`]
+    default_values: Sequence[:class:`~discord_real.abc.Snowflake`]
         A list of objects representing the users that should be selected by default.
         Number of items must be in range of ``min_values`` and ``max_values``.
 
@@ -575,20 +575,20 @@ class UserSelect(BaseSelect[V]):
 
     @property
     def values(self) -> List[Union[Member, User]]:
-        """List[Union[:class:`discord.Member`, :class:`discord.User`]]: A list of members
+        """List[Union[:class:`discord_real.Member`, :class:`discord_real.User`]]: A list of members
         and users that have been selected by the user.
 
         If this is sent a private message, it will only allow
         the user to select the client or themselves. Every selected option in a private
-        message will resolve to a :class:`discord.User`.
+        message will resolve to a :class:`discord_real.User`.
 
-        If invoked in a guild, the values will always resolve to :class:`discord.Member`.
+        If invoked in a guild, the values will always resolve to :class:`discord_real.Member`.
         """
         return super().values  # type: ignore
 
     @property
     def default_values(self) -> List[SelectDefaultValue]:
-        """List[:class:`discord.SelectDefaultValue`]: A list of default values for the select menu.
+        """List[:class:`discord_real.SelectDefaultValue`]: A list of default values for the select menu.
 
         .. versionadded:: 2.4
         """
@@ -623,7 +623,7 @@ class RoleSelect(BaseSelect[V]):
         Defaults to 1 and must be between 1 and 25.
     disabled: :class:`bool`
         Whether the select is disabled or not.
-    default_values: Sequence[:class:`~discord.abc.Snowflake`]
+    default_values: Sequence[:class:`~discord_real.abc.Snowflake`]
         A list of objects representing the roles that should be selected by default.
         Number of items must be in range of ``min_values`` and ``max_values``.
 
@@ -667,12 +667,12 @@ class RoleSelect(BaseSelect[V]):
 
     @property
     def values(self) -> List[Role]:
-        """List[:class:`discord.Role`]: A list of roles that have been selected by the user."""
+        """List[:class:`discord_real.Role`]: A list of roles that have been selected by the user."""
         return super().values  # type: ignore
 
     @property
     def default_values(self) -> List[SelectDefaultValue]:
-        """List[:class:`discord.SelectDefaultValue`]: A list of default values for the select menu.
+        """List[:class:`discord_real.SelectDefaultValue`]: A list of default values for the select menu.
 
         .. versionadded:: 2.4
         """
@@ -688,7 +688,7 @@ class MentionableSelect(BaseSelect[V]):
 
     If this is sent in a private message, it will only allow the user to select
     the client or themselves. Every selected option in a private message
-    will resolve to a :class:`discord.User`. It will not give the user any roles
+    will resolve to a :class:`discord_real.User`. It will not give the user any roles
     to select.
 
     .. versionadded:: 2.1
@@ -710,7 +710,7 @@ class MentionableSelect(BaseSelect[V]):
         Defaults to 1 and must be between 1 and 25.
     disabled: :class:`bool`
         Whether the select is disabled or not.
-    default_values: Sequence[:class:`~discord.abc.Snowflake`]
+    default_values: Sequence[:class:`~discord_real.abc.Snowflake`]
         A list of objects representing the users/roles that should be selected by default.
         if :class:`.Object` is passed, then the type must be specified in the constructor.
         Number of items must be in range of ``min_values`` and ``max_values``.
@@ -755,20 +755,20 @@ class MentionableSelect(BaseSelect[V]):
 
     @property
     def values(self) -> List[Union[Member, User, Role]]:
-        """List[Union[:class:`discord.Role`, :class:`discord.Member`, :class:`discord.User`]]: A list of roles, members,
+        """List[Union[:class:`discord_real.Role`, :class:`discord_real.Member`, :class:`discord_real.User`]]: A list of roles, members,
         and users that have been selected by the user.
 
         If this is sent a private message, it will only allow
         the user to select the client or themselves. Every selected option in a private
-        message will resolve to a :class:`discord.User`.
+        message will resolve to a :class:`discord_real.User`.
 
-        If invoked in a guild, the values will always resolve to :class:`discord.Member`.
+        If invoked in a guild, the values will always resolve to :class:`discord_real.Member`.
         """
         return super().values  # type: ignore
 
     @property
     def default_values(self) -> List[SelectDefaultValue]:
-        """List[:class:`discord.SelectDefaultValue`]: A list of default values for the select menu.
+        """List[:class:`discord_real.SelectDefaultValue`]: A list of default values for the select menu.
 
         .. versionadded:: 2.4
         """
@@ -792,7 +792,7 @@ class ChannelSelect(BaseSelect[V]):
         The ID of the select menu that gets received during an interaction.
         If not given then one is generated for you.
         Can only be up to 100 characters.
-    channel_types: List[:class:`~discord.ChannelType`]
+    channel_types: List[:class:`~discord_real.ChannelType`]
         The types of channels to show in the select menu. Defaults to all channels.
     placeholder: Optional[:class:`str`]
         The placeholder text that is shown if nothing is selected, if any.
@@ -805,7 +805,7 @@ class ChannelSelect(BaseSelect[V]):
         Defaults to 1 and must be between 1 and 25.
     disabled: :class:`bool`
         Whether the select is disabled or not.
-    default_values: Sequence[:class:`~discord.abc.Snowflake`]
+    default_values: Sequence[:class:`~discord_real.abc.Snowflake`]
         A list of objects representing the channels that should be selected by default.
         Number of items must be in range of ``min_values`` and ``max_values``.
 
@@ -854,7 +854,7 @@ class ChannelSelect(BaseSelect[V]):
 
     @property
     def channel_types(self) -> List[ChannelType]:
-        """List[:class:`~discord.ChannelType`]: A list of channel types that can be selected."""
+        """List[:class:`~discord_real.ChannelType`]: A list of channel types that can be selected."""
         return self._underlying.channel_types
 
     @channel_types.setter
@@ -868,12 +868,12 @@ class ChannelSelect(BaseSelect[V]):
 
     @property
     def values(self) -> List[Union[AppCommandChannel, AppCommandThread]]:
-        """List[Union[:class:`~discord.app_commands.AppCommandChannel`, :class:`~discord.app_commands.AppCommandThread`]]: A list of channels selected by the user."""
+        """List[Union[:class:`~discord_real.app_commands.AppCommandChannel`, :class:`~discord_real.app_commands.AppCommandThread`]]: A list of channels selected by the user."""
         return super().values  # type: ignore
 
     @property
     def default_values(self) -> List[SelectDefaultValue]:
-        """List[:class:`discord.SelectDefaultValue`]: A list of default values for the select menu.
+        """List[:class:`discord_real.SelectDefaultValue`]: A list of default values for the select menu.
 
         .. versionadded:: 2.4
         """
@@ -984,7 +984,7 @@ def select(
     """A decorator that attaches a select menu to a component.
 
     The function being decorated should have three parameters, ``self`` representing
-    the :class:`discord.ui.View`, the :class:`discord.Interaction` you receive and
+    the :class:`discord_real.ui.View`, the :class:`discord_real.Interaction` you receive and
     the chosen select class.
 
     To obtain the selected values inside the callback, you can use the ``values`` attribute of the chosen class in the callback. The list of values
@@ -993,15 +993,15 @@ def select(
     +----------------------------------------+-----------------------------------------------------------------------------------------------------------------+
     | Select Type                            | Resolved Values                                                                                                 |
     +========================================+=================================================================================================================+
-    | :class:`discord.ui.Select`             | List[:class:`str`]                                                                                              |
+    | :class:`discord_real.ui.Select`             | List[:class:`str`]                                                                                              |
     +----------------------------------------+-----------------------------------------------------------------------------------------------------------------+
-    | :class:`discord.ui.UserSelect`         | List[Union[:class:`discord.Member`, :class:`discord.User`]]                                                     |
+    | :class:`discord_real.ui.UserSelect`         | List[Union[:class:`discord_real.Member`, :class:`discord_real.User`]]                                                     |
     +----------------------------------------+-----------------------------------------------------------------------------------------------------------------+
-    | :class:`discord.ui.RoleSelect`         | List[:class:`discord.Role`]                                                                                     |
+    | :class:`discord_real.ui.RoleSelect`         | List[:class:`discord_real.Role`]                                                                                     |
     +----------------------------------------+-----------------------------------------------------------------------------------------------------------------+
-    | :class:`discord.ui.MentionableSelect`  | List[Union[:class:`discord.Role`, :class:`discord.Member`, :class:`discord.User`]]                              |
+    | :class:`discord_real.ui.MentionableSelect`  | List[Union[:class:`discord_real.Role`, :class:`discord_real.Member`, :class:`discord_real.User`]]                              |
     +----------------------------------------+-----------------------------------------------------------------------------------------------------------------+
-    | :class:`discord.ui.ChannelSelect`      | List[Union[:class:`~discord.app_commands.AppCommandChannel`, :class:`~discord.app_commands.AppCommandThread`]]  |
+    | :class:`discord_real.ui.ChannelSelect`      | List[Union[:class:`~discord_real.app_commands.AppCommandChannel`, :class:`~discord_real.app_commands.AppCommandThread`]]  |
     +----------------------------------------+-----------------------------------------------------------------------------------------------------------------+
 
     .. versionchanged:: 2.1
@@ -1011,17 +1011,17 @@ def select(
     ---------
     .. code-block:: python3
 
-        class View(discord.ui.View):
+        class View(discord_real.ui.View):
 
-            @discord.ui.select(cls=ChannelSelect, channel_types=[discord.ChannelType.text])
-            async def select_channels(self, interaction: discord.Interaction, select: ChannelSelect):
+            @discord_real.ui.select(cls=ChannelSelect, channel_types=[discord_real.ChannelType.text])
+            async def select_channels(self, interaction: discord_real.Interaction, select: ChannelSelect):
                 return await interaction.response.send_message(f'You selected {select.values[0].mention}')
 
     Parameters
     ------------
-    cls: Union[Type[:class:`discord.ui.Select`], Type[:class:`discord.ui.UserSelect`], Type[:class:`discord.ui.RoleSelect`], \
-        Type[:class:`discord.ui.MentionableSelect`], Type[:class:`discord.ui.ChannelSelect`]]
-        The class to use for the select menu. Defaults to :class:`discord.ui.Select`. You can use other
+    cls: Union[Type[:class:`discord_real.ui.Select`], Type[:class:`discord_real.ui.UserSelect`], Type[:class:`discord_real.ui.RoleSelect`], \
+        Type[:class:`discord_real.ui.MentionableSelect`], Type[:class:`discord_real.ui.ChannelSelect`]]
+        The class to use for the select menu. Defaults to :class:`discord_real.ui.Select`. You can use other
         select types to display different select menus to the user. See the table above for the different
         values you can get from each select type. Subclasses work as well, however the callback in the subclass will
         get overridden.
@@ -1044,16 +1044,16 @@ def select(
     max_values: :class:`int`
         The maximum number of items that must be chosen for this select menu.
         Defaults to 1 and must be between 1 and 25.
-    options: List[:class:`discord.SelectOption`]
+    options: List[:class:`discord_real.SelectOption`]
         A list of options that can be selected in this menu. This can only be used with
         :class:`Select` instances.
         Can only contain up to 25 items.
-    channel_types: List[:class:`~discord.ChannelType`]
+    channel_types: List[:class:`~discord_real.ChannelType`]
         The types of channels to show in the select menu. Defaults to all channels. This can only be used
         with :class:`ChannelSelect` instances.
     disabled: :class:`bool`
         Whether the select is disabled or not. Defaults to ``False``.
-    default_values: Sequence[:class:`~discord.abc.Snowflake`]
+    default_values: Sequence[:class:`~discord_real.abc.Snowflake`]
         A list of objects representing the default values for the select menu. This cannot be used with regular :class:`Select` instances.
         If ``cls`` is :class:`MentionableSelect` and :class:`.Object` is passed, then the type must be specified in the constructor.
         Number of items must be in range of ``min_values`` and ``max_values``.

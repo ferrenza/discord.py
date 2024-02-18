@@ -461,7 +461,7 @@ class Interaction(Generic[ClientT]):
         allowed_mentions: :class:`AllowedMentions`
             Controls the mentions being processed in this message.
             See :meth:`.abc.Messageable.send` for more information.
-        view: Optional[:class:`~discord.ui.View`]
+        view: Optional[:class:`~discord_real.ui.View`]
             The updated view to update this message with. If ``None`` is passed then
             the view is removed.
 
@@ -546,15 +546,15 @@ class Interaction(Generic[ClientT]):
     ) -> Optional[str]:
         """|coro|
 
-        Translates a string using the set :class:`~discord.app_commands.Translator`.
+        Translates a string using the set :class:`~discord_real.app_commands.Translator`.
 
         .. versionadded:: 2.1
 
         Parameters
         ----------
-        string: Union[:class:`str`, :class:`~discord.app_commands.locale_str`]
+        string: Union[:class:`str`, :class:`~discord_real.app_commands.locale_str`]
             The string to translate.
-            :class:`~discord.app_commands.locale_str` can be used to add more context,
+            :class:`~discord_real.app_commands.locale_str` can be used to add more context,
             information, or any metadata necessary.
         locale: :class:`Locale`
             The locale to use, this is handy if you want the translation
@@ -742,19 +742,19 @@ class InteractionResponse(Generic[ClientT]):
         embed: :class:`Embed`
             The rich embed for the content to send. This cannot be mixed with
             ``embeds`` parameter.
-        file: :class:`~discord.File`
+        file: :class:`~discord_real.File`
             The file to upload.
-        files: List[:class:`~discord.File`]
+        files: List[:class:`~discord_real.File`]
             A list of files to upload. Must be a maximum of 10.
         tts: :class:`bool`
             Indicates if the message should be sent using text-to-speech.
-        view: :class:`discord.ui.View`
+        view: :class:`discord_real.ui.View`
             The view to send with the message.
         ephemeral: :class:`bool`
             Indicates if the message should only be visible to the user who started the interaction.
             If a view is sent with an ephemeral message and it has no timeout set then the timeout
             is set to 15 minutes.
-        allowed_mentions: :class:`~discord.AllowedMentions`
+        allowed_mentions: :class:`~discord_real.AllowedMentions`
             Controls the mentions being processed in this message. See :meth:`.abc.Messageable.send` for
             more information.
         suppress_embeds: :class:`bool`
@@ -875,10 +875,10 @@ class InteractionResponse(Generic[ClientT]):
 
                 New files will always appear after current attachments.
 
-        view: Optional[:class:`~discord.ui.View`]
+        view: Optional[:class:`~discord_real.ui.View`]
             The updated view to update this message with. If ``None`` is passed then
             the view is removed.
-        allowed_mentions: Optional[:class:`~discord.AllowedMentions`]
+        allowed_mentions: Optional[:class:`~discord_real.AllowedMentions`]
             Controls the mentions being processed in this message. See :meth:`.Message.edit`
             for more information.
         delete_after: :class:`float`
@@ -977,7 +977,7 @@ class InteractionResponse(Generic[ClientT]):
 
         Parameters
         -----------
-        modal: :class:`~discord.ui.Modal`
+        modal: :class:`~discord_real.ui.Modal`
             The modal to send.
 
         Raises
@@ -1047,7 +1047,7 @@ class InteractionResponse(Generic[ClientT]):
 
         Parameters
         -----------
-        choices: List[:class:`~discord.app_commands.Choice`]
+        choices: List[:class:`~discord_real.app_commands.Choice`]
             The list of new choices as the user is typing.
 
         Raises
@@ -1122,7 +1122,7 @@ class InteractionMessage(Message):
     This allows you to edit or delete the message associated with
     the interaction response. To retrieve this object see :meth:`Interaction.original_response`.
 
-    This inherits from :class:`discord.Message` with changes to
+    This inherits from :class:`discord_real.Message` with changes to
     :meth:`edit` and :meth:`delete` to work.
 
     .. versionadded:: 2.0
@@ -1166,7 +1166,7 @@ class InteractionMessage(Message):
         allowed_mentions: :class:`AllowedMentions`
             Controls the mentions being processed in this message.
             See :meth:`.abc.Messageable.send` for more information.
-        view: Optional[:class:`~discord.ui.View`]
+        view: Optional[:class:`~discord_real.ui.View`]
             The updated view to update this message with. If ``None`` is passed then
             the view is removed.
         delete_after: Optional[:class:`float`]

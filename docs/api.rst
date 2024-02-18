@@ -3,7 +3,7 @@
 API Reference
 ===============
 
-The following section outlines the API of discord.py.
+The following section outlines the API of discord_real.py.
 
 .. note::
 
@@ -11,7 +11,7 @@ The following section outlines the API of discord.py.
     in an output independent way.  If the logging module is not configured,
     these logs will not be output anywhere.  See :ref:`logging_setup` for
     more information on how to set up and use the logging module with
-    discord.py.
+    discord_real.py.
 
 Version Related Info
 ---------------------
@@ -168,9 +168,9 @@ PCMVolumeTransformer
 Opus Library
 ~~~~~~~~~~~~~
 
-.. autofunction:: discord.opus.load_opus
+.. autofunction:: discord_real.opus.load_opus
 
-.. autofunction:: discord.opus.is_loaded
+.. autofunction:: discord_real.opus.is_loaded
 
 .. _discord-api-events:
 
@@ -185,7 +185,7 @@ overriding the specific events. For example: ::
 
     import discord
 
-    class MyClient(discord.Client):
+    class MyClient(discord_real.Client):
         async def on_message(self, message):
             if message.author == self.user:
                 return
@@ -675,7 +675,7 @@ Guilds
         Audit log entries received through the gateway are subject to data retrieval
         from cache rather than REST. This means that some data might not be present
         when you expect it to be. For example, the :attr:`AuditLogEntry.target`
-        attribute will usually be a :class:`discord.Object` and the
+        attribute will usually be a :class:`discord_real.Object` and the
         :attr:`AuditLogEntry.user` attribute will depend on user and member cache.
 
         To get the user ID of entry, :attr:`AuditLogEntry.user_id` can be used instead.
@@ -790,7 +790,7 @@ Interactions
 
         This is a low level function that is not generally meant to be used.
         If you are working with components, consider using the callbacks associated
-        with the :class:`~discord.ui.View` instead as it provides a nicer user experience.
+        with the :class:`~discord_real.ui.View` instead as it provides a nicer user experience.
 
     .. versionadded:: 2.0
 
@@ -1447,29 +1447,29 @@ Voice
 Utility Functions
 -----------------
 
-.. autofunction:: discord.utils.find
+.. autofunction:: discord_real.utils.find
 
-.. autofunction:: discord.utils.get
+.. autofunction:: discord_real.utils.get
 
-.. autofunction:: discord.utils.setup_logging
+.. autofunction:: discord_real.utils.setup_logging
 
-.. autofunction:: discord.utils.maybe_coroutine
+.. autofunction:: discord_real.utils.maybe_coroutine
 
-.. autofunction:: discord.utils.snowflake_time
+.. autofunction:: discord_real.utils.snowflake_time
 
-.. autofunction:: discord.utils.time_snowflake
+.. autofunction:: discord_real.utils.time_snowflake
 
-.. autofunction:: discord.utils.oauth_url
+.. autofunction:: discord_real.utils.oauth_url
 
-.. autofunction:: discord.utils.remove_markdown
+.. autofunction:: discord_real.utils.remove_markdown
 
-.. autofunction:: discord.utils.escape_markdown
+.. autofunction:: discord_real.utils.escape_markdown
 
-.. autofunction:: discord.utils.escape_mentions
+.. autofunction:: discord_real.utils.escape_mentions
 
 .. class:: ResolvedInvite
 
-    A data class which represents a resolved invite returned from :func:`discord.utils.resolve_invite`.
+    A data class which represents a resolved invite returned from :func:`discord_real.utils.resolve_invite`.
 
     .. attribute:: code
 
@@ -1483,20 +1483,20 @@ Utility Functions
 
         :type: Optional[:class:`int`]
 
-.. autofunction:: discord.utils.resolve_invite
+.. autofunction:: discord_real.utils.resolve_invite
 
-.. autofunction:: discord.utils.resolve_template
+.. autofunction:: discord_real.utils.resolve_template
 
-.. autofunction:: discord.utils.sleep_until
+.. autofunction:: discord_real.utils.sleep_until
 
-.. autofunction:: discord.utils.utcnow
+.. autofunction:: discord_real.utils.utcnow
 
-.. autofunction:: discord.utils.format_dt
+.. autofunction:: discord_real.utils.format_dt
 
-.. autofunction:: discord.utils.as_chunks
+.. autofunction:: discord_real.utils.as_chunks
 
 .. data:: MISSING
-    :module: discord.utils
+    :module: discord_real.utils
 
     A type safe sentinel used in the library to represent something as missing. Used to distinguish from ``None`` values.
 
@@ -2761,7 +2761,7 @@ of :class:`enum.Enum`.
 
         When this is the action, the type of :attr:`~AuditLogEntry.target` is
         a :class:`PartialIntegration` for an integrations general permissions,
-        :class:`~discord.app_commands.AppCommand` for a specific commands permissions,
+        :class:`~discord_real.app_commands.AppCommand` for a specific commands permissions,
         or :class:`Object` with the ID of the command or integration which
         was updated.
 
@@ -4138,7 +4138,7 @@ AuditLogDiff
 
         List of permissions for the app command.
 
-        :type: List[:class:`~discord.app_commands.AppCommandPermissions`]
+        :type: List[:class:`~discord_real.app_commands.AppCommandPermissions`]
 
     .. attribute:: enabled
 
@@ -4262,7 +4262,7 @@ AuditLogDiff
 Webhook Support
 ------------------
 
-discord.py offers support for creating, editing, and executing webhooks through the :class:`Webhook` class.
+discord_real.py offers support for creating, editing, and executing webhooks through the :class:`Webhook` class.
 
 Webhook
 ~~~~~~~~~
@@ -4314,53 +4314,53 @@ This library has a module related to abstract base classes, in which all the ABC
 Snowflake
 ~~~~~~~~~~
 
-.. attributetable:: discord.abc.Snowflake
+.. attributetable:: discord_real.abc.Snowflake
 
-.. autoclass:: discord.abc.Snowflake()
+.. autoclass:: discord_real.abc.Snowflake()
     :members:
 
 User
 ~~~~~
 
-.. attributetable:: discord.abc.User
+.. attributetable:: discord_real.abc.User
 
-.. autoclass:: discord.abc.User()
+.. autoclass:: discord_real.abc.User()
     :members:
 
 PrivateChannel
 ~~~~~~~~~~~~~~~
 
-.. attributetable:: discord.abc.PrivateChannel
+.. attributetable:: discord_real.abc.PrivateChannel
 
-.. autoclass:: discord.abc.PrivateChannel()
+.. autoclass:: discord_real.abc.PrivateChannel()
     :members:
 
 GuildChannel
 ~~~~~~~~~~~~~
 
-.. attributetable:: discord.abc.GuildChannel
+.. attributetable:: discord_real.abc.GuildChannel
 
-.. autoclass:: discord.abc.GuildChannel()
+.. autoclass:: discord_real.abc.GuildChannel()
     :members:
 
 Messageable
 ~~~~~~~~~~~~
 
-.. attributetable:: discord.abc.Messageable
+.. attributetable:: discord_real.abc.Messageable
 
-.. autoclass:: discord.abc.Messageable()
+.. autoclass:: discord_real.abc.Messageable()
     :members:
     :exclude-members: typing
 
-    .. automethod:: discord.abc.Messageable.typing
+    .. automethod:: discord_real.abc.Messageable.typing
         :async-with:
 
 Connectable
 ~~~~~~~~~~~~
 
-.. attributetable:: discord.abc.Connectable
+.. attributetable:: discord_real.abc.Connectable
 
-.. autoclass:: discord.abc.Connectable()
+.. autoclass:: discord_real.abc.Connectable()
     :members:
 
 .. _discord_api_models:
@@ -5267,9 +5267,9 @@ The following exceptions are thrown by the library.
 
 .. autoexception:: InteractionResponded
 
-.. autoexception:: discord.opus.OpusError
+.. autoexception:: discord_real.opus.OpusError
 
-.. autoexception:: discord.opus.OpusNotLoaded
+.. autoexception:: discord_real.opus.OpusNotLoaded
 
 Exception Hierarchy
 ~~~~~~~~~~~~~~~~~~~~~

@@ -30,7 +30,7 @@ from unittest.mock import AsyncMock
 
 import discord
 from discord import app_commands
-from discord.ext import commands
+from discord_real.ext import commands
 import pytest
 
 
@@ -58,7 +58,7 @@ def mock_on_sub_group_error_handler() -> AsyncMock:
 def sub_group_class() -> Type[app_commands.Group]:
     class MySubGroup(app_commands.Group):
         @app_commands.command()
-        async def my_sub_group_command(self, interaction: discord.Interaction) -> None:
+        async def my_sub_group_command(self, interaction: discord_real.Interaction) -> None:
             ...
 
     return MySubGroup
@@ -68,12 +68,12 @@ def sub_group_class() -> Type[app_commands.Group]:
 def sub_group_with_handler_class(mock_on_sub_group_error_handler: AsyncMock) -> Type[app_commands.Group]:
     class MySubGroup(app_commands.Group):
         @app_commands.command()
-        async def my_sub_group_command(self, interaction: discord.Interaction) -> None:
+        async def my_sub_group_command(self, interaction: discord_real.Interaction) -> None:
             ...
 
         def on_error(
             self,
-            interaction: discord.Interaction,
+            interaction: discord_real.Interaction,
             error: app_commands.AppCommandError,
         ) -> Coroutine[Any, Any, None]:
             return mock_on_sub_group_error_handler(self, interaction, error)
@@ -87,7 +87,7 @@ def group_class(sub_group_class: Type[app_commands.Group]) -> Type[app_commands.
         my_sub_group = sub_group_class()
 
         @app_commands.command()
-        async def my_group_command(self, interaction: discord.Interaction) -> None:
+        async def my_group_command(self, interaction: discord_real.Interaction) -> None:
             ...
 
     return MyGroup
@@ -101,12 +101,12 @@ def group_with_handler_class(
         my_sub_group = sub_group_class()
 
         @app_commands.command()
-        async def my_group_command(self, interaction: discord.Interaction) -> None:
+        async def my_group_command(self, interaction: discord_real.Interaction) -> None:
             ...
 
         def on_error(
             self,
-            interaction: discord.Interaction,
+            interaction: discord_real.Interaction,
             error: app_commands.AppCommandError,
         ) -> Coroutine[Any, Any, None]:
             return mock_on_group_error_handler(self, interaction, error)
@@ -122,12 +122,12 @@ def group_with_handler_and_sub_group_handler_class(
         my_sub_group = sub_group_with_handler_class()
 
         @app_commands.command()
-        async def my_group_command(self, interaction: discord.Interaction) -> None:
+        async def my_group_command(self, interaction: discord_real.Interaction) -> None:
             ...
 
         def on_error(
             self,
-            interaction: discord.Interaction,
+            interaction: discord_real.Interaction,
             error: app_commands.AppCommandError,
         ) -> Coroutine[Any, Any, None]:
             return mock_on_group_error_handler(self, interaction, error)
@@ -140,19 +140,19 @@ class TestCog:
     async def test_cog_app_command_error_from_command(
         self,
         mock_bot: commands.Bot,
-        mock_interaction: discord.Interaction,
+        mock_interaction: discord_real.Interaction,
     ) -> None:
         on_error = AsyncMock()
         error = app_commands.CheckFailure()
 
         class MyCog(commands.Cog):
             @app_commands.command()
-            async def my_command(self, interaction: discord.Interaction) -> None:
+            async def my_command(self, interaction: discord_real.Interaction) -> None:
                 ...
 
             def cog_app_command_error(
                 self,
-                interaction: discord.Interaction,
+                interaction: discord_real.Interaction,
                 error: app_commands.AppCommandError,
             ) -> Coroutine[Any, Any, None]:
                 return on_error(self, interaction, error)
@@ -166,7 +166,7 @@ class TestCog:
     async def test_cog_app_command_error_from_command_with_error_handler(
         self,
         mock_bot: commands.Bot,
-        mock_interaction: discord.Interaction,
+        mock_interaction: discord_real.Interaction,
     ) -> None:
         on_error = AsyncMock()
         on_command_error = AsyncMock()
@@ -174,20 +174,20 @@ class TestCog:
 
         class MyCog(commands.Cog):
             @app_commands.command()
-            async def my_command(self, interaction: discord.Interaction) -> None:
+            async def my_command(self, interaction: discord_real.Interaction) -> None:
                 ...
 
             @my_command.error
             async def on_my_command_with_handler_error(
                 self,
-                interaction: discord.Interaction,
+                interaction: discord_real.Interaction,
                 error: app_commands.AppCommandError,
             ) -> None:
                 await on_command_error(self, interaction, error)
 
             def cog_app_command_error(
                 self,
-                interaction: discord.Interaction,
+                interaction: discord_real.Interaction,
                 error: app_commands.AppCommandError,
             ) -> Coroutine[Any, Any, None]:
                 return on_error(self, interaction, error)
@@ -202,7 +202,7 @@ class TestCog:
     async def test_cog_app_command_error_from_group(
         self,
         mock_bot: commands.Bot,
-        mock_interaction: discord.Interaction,
+        mock_interaction: discord_real.Interaction,
         group_class: Type[app_commands.Group],
     ) -> None:
         on_error = AsyncMock()
@@ -213,7 +213,7 @@ class TestCog:
 
             def cog_app_command_error(
                 self,
-                interaction: discord.Interaction,
+                interaction: discord_real.Interaction,
                 error: app_commands.AppCommandError,
             ) -> Coroutine[Any, Any, None]:
                 return on_error(self, interaction, error)
@@ -227,7 +227,7 @@ class TestCog:
     async def test_cog_app_command_error_from_sub_group(
         self,
         mock_bot: commands.Bot,
-        mock_interaction: discord.Interaction,
+        mock_interaction: discord_real.Interaction,
         group_class: Type[app_commands.Group],
     ) -> None:
         on_error = AsyncMock()
@@ -238,7 +238,7 @@ class TestCog:
 
             def cog_app_command_error(
                 self,
-                interaction: discord.Interaction,
+                interaction: discord_real.Interaction,
                 error: app_commands.AppCommandError,
             ) -> Coroutine[Any, Any, None]:
                 return on_error(self, interaction, error)
@@ -252,7 +252,7 @@ class TestCog:
     async def test_cog_app_command_error_from_group_with_handler(
         self,
         mock_bot: commands.Bot,
-        mock_interaction: discord.Interaction,
+        mock_interaction: discord_real.Interaction,
         mock_on_group_error_handler: AsyncMock,
         group_with_handler_class: Type[app_commands.Group],
     ) -> None:
@@ -264,7 +264,7 @@ class TestCog:
 
             def cog_app_command_error(
                 self,
-                interaction: discord.Interaction,
+                interaction: discord_real.Interaction,
                 error: app_commands.AppCommandError,
             ) -> Coroutine[Any, Any, None]:
                 return on_error(self, interaction, error)
@@ -279,7 +279,7 @@ class TestCog:
     async def test_cog_app_command_error_from_sub_group_with_parent_handler(
         self,
         mock_bot: commands.Bot,
-        mock_interaction: discord.Interaction,
+        mock_interaction: discord_real.Interaction,
         mock_on_group_error_handler: AsyncMock,
         group_with_handler_class: Type[app_commands.Group],
     ) -> None:
@@ -291,7 +291,7 @@ class TestCog:
 
             def cog_app_command_error(
                 self,
-                interaction: discord.Interaction,
+                interaction: discord_real.Interaction,
                 error: app_commands.AppCommandError,
             ) -> Coroutine[Any, Any, None]:
                 return on_error(self, interaction, error)
@@ -306,7 +306,7 @@ class TestCog:
     async def test_cog_app_command_error_from_sub_group_with_handler_and_parent_handler(
         self,
         mock_bot: commands.Bot,
-        mock_interaction: discord.Interaction,
+        mock_interaction: discord_real.Interaction,
         mock_on_group_error_handler: AsyncMock,
         mock_on_sub_group_error_handler: AsyncMock,
         group_with_handler_and_sub_group_handler_class: Type[app_commands.Group],
@@ -319,7 +319,7 @@ class TestCog:
 
             def cog_app_command_error(
                 self,
-                interaction: discord.Interaction,
+                interaction: discord_real.Interaction,
                 error: app_commands.AppCommandError,
             ) -> Coroutine[Any, Any, None]:
                 return on_error(self, interaction, error)
@@ -337,19 +337,19 @@ class TestGroupCog:
     async def test_cog_app_command_error_from_command(
         self,
         mock_bot: commands.Bot,
-        mock_interaction: discord.Interaction,
+        mock_interaction: discord_real.Interaction,
     ) -> None:
         on_error = AsyncMock()
         error = app_commands.CheckFailure()
 
         class MyCog(commands.GroupCog):
             @app_commands.command()
-            async def my_command(self, interaction: discord.Interaction) -> None:
+            async def my_command(self, interaction: discord_real.Interaction) -> None:
                 ...
 
             def cog_app_command_error(
                 self,
-                interaction: discord.Interaction,
+                interaction: discord_real.Interaction,
                 error: app_commands.AppCommandError,
             ) -> Coroutine[Any, Any, None]:
                 return on_error(self, interaction, error)
@@ -363,7 +363,7 @@ class TestGroupCog:
     async def test_cog_app_command_error_from_command_with_error_handler(
         self,
         mock_bot: commands.Bot,
-        mock_interaction: discord.Interaction,
+        mock_interaction: discord_real.Interaction,
     ) -> None:
         on_error = AsyncMock()
         on_command_error = AsyncMock()
@@ -371,20 +371,20 @@ class TestGroupCog:
 
         class MyCog(commands.GroupCog):
             @app_commands.command()
-            async def my_command(self, interaction: discord.Interaction) -> None:
+            async def my_command(self, interaction: discord_real.Interaction) -> None:
                 ...
 
             @my_command.error
             async def on_my_command_with_handler_error(
                 self,
-                interaction: discord.Interaction,
+                interaction: discord_real.Interaction,
                 error: app_commands.AppCommandError,
             ) -> None:
                 await on_command_error(self, interaction, error)
 
             def cog_app_command_error(
                 self,
-                interaction: discord.Interaction,
+                interaction: discord_real.Interaction,
                 error: app_commands.AppCommandError,
             ) -> Coroutine[Any, Any, None]:
                 return on_error(self, interaction, error)
@@ -399,7 +399,7 @@ class TestGroupCog:
     async def test_cog_app_command_error_from_sub_group(
         self,
         mock_bot: commands.Bot,
-        mock_interaction: discord.Interaction,
+        mock_interaction: discord_real.Interaction,
         sub_group_class: Type[app_commands.Group],
     ) -> None:
         on_error = AsyncMock()
@@ -410,7 +410,7 @@ class TestGroupCog:
 
             def cog_app_command_error(
                 self,
-                interaction: discord.Interaction,
+                interaction: discord_real.Interaction,
                 error: app_commands.AppCommandError,
             ) -> Coroutine[Any, Any, None]:
                 return on_error(self, interaction, error)
@@ -424,7 +424,7 @@ class TestGroupCog:
     async def test_cog_app_command_error_from_sub_group_with_handler(
         self,
         mock_bot: commands.Bot,
-        mock_interaction: discord.Interaction,
+        mock_interaction: discord_real.Interaction,
         mock_on_sub_group_error_handler: AsyncMock,
         sub_group_with_handler_class: Type[app_commands.Group],
     ) -> None:
@@ -436,7 +436,7 @@ class TestGroupCog:
 
             def cog_app_command_error(
                 self,
-                interaction: discord.Interaction,
+                interaction: discord_real.Interaction,
                 error: app_commands.AppCommandError,
             ) -> Coroutine[Any, Any, None]:
                 return on_error(self, interaction, error)

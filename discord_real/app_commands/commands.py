@@ -69,7 +69,7 @@ if TYPE_CHECKING:
     # Generally, these two libraries are supposed to be separate from each other.
     # However, for type hinting purposes it's unfortunately necessary for one to
     # reference the other to prevent type checking errors in callbacks
-    from discord.ext import commands
+    from discord_real.ext import commands
 
     ErrorFunc = Callable[[Interaction, AppCommandError], Coroutine[Any, Any, None]]
 
@@ -245,8 +245,8 @@ def _context_menu_annotation(annotation: Any, *, _none: type = NoneType) -> AppC
     if origin is not Union:
         # Only Union is supported so bail early
         msg = (
-            f'unsupported type annotation {annotation!r}, must be either discord.Member, '
-            'discord.User, discord.Message, or a typing.Union of discord.Member and discord.User'
+            f'unsupported type annotation {annotation!r}, must be either discord_real.Member, '
+            'discord_real.User, discord_real.Message, or a typing.Union of discord_real.Member and discord_real.User'
         )
         raise TypeError(msg)
 
@@ -421,8 +421,8 @@ def _get_context_menu_parameter(func: ContextMenuCallback) -> Tuple[str, Any, Ap
         msg = (
             f'context menu callback {func.__qualname__!r} requires 2 parameters, '
             'the first one being the interaction and the other one explicitly '
-            'annotated with either discord.Message, discord.User, discord.Member, '
-            'or a typing.Union of discord.Member and discord.User'
+            'annotated with either discord_real.Message, discord_real.User, discord_real.Member, '
+            'or a typing.Union of discord_real.Member and discord_real.User'
         )
         raise TypeError(msg)
 
@@ -432,8 +432,8 @@ def _get_context_menu_parameter(func: ContextMenuCallback) -> Tuple[str, Any, Ap
     if parameter.annotation is parameter.empty:
         msg = (
             f'second parameter of context menu callback {func.__qualname__!r} must be explicitly '
-            'annotated with either discord.Message, discord.User, discord.Member, or '
-            'a typing.Union of discord.Member and discord.User'
+            'annotated with either discord_real.Message, discord_real.User, discord_real.Member, or '
+            'a typing.Union of discord_real.Member and discord_real.User'
         )
         raise TypeError(msg)
 
@@ -468,11 +468,11 @@ class Parameter:
         The description's locale string, if available.
     required: :class:`bool`
         Whether the parameter is required
-    choices: List[:class:`~discord.app_commands.Choice`]
+    choices: List[:class:`~discord_real.app_commands.Choice`]
         A list of choices this parameter takes, if any.
-    type: :class:`~discord.AppCommandOptionType`
+    type: :class:`~discord_real.AppCommandOptionType`
         The underlying type of this parameter.
-    channel_types: List[:class:`~discord.ChannelType`]
+    channel_types: List[:class:`~discord_real.ChannelType`]
         The channel types that are allowed for this parameter.
     min_value: Optional[Union[:class:`int`, :class:`float`]]
         The minimum supported value for this parameter.
@@ -480,7 +480,7 @@ class Parameter:
         The maximum supported value for this parameter.
     default: Any
         The default value of the parameter, if given.
-        If not given then this is :data:`~discord.utils.MISSING`.
+        If not given then this is :data:`~discord_real.utils.MISSING`.
     command: :class:`Command`
         The command this parameter is attached to.
     """
@@ -562,9 +562,9 @@ class Command(Generic[GroupT, P, T]):
     These are usually not created manually, instead they are created using
     one of the following decorators:
 
-    - :func:`~discord.app_commands.command`
-    - :meth:`Group.command <discord.app_commands.Group.command>`
-    - :meth:`CommandTree.command <discord.app_commands.CommandTree.command>`
+    - :func:`~discord_real.app_commands.command`
+    - :meth:`Group.command <discord_real.app_commands.Group.command>`
+    - :meth:`CommandTree.command <discord_real.app_commands.CommandTree.command>`
 
     .. versionadded:: 2.0
 
@@ -602,12 +602,12 @@ class Command(Generic[GroupT, P, T]):
         The description of the application command. This shows up in the UI to describe
         the application command.
     checks
-        A list of predicates that take a :class:`~discord.Interaction` parameter
+        A list of predicates that take a :class:`~discord_real.Interaction` parameter
         to indicate whether the command callback should be executed. If an exception
         is necessary to be thrown to signal failure, then one inherited from
         :exc:`AppCommandError` should be used. If all the checks fail without
         propagating an exception, :exc:`CheckFailure` is raised.
-    default_permissions: Optional[:class:`~discord.Permissions`]
+    default_permissions: Optional[:class:`~discord_real.Permissions`]
         The default permissions that can execute this command on Discord. Note
         that server administrators can override this value in the client.
         Setting an empty permissions field will disallow anyone except server
@@ -1017,7 +1017,7 @@ class Command(Generic[GroupT, P, T]):
     ) -> Callable[[AutocompleteCallback[GroupT, ChoiceT]], AutocompleteCallback[GroupT, ChoiceT]]:
         """A decorator that registers a coroutine as an autocomplete prompt for a parameter.
 
-        The coroutine callback must have 2 parameters, the :class:`~discord.Interaction`,
+        The coroutine callback must have 2 parameters, the :class:`~discord_real.Interaction`,
         and the current value by the user (the string currently being typed by the user).
 
         To get the values from other parameters that may be filled in, accessing
@@ -1028,7 +1028,7 @@ class Command(Generic[GroupT, P, T]):
         to the autocomplete callback and the ones added will be called. If the checks fail for any reason
         then an empty list is sent as the interaction response.
 
-        The coroutine decorator **must** return a list of :class:`~discord.app_commands.Choice` objects.
+        The coroutine decorator **must** return a list of :class:`~discord_real.app_commands.Choice` objects.
         Only up to 25 objects are supported.
 
         .. warning::
@@ -1039,12 +1039,12 @@ class Command(Generic[GroupT, P, T]):
         .. code-block:: python3
 
             @app_commands.command()
-            async def fruits(interaction: discord.Interaction, fruit: str):
+            async def fruits(interaction: discord_real.Interaction, fruit: str):
                 await interaction.response.send_message(f'Your favourite fruit seems to be {fruit}')
 
             @fruits.autocomplete('fruit')
             async def fruits_autocomplete(
-                interaction: discord.Interaction,
+                interaction: discord_real.Interaction,
                 current: str,
             ) -> List[app_commands.Choice[str]]:
                 fruits = ['Banana', 'Pineapple', 'Apple', 'Watermelon', 'Melon', 'Cherry']
@@ -1125,8 +1125,8 @@ class ContextMenu:
     These are usually not created manually, instead they are created using
     one of the following decorators:
 
-    - :func:`~discord.app_commands.context_menu`
-    - :meth:`CommandTree.context_menu <discord.app_commands.CommandTree.context_menu>`
+    - :func:`~discord_real.app_commands.context_menu`
+    - :meth:`CommandTree.context_menu <discord_real.app_commands.CommandTree.context_menu>`
 
     .. versionadded:: 2.0
 
@@ -1159,7 +1159,7 @@ class ContextMenu:
     type: :class:`.AppCommandType`
         The type of context menu application command. By default, this is inferred
         by the parameter of the callback.
-    default_permissions: Optional[:class:`~discord.Permissions`]
+    default_permissions: Optional[:class:`~discord_real.Permissions`]
         The default permissions that can execute this command on Discord. Note
         that server administrators can override this value in the client.
         Setting an empty permissions field will disallow anyone except server
@@ -1171,7 +1171,7 @@ class ContextMenu:
         Whether the command is NSFW and should only work in NSFW channels.
         Defaults to ``False``.
     checks
-        A list of predicates that take a :class:`~discord.Interaction` parameter
+        A list of predicates that take a :class:`~discord_real.Interaction` parameter
         to indicate whether the command callback should be executed. If an exception
         is necessary to be thrown to signal failure, then one inherited from
         :exc:`AppCommandError` should be used. If all the checks fail without
@@ -1364,7 +1364,7 @@ class Group:
         avoid some repetition and be more ergonomic for certain defaults such
         as default command names, command descriptions, and parameter names.
         Defaults to ``True``.
-    default_permissions: Optional[:class:`~discord.Permissions`]
+    default_permissions: Optional[:class:`~discord_real.Permissions`]
         The default permissions that can execute this group on Discord. Note
         that server administrators can override this value in the client.
         Setting an empty permissions field will disallow anyone except server
@@ -1394,7 +1394,7 @@ class Group:
     description: :class:`str`
         The description of the group. This shows up in the UI to describe
         the group.
-    default_permissions: Optional[:class:`~discord.Permissions`]
+    default_permissions: Optional[:class:`~discord_real.Permissions`]
         The default permissions that can execute this group on Discord. Note
         that server administrators can override this value in the client.
         Setting an empty permissions field will disallow anyone except server
@@ -1720,13 +1720,13 @@ class Group:
 
         A callback that is called when a child's command raises an :exc:`AppCommandError`.
 
-        To get the command that failed, :attr:`discord.Interaction.command` should be used.
+        To get the command that failed, :attr:`discord_real.Interaction.command` should be used.
 
         The default implementation does nothing.
 
         Parameters
         -----------
-        interaction: :class:`~discord.Interaction`
+        interaction: :class:`~discord_real.Interaction`
             The interaction that is being handled.
         error: :exc:`AppCommandError`
             The exception that was raised.
@@ -1783,7 +1783,7 @@ class Group:
 
         Parameters
         -----------
-        interaction: :class:`~discord.Interaction`
+        interaction: :class:`~discord_real.Interaction`
             The interaction that occurred.
 
         Returns
@@ -1846,7 +1846,7 @@ class Group:
 
         Returns
         --------
-        Optional[Union[:class:`~discord.app_commands.Command`, :class:`~discord.app_commands.Group`]]
+        Optional[Union[:class:`~discord_real.app_commands.Command`, :class:`~discord_real.app_commands.Group`]]
             The command that was removed. If nothing was removed
             then ``None`` is returned instead.
         """
@@ -1863,7 +1863,7 @@ class Group:
 
         Returns
         --------
-        Optional[Union[:class:`~discord.app_commands.Command`, :class:`~discord.app_commands.Group`]]
+        Optional[Union[:class:`~discord_real.app_commands.Command`, :class:`~discord_real.app_commands.Group`]]
             The command or group that was retrieved. If nothing was found
             then ``None`` is returned instead.
         """
@@ -1997,8 +1997,8 @@ def context_menu(
 ) -> Callable[[ContextMenuCallback], ContextMenu]:
     """Creates an application command context menu from a regular function.
 
-    This function must have a signature of :class:`~discord.Interaction` as its first parameter
-    and taking either a :class:`~discord.Member`, :class:`~discord.User`, or :class:`~discord.Message`,
+    This function must have a signature of :class:`~discord_real.Interaction` as its first parameter
+    and taking either a :class:`~discord_real.Member`, :class:`~discord_real.User`, or :class:`~discord_real.Message`,
     or a :obj:`typing.Union` of ``Member`` and ``User`` as its second parameter.
 
     Examples
@@ -2007,11 +2007,11 @@ def context_menu(
     .. code-block:: python3
 
         @app_commands.context_menu()
-        async def react(interaction: discord.Interaction, message: discord.Message):
+        async def react(interaction: discord_real.Interaction, message: discord_real.Message):
             await interaction.response.send_message('Very cool message!', ephemeral=True)
 
         @app_commands.context_menu()
-        async def ban(interaction: discord.Interaction, user: discord.Member):
+        async def ban(interaction: discord_real.Interaction, user: discord_real.Member):
             await interaction.response.send_message(f'Should I actually ban {user}...', ephemeral=True)
 
     Parameters
@@ -2061,7 +2061,7 @@ def describe(**parameters: Union[str, locale_str]) -> Callable[[T], T]:
 
         @app_commands.command(description='Bans a member')
         @app_commands.describe(member='the member to ban')
-        async def ban(interaction: discord.Interaction, member: discord.Member):
+        async def ban(interaction: discord_real.Interaction, member: discord_real.Member):
             await interaction.response.send_message(f'Banned {member}')
 
     Alternatively, you can describe parameters using Google, Sphinx, or Numpy style docstrings.
@@ -2071,12 +2071,12 @@ def describe(**parameters: Union[str, locale_str]) -> Callable[[T], T]:
     .. code-block:: python3
 
         @app_commands.command()
-        async def ban(interaction: discord.Interaction, member: discord.Member):
+        async def ban(interaction: discord_real.Interaction, member: discord_real.Member):
             """Bans a member
 
             Parameters
             -----------
-            member: discord.Member
+            member: discord_real.Member
                 the member to ban
             """
             await interaction.response.send_message(f'Banned {member}')
@@ -2119,7 +2119,7 @@ def rename(**parameters: Union[str, locale_str]) -> Callable[[T], T]:
 
         @app_commands.command()
         @app_commands.rename(the_member_to_ban='member')
-        async def ban(interaction: discord.Interaction, the_member_to_ban: discord.Member):
+        async def ban(interaction: discord_real.Interaction, the_member_to_ban: discord_real.Member):
             await interaction.response.send_message(f'Banned {the_member_to_ban}')
 
     Parameters
@@ -2163,7 +2163,7 @@ def choices(**parameters: List[Choice[ChoiceT]]) -> Callable[[T], T]:
             Choice(name='banana', value=2),
             Choice(name='cherry', value=3),
         ])
-        async def fruit(interaction: discord.Interaction, fruits: Choice[int]):
+        async def fruit(interaction: discord_real.Interaction, fruits: Choice[int]):
             await interaction.response.send_message(f'Your favourite fruit is {fruits.name}.')
 
     .. note::
@@ -2175,7 +2175,7 @@ def choices(**parameters: List[Choice[ChoiceT]]) -> Callable[[T], T]:
 
             @app_commands.command()
             @app_commands.describe(fruits='fruits to choose from')
-            async def fruit(interaction: discord.Interaction, fruits: Literal['apple', 'banana', 'cherry']):
+            async def fruit(interaction: discord_real.Interaction, fruits: Literal['apple', 'banana', 'cherry']):
                 await interaction.response.send_message(f'Your favourite fruit is {fruits}.')
 
         The second way is to use an :class:`enum.Enum`:
@@ -2189,7 +2189,7 @@ def choices(**parameters: List[Choice[ChoiceT]]) -> Callable[[T], T]:
 
             @app_commands.command()
             @app_commands.describe(fruits='fruits to choose from')
-            async def fruit(interaction: discord.Interaction, fruits: Fruits):
+            async def fruit(interaction: discord_real.Interaction, fruits: Fruits):
                 await interaction.response.send_message(f'Your favourite fruit is {fruits}.')
 
 
@@ -2238,7 +2238,7 @@ def autocomplete(**parameters: AutocompleteCallback[GroupT, ChoiceT]) -> Callabl
     .. code-block:: python3
 
             async def fruit_autocomplete(
-                interaction: discord.Interaction,
+                interaction: discord_real.Interaction,
                 current: str,
             ) -> List[app_commands.Choice[str]]:
                 fruits = ['Banana', 'Pineapple', 'Apple', 'Watermelon', 'Melon', 'Cherry']
@@ -2249,7 +2249,7 @@ def autocomplete(**parameters: AutocompleteCallback[GroupT, ChoiceT]) -> Callabl
 
             @app_commands.command()
             @app_commands.autocomplete(fruit=fruit_autocomplete)
-            async def fruits(interaction: discord.Interaction, fruit: str):
+            async def fruits(interaction: discord_real.Interaction, fruit: str):
                 await interaction.response.send_message(f'Your favourite fruit seems to be {fruit}')
 
     Parameters
@@ -2294,16 +2294,16 @@ def guilds(*guild_ids: Union[Snowflake, int]) -> Callable[[T], T]:
 
     .. code-block:: python3
 
-            MY_GUILD_ID = discord.Object(...)  # Guild ID here
+            MY_GUILD_ID = discord_real.Object(...)  # Guild ID here
 
             @app_commands.command()
             @app_commands.guilds(MY_GUILD_ID)
-            async def bonk(interaction: discord.Interaction):
+            async def bonk(interaction: discord_real.Interaction):
                 await interaction.response.send_message('Bonk', ephemeral=True)
 
     Parameters
     -----------
-    \*guild_ids: Union[:class:`int`, :class:`~discord.abc.Snowflake`]
+    \*guild_ids: Union[:class:`int`, :class:`~discord_real.abc.Snowflake`]
         The guilds to associate this command with. The command tree will
         use this as the default when added rather than adding it as a global
         command.
@@ -2332,7 +2332,7 @@ def check(predicate: Check) -> Callable[[T], T]:
     r"""A decorator that adds a check to an application command.
 
     These checks should be predicates that take in a single parameter taking
-    a :class:`~discord.Interaction`. If the check returns a ``False``\-like value then
+    a :class:`~discord_real.Interaction`. If the check returns a ``False``\-like value then
     during invocation a :exc:`CheckFailure` exception is raised and sent to
     the appropriate error handlers.
 
@@ -2345,12 +2345,12 @@ def check(predicate: Check) -> Callable[[T], T]:
 
     .. code-block:: python3
 
-        def check_if_it_is_me(interaction: discord.Interaction) -> bool:
+        def check_if_it_is_me(interaction: discord_real.Interaction) -> bool:
             return interaction.user.id == 85309593344815104
 
         @tree.command()
         @app_commands.check(check_if_it_is_me)
-        async def only_for_me(interaction: discord.Interaction):
+        async def only_for_me(interaction: discord_real.Interaction):
             await interaction.response.send_message('I know you!', ephemeral=True)
 
     Transforming common checks into its own decorator:
@@ -2358,18 +2358,18 @@ def check(predicate: Check) -> Callable[[T], T]:
     .. code-block:: python3
 
         def is_me():
-            def predicate(interaction: discord.Interaction) -> bool:
+            def predicate(interaction: discord_real.Interaction) -> bool:
                 return interaction.user.id == 85309593344815104
             return app_commands.check(predicate)
 
         @tree.command()
         @is_me()
-        async def only_me(interaction: discord.Interaction):
+        async def only_me(interaction: discord_real.Interaction):
             await interaction.response.send_message('Only you!')
 
     Parameters
     -----------
-    predicate: Callable[[:class:`~discord.Interaction`], :class:`bool`]
+    predicate: Callable[[:class:`~discord_real.Interaction`], :class:`bool`]
         The predicate to check if the command should be invoked.
     """
 
@@ -2414,7 +2414,7 @@ def guild_only(func: Optional[T] = None) -> Union[T, Callable[[T], T]]:
 
         @app_commands.command()
         @app_commands.guild_only()
-        async def my_guild_only_command(interaction: discord.Interaction) -> None:
+        async def my_guild_only_command(interaction: discord_real.Interaction) -> None:
             await interaction.response.send_message('I am only available in guilds!')
     """
 
@@ -2451,7 +2451,7 @@ def default_permissions(**perms: bool) -> Callable[[T], T]:
 
         This serves as a *hint* and members are *not* required to have the permissions given to actually
         execute this command. If you want to ensure that members have the permissions needed, consider using
-        :func:`~discord.app_commands.checks.has_permissions` instead.
+        :func:`~discord_real.app_commands.checks.has_permissions` instead.
 
     Parameters
     -----------
@@ -2465,7 +2465,7 @@ def default_permissions(**perms: bool) -> Callable[[T], T]:
 
         @app_commands.command()
         @app_commands.default_permissions(manage_messages=True)
-        async def test(interaction: discord.Interaction):
+        async def test(interaction: discord_real.Interaction):
             await interaction.response.send_message('You may or may not have manage messages.')
     """
 

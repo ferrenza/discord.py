@@ -55,7 +55,7 @@ _log = logging.getLogger(__name__)
 class Modal(View):
     """Represents a UI modal.
 
-    This object must be inherited to create a modal popup window within discord.
+    This object must be inherited to create a modal popup window within discord_real.
 
     .. versionadded:: 2.0
 
@@ -69,9 +69,9 @@ class Modal(View):
 
         class Questionnaire(ui.Modal, title='Questionnaire Response'):
             name = ui.TextInput(label='Name')
-            answer = ui.TextInput(label='Answer', style=discord.TextStyle.paragraph)
+            answer = ui.TextInput(label='Answer', style=discord_real.TextStyle.paragraph)
 
-            async def on_submit(self, interaction: discord.Interaction):
+            async def on_submit(self, interaction: discord_real.Interaction):
                 await interaction.response.send_message(f'Thanks for your response, {self.name}!', ephemeral=True)
 
     Parameters
@@ -159,7 +159,7 @@ class Modal(View):
 
         Parameters
         -----------
-        interaction: :class:`~discord.Interaction`
+        interaction: :class:`~discord_real.Interaction`
             The interaction that led to the failure.
         error: :class:`Exception`
             The exception that was raised.

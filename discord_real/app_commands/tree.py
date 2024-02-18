@@ -112,14 +112,14 @@ class CommandTree(Generic[ClientT]):
 
     Parameters
     -----------
-    client: :class:`~discord.Client`
+    client: :class:`~discord_real.Client`
         The client instance to get application command information from.
     fallback_to_global: :class:`bool`
         If a guild-specific command is not found when invoked, then try falling back into
         a global command in the tree. For example, if the tree locally has a ``/ping`` command
         under the global namespace but the guild has a guild-specific ``/ping``, instead of failing
         to find the guild-specific ``/ping`` command it will fall back to the global ``/ping`` command.
-        This has the potential to raise more :exc:`~discord.app_commands.CommandSignatureMismatch` errors
+        This has the potential to raise more :exc:`~discord_real.app_commands.CommandSignatureMismatch` errors
         than usual. Defaults to ``True``.
     """
 
@@ -150,7 +150,7 @@ class CommandTree(Generic[ClientT]):
         -----------
         command_id: :class:`int`
             The ID of the command to fetch.
-        guild: Optional[:class:`~discord.abc.Snowflake`]
+        guild: Optional[:class:`~discord_real.abc.Snowflake`]
             The guild to fetch the command from. If not passed then the global command
             is fetched instead.
 
@@ -167,7 +167,7 @@ class CommandTree(Generic[ClientT]):
 
         Returns
         --------
-        :class:`~discord.app_commands.AppCommand`
+        :class:`~discord_real.app_commands.AppCommand`
             The application command.
         """
         if self.client.application_id is None:
@@ -194,7 +194,7 @@ class CommandTree(Generic[ClientT]):
 
         Parameters
         -----------
-        guild: Optional[:class:`~discord.abc.Snowflake`]
+        guild: Optional[:class:`~discord_real.abc.Snowflake`]
             The guild to fetch the commands from. If not passed then global commands
             are fetched instead.
 
@@ -207,7 +207,7 @@ class CommandTree(Generic[ClientT]):
 
         Returns
         --------
-        List[:class:`~discord.app_commands.AppCommand`]
+        List[:class:`~discord_real.app_commands.AppCommand`]
             The application's commands.
         """
         if self.client.application_id is None:
@@ -230,7 +230,7 @@ class CommandTree(Generic[ClientT]):
 
         Parameters
         -----------
-        guild: :class:`~discord.abc.Snowflake`
+        guild: :class:`~discord_real.abc.Snowflake`
             The guild to copy the commands to.
 
         Raises
@@ -284,10 +284,10 @@ class CommandTree(Generic[ClientT]):
         -----------
         command: Union[:class:`Command`, :class:`Group`]
             The application command or group to add.
-        guild: Optional[:class:`~discord.abc.Snowflake`]
+        guild: Optional[:class:`~discord_real.abc.Snowflake`]
             The guild to add the command to. If not given or ``None`` then it
             becomes a global command instead.
-        guilds: List[:class:`~discord.abc.Snowflake`]
+        guilds: List[:class:`~discord_real.abc.Snowflake`]
             The list of guilds to add the command to. This cannot be mixed
             with the ``guild`` parameter. If no guilds are given at all
             then it becomes a global command instead.
@@ -297,7 +297,7 @@ class CommandTree(Generic[ClientT]):
 
         Raises
         --------
-        ~discord.app_commands.CommandAlreadyRegistered
+        ~discord_real.app_commands.CommandAlreadyRegistered
             The command was already registered and no override was specified.
         TypeError
             The application command passed is not a valid application command.
@@ -427,11 +427,11 @@ class CommandTree(Generic[ClientT]):
         -----------
         command: :class:`str`
             The name of the root command to remove.
-        guild: Optional[:class:`~discord.abc.Snowflake`]
+        guild: Optional[:class:`~discord_real.abc.Snowflake`]
             The guild to remove the command from. If not given or ``None`` then it
             removes a global command instead.
-        type: :class:`~discord.AppCommandType`
-            The type of command to remove. Defaults to :attr:`~discord.AppCommandType.chat_input`,
+        type: :class:`~discord_real.AppCommandType`
+            The type of command to remove. Defaults to :attr:`~discord_real.AppCommandType.chat_input`,
             i.e. slash commands.
 
         Returns
@@ -464,10 +464,10 @@ class CommandTree(Generic[ClientT]):
 
         Parameters
         -----------
-        guild: Optional[:class:`~discord.abc.Snowflake`]
+        guild: Optional[:class:`~discord_real.abc.Snowflake`]
             The guild to remove the commands from. If ``None`` then it
             removes all global commands instead.
-        type: :class:`~discord.AppCommandType`
+        type: :class:`~discord_real.AppCommandType`
             The type of command to clear. If not given or ``None`` then it removes all commands
             regardless of the type.
         """
@@ -544,11 +544,11 @@ class CommandTree(Generic[ClientT]):
         -----------
         command: :class:`str`
             The name of the root command to get.
-        guild: Optional[:class:`~discord.abc.Snowflake`]
+        guild: Optional[:class:`~discord_real.abc.Snowflake`]
             The guild to get the command from. If not given or ``None`` then it
             gets a global command instead.
-        type: :class:`~discord.AppCommandType`
-            The type of command to get. Defaults to :attr:`~discord.AppCommandType.chat_input`,
+        type: :class:`~discord_real.AppCommandType`
+            The type of command to get. Defaults to :attr:`~discord_real.AppCommandType.chat_input`,
             i.e. slash commands.
 
         Returns
@@ -623,10 +623,10 @@ class CommandTree(Generic[ClientT]):
 
         Parameters
         -----------
-        guild: Optional[:class:`~discord.abc.Snowflake`]
+        guild: Optional[:class:`~discord_real.abc.Snowflake`]
             The guild to get the commands from, not including global commands.
             If not given or ``None`` then only global commands are returned.
-        type: Optional[:class:`~discord.AppCommandType`]
+        type: Optional[:class:`~discord_real.AppCommandType`]
             The type of commands to get. When not given or ``None``, then all
             command types are returned.
 
@@ -690,11 +690,11 @@ class CommandTree(Generic[ClientT]):
 
         Parameters
         -----------
-        guild: Optional[:class:`~discord.abc.Snowflake`]
+        guild: Optional[:class:`~discord_real.abc.Snowflake`]
             The guild to iterate the commands from, not including global commands.
             If not given or ``None`` then only global commands are iterated.
-        type: :class:`~discord.AppCommandType`
-            The type of commands to iterate over. Defaults to :attr:`~discord.AppCommandType.chat_input`,
+        type: :class:`~discord_real.AppCommandType`
+            The type of commands to iterate over. Defaults to :attr:`~discord_real.AppCommandType.chat_input`,
             i.e. slash commands.
 
         Yields
@@ -779,12 +779,12 @@ class CommandTree(Generic[ClientT]):
         The default implementation logs the exception using the library logger
         if the command does not have any error handlers attached to it.
 
-        To get the command that failed, :attr:`discord.Interaction.command` should
+        To get the command that failed, :attr:`discord_real.Interaction.command` should
         be used.
 
         Parameters
         -----------
-        interaction: :class:`~discord.Interaction`
+        interaction: :class:`~discord_real.Interaction`
             The interaction that is being handled.
         error: :exc:`AppCommandError`
             The exception that was raised.
@@ -854,10 +854,10 @@ class CommandTree(Generic[ClientT]):
             Whether the command is NSFW and should only work in NSFW channels. Defaults to ``False``.
 
             Due to a Discord limitation, this does not work on subcommands.
-        guild: Optional[:class:`~discord.abc.Snowflake`]
+        guild: Optional[:class:`~discord_real.abc.Snowflake`]
             The guild to add the command to. If not given or ``None`` then it
             becomes a global command instead.
-        guilds: List[:class:`~discord.abc.Snowflake`]
+        guilds: List[:class:`~discord_real.abc.Snowflake`]
             The list of guilds to add the command to. This cannot be mixed
             with the ``guild`` parameter. If no guilds are given at all
             then it becomes a global command instead.
@@ -910,8 +910,8 @@ class CommandTree(Generic[ClientT]):
     ) -> Callable[[ContextMenuCallback], ContextMenu]:
         """A decorator that creates an application command context menu from a regular function directly under this tree.
 
-        This function must have a signature of :class:`~discord.Interaction` as its first parameter
-        and taking either a :class:`~discord.Member`, :class:`~discord.User`, or :class:`~discord.Message`,
+        This function must have a signature of :class:`~discord_real.Interaction` as its first parameter
+        and taking either a :class:`~discord_real.Member`, :class:`~discord_real.User`, or :class:`~discord_real.Message`,
         or a :obj:`typing.Union` of ``Member`` and ``User`` as its second parameter.
 
         Examples
@@ -920,11 +920,11 @@ class CommandTree(Generic[ClientT]):
         .. code-block:: python3
 
             @app_commands.context_menu()
-            async def react(interaction: discord.Interaction, message: discord.Message):
+            async def react(interaction: discord_real.Interaction, message: discord_real.Message):
                 await interaction.response.send_message('Very cool message!', ephemeral=True)
 
             @app_commands.context_menu()
-            async def ban(interaction: discord.Interaction, user: discord.Member):
+            async def ban(interaction: discord_real.Interaction, user: discord_real.Member):
                 await interaction.response.send_message(f'Should I actually ban {user}...', ephemeral=True)
 
         Parameters
@@ -937,10 +937,10 @@ class CommandTree(Generic[ClientT]):
             Whether the command is NSFW and should only work in NSFW channels. Defaults to ``False``.
 
             Due to a Discord limitation, this does not work on subcommands.
-        guild: Optional[:class:`~discord.abc.Snowflake`]
+        guild: Optional[:class:`~discord_real.abc.Snowflake`]
             The guild to add the command to. If not given or ``None`` then it
             becomes a global command instead.
-        guilds: List[:class:`~discord.abc.Snowflake`]
+        guilds: List[:class:`~discord_real.abc.Snowflake`]
             The list of guilds to add the command to. This cannot be mixed
             with the ``guild`` parameter. If no guilds are given at all
             then it becomes a global command instead.
@@ -1026,7 +1026,7 @@ class CommandTree(Generic[ClientT]):
 
         Parameters
         -----------
-        guild: Optional[:class:`~discord.abc.Snowflake`]
+        guild: Optional[:class:`~discord_real.abc.Snowflake`]
             The guild to sync the commands to. If ``None`` then it
             syncs all global commands instead.
 
@@ -1198,7 +1198,7 @@ class CommandTree(Generic[ClientT]):
     async def interaction_check(self, interaction: Interaction[ClientT], /) -> bool:
         """|coro|
 
-        A global check to determine if an :class:`~discord.Interaction` should
+        A global check to determine if an :class:`~discord_real.Interaction` should
         be processed by the tree.
 
         The default implementation returns True (all interactions are processed),

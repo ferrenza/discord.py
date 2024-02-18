@@ -80,7 +80,7 @@ class Object(Hashable):
     id: :class:`int`
         The ID of the object.
     type: Type[:class:`abc.Snowflake`]
-        The discord.py model type of the object, if not specified, defaults to this class.
+        The discord_real.py model type of the object, if not specified, defaults to this class.
 
         .. note::
 

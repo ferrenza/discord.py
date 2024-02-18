@@ -23,10 +23,10 @@ It looks something like this:
 
     import discord
 
-    intents = discord.Intents.default()
+    intents = discord_real.Intents.default()
     intents.message_content = True
 
-    client = discord.Client(intents=intents)
+    client = discord_real.Client(intents=intents)
 
     @client.event
     async def on_ready():
@@ -42,7 +42,7 @@ It looks something like this:
 
     client.run('your token here')
 
-Let's name this file ``example_bot.py``. Make sure not to name it ``discord.py`` as that'll conflict
+Let's name this file ``example_bot.py``. Make sure not to name it ``discord_real.py`` as that'll conflict
 with the library.
 
 There's a lot going on here, so let's walk you through it step by step.

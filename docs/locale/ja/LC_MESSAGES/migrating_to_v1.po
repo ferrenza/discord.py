@@ -39,7 +39,7 @@ msgstr "Pythonのバージョンの変更"
 
 #: ../../migrating_to_v1.rst:22
 msgid "In order to make development easier and also to allow for our dependencies to upgrade to allow usage of 3.7 or higher, the library had to remove support for Python versions lower than 3.5.3, which essentially means that **support for Python 3.4 is dropped**."
-msgstr "discord.py の開発をより簡単にし、またその依存関係にあるライブラリをアップグレードして Python 3.7 以上を使えるようにするために、 discord. py は Python 3.5.3 より古いバージョンに対するサポートを諦めざるを得ませんでした。これはつまり **Python 3.4 に対するサポートは打ち切られた** ということです。"
+msgstr "discord_real.py の開発をより簡単にし、またその依存関係にあるライブラリをアップグレードして Python 3.7 以上を使えるようにするために、 discord_real. py は Python 3.5.3 より古いバージョンに対するサポートを諦めざるを得ませんでした。これはつまり **Python 3.4 に対するサポートは打ち切られた** ということです。"
 
 #: ../../migrating_to_v1.rst:27
 msgid "Major Model Changes"
@@ -845,8 +845,8 @@ msgid "Use ``isinstance`` instead with one of the :ref:`discord_api_abcs` instea
 msgstr "代わりに :ref:`discord_api_abcs` のいずれかを使って、 ``isinstance`` を使用してください。"
 
 #: ../../migrating_to_v1.rst:348
-msgid "e.g. ``isinstance(channel, discord.abc.GuildChannel)`` will check if it isn't a private channel."
-msgstr "例: ``isinstance(channel, discord.abc.GuildChannel)`` はプライベートチャンネルでないことを確認します。"
+msgid "e.g. ``isinstance(channel, discord_real.abc.GuildChannel)`` will check if it isn't a private channel."
+msgstr "例: ``isinstance(channel, discord_real.abc.GuildChannel)`` はプライベートチャンネルでないことを確認します。"
 
 #: ../../migrating_to_v1.rst:350
 msgid "``Client.accept_invite``"
@@ -1082,8 +1082,8 @@ msgid "The functions passed to :meth:`AsyncIterator.map` or :meth:`AsyncIterator
 msgstr ":meth:`AsyncIterator.map` または :meth:`AsyncIterator.filter` に渡される関数はコルーチンか通常の関数です。"
 
 #: ../../migrating_to_v1.rst:486
-msgid "You can also get single elements a la :func:`discord.utils.find` or :func:`discord.utils.get` via :meth:`AsyncIterator.get` or :meth:`AsyncIterator.find`: ::"
-msgstr ":meth:`AsyncIterator.get` または :meth:`AsyncIterator.find` を介して :func:`discord.utils.get` または :func:`discord.utils.find` で単一の要素を取得することもできます。"
+msgid "You can also get single elements a la :func:`discord_real.utils.find` or :func:`discord_real.utils.get` via :meth:`AsyncIterator.get` or :meth:`AsyncIterator.find`: ::"
+msgstr ":meth:`AsyncIterator.get` または :meth:`AsyncIterator.find` を介して :func:`discord_real.utils.get` または :func:`discord_real.utils.find` で単一の要素を取得することもできます。"
 
 #: ../../migrating_to_v1.rst:491
 msgid "The following return :class:`AsyncIterator`:"

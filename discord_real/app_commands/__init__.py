@@ -1,5 +1,5 @@
 """
-discord.app_commands
+discord_real.app_commands
 ~~~~~~~~~~~~~~~~~~~~~
 
 Application commands support for the Discord API

@@ -44,7 +44,7 @@ from typing import (
     Mapping,
 )
 
-import discord.utils
+import discord_real.utils
 
 from .core import Group, Command, get_signature_parameters
 from .errors import CommandError
@@ -52,7 +52,7 @@ from .errors import CommandError
 if TYPE_CHECKING:
     from typing_extensions import Self
 
-    import discord.abc
+    import discord_real.abc
 
     from .bot import BotBase
     from .context import Context
@@ -74,7 +74,7 @@ __all__ = (
 
 FuncT = TypeVar('FuncT', bound=Callable[..., Any])
 
-MISSING: Any = discord.utils.MISSING
+MISSING: Any = discord_real.utils.MISSING
 
 # help -> shows info of bot on top/bottom and lists subcommands
 # help command -> shows detailed info of command
@@ -395,7 +395,7 @@ class HelpCommand:
 
             ``func`` parameter is now positional-only.
 
-        .. seealso:: The :func:`~discord.ext.commands.check` decorator
+        .. seealso:: The :func:`~discord_real.ext.commands.check` decorator
 
         Parameters
         ----------
@@ -682,11 +682,11 @@ class HelpCommand:
             The maximum width of the commands.
         """
 
-        as_lengths = (discord.utils._string_width(c.name) for c in commands)
+        as_lengths = (discord_real.utils._string_width(c.name) for c in commands)
         return max(as_lengths, default=0)
 
-    def get_destination(self) -> discord.abc.MessageableChannel:
-        """Returns the :class:`~discord.abc.Messageable` where the help command will be output.
+    def get_destination(self) -> discord_real.abc.MessageableChannel:
+        """Returns the :class:`~discord_real.abc.Messageable` where the help command will be output.
 
         You can override this method to customise the behaviour.
 
@@ -955,7 +955,7 @@ class HelpCommand:
         if cog is not None:
             return await self.send_cog_help(cog)
 
-        maybe_coro = discord.utils.maybe_coroutine
+        maybe_coro = discord_real.utils.maybe_coroutine
 
         # If it's not a cog then it's a command.
         # Since we want to have detailed errors when someone
@@ -1136,7 +1136,7 @@ class DefaultHelpCommand(HelpCommand):
         self.paginator.add_line(heading)
         max_size = max_size or self.get_max_size(commands)
 
-        get_width = discord.utils._string_width
+        get_width = discord_real.utils._string_width
         for command in commands:
             name = command.name
             width = max_size - (get_width(name) - len(name))
@@ -1167,7 +1167,7 @@ class DefaultHelpCommand(HelpCommand):
         self.paginator.add_line(self.arguments_heading)
         max_size = self.get_max_size(arguments)  # type: ignore # not a command
 
-        get_width = discord.utils._string_width
+        get_width = discord_real.utils._string_width
         for argument in arguments:
             name = argument.displayed_name or argument.name
             width = max_size - (get_width(name) - len(name))
@@ -1221,7 +1221,7 @@ class DefaultHelpCommand(HelpCommand):
         if self.show_parameter_descriptions:
             self.add_command_arguments(command)
 
-    def get_destination(self) -> discord.abc.Messageable:
+    def get_destination(self) -> discord_real.abc.Messageable:
         ctx = self.context
         if self.dm_help is True:
             return ctx.author
@@ -1484,7 +1484,7 @@ class MinimalHelpCommand(HelpCommand):
                     self.paginator.add_line(line)
                 self.paginator.add_line()
 
-    def get_destination(self) -> discord.abc.Messageable:
+    def get_destination(self) -> discord_real.abc.Messageable:
         ctx = self.context
         if self.dm_help is True:
             return ctx.author

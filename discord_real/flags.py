@@ -1561,7 +1561,7 @@ class ApplicationFlags(BaseFlags):
 
 @fill_with_flags()
 class ChannelFlags(BaseFlags):
-    r"""Wraps up the Discord :class:`~discord.abc.GuildChannel` or :class:`Thread` flags.
+    r"""Wraps up the Discord :class:`~discord_real.abc.GuildChannel` or :class:`Thread` flags.
 
     .. container:: operations
 
@@ -1819,7 +1819,7 @@ class MemberFlags(BaseFlags):
 
     @flag_value
     def did_rejoin(self):
-        """:class:`bool`: Returns ``True`` if the member left and rejoined the :attr:`~discord.Member.guild`."""
+        """:class:`bool`: Returns ``True`` if the member left and rejoined the :attr:`~discord_real.Member.guild`."""
         return 1 << 0
 
     @flag_value

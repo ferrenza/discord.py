@@ -90,7 +90,7 @@ class AllChannels:
 
     Attributes
     -----------
-    guild: :class:`~discord.Guild`
+    guild: :class:`~discord_real.Guild`
         The guild the application command permission is for.
     """
 
@@ -144,19 +144,19 @@ class AppCommand(Hashable):
         The application command's ID.
     application_id: :class:`int`
         The application command's application's ID.
-    type: :class:`~discord.AppCommandType`
+    type: :class:`~discord_real.AppCommandType`
         The application command's type.
     name: :class:`str`
         The application command's name.
     description: :class:`str`
         The application command's description.
-    name_localizations: Dict[:class:`~discord.Locale`, :class:`str`]
+    name_localizations: Dict[:class:`~discord_real.Locale`, :class:`str`]
         The localised names of the application command. Used for display purposes.
-    description_localizations: Dict[:class:`~discord.Locale`, :class:`str`]
+    description_localizations: Dict[:class:`~discord_real.Locale`, :class:`str`]
         The localised descriptions of the application command. Used for display purposes.
     options: List[Union[:class:`Argument`, :class:`AppCommandGroup`]]
         A list of options.
-    default_member_permissions: Optional[:class:`~discord.Permissions`]
+    default_member_permissions: Optional[:class:`~discord_real.Permissions`]
         The default member permissions that can run this command.
     dm_permission: :class:`bool`
         A boolean that indicates whether this command can be run in direct messages.
@@ -239,7 +239,7 @@ class AppCommand(Hashable):
 
     @property
     def guild(self) -> Optional[Guild]:
-        """Optional[:class:`~discord.Guild`]: Returns the guild this command is registered to
+        """Optional[:class:`~discord_real.Guild`]: Returns the guild this command is registered to
         if it exists.
         """
         return self._state._get_guild(self.guild_id)
@@ -295,7 +295,7 @@ class AppCommand(Hashable):
             The new name for the application command.
         description: :class:`str`
             The new description for the application command.
-        default_member_permissions: Optional[:class:`~discord.Permissions`]
+        default_member_permissions: Optional[:class:`~discord_real.Permissions`]
             The new default permissions needed to use this application command.
             Pass value of ``None`` to remove any permission requirements.
         dm_permission: :class:`bool`
@@ -368,7 +368,7 @@ class AppCommand(Hashable):
 
         Parameters
         -----------
-        guild: :class:`~discord.abc.Snowflake`
+        guild: :class:`~discord_real.abc.Snowflake`
             The guild to retrieve the permissions from.
 
         Raises
@@ -425,7 +425,7 @@ class Choice(Generic[ChoiceT]):
     name: Union[:class:`str`, :class:`locale_str`]
         The name of the choice. Used for display purposes.
         Can only be up to 100 characters.
-    name_localizations: Dict[:class:`~discord.Locale`, :class:`str`]
+    name_localizations: Dict[:class:`~discord_real.Locale`, :class:`str`]
         The localised names of the choice. Used for display purposes.
     value: Union[:class:`int`, :class:`str`, :class:`float`]
         The value of the choice. If it's a string, it can only be
@@ -533,11 +533,11 @@ class AppCommandChannel(Hashable):
     -----------
     id: :class:`int`
         The ID of the channel.
-    type: :class:`~discord.ChannelType`
+    type: :class:`~discord_real.ChannelType`
         The type of channel.
     name: :class:`str`
         The name of the channel.
-    permissions: :class:`~discord.Permissions`
+    permissions: :class:`~discord_real.Permissions`
         The resolved permissions of the user who invoked
         the application command in that channel.
     guild_id: :class:`int`
@@ -575,7 +575,7 @@ class AppCommandChannel(Hashable):
 
     @property
     def guild(self) -> Optional[Guild]:
-        """Optional[:class:`~discord.Guild`]: The channel's guild, from cache, if found."""
+        """Optional[:class:`~discord_real.Guild`]: The channel's guild, from cache, if found."""
         return self._state._get_guild(self.guild_id)
 
     def resolve(self) -> Optional[GuildChannel]:
@@ -652,13 +652,13 @@ class AppCommandThread(Hashable):
     -----------
     id: :class:`int`
         The ID of the thread.
-    type: :class:`~discord.ChannelType`
+    type: :class:`~discord_real.ChannelType`
         The type of thread.
     name: :class:`str`
         The name of the thread.
     parent_id: :class:`int`
         The parent text channel ID this thread belongs to.
-    permissions: :class:`~discord.Permissions`
+    permissions: :class:`~discord_real.Permissions`
         The resolved permissions of the user who invoked
         the application command in that thread.
     guild_id: :class:`int`
@@ -720,7 +720,7 @@ class AppCommandThread(Hashable):
 
     @property
     def guild(self) -> Optional[Guild]:
-        """Optional[:class:`~discord.Guild`]: The channel's guild, from cache, if found."""
+        """Optional[:class:`~discord_real.Guild`]: The channel's guild, from cache, if found."""
         return self._state._get_guild(self.guild_id)
 
     def _unroll_metadata(self, data: ThreadMetadata) -> None:
@@ -734,7 +734,7 @@ class AppCommandThread(Hashable):
 
     @property
     def parent(self) -> Optional[TextChannel]:
-        """Optional[:class:`~discord.TextChannel`]: The parent channel this thread belongs to."""
+        """Optional[:class:`~discord_real.TextChannel`]: The parent channel this thread belongs to."""
         return self.guild.get_channel(self.parent_id)  # type: ignore
 
     @property
@@ -769,7 +769,7 @@ class AppCommandThread(Hashable):
     async def fetch(self) -> Thread:
         """|coro|
 
-        Fetches the partial channel to a full :class:`~discord.Thread`.
+        Fetches the partial channel to a full :class:`~discord_real.Thread`.
 
         Raises
         --------
@@ -782,7 +782,7 @@ class AppCommandThread(Hashable):
 
         Returns
         --------
-        :class:`~discord.Thread`
+        :class:`~discord_real.Thread`
             The full thread.
         """
         client = self._state._get_client()
@@ -796,15 +796,15 @@ class Argument:
 
     Attributes
     ------------
-    type: :class:`~discord.AppCommandOptionType`
+    type: :class:`~discord_real.AppCommandOptionType`
         The type of argument.
     name: :class:`str`
         The name of the argument.
     description: :class:`str`
         The description of the argument.
-    name_localizations: Dict[:class:`~discord.Locale`, :class:`str`]
+    name_localizations: Dict[:class:`~discord_real.Locale`, :class:`str`]
         The localised names of the argument. Used for display purposes.
-    description_localizations: Dict[:class:`~discord.Locale`, :class:`str`]
+    description_localizations: Dict[:class:`~discord_real.Locale`, :class:`str`]
         The localised descriptions of the argument. Used for display purposes.
     required: :class:`bool`
         Whether the argument is required.
@@ -812,7 +812,7 @@ class Argument:
         A list of choices for the command to choose from for this argument.
     parent: Union[:class:`AppCommand`, :class:`AppCommandGroup`]
         The parent application command that has this argument.
-    channel_types: List[:class:`~discord.ChannelType`]
+    channel_types: List[:class:`~discord_real.ChannelType`]
         The channel types that are allowed for this parameter.
     min_value: Optional[Union[:class:`int`, :class:`float`]]
         The minimum supported value for this parameter.
@@ -895,15 +895,15 @@ class AppCommandGroup:
 
     Attributes
     ------------
-    type: :class:`~discord.AppCommandOptionType`
+    type: :class:`~discord_real.AppCommandOptionType`
         The type of subcommand.
     name: :class:`str`
         The name of the subcommand.
     description: :class:`str`
         The description of the subcommand.
-    name_localizations: Dict[:class:`~discord.Locale`, :class:`str`]
+    name_localizations: Dict[:class:`~discord_real.Locale`, :class:`str`]
         The localised names of the subcommand. Used for display purposes.
-    description_localizations: Dict[:class:`~discord.Locale`, :class:`str`]
+    description_localizations: Dict[:class:`~discord_real.Locale`, :class:`str`]
         The localised descriptions of the subcommand. Used for display purposes.
     options: List[Union[:class:`Argument`, :class:`AppCommandGroup`]]
         A list of options.
@@ -986,14 +986,14 @@ class AppCommandPermissions:
 
     Attributes
     -----------
-    guild: :class:`~discord.Guild`
+    guild: :class:`~discord_real.Guild`
         The guild associated with this permission.
     id: :class:`int`
         The ID of the permission target, such as a role, channel, or guild.
         The special ``guild_id - 1`` sentinel is used to represent "all channels".
     target: Any
         The role, user, or channel associated with this permission. This could also be the :class:`AllChannels` sentinel type.
-        Falls back to :class:`~discord.Object` if the target could not be found in the cache.
+        Falls back to :class:`~discord_real.Object` if the target could not be found in the cache.
     type: :class:`.AppCommandPermissionType`
         The type of permission.
     permission: :class:`bool`
@@ -1078,7 +1078,7 @@ class GuildAppCommandPermissions:
 
     @property
     def guild(self) -> Guild:
-        """:class:`~discord.Guild`: The guild associated with the permissions."""
+        """:class:`~discord_real.Guild`: The guild associated with the permissions."""
         return self._state._get_or_create_unavailable_guild(self.guild_id)
 
 

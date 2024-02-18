@@ -27,7 +27,7 @@ import inspect
 import discord
 import logging
 from discord import app_commands
-from discord.utils import maybe_coroutine, _to_kebab_case
+from discord_real.utils import maybe_coroutine, _to_kebab_case
 
 from typing import (
     Any,
@@ -50,8 +50,8 @@ from ._types import _BaseCommand, BotT
 
 if TYPE_CHECKING:
     from typing_extensions import Self
-    from discord.abc import Snowflake
-    from discord._types import ClientT
+    from discord_real.abc import Snowflake
+    from discord_real._types import ClientT
 
     from .bot import BotBase
     from .context import Context
@@ -65,7 +65,7 @@ __all__ = (
 
 FuncT = TypeVar('FuncT', bound=Callable[..., Any])
 
-MISSING: Any = discord.utils.MISSING
+MISSING: Any = discord_real.utils.MISSING
 _log = logging.getLogger(__name__)
 
 
@@ -128,12 +128,12 @@ class CogMeta(type):
                 async def bar(self, ctx):
                     pass # hidden -> False
 
-    group_name: Union[:class:`str`, :class:`~discord.app_commands.locale_str`]
+    group_name: Union[:class:`str`, :class:`~discord_real.app_commands.locale_str`]
         The group name of a cog. This is only applicable for :class:`GroupCog` instances.
         By default, it's the same value as :attr:`name`.
 
         .. versionadded:: 2.0
-    group_description: Union[:class:`str`, :class:`~discord.app_commands.locale_str`]
+    group_description: Union[:class:`str`, :class:`~discord_real.app_commands.locale_str`]
         The group description of a cog. This is only applicable for :class:`GroupCog` instances.
         By default, it's the same value as :attr:`description`.
 
@@ -145,7 +145,7 @@ class CogMeta(type):
         .. versionadded:: 2.0
     group_auto_locale_strings: :class:`bool`
         If this is set to ``True``, then all translatable strings will implicitly
-        be wrapped into :class:`~discord.app_commands.locale_str` rather
+        be wrapped into :class:`~discord_real.app_commands.locale_str` rather
         than :class:`str`. Defaults to ``True``.
 
         .. versionadded:: 2.0
@@ -289,7 +289,7 @@ class Cog(metaclass=CogMeta):
     __cog_is_app_commands_group__: ClassVar[bool] = False
     __cog_app_commands_group__: Optional[app_commands.Group]
     __discord_app_commands_error_handler__: Optional[
-        Callable[[discord.Interaction, app_commands.AppCommandError], Coroutine[Any, Any, None]]
+        Callable[[discord_real.Interaction, app_commands.AppCommandError], Coroutine[Any, Any, None]]
     ]
 
     def __new__(cls, *args: Any, **kwargs: Any) -> Self:
@@ -404,7 +404,7 @@ class Cog(metaclass=CogMeta):
     def get_commands(self) -> List[Command[Self, ..., Any]]:
         r"""Returns the commands that are defined inside this cog.
 
-        This does *not* include :class:`discord.app_commands.Command` or :class:`discord.app_commands.Group`
+        This does *not* include :class:`discord_real.app_commands.Command` or :class:`discord_real.app_commands.Group`
         instances.
 
         Returns
@@ -420,8 +420,8 @@ class Cog(metaclass=CogMeta):
 
         Returns
         --------
-        List[Union[:class:`discord.app_commands.Command`, :class:`discord.app_commands.Group`]]
-            A :class:`list` of :class:`discord.app_commands.Command`\s and :class:`discord.app_commands.Group`\s that are
+        List[Union[:class:`discord_real.app_commands.Command`, :class:`discord_real.app_commands.Group`]]
+            A :class:`list` of :class:`discord_real.app_commands.Command`\s and :class:`discord_real.app_commands.Group`\s that are
             defined inside this cog, not including subcommands.
         """
         return [c for c in self.__cog_app_commands__ if c.parent is None]
@@ -461,7 +461,7 @@ class Cog(metaclass=CogMeta):
 
         Yields
         ------
-        Union[:class:`discord.app_commands.Command`, :class:`discord.app_commands.Group`]
+        Union[:class:`discord_real.app_commands.Command`, :class:`discord_real.app_commands.Group`]
             An app command or group from the cog.
         """
         for command in self.__cog_app_commands__:
@@ -471,7 +471,7 @@ class Cog(metaclass=CogMeta):
 
     @property
     def app_command(self) -> Optional[app_commands.Group]:
-        """Optional[:class:`discord.app_commands.Group`]: Returns the associated group with this cog.
+        """Optional[:class:`discord_real.app_commands.Group`]: Returns the associated group with this cog.
 
         This is only available if inheriting from :class:`GroupCog`.
         """
@@ -600,7 +600,7 @@ class Cog(metaclass=CogMeta):
 
     @_cog_special_method
     def cog_check(self, ctx: Context[BotT]) -> bool:
-        """A special method that registers as a :func:`~discord.ext.commands.check`
+        """A special method that registers as a :func:`~discord_real.ext.commands.check`
         for every command and subcommand in this cog.
 
         This function **can** be a coroutine and must take a sole parameter,
@@ -609,12 +609,12 @@ class Cog(metaclass=CogMeta):
         return True
 
     @_cog_special_method
-    def interaction_check(self, interaction: discord.Interaction[ClientT], /) -> bool:
-        """A special method that registers as a :func:`discord.app_commands.check`
+    def interaction_check(self, interaction: discord_real.Interaction[ClientT], /) -> bool:
+        """A special method that registers as a :func:`discord_real.app_commands.check`
         for every app command and subcommand in this cog.
 
         This function **can** be a coroutine and must take a sole parameter,
-        ``interaction``, to represent the :class:`~discord.Interaction`.
+        ``interaction``, to represent the :class:`~discord_real.Interaction`.
 
         .. versionadded:: 2.0
         """
@@ -642,22 +642,22 @@ class Cog(metaclass=CogMeta):
         pass
 
     @_cog_special_method
-    async def cog_app_command_error(self, interaction: discord.Interaction, error: app_commands.AppCommandError) -> None:
+    async def cog_app_command_error(self, interaction: discord_real.Interaction, error: app_commands.AppCommandError) -> None:
         """|coro|
 
         A special method that is called whenever an error within
         an application command is dispatched inside this cog.
 
-        This is similar to :func:`discord.app_commands.CommandTree.on_error` except
+        This is similar to :func:`discord_real.app_commands.CommandTree.on_error` except
         only applying to the application commands inside this cog.
 
         This **must** be a coroutine.
 
         Parameters
         -----------
-        interaction: :class:`~discord.Interaction`
+        interaction: :class:`~discord_real.Interaction`
             The interaction that is being handled.
-        error: :exc:`~discord.app_commands.AppCommandError`
+        error: :exc:`~discord_real.app_commands.AppCommandError`
             The exception that was raised.
         """
         pass
@@ -759,7 +759,7 @@ class Cog(metaclass=CogMeta):
                         bot.tree.remove_command(command.name)
                     else:
                         for guild_id in guild_ids:
-                            bot.tree.remove_command(command.name, guild=discord.Object(id=guild_id))
+                            bot.tree.remove_command(command.name, guild=discord_real.Object(id=guild_id))
 
             for name, method_name in self.__cog_listeners__:
                 bot.remove_listener(getattr(self, method_name), name)
@@ -777,14 +777,14 @@ class Cog(metaclass=CogMeta):
 
 
 class GroupCog(Cog):
-    """Represents a cog that also doubles as a parent :class:`discord.app_commands.Group` for
+    """Represents a cog that also doubles as a parent :class:`discord_real.app_commands.Group` for
     the application commands defined within it.
 
     This inherits from :class:`Cog` and the options in :class:`CogMeta` also apply to this.
     See the :class:`Cog` documentation for methods.
 
-    Decorators such as :func:`~discord.app_commands.guild_only`, :func:`~discord.app_commands.guilds`,
-    and :func:`~discord.app_commands.default_permissions` will apply to the group if used on top of the
+    Decorators such as :func:`~discord_real.app_commands.guild_only`, :func:`~discord_real.app_commands.guilds`,
+    and :func:`~discord_real.app_commands.default_permissions` will apply to the group if used on top of the
     cog.
 
     Hybrid commands will also be added to the Group, giving the ability to categorize slash commands into
@@ -795,7 +795,7 @@ class GroupCog(Cog):
     .. code-block:: python3
 
         from discord import app_commands
-        from discord.ext import commands
+        from discord_real.ext import commands
 
         @app_commands.guild_only()
         class MyCog(commands.GroupCog, group_name='my-cog'):

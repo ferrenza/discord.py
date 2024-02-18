@@ -193,9 +193,9 @@ class DynamicItem(Generic[BaseT], Item['View']):
 
         Parameters
         ------------
-        interaction: :class:`~discord.Interaction`
+        interaction: :class:`~discord_real.Interaction`
             The interaction that the component belongs to.
-        item: :class:`~discord.ui.Item`
+        item: :class:`~discord_real.ui.Item`
             The base item that is being dispatched.
         match: ``re.Match``
             The match object that was created from the ``template``

@@ -67,21 +67,21 @@ extras_require = {
 
 packages = [
     'discord_real',
-    'discord.types',
-    'discord.ui',
-    'discord.webhook',
-    'discord.app_commands',
-    'discord.ext.commands',
-    'discord.ext.tasks',
+    'discord_real.types',
+    'discord_real.ui',
+    'discord_real.webhook',
+    'discord_real.app_commands',
+    'discord_real.ext.commands',
+    'discord_real.ext.tasks',
 ]
 
 setup(
-    name='discord.py',
+    name='discord_real.py',
     author='Rapptz',
-    url='https://github.com/Rapptz/discord.py',
+    url='https://github.com/Rapptz/discord_real.py',
     project_urls={
         'Documentation': 'https://discordpy.readthedocs.io/en/latest/',
-        'Issue tracker': 'https://github.com/Rapptz/discord.py/issues',
+        'Issue tracker': 'https://github.com/Rapptz/discord_real.py/issues',
     },
     version=version,
     packages=packages,

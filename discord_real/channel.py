@@ -44,7 +44,7 @@ from typing import (
 )
 import datetime
 
-import discord.abc
+import discord_real.abc
 from .scheduled_event import ScheduledEvent
 from .permissions import PermissionOverwrite, Permissions
 from .enums import ChannelType, ForumLayoutType, ForumOrderType, PrivacyLevel, try_enum, VideoQualityMode, EntityType
@@ -111,7 +111,7 @@ class ThreadWithMessage(NamedTuple):
     message: Message
 
 
-class TextChannel(discord.abc.Messageable, discord.abc.GuildChannel, Hashable):
+class TextChannel(discord_real.abc.Messageable, discord_real.abc.GuildChannel, Hashable):
     """Represents a Discord guild text channel.
 
     .. container:: operations
@@ -235,7 +235,7 @@ class TextChannel(discord.abc.Messageable, discord.abc.GuildChannel, Hashable):
     def _scheduled_event_entity_type(self) -> Optional[EntityType]:
         return None
 
-    @utils.copy_doc(discord.abc.GuildChannel.permissions_for)
+    @utils.copy_doc(discord_real.abc.GuildChannel.permissions_for)
     def permissions_for(self, obj: Union[Member, Role], /) -> Permissions:
         base = super().permissions_for(obj)
         self._apply_implicit_permissions(base)
@@ -394,7 +394,7 @@ class TextChannel(discord.abc.Messageable, discord.abc.GuildChannel, Hashable):
             # the payload will always be the proper channel payload
             return self.__class__(state=self._state, guild=self.guild, data=payload)  # type: ignore
 
-    @utils.copy_doc(discord.abc.GuildChannel.clone)
+    @utils.copy_doc(discord_real.abc.GuildChannel.clone)
     async def clone(self, *, name: Optional[str] = None, reason: Optional[str] = None) -> TextChannel:
         return await self._clone_impl(
             {'topic': self.topic, 'nsfw': self.nsfw, 'rate_limit_per_user': self.slowmode_delay}, name=name, reason=reason
@@ -529,7 +529,7 @@ class TextChannel(discord.abc.Messageable, discord.abc.GuildChannel, Hashable):
         List[:class:`.Message`]
             The list of messages that were deleted.
         """
-        return await discord.abc._purge_helper(
+        return await discord_real.abc._purge_helper(
             self,
             limit=limit,
             check=check,
@@ -724,8 +724,8 @@ class TextChannel(discord.abc.Messageable, discord.abc.GuildChannel, Hashable):
 
         Creates a thread in this text channel.
 
-        To create a public thread, you must have :attr:`~discord.Permissions.create_public_threads`.
-        For a private thread, :attr:`~discord.Permissions.create_private_threads` is needed instead.
+        To create a public thread, you must have :attr:`~discord_real.Permissions.create_public_threads`.
+        For a private thread, :attr:`~discord_real.Permissions.create_private_threads` is needed instead.
 
         .. versionadded:: 2.0
 
@@ -889,7 +889,7 @@ class TextChannel(discord.abc.Messageable, discord.abc.GuildChannel, Hashable):
             before_timestamp = update_before(threads[-1])
 
 
-class VocalGuildChannel(discord.abc.Messageable, discord.abc.Connectable, discord.abc.GuildChannel, Hashable):
+class VocalGuildChannel(discord_real.abc.Messageable, discord_real.abc.Connectable, discord_real.abc.GuildChannel, Hashable):
     __slots__ = (
         'name',
         'id',
@@ -989,7 +989,7 @@ class VocalGuildChannel(discord.abc.Messageable, discord.abc.Connectable, discor
         """
         return [event for event in self.guild.scheduled_events if event.channel_id == self.id]
 
-    @utils.copy_doc(discord.abc.GuildChannel.permissions_for)
+    @utils.copy_doc(discord_real.abc.GuildChannel.permissions_for)
     def permissions_for(self, obj: Union[Member, Role], /) -> Permissions:
         base = super().permissions_for(obj)
         self._apply_implicit_permissions(base)
@@ -1172,7 +1172,7 @@ class VocalGuildChannel(discord.abc.Messageable, discord.abc.Connectable, discor
             The list of messages that were deleted.
         """
 
-        return await discord.abc._purge_helper(
+        return await discord_real.abc._purge_helper(
             self,
             limit=limit,
             check=check,
@@ -1343,7 +1343,7 @@ class VoiceChannel(VocalGuildChannel):
         """:class:`ChannelType`: The channel's Discord type."""
         return ChannelType.voice
 
-    @utils.copy_doc(discord.abc.GuildChannel.clone)
+    @utils.copy_doc(discord_real.abc.GuildChannel.clone)
     async def clone(self, *, name: Optional[str] = None, reason: Optional[str] = None) -> VoiceChannel:
         return await self._clone_impl({'bitrate': self.bitrate, 'user_limit': self.user_limit}, name=name, reason=reason)
 
@@ -1588,7 +1588,7 @@ class StageChannel(VocalGuildChannel):
         """:class:`ChannelType`: The channel's Discord type."""
         return ChannelType.stage_voice
 
-    @utils.copy_doc(discord.abc.GuildChannel.clone)
+    @utils.copy_doc(discord_real.abc.GuildChannel.clone)
     async def clone(self, *, name: Optional[str] = None, reason: Optional[str] = None) -> StageChannel:
         return await self._clone_impl({}, name=name, reason=reason)
 
@@ -1628,7 +1628,7 @@ class StageChannel(VocalGuildChannel):
             You must have :attr:`~Permissions.mention_everyone` to do this.
 
             .. versionadded:: 2.3
-        scheduled_event: :class:`~discord.abc.Snowflake`
+        scheduled_event: :class:`~discord_real.abc.Snowflake`
             The guild scheduled event associated with the stage instance.
 
             .. versionadded:: 2.4
@@ -1788,7 +1788,7 @@ class StageChannel(VocalGuildChannel):
             return self.__class__(state=self._state, guild=self.guild, data=payload)  # type: ignore
 
 
-class CategoryChannel(discord.abc.GuildChannel, Hashable):
+class CategoryChannel(discord_real.abc.GuildChannel, Hashable):
     """Represents a Discord channel category.
 
     These are useful to group channels to logical compartments.
@@ -1865,7 +1865,7 @@ class CategoryChannel(discord.abc.GuildChannel, Hashable):
         """:class:`bool`: Checks if the category is NSFW."""
         return self.nsfw
 
-    @utils.copy_doc(discord.abc.GuildChannel.clone)
+    @utils.copy_doc(discord_real.abc.GuildChannel.clone)
     async def clone(self, *, name: Optional[str] = None, reason: Optional[str] = None) -> CategoryChannel:
         return await self._clone_impl({'nsfw': self.nsfw}, name=name, reason=reason)
 
@@ -1943,7 +1943,7 @@ class CategoryChannel(discord.abc.GuildChannel, Hashable):
             # the payload will always be the proper channel payload
             return self.__class__(state=self._state, guild=self.guild, data=payload)  # type: ignore
 
-    @utils.copy_doc(discord.abc.GuildChannel.move)
+    @utils.copy_doc(discord_real.abc.GuildChannel.move)
     async def move(self, **kwargs: Any) -> None:
         kwargs.pop('category', None)
         await super().move(**kwargs)
@@ -2138,7 +2138,7 @@ class ForumTag(Hashable):
         return self.name
 
 
-class ForumChannel(discord.abc.GuildChannel, Hashable):
+class ForumChannel(discord_real.abc.GuildChannel, Hashable):
     """Represents a Discord guild forum channel.
 
     .. versionadded:: 2.0
@@ -2298,7 +2298,7 @@ class ForumChannel(discord.abc.GuildChannel, Hashable):
     def _scheduled_event_entity_type(self) -> Optional[EntityType]:
         return None
 
-    @utils.copy_doc(discord.abc.GuildChannel.permissions_for)
+    @utils.copy_doc(discord_real.abc.GuildChannel.permissions_for)
     def permissions_for(self, obj: Union[Member, Role], /) -> Permissions:
         base = super().permissions_for(obj)
         self._apply_implicit_permissions(base)
@@ -2382,7 +2382,7 @@ class ForumChannel(discord.abc.GuildChannel, Hashable):
         """
         return self._type == ChannelType.media.value
 
-    @utils.copy_doc(discord.abc.GuildChannel.clone)
+    @utils.copy_doc(discord_real.abc.GuildChannel.clone)
     async def clone(self, *, name: Optional[str] = None, reason: Optional[str] = None) -> ForumChannel:
         return await self._clone_impl(
             {'topic': self.topic, 'nsfw': self.nsfw, 'rate_limit_per_user': self.slowmode_delay}, name=name, reason=reason
@@ -2636,7 +2636,7 @@ class ForumChannel(discord.abc.GuildChannel, Hashable):
         Creates a thread in this forum.
 
         This thread is a public thread with the initial message given. Currently in order
-        to start a thread in this forum, the user needs :attr:`~discord.Permissions.send_messages`.
+        to start a thread in this forum, the user needs :attr:`~discord_real.Permissions.send_messages`.
 
         You must send at least one of ``content``, ``embed``, ``embeds``, ``file``, ``files``,
         or ``view`` to create a thread in a forum, since forum channels must have a starter message.
@@ -2658,28 +2658,28 @@ class ForumChannel(discord.abc.GuildChannel, Hashable):
             The content of the message to send with the thread.
         tts: :class:`bool`
             Indicates if the message should be sent using text-to-speech.
-        embed: :class:`~discord.Embed`
+        embed: :class:`~discord_real.Embed`
             The rich embed for the content.
-        embeds: List[:class:`~discord.Embed`]
+        embeds: List[:class:`~discord_real.Embed`]
             A list of embeds to upload. Must be a maximum of 10.
-        file: :class:`~discord.File`
+        file: :class:`~discord_real.File`
             The file to upload.
-        files: List[:class:`~discord.File`]
+        files: List[:class:`~discord_real.File`]
             A list of files to upload. Must be a maximum of 10.
-        allowed_mentions: :class:`~discord.AllowedMentions`
+        allowed_mentions: :class:`~discord_real.AllowedMentions`
             Controls the mentions being processed in this message. If this is
-            passed, then the object is merged with :attr:`~discord.Client.allowed_mentions`.
+            passed, then the object is merged with :attr:`~discord_real.Client.allowed_mentions`.
             The merging behaviour only overrides attributes that have been explicitly passed
-            to the object, otherwise it uses the attributes set in :attr:`~discord.Client.allowed_mentions`.
-            If no object is passed at all then the defaults given by :attr:`~discord.Client.allowed_mentions`
+            to the object, otherwise it uses the attributes set in :attr:`~discord_real.Client.allowed_mentions`.
+            If no object is passed at all then the defaults given by :attr:`~discord_real.Client.allowed_mentions`
             are used instead.
         mention_author: :class:`bool`
-            If set, overrides the :attr:`~discord.AllowedMentions.replied_user` attribute of ``allowed_mentions``.
-        applied_tags: List[:class:`discord.ForumTag`]
+            If set, overrides the :attr:`~discord_real.AllowedMentions.replied_user` attribute of ``allowed_mentions``.
+        applied_tags: List[:class:`discord_real.ForumTag`]
             A list of tags to apply to the thread.
-        view: :class:`discord.ui.View`
+        view: :class:`discord_real.ui.View`
             A Discord UI View to add to the message.
-        stickers: Sequence[Union[:class:`~discord.GuildSticker`, :class:`~discord.StickerItem`]]
+        stickers: Sequence[Union[:class:`~discord_real.GuildSticker`, :class:`~discord_real.StickerItem`]]
             A list of stickers to upload. Must be a maximum of 3.
         suppress_embeds: :class:`bool`
             Whether to suppress embeds for the message. This sends the message without any embeds if set to ``True``.
@@ -2889,7 +2889,7 @@ class ForumChannel(discord.abc.GuildChannel, Hashable):
             before_timestamp = update_before(threads[-1])
 
 
-class DMChannel(discord.abc.Messageable, discord.abc.PrivateChannel, Hashable):
+class DMChannel(discord_real.abc.Messageable, discord_real.abc.PrivateChannel, Hashable):
     """Represents a Discord direct message channel.
 
     .. container:: operations
@@ -2977,7 +2977,7 @@ class DMChannel(discord.abc.Messageable, discord.abc.PrivateChannel, Hashable):
 
         .. versionadded:: 2.0
         """
-        return f'https://discord.com/channels/@me/{self.id}'
+        return f'https://discord_real.com/channels/@me/{self.id}'
 
     @property
     def created_at(self) -> datetime.datetime:
@@ -3049,7 +3049,7 @@ class DMChannel(discord.abc.Messageable, discord.abc.PrivateChannel, Hashable):
         return PartialMessage(channel=self, id=message_id)
 
 
-class GroupChannel(discord.abc.Messageable, discord.abc.PrivateChannel, Hashable):
+class GroupChannel(discord_real.abc.Messageable, discord_real.abc.PrivateChannel, Hashable):
     """Represents a Discord group channel.
 
     .. container:: operations
@@ -3156,7 +3156,7 @@ class GroupChannel(discord.abc.Messageable, discord.abc.PrivateChannel, Hashable
 
         .. versionadded:: 2.0
         """
-        return f'https://discord.com/channels/@me/{self.id}'
+        return f'https://discord_real.com/channels/@me/{self.id}'
 
     def permissions_for(self, obj: Snowflake, /) -> Permissions:
         """Handles permission resolution for a :class:`User`.
@@ -3186,7 +3186,7 @@ class GroupChannel(discord.abc.Messageable, discord.abc.PrivateChannel, Hashable
 
         Parameters
         -----------
-        obj: :class:`~discord.abc.Snowflake`
+        obj: :class:`~discord_real.abc.Snowflake`
             The user to check permissions for.
 
         Returns
@@ -3219,7 +3219,7 @@ class GroupChannel(discord.abc.Messageable, discord.abc.PrivateChannel, Hashable
         await self._state.http.leave_group(self.id)
 
 
-class PartialMessageable(discord.abc.Messageable, Hashable):
+class PartialMessageable(discord_real.abc.Messageable, Hashable):
     """Represents a partial messageable to aid with working messageable channels when
     only a channel ID is present.
 
@@ -3274,8 +3274,8 @@ class PartialMessageable(discord.abc.Messageable, Hashable):
     def jump_url(self) -> str:
         """:class:`str`: Returns a URL that allows the client to jump to the channel."""
         if self.guild_id is None:
-            return f'https://discord.com/channels/@me/{self.id}'
-        return f'https://discord.com/channels/{self.guild_id}/{self.id}'
+            return f'https://discord_real.com/channels/@me/{self.id}'
+        return f'https://discord_real.com/channels/{self.guild_id}/{self.id}'
 
     @property
     def created_at(self) -> datetime.datetime:

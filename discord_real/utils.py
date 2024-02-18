@@ -332,10 +332,10 @@ def oauth_url(
     -----------
     client_id: Union[:class:`int`, :class:`str`]
         The client ID for your bot.
-    permissions: :class:`~discord.Permissions`
+    permissions: :class:`~discord_real.Permissions`
         The permissions you're requesting. If not given then you won't be requesting any
         permissions.
-    guild: :class:`~discord.abc.Snowflake`
+    guild: :class:`~discord_real.abc.Snowflake`
         The guild to pre-select in the authorization screen, if available.
     redirect_uri: :class:`str`
         An optional valid redirect URI.
@@ -357,7 +357,7 @@ def oauth_url(
     :class:`str`
         The OAuth2 URL for inviting the bot into guilds.
     """
-    url = f'https://discord.com/oauth2/authorize?client_id={client_id}'
+    url = f'https://discord_real.com/oauth2/authorize?client_id={client_id}'
     url += '&scope=' + '+'.join(scopes or ('bot', 'applications.commands'))
     if permissions is not MISSING:
         url += f'&permissions={permissions.value}'
@@ -448,9 +448,9 @@ def find(predicate: Callable[[T], Any], iterable: _Iter[T], /) -> Union[Optional
     r"""A helper to return the first element found in the sequence
     that meets the predicate. For example: ::
 
-        member = discord.utils.find(lambda m: m.name == 'Mighty', channel.guild.members)
+        member = discord_real.utils.find(lambda m: m.name == 'Mighty', channel.guild.members)
 
-    would find the first :class:`~discord.Member` whose name is 'Mighty' and return it.
+    would find the first :class:`~discord_real.Member` whose name is 'Mighty' and return it.
     If an entry is not found, then ``None`` is returned.
 
     This is different from :func:`py:filter` due to the fact it stops the moment it finds
@@ -533,7 +533,7 @@ def get(iterable: Iterable[T], /, **attrs: Any) -> Optional[T]:
 def get(iterable: _Iter[T], /, **attrs: Any) -> Union[Optional[T], Coro[Optional[T]]]:
     r"""A helper that returns the first element in the iterable that meets
     all the traits passed in ``attrs``. This is an alternative for
-    :func:`~discord.utils.find`.
+    :func:`~discord_real.utils.find`.
 
     When multiple attributes are specified, they are checked using
     logical AND, not logical OR. Meaning they have to meet every
@@ -560,25 +560,25 @@ def get(iterable: _Iter[T], /, **attrs: Any) -> Union[Optional[T], Coro[Optional
 
     .. code-block:: python3
 
-        member = discord.utils.get(message.guild.members, name='Foo')
+        member = discord_real.utils.get(message.guild.members, name='Foo')
 
     Multiple attribute matching:
 
     .. code-block:: python3
 
-        channel = discord.utils.get(guild.voice_channels, name='Foo', bitrate=64000)
+        channel = discord_real.utils.get(guild.voice_channels, name='Foo', bitrate=64000)
 
     Nested attribute matching:
 
     .. code-block:: python3
 
-        channel = discord.utils.get(client.get_all_channels(), guild__name='Cool', name='general')
+        channel = discord_real.utils.get(client.get_all_channels(), guild__name='Cool', name='general')
 
     Async iterables:
 
     .. code-block:: python3
 
-        msg = await discord.utils.get(channel.history(), author__name='Dave')
+        msg = await discord_real.utils.get(channel.history(), author__name='Dave')
 
     Parameters
     -----------
@@ -836,7 +836,7 @@ class ResolvedInvite(NamedTuple):
 
 
 def resolve_invite(invite: Union[Invite, str]) -> ResolvedInvite:
-    """Resolves an invite from a :class:`~discord.Invite`, URL or code.
+    """Resolves an invite from a :class:`~discord_real.Invite`, URL or code.
 
     .. versionchanged:: 2.0
         Now returns a :class:`.ResolvedInvite` instead of a
@@ -844,7 +844,7 @@ def resolve_invite(invite: Union[Invite, str]) -> ResolvedInvite:
 
     Parameters
     -----------
-    invite: Union[:class:`~discord.Invite`, :class:`str`]
+    invite: Union[:class:`~discord_real.Invite`, :class:`str`]
         The invite.
 
     Returns
@@ -871,13 +871,13 @@ def resolve_invite(invite: Union[Invite, str]) -> ResolvedInvite:
 
 def resolve_template(code: Union[Template, str]) -> str:
     """
-    Resolves a template code from a :class:`~discord.Template`, URL or code.
+    Resolves a template code from a :class:`~discord_real.Template`, URL or code.
 
     .. versionadded:: 1.4
 
     Parameters
     -----------
-    code: Union[:class:`~discord.Template`, :class:`str`]
+    code: Union[:class:`~discord_real.Template`, :class:`str`]
         The code.
 
     Returns
@@ -995,7 +995,7 @@ def escape_mentions(text: str) -> str:
     .. note::
 
         For more granular control over what mentions should be escaped
-        within messages, refer to the :class:`~discord.AllowedMentions`
+        within messages, refer to the :class:`~discord_real.AllowedMentions`
         class.
 
     Parameters
@@ -1316,7 +1316,7 @@ def setup_logging(
     uses different defaults and a colour formatter if the stream can
     display colour.
 
-    This is used by the :class:`~discord.Client` to set up logging
+    This is used by the :class:`~discord_real.Client` to set up logging
     if ``log_handler`` is not ``None``.
 
     .. versionadded:: 2.0
@@ -1335,7 +1335,7 @@ def setup_logging(
         The default log level for the library's logger. Defaults to ``logging.INFO``.
     root: :class:`bool`
         Whether to set up the root logger rather than the library logger.
-        Unlike the default for :class:`~discord.Client`, this defaults to ``True``.
+        Unlike the default for :class:`~discord_real.Client`, this defaults to ``True``.
     """
 
     if level is MISSING:

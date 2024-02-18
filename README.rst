@@ -1,14 +1,14 @@
-discord.py
+discord_real.py
 ==========
 
-.. image:: https://discord.com/api/guilds/336642139381301249/embed.png
-   :target: https://discord.gg/r3sSKJJ
+.. image:: https://discord_real.com/api/guilds/336642139381301249/embed.png
+   :target: https://discord_real.gg/r3sSKJJ
    :alt: Discord server invite
-.. image:: https://img.shields.io/pypi/v/discord.py.svg
-   :target: https://pypi.python.org/pypi/discord.py
+.. image:: https://img.shields.io/pypi/v/discord_real.py.svg
+   :target: https://pypi.python.org/pypi/discord_real.py
    :alt: PyPI version info
-.. image:: https://img.shields.io/pypi/pyversions/discord.py.svg
-   :target: https://pypi.python.org/pypi/discord.py
+.. image:: https://img.shields.io/pypi/pyversions/discord_real.py.svg
+   :target: https://pypi.python.org/pypi/discord_real.py
    :alt: PyPI supported Python versions
 
 A modern, easy to use, feature-rich, and async ready API wrapper for Discord written in Python.
@@ -30,28 +30,28 @@ To install the library without full voice support, you can just run the followin
 .. code:: sh
 
     # Linux/macOS
-    python3 -m pip install -U discord.py
+    python3 -m pip install -U discord_real.py
 
     # Windows
-    py -3 -m pip install -U discord.py
+    py -3 -m pip install -U discord_real.py
 
 Otherwise to get voice support you should run the following command:
 
 .. code:: sh
 
     # Linux/macOS
-    python3 -m pip install -U "discord.py[voice]"
+    python3 -m pip install -U "discord_real.py[voice]"
 
     # Windows
-    py -3 -m pip install -U discord.py[voice]
+    py -3 -m pip install -U discord_real.py[voice]
 
 
 To install the development version, do the following:
 
 .. code:: sh
 
-    $ git clone https://github.com/Rapptz/discord.py
-    $ cd discord.py
+    $ git clone https://github.com/Rapptz/discord_real.py
+    $ cd discord_real.py
     $ python3 -m pip install -U .[voice]
 
 
@@ -72,7 +72,7 @@ Quick Example
 
     import discord
 
-    class MyClient(discord.Client):
+    class MyClient(discord_real.Client):
         async def on_ready(self):
             print('Logged on as', self.user)
 
@@ -84,7 +84,7 @@ Quick Example
             if message.content == 'ping':
                 await message.channel.send('pong')
 
-    intents = discord.Intents.default()
+    intents = discord_real.Intents.default()
     intents.message_content = True
     client = MyClient(intents=intents)
     client.run('token')
@@ -95,9 +95,9 @@ Bot Example
 .. code:: py
 
     import discord
-    from discord.ext import commands
+    from discord_real.ext import commands
 
-    intents = discord.Intents.default()
+    intents = discord_real.Intents.default()
     intents.message_content = True
     bot = commands.Bot(command_prefix='>', intents=intents)
 
@@ -113,5 +113,5 @@ Links
 ------
 
 - `Documentation <https://discordpy.readthedocs.io/en/latest/index.html>`_
-- `Official Discord Server <https://discord.gg/r3sSKJJ>`_
-- `Discord API <https://discord.gg/discord-api>`_
+- `Official Discord Server <https://discord_real.gg/r3sSKJJ>`_
+- `Discord API <https://discord_real.gg/discord-api>`_

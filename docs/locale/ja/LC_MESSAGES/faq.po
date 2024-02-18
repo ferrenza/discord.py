@@ -22,8 +22,8 @@ msgid "Frequently Asked Questions"
 msgstr "よくある質問"
 
 #: ../../faq.rst:9
-msgid "This is a list of Frequently Asked Questions regarding using ``discord.py`` and its extension modules. Feel free to suggest a new question or submit one via pull requests."
-msgstr "これは ``discord.py`` 及び拡張モジュールの利用に際し、よくある質問をまとめたものです。気兼ねなく質問やプルリクエストを提出してください。"
+msgid "This is a list of Frequently Asked Questions regarding using ``discord_real.py`` and its extension modules. Feel free to suggest a new question or submit one via pull requests."
+msgstr "これは ``discord_real.py`` 及び拡張モジュールの利用に際し、よくある質問をまとめたものです。気兼ねなく質問やプルリクエストを提出してください。"
 
 #: ../../faq.rst:13
 msgid "Questions"
@@ -94,8 +94,8 @@ msgid "Where can I find usage examples?"
 msgstr "使用例はどこで確認できますか。"
 
 #: ../../faq.rst:84
-msgid "Example code can be found in the `examples folder <https://github.com/Rapptz/discord.py/tree/master/examples>`_ in the repository."
-msgstr "サンプルコードはレポジトリの `examplesフォルダ <https://github.com/Rapptz/discord.py/tree/master/examples>`_ で確認できます。"
+msgid "Example code can be found in the `examples folder <https://github.com/Rapptz/discord_real.py/tree/master/examples>`_ in the repository."
+msgstr "サンプルコードはレポジトリの `examplesフォルダ <https://github.com/Rapptz/discord_real.py/tree/master/examples>`_ で確認できます。"
 
 #: ../../faq.rst:88
 msgid "How do I set the \"Playing\" status?"
@@ -254,8 +254,8 @@ msgid "How do I run something in the background?"
 msgstr "バックグラウンドで何かを動かすにはどうすればいいですか。"
 
 #: ../../faq.rst:262
-msgid "`Check the background_task.py example. <https://github.com/Rapptz/discord.py/blob/master/examples/background_task.py>`_"
-msgstr "`background_task.pyの例を参照してください。 <https://github.com/Rapptz/discord.py/blob/master/examples/background_task.py>`_"
+msgid "`Check the background_task.py example. <https://github.com/Rapptz/discord_real.py/blob/master/examples/background_task.py>`_"
+msgstr "`background_task.pyの例を参照してください。 <https://github.com/Rapptz/discord_real.py/blob/master/examples/background_task.py>`_"
 
 #: ../../faq.rst:265
 msgid "How do I get a specific model?"
@@ -366,8 +366,8 @@ msgid "Commands Extension"
 msgstr "コマンド拡張"
 
 #: ../../faq.rst:352
-msgid "Questions regarding ``discord.ext.commands`` belong here."
-msgstr "``discord.ext.commands`` に関する質問。"
+msgid "Questions regarding ``discord_real.ext.commands`` belong here."
+msgstr "``discord_real.ext.commands`` に関する質問。"
 
 #: ../../faq.rst:355
 msgid "Why does ``on_message`` make my commands stop working?"
@@ -427,8 +427,8 @@ msgid "Views and Modals"
 msgstr "ビューとモーダル"
 
 #: ../../faq.rst:435
-msgid "Questions regarding :class:`discord.ui.View`, :class:`discord.ui.Modal`, and their components such as buttons, select menus, etc."
-msgstr ":class:`discord.ui.View` 、 :class:`discord.ui.Modal` 、およびボタン、選択メニューなどそれらのコンポーネントに関する質問。"
+msgid "Questions regarding :class:`discord_real.ui.View`, :class:`discord_real.ui.Modal`, and their components such as buttons, select menus, etc."
+msgstr ":class:`discord_real.ui.View` 、 :class:`discord_real.ui.Modal` 、およびボタン、選択メニューなどそれらのコンポーネントに関する質問。"
 
 #: ../../faq.rst:438
 msgid "How can I disable all items on timeout?"
@@ -439,8 +439,8 @@ msgid "This requires three steps."
 msgstr "これには3つのステップが必要です。"
 
 #: ../../faq.rst:442
-msgid "Attach a message to the :class:`~discord.ui.View` using either the return type of :meth:`~abc.Messageable.send` or retrieving it via :meth:`Interaction.original_response`."
-msgstr ":meth:`~abc.Messageable.send` の戻り値の型を使用して、または :meth:`Interaction.original_response` から取得した :class:`~discord.ui.View` にメッセージを添付します。"
+msgid "Attach a message to the :class:`~discord_real.ui.View` using either the return type of :meth:`~abc.Messageable.send` or retrieving it via :meth:`Interaction.original_response`."
+msgstr ":meth:`~abc.Messageable.send` の戻り値の型を使用して、または :meth:`Interaction.original_response` から取得した :class:`~discord_real.ui.View` にメッセージを添付します。"
 
 #: ../../faq.rst:443
 msgid "Inside :meth:`~ui.View.on_timeout`, loop over all items inside the view and mark them disabled."
@@ -479,6 +479,6 @@ msgid "Did you :meth:`~.CommandTree.sync` your command? Commands need to be sync
 msgstr "コマンドを :meth:`~.CommandTree.sync` しましたか？コマンドが表示されるにはその前に同期する必要があります。"
 
 #: ../../faq.rst:495
-msgid "Did you invite your bot with the correct permissions? Bots need to be invited with the ``applications.commands`` scope in addition to the ``bot`` scope. For example, invite the bot with the following URL: ``https://discord.com/oauth2/authorize?client_id=<client id>&scope=applications.commands+bot``. Alternatively, if you use :func:`utils.oauth_url`, you can call the function as such: ``oauth_url(<other options>, scopes=(\"bot\", \"applications.commands\"))``."
-msgstr "正しい権限でBotを招待しましたか？ ``bot`` スコープに加えて、 ``applications.commands`` スコープ付きでBotを招待する必要があります。例えば、以下の URL でBotを招待します: ``https://discord.com/oauth2/authorize?client_id=<client id>&scope=applications.commands+bot`` 。 あるいは、 :func:`utils.oauth_url` を使用している場合は、 ``oauth_url(<other options>, scopes=(\"bot\", \"applications.commands\"))`` のように関数を呼び出すことができます。"
+msgid "Did you invite your bot with the correct permissions? Bots need to be invited with the ``applications.commands`` scope in addition to the ``bot`` scope. For example, invite the bot with the following URL: ``https://discord_real.com/oauth2/authorize?client_id=<client id>&scope=applications.commands+bot``. Alternatively, if you use :func:`utils.oauth_url`, you can call the function as such: ``oauth_url(<other options>, scopes=(\"bot\", \"applications.commands\"))``."
+msgstr "正しい権限でBotを招待しましたか？ ``bot`` スコープに加えて、 ``applications.commands`` スコープ付きでBotを招待する必要があります。例えば、以下の URL でBotを招待します: ``https://discord_real.com/oauth2/authorize?client_id=<client id>&scope=applications.commands+bot`` 。 あるいは、 :func:`utils.oauth_url` を使用している場合は、 ``oauth_url(<other options>, scopes=(\"bot\", \"applications.commands\"))`` のように関数を呼び出すことができます。"
 

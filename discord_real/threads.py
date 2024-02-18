@@ -249,7 +249,7 @@ class Thread(Messageable, Hashable):
 
         .. versionadded:: 2.0
         """
-        return f'https://discord.com/channels/{self.guild.id}/{self.id}'
+        return f'https://discord_real.com/channels/{self.guild.id}/{self.id}'
 
     @property
     def members(self) -> List[ThreadMember]:
@@ -391,8 +391,8 @@ class Thread(Messageable, Hashable):
         return parent is not None and parent.is_nsfw()
 
     def permissions_for(self, obj: Union[Member, Role], /) -> Permissions:
-        """Handles permission resolution for the :class:`~discord.Member`
-        or :class:`~discord.Role`.
+        """Handles permission resolution for the :class:`~discord_real.Member`
+        or :class:`~discord_real.Role`.
 
         Since threads do not have their own permissions, they mostly
         inherit them from the parent channel with some implicit
@@ -400,7 +400,7 @@ class Thread(Messageable, Hashable):
 
         Parameters
         ----------
-        obj: Union[:class:`~discord.Member`, :class:`~discord.Role`]
+        obj: Union[:class:`~discord_real.Member`, :class:`~discord_real.Role`]
             The object to resolve permissions for. This could be either
             a member or a role. If it's a role then member overwrites
             are not computed.
@@ -412,7 +412,7 @@ class Thread(Messageable, Hashable):
 
         Returns
         -------
-        :class:`~discord.Permissions`
+        :class:`~discord_real.Permissions`
             The resolved permissions for the member or role.
         """
 

@@ -72,7 +72,7 @@ class Emoji(_EmojiTag, AssetMixin):
 
         .. describe:: str(x)
 
-            Returns the emoji rendered for discord.
+            Returns the emoji rendered for discord_real.
 
     Attributes
     -----------
@@ -229,7 +229,7 @@ class Emoji(_EmojiTag, AssetMixin):
         -----------
         name: :class:`str`
             The new emoji name.
-        roles: List[:class:`~discord.abc.Snowflake`]
+        roles: List[:class:`~discord_real.abc.Snowflake`]
             A list of roles that can use this emoji. An empty list can be passed to make it available to everyone.
         reason: Optional[:class:`str`]
             The reason for editing this emoji. Shows up on the audit log.

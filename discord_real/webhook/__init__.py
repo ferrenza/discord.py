@@ -1,5 +1,5 @@
 """
-discord.webhook
+discord_real.webhook
 ~~~~~~~~~~~~~~
 
 Webhook support

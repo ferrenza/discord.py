@@ -26,14 +26,14 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING, Any, Callable, List, Optional, Tuple, Union
 
-from discord.errors import ClientException, DiscordException
-from discord.utils import _human_join
+from discord_real.errors import ClientException, DiscordException
+from discord_real.utils import _human_join
 
 if TYPE_CHECKING:
-    from discord.abc import GuildChannel
-    from discord.threads import Thread
-    from discord.types.snowflake import Snowflake, SnowflakeList
-    from discord.app_commands import AppCommandError
+    from discord_real.abc import GuildChannel
+    from discord_real.threads import Thread
+    from discord_real.types.snowflake import Snowflake, SnowflakeList
+    from discord_real.app_commands import AppCommandError
 
     from ._types import BotT
     from .context import Context
@@ -111,7 +111,7 @@ __all__ = (
 class CommandError(DiscordException):
     r"""The base exception type for all command related errors.
 
-    This inherits from :exc:`discord.DiscordException`.
+    This inherits from :exc:`discord_real.DiscordException`.
 
     This exception and exceptions inherited from it are handled
     in a special way as they are caught and passed into a special event
@@ -134,7 +134,7 @@ class ConversionError(CommandError):
 
     Attributes
     ----------
-    converter: :class:`discord.ext.commands.Converter`
+    converter: :class:`discord_real.ext.commands.Converter`
         The converter that failed.
     original: :exc:`Exception`
         The original exception that was raised. You can also get this via
@@ -661,7 +661,7 @@ class CommandOnCooldown(CommandError):
 
     Attributes
     -----------
-    cooldown: :class:`~discord.app_commands.Cooldown`
+    cooldown: :class:`~discord_real.app_commands.Cooldown`
         A class with attributes ``rate`` and ``per`` similar to the
         :func:`.cooldown` decorator.
     type: :class:`BucketType`
@@ -980,7 +980,7 @@ class ExpectedClosingQuoteError(ArgumentParsingError):
 class ExtensionError(DiscordException):
     """Base exception for extension related errors.
 
-    This inherits from :exc:`~discord.DiscordException`.
+    This inherits from :exc:`~discord_real.DiscordException`.
 
     Attributes
     ------------
@@ -1069,7 +1069,7 @@ class CommandRegistrationError(ClientException):
     """An exception raised when the command can't be added
     because the name is already taken by a different command.
 
-    This inherits from :exc:`discord.ClientException`
+    This inherits from :exc:`discord_real.ClientException`
 
     .. versionadded:: 1.4
 
@@ -1108,7 +1108,7 @@ class TooManyFlags(FlagError):
 
     Attributes
     ------------
-    flag: :class:`~discord.ext.commands.Flag`
+    flag: :class:`~discord_real.ext.commands.Flag`
         The flag that received too many values.
     values: List[:class:`str`]
         The values that were passed.
@@ -1129,7 +1129,7 @@ class BadFlagArgument(FlagError):
 
     Attributes
     -----------
-    flag: :class:`~discord.ext.commands.Flag`
+    flag: :class:`~discord_real.ext.commands.Flag`
         The flag that failed to convert.
     argument: :class:`str`
         The argument supplied by the caller that was not able to be converted.
@@ -1160,7 +1160,7 @@ class MissingRequiredFlag(FlagError):
 
     Attributes
     -----------
-    flag: :class:`~discord.ext.commands.Flag`
+    flag: :class:`~discord_real.ext.commands.Flag`
         The required flag that was not found.
     """
 
@@ -1178,7 +1178,7 @@ class MissingFlagArgument(FlagError):
 
     Attributes
     -----------
-    flag: :class:`~discord.ext.commands.Flag`
+    flag: :class:`~discord_real.ext.commands.Flag`
         The flag that did not get a value.
     """
 
@@ -1188,15 +1188,15 @@ class MissingFlagArgument(FlagError):
 
 
 class HybridCommandError(CommandError):
-    """An exception raised when a :class:`~discord.ext.commands.HybridCommand` raises
-    an :exc:`~discord.app_commands.AppCommandError` derived exception that could not be
+    """An exception raised when a :class:`~discord_real.ext.commands.HybridCommand` raises
+    an :exc:`~discord_real.app_commands.AppCommandError` derived exception that could not be
     sufficiently converted to an equivalent :exc:`CommandError` exception.
 
     .. versionadded:: 2.0
 
     Attributes
     -----------
-    original: :exc:`~discord.app_commands.AppCommandError`
+    original: :exc:`~discord_real.app_commands.AppCommandError`
         The original exception that was raised. You can also get this via
         the ``__cause__`` attribute.
     """

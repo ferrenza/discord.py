@@ -28,27 +28,27 @@ from typing import List
 import discord
 import pytest
 from discord import app_commands
-from discord.utils import MISSING
+from discord_real.utils import MISSING
 
 
-async def free_function_autocomplete(interaction: discord.Interaction, current: str) -> List[app_commands.Choice[str]]:
+async def free_function_autocomplete(interaction: discord_real.Interaction, current: str) -> List[app_commands.Choice[str]]:
     return []
 
 
-async def invalid_free_function(self, interaction: discord.Interaction, current: str) -> List[app_commands.Choice[str]]:
+async def invalid_free_function(self, interaction: discord_real.Interaction, current: str) -> List[app_commands.Choice[str]]:
     return []
 
 
 class X(app_commands.Transformer):
-    async def autocomplete(self, interaction: discord.Interaction, current: str) -> List[app_commands.Choice[str]]:
+    async def autocomplete(self, interaction: discord_real.Interaction, current: str) -> List[app_commands.Choice[str]]:
         return []
 
 
 class ClassBased:
-    async def autocomplete(self, interaction: discord.Interaction, current: str) -> List[app_commands.Choice[str]]:
+    async def autocomplete(self, interaction: discord_real.Interaction, current: str) -> List[app_commands.Choice[str]]:
         return []
 
-    async def invalid(self, interaction: discord.Interaction, current: str, bad: int) -> List[app_commands.Choice[str]]:
+    async def invalid(self, interaction: discord_real.Interaction, current: str, bad: int) -> List[app_commands.Choice[str]]:
         return []
 
 
@@ -60,7 +60,7 @@ invalid_bound_autocomplete = lookup.invalid
 def test_free_function_autocomplete():
     @app_commands.command()
     @app_commands.autocomplete(name=free_function_autocomplete)
-    async def cmd(interaction: discord.Interaction, name: str):
+    async def cmd(interaction: discord_real.Interaction, name: str):
         ...
 
     param = cmd._params['name']
@@ -73,13 +73,13 @@ def test_invalid_free_function_autocomplete():
 
         @app_commands.command()
         @app_commands.autocomplete(name=invalid_free_function)
-        async def cmd(interaction: discord.Interaction, name: str):
+        async def cmd(interaction: discord_real.Interaction, name: str):
             ...
 
 
 def test_transformer_autocomplete():
     @app_commands.command()
-    async def cmd(interaction: discord.Interaction, param: app_commands.Transform[str, X]):
+    async def cmd(interaction: discord_real.Interaction, param: app_commands.Transform[str, X]):
         ...
 
     param = cmd._params['param']
@@ -95,7 +95,7 @@ second_instance = X()
 def test_multiple_transformer_autocomplete():
     @app_commands.command()
     async def cmd(
-        interaction: discord.Interaction,
+        interaction: discord_real.Interaction,
         param: app_commands.Transform[str, first_instance],
         second: app_commands.Transform[str, second_instance],
     ):
@@ -115,7 +115,7 @@ def test_multiple_transformer_autocomplete():
 def test_bound_function_autocomplete():
     @app_commands.command()
     @app_commands.autocomplete(name=bound_autocomplete)
-    async def cmd(interaction: discord.Interaction, name: str):
+    async def cmd(interaction: discord_real.Interaction, name: str):
         ...
 
     param = cmd._params['name']
@@ -129,18 +129,18 @@ def test_invalid_bound_function_autocomplete():
 
         @app_commands.command()
         @app_commands.autocomplete(name=invalid_bound_autocomplete)  # type: ignore
-        async def cmd(interaction: discord.Interaction, name: str):
+        async def cmd(interaction: discord_real.Interaction, name: str):
             ...
 
 
 def test_group_function_autocomplete():
     class MyGroup(app_commands.Group):
         @app_commands.command()
-        async def foo(self, interaction: discord.Interaction, name: str):
+        async def foo(self, interaction: discord_real.Interaction, name: str):
             ...
 
         @foo.autocomplete('name')
-        async def autocomplete(self, interaction: discord.Interaction, current: str) -> List[app_commands.Choice[str]]:
+        async def autocomplete(self, interaction: discord_real.Interaction, current: str) -> List[app_commands.Choice[str]]:
             return []
 
     g = MyGroup()

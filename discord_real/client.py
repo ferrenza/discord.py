@@ -242,7 +242,7 @@ class Client:
     max_ratelimit_timeout: Optional[:class:`float`]
         The maximum number of seconds to wait when a non-global rate limit is encountered.
         If a request requires sleeping for more than the seconds passed in, then
-        :exc:`~discord.RateLimited` will be raised. By default, there is no timeout limit.
+        :exc:`~discord_real.RateLimited` will be raised. By default, there is no timeout limit.
         In order to prevent misuse and unnecessary bans, the minimum value this can be
         set to is ``30.0`` seconds.
 
@@ -398,7 +398,7 @@ class Client:
 
         If this is not passed via ``__init__`` then this is retrieved
         through the gateway when an event contains the data or after a call
-        to :meth:`~discord.Client.login`. Usually after :func:`~discord.on_connect`
+        to :meth:`~discord_real.Client.login`. Usually after :func:`~discord_real.on_connect`
         is called.
 
         .. versionadded:: 2.0
@@ -407,7 +407,7 @@ class Client:
 
     @property
     def application_flags(self) -> ApplicationFlags:
-        """:class:`~discord.ApplicationFlags`: The client's application flags.
+        """:class:`~discord_real.ApplicationFlags`: The client's application flags.
 
         .. versionadded:: 2.0
         """
@@ -415,15 +415,15 @@ class Client:
 
     @property
     def application(self) -> Optional[AppInfo]:
-        """Optional[:class:`~discord.AppInfo`]: The client's application info.
+        """Optional[:class:`~discord_real.AppInfo`]: The client's application info.
 
-        This is retrieved on :meth:`~discord.Client.login` and is not updated
+        This is retrieved on :meth:`~discord_real.Client.login` and is not updated
         afterwards. This allows populating the application_id without requiring a
         gateway connection.
 
-        This is ``None`` if accessed before :meth:`~discord.Client.login` is called.
+        This is ``None`` if accessed before :meth:`~discord_real.Client.login` is called.
 
-        .. seealso:: The :meth:`~discord.Client.application_info` API call
+        .. seealso:: The :meth:`~discord_real.Client.application_info` API call
 
         .. versionadded:: 2.0
         """
@@ -459,7 +459,7 @@ class Client:
     ) -> asyncio.Task:
         wrapped = self._run_event(coro, event_name, *args, **kwargs)
         # Schedules the task
-        return self.loop.create_task(wrapped, name=f'discord.py: {event_name}')
+        return self.loop.create_task(wrapped, name=f'discord_real.py: {event_name}')
 
     def dispatch(self, event: str, /, *args: Any, **kwargs: Any) -> None:
         _log.debug('Dispatching event %s', event)
@@ -508,7 +508,7 @@ class Client:
 
         By default this logs to the library logger however it could be
         overridden to have a different implementation.
-        Check :func:`~discord.on_error` for more details.
+        Check :func:`~discord_real.on_error` for more details.
 
         .. versionchanged:: 2.0
 
@@ -566,7 +566,7 @@ class Client:
 
         This is only called once, in :meth:`login`, and will be called before
         any events are dispatched, making it a better solution than doing such
-        setup in the :func:`~discord.on_ready` event.
+        setup in the :func:`~discord_real.on_ready` event.
 
         .. warning::
 
@@ -911,7 +911,7 @@ class Client:
 
     @property
     def allowed_mentions(self) -> Optional[AllowedMentions]:
-        """Optional[:class:`~discord.AllowedMentions`]: The allowed mention configuration.
+        """Optional[:class:`~discord_real.AllowedMentions`]: The allowed mention configuration.
 
         .. versionadded:: 1.4
         """
@@ -926,7 +926,7 @@ class Client:
 
     @property
     def intents(self) -> Intents:
-        """:class:`~discord.Intents`: The intents configured for this connection.
+        """:class:`~discord_real.Intents`: The intents configured for this connection.
 
         .. versionadded:: 1.5
         """
@@ -936,7 +936,7 @@ class Client:
 
     @property
     def users(self) -> List[User]:
-        """List[:class:`~discord.User`]: Returns a list of all the users the bot can see."""
+        """List[:class:`~discord_real.User`]: Returns a list of all the users the bot can see."""
         return list(self._connection._users.values())
 
     def get_channel(self, id: int, /) -> Optional[Union[GuildChannel, Thread, PrivateChannel]]:
@@ -976,8 +976,8 @@ class Client:
             The optional guild ID to create a partial messageable for.
 
             This is not required to actually send messages, but it does allow the
-            :meth:`~discord.PartialMessageable.jump_url` and
-            :attr:`~discord.PartialMessageable.guild` properties to function properly.
+            :meth:`~discord_real.PartialMessageable.jump_url` and
+            :attr:`~discord_real.PartialMessageable.guild` properties to function properly.
         type: Optional[:class:`.ChannelType`]
             The underlying channel type for the partial messageable.
 
@@ -1043,7 +1043,7 @@ class Client:
 
         Returns
         --------
-        Optional[:class:`~discord.User`]
+        Optional[:class:`~discord_real.User`]
             The user or ``None`` if not found.
         """
         return self._connection.get_user(id)
@@ -2006,8 +2006,8 @@ class Client:
 
         .. code-block:: python3
 
-            game = discord.Game("with the API")
-            await client.change_presence(status=discord.Status.idle, activity=game)
+            game = discord_real.Game("with the API")
+            await client.change_presence(status=discord_real.Status.idle, activity=game)
 
         .. versionchanged:: 2.0
             Removed the ``afk`` keyword-only parameter.
@@ -2188,12 +2188,12 @@ class Client:
     async def fetch_template(self, code: Union[Template, str]) -> Template:
         """|coro|
 
-        Gets a :class:`.Template` from a discord.new URL or code.
+        Gets a :class:`.Template` from a discord_real.new URL or code.
 
         Parameters
         -----------
         code: Union[:class:`.Template`, :class:`str`]
-            The Discord Template Code or URL (must be a discord.new URL).
+            The Discord Template Code or URL (must be a discord_real.new URL).
 
         Raises
         -------
@@ -2353,7 +2353,7 @@ class Client:
     ) -> Invite:
         """|coro|
 
-        Gets an :class:`.Invite` from a discord.gg URL or ID.
+        Gets an :class:`.Invite` from a discord_real.gg URL or ID.
 
         .. note::
 
@@ -2364,7 +2364,7 @@ class Client:
         Parameters
         -----------
         url: Union[:class:`.Invite`, :class:`str`]
-            The Discord invite ID or URL (must be a discord.gg URL).
+            The Discord invite ID or URL (must be a discord_real.gg URL).
         with_counts: :class:`bool`
             Whether to include count information in the invite. This fills the
             :attr:`.Invite.approximate_member_count` and :attr:`.Invite.approximate_presence_count`
@@ -2501,13 +2501,13 @@ class Client:
     async def fetch_user(self, user_id: int, /) -> User:
         """|coro|
 
-        Retrieves a :class:`~discord.User` based on their ID.
+        Retrieves a :class:`~discord_real.User` based on their ID.
         You do not have to share any guilds with the user to get this information,
         however many operations do require that you do.
 
         .. note::
 
-            This method is an API call. If you have :attr:`discord.Intents.members` and member cache enabled, consider :meth:`get_user` instead.
+            This method is an API call. If you have :attr:`discord_real.Intents.members` and member cache enabled, consider :meth:`get_user` instead.
 
         .. versionchanged:: 2.0
 
@@ -2527,7 +2527,7 @@ class Client:
 
         Returns
         --------
-        :class:`~discord.User`
+        :class:`~discord_real.User`
             The user you requested.
         """
         data = await self.http.get_user(user_id)
@@ -2726,19 +2726,19 @@ class Client:
         limit: Optional[:class:`int`]
             The number of entitlements to retrieve. If ``None``, it retrieves every entitlement for this application.
             Note, however, that this would make it a slow operation. Defaults to ``100``.
-        before: Optional[Union[:class:`~discord.abc.Snowflake`, :class:`datetime.datetime`]]
+        before: Optional[Union[:class:`~discord_real.abc.Snowflake`, :class:`datetime.datetime`]]
             Retrieve entitlements before this date or entitlement.
             If a datetime is provided, it is recommended to use a UTC aware datetime.
             If the datetime is naive, it is assumed to be local time.
-        after: Optional[Union[:class:`~discord.abc.Snowflake`, :class:`datetime.datetime`]]
+        after: Optional[Union[:class:`~discord_real.abc.Snowflake`, :class:`datetime.datetime`]]
             Retrieve entitlements after this date or entitlement.
             If a datetime is provided, it is recommended to use a UTC aware datetime.
             If the datetime is naive, it is assumed to be local time.
-        skus: Optional[Sequence[:class:`~discord.abc.Snowflake`]]
+        skus: Optional[Sequence[:class:`~discord_real.abc.Snowflake`]]
             A list of SKUs to filter by.
-        user: Optional[:class:`~discord.abc.Snowflake`]
+        user: Optional[:class:`~discord_real.abc.Snowflake`]
             The user to filter by.
-        guild: Optional[:class:`~discord.abc.Snowflake`]
+        guild: Optional[:class:`~discord_real.abc.Snowflake`]
             The guild to filter by.
         exclude_ended: :class:`bool`
             Whether to exclude ended entitlements. Defaults to ``False``.
@@ -2846,9 +2846,9 @@ class Client:
 
         Parameters
         -----------
-        sku: :class:`~discord.abc.Snowflake`
+        sku: :class:`~discord_real.abc.Snowflake`
             The SKU to create the entitlement for.
-        owner: :class:`~discord.abc.Snowflake`
+        owner: :class:`~discord_real.abc.Snowflake`
             The ID of the owner.
         owner_type: :class:`.EntitlementOwnerType`
             The type of the owner.
@@ -2900,7 +2900,7 @@ class Client:
 
         Parameters
         -----------
-        user: :class:`~discord.abc.Snowflake`
+        user: :class:`~discord_real.abc.Snowflake`
             The user to create a DM with.
 
         Returns
@@ -2917,7 +2917,7 @@ class Client:
         return state.add_dm_channel(data)
 
     def add_dynamic_items(self, *items: Type[DynamicItem[Item[Any]]]) -> None:
-        r"""Registers :class:`~discord.ui.DynamicItem` classes for persistent listening.
+        r"""Registers :class:`~discord_real.ui.DynamicItem` classes for persistent listening.
 
         This method accepts *class types* rather than instances.
 
@@ -2925,13 +2925,13 @@ class Client:
 
         Parameters
         -----------
-        \*items: Type[:class:`~discord.ui.DynamicItem`]
+        \*items: Type[:class:`~discord_real.ui.DynamicItem`]
             The classes of dynamic items to add.
 
         Raises
         -------
         TypeError
-            A class is not a subclass of :class:`~discord.ui.DynamicItem`.
+            A class is not a subclass of :class:`~discord_real.ui.DynamicItem`.
         """
 
         for item in items:
@@ -2941,7 +2941,7 @@ class Client:
         self._connection.store_dynamic_items(*items)
 
     def remove_dynamic_items(self, *items: Type[DynamicItem[Item[Any]]]) -> None:
-        r"""Removes :class:`~discord.ui.DynamicItem` classes from persistent listening.
+        r"""Removes :class:`~discord_real.ui.DynamicItem` classes from persistent listening.
 
         This method accepts *class types* rather than instances.
 
@@ -2949,13 +2949,13 @@ class Client:
 
         Parameters
         -----------
-        \*items: Type[:class:`~discord.ui.DynamicItem`]
+        \*items: Type[:class:`~discord_real.ui.DynamicItem`]
             The classes of dynamic items to remove.
 
         Raises
         -------
         TypeError
-            A class is not a subclass of :class:`~discord.ui.DynamicItem`.
+            A class is not a subclass of :class:`~discord_real.ui.DynamicItem`.
         """
 
         for item in items:
@@ -2965,7 +2965,7 @@ class Client:
         self._connection.remove_dynamic_items(*items)
 
     def add_view(self, view: View, *, message_id: Optional[int] = None) -> None:
-        """Registers a :class:`~discord.ui.View` for persistent listening.
+        """Registers a :class:`~discord_real.ui.View` for persistent listening.
 
         This method should be used for when a view is comprised of components
         that last longer than the lifecycle of the program.
@@ -2974,7 +2974,7 @@ class Client:
 
         Parameters
         ------------
-        view: :class:`discord.ui.View`
+        view: :class:`discord_real.ui.View`
             The view to register for dispatching.
         message_id: Optional[:class:`int`]
             The message ID that the view is attached to. This is currently used to

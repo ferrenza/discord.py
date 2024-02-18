@@ -158,7 +158,7 @@ class Translator:
 
     1. Use :class:`locale_str` instead of :class:`str` in areas of a command you want to be translated.
         - Currently, these are command names, command descriptions, parameter names, parameter descriptions, and choice names.
-        - This can also be used inside the :func:`~discord.app_commands.describe` decorator.
+        - This can also be used inside the :func:`~discord_real.app_commands.describe` decorator.
     2. Call :meth:`CommandTree.set_translator` to the translator instance that will handle the translations.
     3. Call :meth:`CommandTree.sync`
     4. The library will call :meth:`Translator.translate` on all the relevant strings being translated.
@@ -185,7 +185,7 @@ class Translator:
         The default implementation does nothing.
 
         This is invoked when :meth:`CommandTree.set_translator` is called
-        if a tree already has a translator or when :meth:`discord.Client.close` is called.
+        if a tree already has a translator or when :meth:`discord_real.Client.close` is called.
         """
         pass
 
@@ -215,7 +215,7 @@ class Translator:
         ------------
         string: :class:`locale_str`
             The string being translated.
-        locale: :class:`~discord.Locale`
+        locale: :class:`~discord_real.Locale`
             The locale being requested for translation.
         context: :class:`TranslationContext`
             The translation context where the string originated from.

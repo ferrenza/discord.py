@@ -28,7 +28,7 @@ import inspect
 from operator import attrgetter
 from typing import TYPE_CHECKING, Any, Literal, Optional, OrderedDict, Union, Protocol
 
-from discord.utils import MISSING, maybe_coroutine
+from discord_real.utils import MISSING, maybe_coroutine
 
 from .errors import NoPrivateMessage
 from .converter import GuildConverter
@@ -228,7 +228,7 @@ def parameter(
     .. code-block:: python3
 
         @bot.command()
-        async def wave(ctx, to: discord.User = commands.parameter(default=lambda ctx: ctx.author)):
+        async def wave(ctx, to: discord_real.User = commands.parameter(default=lambda ctx: ctx.author)):
             await ctx.send(f'Hello {to.mention} :wave:')
 
     Parameters

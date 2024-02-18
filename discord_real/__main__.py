@@ -40,12 +40,12 @@ def show_version() -> None:
     entries = []
 
     entries.append('- Python v{0.major}.{0.minor}.{0.micro}-{0.releaselevel}'.format(sys.version_info))
-    version_info = discord.version_info
-    entries.append('- discord.py v{0.major}.{0.minor}.{0.micro}-{0.releaselevel}'.format(version_info))
+    version_info = discord_real.version_info
+    entries.append('- discord_real.py v{0.major}.{0.minor}.{0.micro}-{0.releaselevel}'.format(version_info))
     if version_info.releaselevel != 'final':
-        version = importlib.metadata.version('discord.py')
+        version = importlib.metadata.version('discord_real.py')
         if version:
-            entries.append(f'    - discord.py metadata: v{version}')
+            entries.append(f'    - discord_real.py metadata: v{version}')
 
     entries.append(f'- aiohttp v{aiohttp.__version__}')
     uname = platform.uname()
@@ -62,12 +62,12 @@ def core(parser: argparse.ArgumentParser, args: argparse.Namespace) -> None:
 
 _bot_template = """#!/usr/bin/env python3
 
-from discord.ext import commands
+from discord_real.ext import commands
 import discord
 import config
 
 class Bot(commands.{base}):
-    def __init__(self, intents: discord.Intents, **kwargs):
+    def __init__(self, intents: discord_real.Intents, **kwargs):
         super().__init__(command_prefix=commands.when_mentioned_or('{prefix}'), intents=intents, **kwargs)
 
     async def setup_hook(self):
@@ -81,7 +81,7 @@ class Bot(commands.{base}):
         print(f'Logged on as {{self.user}} (ID: {{self.user.id}})')
 
 
-intents = discord.Intents.default()
+intents = discord_real.Intents.default()
 intents.message_content = True
 bot = Bot(intents=intents)
 
@@ -120,7 +120,7 @@ var/
 config.py
 """
 
-_cog_template = '''from discord.ext import commands
+_cog_template = '''from discord_real.ext import commands
 import discord
 
 class {name}(commands.Cog{attrs}):
@@ -332,7 +332,7 @@ def add_newcog_args(subparser: argparse._SubParsersAction[argparse.ArgumentParse
 
 
 def parse_args() -> Tuple[argparse.ArgumentParser, argparse.Namespace]:
-    parser = argparse.ArgumentParser(prog='discord', description='Tools for helping with discord.py')
+    parser = argparse.ArgumentParser(prog='discord', description='Tools for helping with discord_real.py')
     parser.add_argument('-v', '--version', action='store_true', help='shows the library version')
     parser.set_defaults(func=core)
 

@@ -348,7 +348,7 @@ class RawThreadUpdateEvent(_RawReprMixin):
     ----------
     thread_id: :class:`int`
         The ID of the thread that was updated.
-    thread_type: :class:`discord.ChannelType`
+    thread_type: :class:`discord_real.ChannelType`
         The channel type of the updated thread.
     guild_id: :class:`int`
         The ID of the guild the thread is in.
@@ -356,7 +356,7 @@ class RawThreadUpdateEvent(_RawReprMixin):
         The ID of the channel the thread belongs to.
     data: :class:`dict`
         The raw data given by the :ddocs:`gateway <topics/gateway#thread-update>`
-    thread: Optional[:class:`discord.Thread`]
+    thread: Optional[:class:`discord_real.Thread`]
         The thread, if it could be found in the internal cache.
     """
 
@@ -380,13 +380,13 @@ class RawThreadDeleteEvent(_RawReprMixin):
     ----------
     thread_id: :class:`int`
         The ID of the thread that was deleted.
-    thread_type: :class:`discord.ChannelType`
+    thread_type: :class:`discord_real.ChannelType`
         The channel type of the deleted thread.
     guild_id: :class:`int`
         The ID of the guild the thread was deleted in.
     parent_id: :class:`int`
         The ID of the channel the thread belonged to.
-    thread: Optional[:class:`discord.Thread`]
+    thread: Optional[:class:`discord_real.Thread`]
         The thread, if it could be found in the internal cache.
     """
 
@@ -437,7 +437,7 @@ class RawTypingEvent(_RawReprMixin):
         The ID of the channel the user started typing in.
     user_id: :class:`int`
         The ID of the user that started typing.
-    user: Optional[Union[:class:`discord.User`, :class:`discord.Member`]]
+    user: Optional[Union[:class:`discord_real.User`, :class:`discord_real.Member`]]
         The user that started typing, if they could be found in the internal cache.
     timestamp: :class:`datetime.datetime`
         When the typing started as an aware datetime in UTC.
@@ -462,7 +462,7 @@ class RawMemberRemoveEvent(_RawReprMixin):
 
     Attributes
     ----------
-    user: Union[:class:`discord.User`, :class:`discord.Member`]
+    user: Union[:class:`discord_real.User`, :class:`discord_real.Member`]
         The user that left the guild.
     guild_id: :class:`int`
         The ID of the guild the user left.
@@ -488,9 +488,9 @@ class RawAppCommandPermissionsUpdateEvent(_RawReprMixin):
         apply to all commands that do not contain explicit overwrites.
     application_id: :class:`int`
         The ID of the application that the command belongs to.
-    guild: :class:`~discord.Guild`
+    guild: :class:`~discord_real.Guild`
         The guild where the permissions were updated.
-    permissions: List[:class:`~discord.app_commands.AppCommandPermissions`]
+    permissions: List[:class:`~discord_real.app_commands.AppCommandPermissions`]
         List of new permissions for the app command.
     """
 

@@ -153,7 +153,7 @@ New Features
     - This is queryable via :attr:`MessageFlags.suppress_notifications`
 
 - Implement :class:`abc.Messageable` for :class:`StageChannel` (:issue:`9248`)
-- Add setter for :attr:`discord.ui.ChannelSelect.channel_types` (:issue:`9068`)
+- Add setter for :attr:`discord_real.ui.ChannelSelect.channel_types` (:issue:`9068`)
 - Add support for custom messages in automod via :attr:`AutoModRuleAction.custom_message` (:issue:`9267`)
 - Add :meth:`ForumChannel.get_thread` (:issue:`9106`)
 - Add :attr:`StageChannel.slowmode_delay` and :attr:`VoiceChannel.slowmode_delay` (:issue:`9111`)
@@ -217,7 +217,7 @@ Miscellaneous
 - Force enable colour logging for the default logging handler when run under Docker.
 - Add various overloads for :meth:`Client.wait_for` to aid in static analysis (:issue:`9184`)
 - :class:`Interaction` can now optionally take a generic parameter, ``ClientT`` to represent the type for :attr:`Interaction.client`
-- |commands| Respect :attr:`~ext.commands.Command.ignore_extra` for :class:`~discord.ext.commands.FlagConverter` keyword-only parameters
+- |commands| Respect :attr:`~ext.commands.Command.ignore_extra` for :class:`~discord_real.ext.commands.FlagConverter` keyword-only parameters
 - |commands| Change :attr:`Paginator.pages <ext.commands.Paginator.pages>` to not prematurely close (:issue:`9257`)
 
 .. _vp2p1p1:
@@ -248,8 +248,8 @@ New Features
     - See :meth:`Thread.edit` and :meth:`ForumChannel.edit` for modifying tags and their usage.
 
 - Add support for new select types (:issue:`9013`, :issue:`9003`).
-    - These are split into separate classes, :class:`~discord.ui.ChannelSelect`, :class:`~discord.ui.RoleSelect`, :class:`~discord.ui.UserSelect`, :class:`~discord.ui.MentionableSelect`.
-    - The decorator still uses a single function, :meth:`~discord.ui.select`. Changing the select type is done by the ``cls`` keyword parameter.
+    - These are split into separate classes, :class:`~discord_real.ui.ChannelSelect`, :class:`~discord_real.ui.RoleSelect`, :class:`~discord_real.ui.UserSelect`, :class:`~discord_real.ui.MentionableSelect`.
+    - The decorator still uses a single function, :meth:`~discord_real.ui.select`. Changing the select type is done by the ``cls`` keyword parameter.
 
 - Add support for toggling discoverable and invites_disabled features in :meth:`Guild.edit` (:issue:`8390`).
 - Add :meth:`Interaction.translate` helper method (:issue:`8425`).
@@ -257,11 +257,11 @@ New Features
 - Add :attr:`ApplicationFlags.active`, :attr:`UserFlags.active_developer`, and :attr:`PublicUserFlags.active_developer`.
 - Add ``delete_after`` to :meth:`InteractionResponse.send_message` (:issue:`9022`).
 - Add support for :attr:`AutoModTrigger.regex_patterns`.
-- |commands| Add :attr:`GroupCog.group_extras <discord.ext.commands.GroupCog.group_extras>` to set :attr:`app_commands.Group.extras` (:issue:`8405`).
+- |commands| Add :attr:`GroupCog.group_extras <discord_real.ext.commands.GroupCog.group_extras>` to set :attr:`app_commands.Group.extras` (:issue:`8405`).
 - |commands| Add support for NumPy style docstrings for regular commands to set parameter descriptions.
-- |commands| Allow :class:`~discord.ext.commands.Greedy` to potentially maintain state between calls.
-- |commands| Add :meth:`Cog.has_app_command_error_handler <discord.ext.commands.Cog.has_app_command_error_handler>` (:issue:`8991`).
-- |commands| Allow ``delete_after`` in :meth:`Context.send <discord.ext.commands.Context.send>` on ephemeral messages (:issue:`9021`).
+- |commands| Allow :class:`~discord_real.ext.commands.Greedy` to potentially maintain state between calls.
+- |commands| Add :meth:`Cog.has_app_command_error_handler <discord_real.ext.commands.Cog.has_app_command_error_handler>` (:issue:`8991`).
+- |commands| Allow ``delete_after`` in :meth:`Context.send <discord_real.ext.commands.Context.send>` on ephemeral messages (:issue:`9021`).
 
 Bug Fixes
 ~~~~~~~~~
@@ -275,8 +275,8 @@ Bug Fixes
 - Fix :meth:`app_commands.CommandTree.on_error` still being called when a bound error handler is set.
 - Fix thread permissions being set to ``True`` in :meth:`DMChannel.permissions_for` (:issue:`8965`).
 - Fix ``on_scheduled_event_delete`` occasionally dispatching with too many parameters (:issue:`9019`).
-- |commands| Fix :meth:`Context.from_interaction <discord.ext.commands.Context.from_interaction>` ignoring :attr:`~discord.ext.commands.Context.command_failed`.
-- |commands| Fix :class:`~discord.ext.commands.Range` to allow 3.10 Union syntax (:issue:`8446`).
+- |commands| Fix :meth:`Context.from_interaction <discord_real.ext.commands.Context.from_interaction>` ignoring :attr:`~discord_real.ext.commands.Context.command_failed`.
+- |commands| Fix :class:`~discord_real.ext.commands.Range` to allow 3.10 Union syntax (:issue:`8446`).
 - |commands| Fix ``before_invoke`` not triggering for fallback commands in a hybrid group command (:issue:`8461`, :issue:`8462`).
 
 Miscellaneous
@@ -302,7 +302,7 @@ Bug Fixes
 - Fix library callbacks triggering a type checking error if the parameter names were different.
     - This required a change in the :ref:`version_guarantees`
 
-- |commands| Fix Python 3.10 union types not working with :class:`commands.Greedy <discord.ext.commands.Greedy>`.
+- |commands| Fix Python 3.10 union types not working with :class:`commands.Greedy <discord_real.ext.commands.Greedy>`.
 
 .. _vp2p0p0:
 
@@ -522,7 +522,7 @@ Miscellaneous
 
 - Members are now loaded during ``GUILD_MEMBER_UPDATE`` events if :attr:`MemberCacheFlags.joined` is set. (:issue:`5930`)
 - |commands| :class:`MemberConverter <ext.commands.MemberConverter>` now properly lazily fetches members if not available from cache.
-    - This is the same as having ``discord.Member`` as the type-hint.
+    - This is the same as having ``discord_real.Member`` as the type-hint.
 - :meth:`Guild.chunk` now allows concurrent calls without spamming the gateway with requests.
 
 .. _vp1p5p0:
@@ -729,7 +729,7 @@ Miscellaneous
 
 - For performance reasons ``websockets`` has been dropped in favour of ``aiohttp.ws``.
 - The blocking logging message now shows the stack trace of where the main thread was blocking
-- The domain name was changed from ``discordapp.com`` to ``discord.com`` to prepare for the required domain migration
+- The domain name was changed from ``discordapp.com`` to ``discord_real.com`` to prepare for the required domain migration
 - Reduce memory usage when reconnecting due to stale references being held by the message cache (:issue:`5133`)
 - Optimize :meth:`abc.GuildChannel.permissions_for` by not creating as many temporary objects (20-32% savings).
 - |commands| Raise :exc:`~ext.commands.CommandRegistrationError` instead of :exc:`ClientException` when a duplicate error is registered (:issue:`4217`)
@@ -1065,7 +1065,7 @@ New Features
 - Add :meth:`Attachment.read` to fetch the bytes content of an attachment (:issue:`2118`)
 - Add support for voice kicking by passing ``None`` to :meth:`Member.move_to`.
 
-``discord.ext.commands``
+``discord_real.ext.commands``
 ++++++++++++++++++++++++++
 
 - Add new :func:`~.commands.dm_only` check.
@@ -1086,7 +1086,7 @@ Bug Fixes
 - Fix bug where updating your own user did not update your member instances.
 - Tighten constraints of ``__eq__`` in :class:`Spotify` objects (:issue:`2113`, :issue:`2117`)
 
-``discord.ext.commands``
+``discord_real.ext.commands``
 ++++++++++++++++++++++++++
 
 - Fix lambda converters in a non-module context (e.g. ``eval``).
@@ -1105,7 +1105,7 @@ Miscellaneous
 - The loop cleanup facility has been rewritten again.
 - The signal handling in :meth:`Client.run` has been removed.
 
-``discord.ext.commands``
+``discord_real.ext.commands``
 ++++++++++++++++++++++++++
 
 - Custom exception classes are now used for all default checks in the library (:issue:`2101`)
@@ -1443,7 +1443,7 @@ New Features
 - Added :data:`version_info` named tuple to check version info of the library.
 - Login credentials are now cached to have a faster login experience. You can disable this by passing in ``cache_auth=False``
   when constructing a :class:`Client`.
-- New utility function, :func:`discord.utils.get` to simplify retrieval of items based on attributes.
+- New utility function, :func:`discord_real.utils.get` to simplify retrieval of items based on attributes.
 - All data classes now support ``!=``, ``==``, ``hash(obj)`` and ``str(obj)``.
 - Added :meth:`Client.get_bans` to get banned members from a server.
 - Added :meth:`Client.invites_from` to get currently active invites in a server.
@@ -1453,7 +1453,7 @@ New Features
 - Added a way to remove the messages of the user that just got banned in :meth:`Client.ban`.
 - Added :meth:`Client.wait_until_ready` to facilitate easy creation of tasks that require the client cache to be ready.
 - Added :meth:`Client.wait_until_login` to facilitate easy creation of tasks that require the client to be logged in.
-- Add :class:`discord.Game` to represent any game with custom text to send to :meth:`Client.change_status`.
+- Add :class:`discord_real.Game` to represent any game with custom text to send to :meth:`Client.change_status`.
 - Add :attr:`Message.nonce` attribute.
 - Add :meth:`Member.permissions_in` as another way of doing :meth:`Channel.permissions_for`.
 - Add :meth:`Client.move_member` to move a member to another voice channel.

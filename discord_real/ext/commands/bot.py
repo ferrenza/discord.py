@@ -52,8 +52,8 @@ from typing import (
 
 import discord
 from discord import app_commands
-from discord.app_commands.tree import _retrieve_guild_ids
-from discord.utils import MISSING, _is_submodule
+from discord_real.app_commands.tree import _retrieve_guild_ids
+from discord_real.utils import MISSING, _is_submodule
 
 from .core import GroupMixin
 from .view import StringView
@@ -68,9 +68,9 @@ if TYPE_CHECKING:
 
     import importlib.machinery
 
-    from discord.message import Message
-    from discord.interactions import Interaction
-    from discord.abc import User, Snowflake
+    from discord_real.message import Message
+    from discord_real.interactions import Interaction
+    from discord_real.abc import User, Snowflake
     from ._types import (
         _Bot,
         BotT,
@@ -166,7 +166,7 @@ class BotBase(GroupMixin[None]):
         help_command: Optional[HelpCommand] = _default,
         tree_cls: Type[app_commands.CommandTree[Any]] = app_commands.CommandTree,
         description: Optional[str] = None,
-        intents: discord.Intents,
+        intents: discord_real.Intents,
         **options: Any,
     ) -> None:
         super().__init__(intents=intents, **options)
@@ -223,7 +223,7 @@ class BotBase(GroupMixin[None]):
         for event in self.extra_events.get(ev, []):
             self._schedule_event(event, ev, *args, **kwargs)  # type: ignore
 
-    @discord.utils.copy_doc(discord.Client.close)
+    @discord_real.utils.copy_doc(discord_real.Client.close)
     async def close(self) -> None:
         for extension in tuple(self.__extensions):
             try:
@@ -241,7 +241,7 @@ class BotBase(GroupMixin[None]):
 
     # GroupMixin overrides
 
-    @discord.utils.copy_doc(GroupMixin.add_command)
+    @discord_real.utils.copy_doc(GroupMixin.add_command)
     def add_command(self, command: Command[Any, ..., Any], /) -> None:
         super().add_command(command)
         if isinstance(command, (HybridCommand, HybridGroup)) and command.app_command:
@@ -252,7 +252,7 @@ class BotBase(GroupMixin[None]):
             if command.cog is None or not command.cog.__cog_is_app_commands_group__:
                 self.tree.add_command(command.app_command)
 
-    @discord.utils.copy_doc(GroupMixin.remove_command)
+    @discord_real.utils.copy_doc(GroupMixin.remove_command)
     def remove_command(self, name: str, /) -> Optional[Command[Any, ..., Any]]:
         cmd: Optional[Command[Any, ..., Any]] = super().remove_command(name)
         if isinstance(cmd, (HybridCommand, HybridGroup)) and cmd.app_command:
@@ -265,7 +265,7 @@ class BotBase(GroupMixin[None]):
                 self.__tree.remove_command(name)
             else:
                 for guild_id in guild_ids:
-                    self.__tree.remove_command(name, guild=discord.Object(id=guild_id))
+                    self.__tree.remove_command(name, guild=discord_real.Object(id=guild_id))
 
         return cmd
 
@@ -276,7 +276,7 @@ class BotBase(GroupMixin[None]):
         *args: Any,
         **kwargs: Any,
     ) -> Callable[[CommandCallback[Any, ContextT, P, T]], HybridCommand[Any, P, T]]:
-        """A shortcut decorator that invokes :func:`~discord.ext.commands.hybrid_command` and adds it to
+        """A shortcut decorator that invokes :func:`~discord_real.ext.commands.hybrid_command` and adds it to
         the internal command list via :meth:`add_command`.
 
         Returns
@@ -300,7 +300,7 @@ class BotBase(GroupMixin[None]):
         *args: Any,
         **kwargs: Any,
     ) -> Callable[[CommandCallback[Any, ContextT, P, T]], HybridGroup[Any, P, T]]:
-        """A shortcut decorator that invokes :func:`~discord.ext.commands.hybrid_group` and adds it to
+        """A shortcut decorator that invokes :func:`~discord_real.ext.commands.hybrid_group` and adds it to
         the internal command list via :meth:`add_command`.
 
         Returns
@@ -391,7 +391,7 @@ class BotBase(GroupMixin[None]):
 
             ``func`` parameter is now positional-only.
 
-        .. seealso:: The :func:`~discord.ext.commands.check` decorator
+        .. seealso:: The :func:`~discord_real.ext.commands.check` decorator
 
         Parameters
         -----------
@@ -480,12 +480,12 @@ class BotBase(GroupMixin[None]):
         if len(data) == 0:
             return True
 
-        return await discord.utils.async_all(f(ctx) for f in data)
+        return await discord_real.utils.async_all(f(ctx) for f in data)
 
     async def is_owner(self, user: User, /) -> bool:
         """|coro|
 
-        Checks if a :class:`~discord.User` or :class:`~discord.Member` is the owner of
+        Checks if a :class:`~discord_real.User` or :class:`~discord_real.Member` is the owner of
         this bot.
 
         If an :attr:`owner_id` is not set, it is fetched automatically
@@ -522,12 +522,12 @@ class BotBase(GroupMixin[None]):
             return user.id in self.owner_ids
         else:
 
-            app: discord.AppInfo = await self.application_info()  # type: ignore
+            app: discord_real.AppInfo = await self.application_info()  # type: ignore
             if app.team:
                 self.owner_ids = ids = {
                     m.id
                     for m in app.team.members
-                    if m.role in (discord.TeamMemberRole.admin, discord.TeamMemberRole.developer)
+                    if m.role in (discord_real.TeamMemberRole.admin, discord_real.TeamMemberRole.developer)
                 }
                 return user.id in ids
             else:
@@ -723,7 +723,7 @@ class BotBase(GroupMixin[None]):
         A cog is a class that has its own event listeners and commands.
 
         If the cog is a :class:`.app_commands.Group` then it is added to
-        the bot's :class:`~discord.app_commands.CommandTree` as well.
+        the bot's :class:`~discord_real.app_commands.CommandTree` as well.
 
         .. note::
 
@@ -752,13 +752,13 @@ class BotBase(GroupMixin[None]):
             instead of raising an error.
 
             .. versionadded:: 2.0
-        guild: Optional[:class:`~discord.abc.Snowflake`]
+        guild: Optional[:class:`~discord_real.abc.Snowflake`]
             If the cog is an application command group, then this would be the
             guild where the cog group would be added to. If not given then
             it becomes a global command instead.
 
             .. versionadded:: 2.0
-        guilds: List[:class:`~discord.abc.Snowflake`]
+        guilds: List[:class:`~discord_real.abc.Snowflake`]
             If the cog is an application command group, then this would be the
             guilds where the cog group would be added to. If not given then
             it becomes a global command instead. Cannot be mixed with
@@ -784,7 +784,7 @@ class BotBase(GroupMixin[None]):
 
         if existing is not None:
             if not override:
-                raise discord.ClientException(f'Cog named {cog_name!r} already loaded')
+                raise discord_real.ClientException(f'Cog named {cog_name!r} already loaded')
             await self.remove_cog(cog_name, guild=guild, guilds=guilds)
 
         if cog.__cog_app_commands_group__:
@@ -845,13 +845,13 @@ class BotBase(GroupMixin[None]):
         -----------
         name: :class:`str`
             The name of the cog to remove.
-        guild: Optional[:class:`~discord.abc.Snowflake`]
+        guild: Optional[:class:`~discord_real.abc.Snowflake`]
             If the cog is an application command group, then this would be the
             guild where the cog group would be removed from. If not given then
             a global command is removed instead instead.
 
             .. versionadded:: 2.0
-        guilds: List[:class:`~discord.abc.Snowflake`]
+        guilds: List[:class:`~discord_real.abc.Snowflake`]
             If the cog is an application command group, then this would be the
             guilds where the cog group would be removed from. If not given then
             a global command is removed instead instead. Cannot be mixed with
@@ -879,7 +879,7 @@ class BotBase(GroupMixin[None]):
                 self.__tree.remove_command(name)
             else:
                 for guild_id in guild_ids:
-                    self.__tree.remove_command(name, guild=discord.Object(guild_id))
+                    self.__tree.remove_command(name, guild=discord_real.Object(guild_id))
 
         await cog._eject(self, guild_ids=guild_ids)
 
@@ -1169,7 +1169,7 @@ class BotBase(GroupMixin[None]):
     # anyway, then this is sound.
     @property
     def tree(self) -> app_commands.CommandTree[Self]:  # type: ignore
-        """:class:`~discord.app_commands.CommandTree`: The command tree responsible for handling the application commands
+        """:class:`~discord_real.app_commands.CommandTree`: The command tree responsible for handling the application commands
         in this bot.
 
         .. versionadded:: 2.0
@@ -1190,7 +1190,7 @@ class BotBase(GroupMixin[None]):
 
         Parameters
         -----------
-        message: :class:`discord.Message`
+        message: :class:`discord_real.Message`
             The message context to get the prefix of.
 
         Returns
@@ -1203,7 +1203,7 @@ class BotBase(GroupMixin[None]):
 
         if callable(prefix):
             # self will be a Bot or AutoShardedBot
-            ret = await discord.utils.maybe_coroutine(prefix, self, message)  # type: ignore
+            ret = await discord_real.utils.maybe_coroutine(prefix, self, message)  # type: ignore
 
         if not isinstance(ret, str):
             try:
@@ -1270,7 +1270,7 @@ class BotBase(GroupMixin[None]):
 
         Parameters
         -----------
-        origin: Union[:class:`discord.Message`, :class:`discord.Interaction`]
+        origin: Union[:class:`discord_real.Message`, :class:`discord_real.Interaction`]
             The message or interaction to get the invocation context from.
         cls
             The factory class that will be used to create the context.
@@ -1287,7 +1287,7 @@ class BotBase(GroupMixin[None]):
         if cls is MISSING:
             cls = Context  # type: ignore
 
-        if isinstance(origin, discord.Interaction):
+        if isinstance(origin, discord_real.Interaction):
             return await cls.from_interaction(origin)
 
         view = StringView(origin.content)
@@ -1307,7 +1307,7 @@ class BotBase(GroupMixin[None]):
                 # if the context class' __init__ consumes something from the view this
                 # will be wrong.  That seems unreasonable though.
                 if origin.content.startswith(tuple(prefix)):
-                    invoked_prefix = discord.utils.find(view.skip_string, prefix)
+                    invoked_prefix = discord_real.utils.find(view.skip_string, prefix)
                 else:
                     return ctx
 
@@ -1391,7 +1391,7 @@ class BotBase(GroupMixin[None]):
 
         Parameters
         -----------
-        message: :class:`discord.Message`
+        message: :class:`discord_real.Message`
             The message to process commands for.
         """
         if message.author.bot:
@@ -1405,18 +1405,18 @@ class BotBase(GroupMixin[None]):
         await self.process_commands(message)
 
 
-class Bot(BotBase, discord.Client):
+class Bot(BotBase, discord_real.Client):
     """Represents a Discord bot.
 
-    This class is a subclass of :class:`discord.Client` and as a result
-    anything that you can do with a :class:`discord.Client` you can do with
+    This class is a subclass of :class:`discord_real.Client` and as a result
+    anything that you can do with a :class:`discord_real.Client` you can do with
     this bot.
 
     This class also subclasses :class:`.GroupMixin` to provide the functionality
     to manage commands.
 
-    Unlike :class:`discord.Client`, this class does not require manually setting
-    a :class:`~discord.app_commands.CommandTree` and is automatically set upon
+    Unlike :class:`discord_real.Client`, this class does not require manually setting
+    a :class:`~discord_real.app_commands.CommandTree` and is automatically set upon
     instantiating the class.
 
     .. container:: operations
@@ -1433,7 +1433,7 @@ class Bot(BotBase, discord.Client):
         The command prefix is what the message content must contain initially
         to have a command invoked. This prefix could either be a string to
         indicate what the prefix should be, or a callable that takes in the bot
-        as its first parameter and :class:`discord.Message` as its second
+        as its first parameter and :class:`discord_real.Message` as its second
         parameter and returns the prefix. This is to facilitate "dynamic"
         command prefixes. This callable can be either a regular function or
         a coroutine.
@@ -1485,8 +1485,8 @@ class Bot(BotBase, discord.Client):
         the ``command_prefix`` is set to ``!``. Defaults to ``False``.
 
         .. versionadded:: 1.7
-    tree_cls: Type[:class:`~discord.app_commands.CommandTree`]
-        The type of application command tree to use. Defaults to :class:`~discord.app_commands.CommandTree`.
+    tree_cls: Type[:class:`~discord_real.app_commands.CommandTree`]
+        The type of application command tree to use. Defaults to :class:`~discord_real.app_commands.CommandTree`.
 
         .. versionadded:: 2.0
     """
@@ -1494,9 +1494,9 @@ class Bot(BotBase, discord.Client):
     pass
 
 
-class AutoShardedBot(BotBase, discord.AutoShardedClient):
+class AutoShardedBot(BotBase, discord_real.AutoShardedClient):
     """This is similar to :class:`.Bot` except that it is inherited from
-    :class:`discord.AutoShardedClient` instead.
+    :class:`discord_real.AutoShardedClient` instead.
 
     .. container:: operations
 

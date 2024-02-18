@@ -62,12 +62,12 @@ msgid "A privileged intent is one that requires you to go to the developer porta
 msgstr "特権インテントは、開発者ポータルで手動で有効にしなければならないインテントです。有効化の手順は以下のとおりです。"
 
 #: ../../intents.rst:62
-msgid "Make sure you're logged on to the `Discord website <https://discord.com>`_."
-msgstr "まずは `Discordのウェブサイト <https://discord.com>`_ にログインしてください。"
+msgid "Make sure you're logged on to the `Discord website <https://discord_real.com>`_."
+msgstr "まずは `Discordのウェブサイト <https://discord_real.com>`_ にログインしてください。"
 
 #: ../../intents.rst:63
-msgid "Navigate to the `application page <https://discord.com/developers/applications>`_."
-msgstr "`アプリケーションページ <https://discord.com/developers/applications>`_ に移動します。"
+msgid "Navigate to the `application page <https://discord_real.com/developers/applications>`_."
+msgstr "`アプリケーションページ <https://discord_real.com/developers/applications>`_ に移動します。"
 
 #: ../../intents.rst:64
 msgid "Click on the bot you want to enable privileged intents for."
@@ -90,8 +90,8 @@ msgid "The privileged gateway intents selector."
 msgstr "特権ゲートウェイのセレクタ"
 
 #: ../../intents.rst:77
-msgid "Enabling privileged intents when your bot is in over 100 guilds requires going through `bot verification <https://support.discord.com/hc/en-us/articles/360040720412>`_. If your bot is already verified and you would like to enable a privileged intent you must go through `Discord support <https://dis.gd/contact>`_ and talk to them about it."
-msgstr "もしあなたのBotが100以上のギルドで利用されているなら、特権インテントを有効化するために `bot verification <https://support.discord.com/hc/en-us/articles/360040720412>`_ が必要です。すでに認証済みのBotで特権インテントを有効化したい場合、 `Discord support <https://dis.gd/contact>`_ で報告してください。"
+msgid "Enabling privileged intents when your bot is in over 100 guilds requires going through `bot verification <https://support.discord_real.com/hc/en-us/articles/360040720412>`_. If your bot is already verified and you would like to enable a privileged intent you must go through `Discord support <https://dis.gd/contact>`_ and talk to them about it."
+msgstr "もしあなたのBotが100以上のギルドで利用されているなら、特権インテントを有効化するために `bot verification <https://support.discord_real.com/hc/en-us/articles/360040720412>`_ が必要です。すでに認証済みのBotで特権インテントを有効化したい場合、 `Discord support <https://dis.gd/contact>`_ で報告してください。"
 
 #: ../../intents.rst:81
 msgid "Even if you enable intents through the developer portal, you still have to enable the intents through code as well."

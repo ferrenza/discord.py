@@ -5,7 +5,7 @@ import random
 import asyncio
 
 
-class MyClient(discord.Client):
+class MyClient(discord_real.Client):
     async def on_ready(self):
         print(f'Logged in as {self.user} (ID: {self.user.id})')
         print('------')
@@ -34,7 +34,7 @@ class MyClient(discord.Client):
                 await message.channel.send(f'Oops. It is actually {answer}.')
 
 
-intents = discord.Intents.default()
+intents = discord_real.Intents.default()
 intents.message_content = True
 
 client = MyClient(intents=intents)

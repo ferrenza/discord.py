@@ -330,7 +330,7 @@ class IntegrationApplication:
 
 
 class BotIntegration(Integration):
-    """Represents a bot integration on discord.
+    """Represents a bot integration on discord_real.
 
     .. versionadded:: 2.0
 

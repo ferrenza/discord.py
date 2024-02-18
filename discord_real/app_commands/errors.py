@@ -68,15 +68,15 @@ APP_ID_NOT_FOUND = (
 class AppCommandError(DiscordException):
     """The base exception type for all application command related errors.
 
-    This inherits from :exc:`discord.DiscordException`.
+    This inherits from :exc:`discord_real.DiscordException`.
 
     This exception and exceptions inherited from it are handled
     in a special way as they are caught and passed into various error handlers
     in this order:
 
-    - :meth:`Command.error <discord.app_commands.Command.error>`
-    - :meth:`Group.on_error <discord.app_commands.Group.on_error>`
-    - :meth:`CommandTree.on_error <discord.app_commands.CommandTree.on_error>`
+    - :meth:`Command.error <discord_real.app_commands.Command.error>`
+    - :meth:`Group.on_error <discord_real.app_commands.Group.on_error>`
+    - :meth:`CommandTree.on_error <discord_real.app_commands.CommandTree.on_error>`
 
     .. versionadded:: 2.0
     """
@@ -87,7 +87,7 @@ class AppCommandError(DiscordException):
 class CommandInvokeError(AppCommandError):
     """An exception raised when the command being invoked raised an exception.
 
-    This inherits from :exc:`~discord.app_commands.AppCommandError`.
+    This inherits from :exc:`~discord_real.app_commands.AppCommandError`.
 
     .. versionadded:: 2.0
 
@@ -110,7 +110,7 @@ class TransformerError(AppCommandError):
     """An exception raised when a :class:`Transformer` or type annotation fails to
     convert to its target type.
 
-    This inherits from :exc:`~discord.app_commands.AppCommandError`.
+    This inherits from :exc:`~discord_real.app_commands.AppCommandError`.
 
     If an exception occurs while converting that does not subclass
     :exc:`AppCommandError` then the exception is wrapped into this exception.
@@ -124,7 +124,7 @@ class TransformerError(AppCommandError):
     -----------
     value: Any
         The value that failed to convert.
-    type: :class:`~discord.AppCommandOptionType`
+    type: :class:`~discord_real.AppCommandOptionType`
         The type of argument that failed to convert.
     transformer: :class:`Transformer`
         The transformer that failed the conversion.
@@ -141,7 +141,7 @@ class TransformerError(AppCommandError):
 class TranslationError(AppCommandError):
     """An exception raised when the library fails to translate a string.
 
-    This inherits from :exc:`~discord.app_commands.AppCommandError`.
+    This inherits from :exc:`~discord_real.app_commands.AppCommandError`.
 
     If an exception occurs while calling :meth:`Translator.translate` that does
     not subclass this then the exception is wrapped into this exception.
@@ -154,9 +154,9 @@ class TranslationError(AppCommandError):
     -----------
     string: Optional[Union[:class:`str`, :class:`locale_str`]]
         The string that caused the error, if any.
-    locale: Optional[:class:`~discord.Locale`]
+    locale: Optional[:class:`~discord_real.Locale`]
         The locale that caused the error, if any.
-    context: :class:`~discord.app_commands.TranslationContext`
+    context: :class:`~discord_real.app_commands.TranslationContext`
         The context of the translation that triggered the error.
     """
 
@@ -185,7 +185,7 @@ class TranslationError(AppCommandError):
 class CheckFailure(AppCommandError):
     """An exception raised when check predicates in a command have failed.
 
-    This inherits from :exc:`~discord.app_commands.AppCommandError`.
+    This inherits from :exc:`~discord_real.app_commands.AppCommandError`.
 
     .. versionadded:: 2.0
     """
@@ -196,7 +196,7 @@ class CheckFailure(AppCommandError):
 class NoPrivateMessage(CheckFailure):
     """An exception raised when a command does not work in a direct message.
 
-    This inherits from :exc:`~discord.app_commands.CheckFailure`.
+    This inherits from :exc:`~discord_real.app_commands.CheckFailure`.
 
     .. versionadded:: 2.0
     """
@@ -208,7 +208,7 @@ class NoPrivateMessage(CheckFailure):
 class MissingRole(CheckFailure):
     """An exception raised when the command invoker lacks a role to run a command.
 
-    This inherits from :exc:`~discord.app_commands.CheckFailure`.
+    This inherits from :exc:`~discord_real.app_commands.CheckFailure`.
 
     .. versionadded:: 2.0
 
@@ -216,7 +216,7 @@ class MissingRole(CheckFailure):
     -----------
     missing_role: Union[:class:`str`, :class:`int`]
         The required role that is missing.
-        This is the parameter passed to :func:`~discord.app_commands.checks.has_role`.
+        This is the parameter passed to :func:`~discord_real.app_commands.checks.has_role`.
     """
 
     def __init__(self, missing_role: Snowflake) -> None:
@@ -229,7 +229,7 @@ class MissingAnyRole(CheckFailure):
     """An exception raised when the command invoker lacks any of the roles
     specified to run a command.
 
-    This inherits from :exc:`~discord.app_commands.CheckFailure`.
+    This inherits from :exc:`~discord_real.app_commands.CheckFailure`.
 
     .. versionadded:: 2.0
 
@@ -237,7 +237,7 @@ class MissingAnyRole(CheckFailure):
     -----------
     missing_roles: List[Union[:class:`str`, :class:`int`]]
         The roles that the invoker is missing.
-        These are the parameters passed to :func:`~discord.app_commands.checks.has_any_role`.
+        These are the parameters passed to :func:`~discord_real.app_commands.checks.has_any_role`.
     """
 
     def __init__(self, missing_roles: SnowflakeList) -> None:
@@ -252,7 +252,7 @@ class MissingPermissions(CheckFailure):
     """An exception raised when the command invoker lacks permissions to run a
     command.
 
-    This inherits from :exc:`~discord.app_commands.CheckFailure`.
+    This inherits from :exc:`~discord_real.app_commands.CheckFailure`.
 
     .. versionadded:: 2.0
 
@@ -275,7 +275,7 @@ class BotMissingPermissions(CheckFailure):
     """An exception raised when the bot's member lacks permissions to run a
     command.
 
-    This inherits from :exc:`~discord.app_commands.CheckFailure`.
+    This inherits from :exc:`~discord_real.app_commands.CheckFailure`.
 
     .. versionadded:: 2.0
 
@@ -297,13 +297,13 @@ class BotMissingPermissions(CheckFailure):
 class CommandOnCooldown(CheckFailure):
     """An exception raised when the command being invoked is on cooldown.
 
-    This inherits from :exc:`~discord.app_commands.CheckFailure`.
+    This inherits from :exc:`~discord_real.app_commands.CheckFailure`.
 
     .. versionadded:: 2.0
 
     Attributes
     -----------
-    cooldown: :class:`~discord.app_commands.Cooldown`
+    cooldown: :class:`~discord_real.app_commands.Cooldown`
         The cooldown that was triggered.
     retry_after: :class:`float`
         The amount of seconds to wait before you can retry again.
@@ -318,7 +318,7 @@ class CommandOnCooldown(CheckFailure):
 class CommandAlreadyRegistered(AppCommandError):
     """An exception raised when a command is already registered.
 
-    This inherits from :exc:`~discord.app_commands.AppCommandError`.
+    This inherits from :exc:`~discord_real.app_commands.AppCommandError`.
 
     .. versionadded:: 2.0
 
@@ -340,7 +340,7 @@ class CommandAlreadyRegistered(AppCommandError):
 class CommandNotFound(AppCommandError):
     """An exception raised when an application command could not be found.
 
-    This inherits from :exc:`~discord.app_commands.AppCommandError`.
+    This inherits from :exc:`~discord_real.app_commands.AppCommandError`.
 
     .. versionadded:: 2.0
 
@@ -351,7 +351,7 @@ class CommandNotFound(AppCommandError):
     parents: List[:class:`str`]
         A list of parent command names that were previously found
         prior to the application command not being found.
-    type: :class:`~discord.AppCommandType`
+    type: :class:`~discord_real.AppCommandType`
         The type of command that was not found.
     """
 
@@ -366,13 +366,13 @@ class CommandLimitReached(AppCommandError):
     """An exception raised when the maximum number of application commands was reached
     either globally or in a guild.
 
-    This inherits from :exc:`~discord.app_commands.AppCommandError`.
+    This inherits from :exc:`~discord_real.app_commands.AppCommandError`.
 
     .. versionadded:: 2.0
 
     Attributes
     ------------
-    type: :class:`~discord.AppCommandType`
+    type: :class:`~discord_real.AppCommandType`
         The type of command that reached the limit.
     guild_id: Optional[:class:`int`]
         The guild ID that reached the limit or ``None`` if it was global.
@@ -401,7 +401,7 @@ class CommandSignatureMismatch(AppCommandError):
     from the command definition you provided Discord. Either your code is out of date or the
     data from Discord is out of sync.
 
-    This inherits from :exc:`~discord.app_commands.AppCommandError`.
+    This inherits from :exc:`~discord_real.app_commands.AppCommandError`.
 
     .. versionadded:: 2.0
 
@@ -426,7 +426,7 @@ class MissingApplicationID(AppCommandError):
     """An exception raised when the client does not have an application ID set.
     An application ID is required for syncing application commands.
 
-    This inherits from :exc:`~discord.app_commands.AppCommandError`.
+    This inherits from :exc:`~discord_real.app_commands.AppCommandError`.
 
     .. versionadded:: 2.0
     """
@@ -504,8 +504,8 @@ class CommandSyncFailure(AppCommandError, HTTPException):
 
     This provides syncing failures in a slightly more readable format.
 
-    This inherits from :exc:`~discord.app_commands.AppCommandError`
-    and :exc:`~discord.HTTPException`.
+    This inherits from :exc:`~discord_real.app_commands.AppCommandError`
+    and :exc:`~discord_real.HTTPException`.
 
     .. versionadded:: 2.0
     """

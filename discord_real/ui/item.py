@@ -50,9 +50,9 @@ class Item(Generic[V]):
 
     The current UI items supported are:
 
-    - :class:`discord.ui.Button`
-    - :class:`discord.ui.Select`
-    - :class:`discord.ui.TextInput`
+    - :class:`discord_real.ui.Button`
+    - :class:`discord_real.ui.Select`
+    - :class:`discord_real.ui.TextInput`
 
     .. versionadded:: 2.0
     """
@@ -148,16 +148,16 @@ class Item(Generic[V]):
         .. note::
 
             If an exception occurs within the body then the check
-            is considered a failure and :meth:`discord.ui.View.on_error` is called.
+            is considered a failure and :meth:`discord_real.ui.View.on_error` is called.
 
-            For :class:`~discord.ui.DynamicItem` this does not call the ``on_error``
+            For :class:`~discord_real.ui.DynamicItem` this does not call the ``on_error``
             handler.
 
         .. versionadded:: 2.4
 
         Parameters
         -----------
-        interaction: :class:`~discord.Interaction`
+        interaction: :class:`~discord_real.Interaction`
             The interaction that occurred.
 
         Returns

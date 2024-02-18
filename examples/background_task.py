@@ -1,9 +1,9 @@
-from discord.ext import tasks
+from discord_real.ext import tasks
 
 import discord
 
 
-class MyClient(discord.Client):
+class MyClient(discord_real.Client):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
@@ -29,5 +29,5 @@ class MyClient(discord.Client):
         await self.wait_until_ready()  # wait until the bot logs in
 
 
-client = MyClient(intents=discord.Intents.default())
+client = MyClient(intents=discord_real.Intents.default())
 client.run('token')

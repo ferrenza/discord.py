@@ -6,7 +6,7 @@
 Frequently Asked Questions
 ===========================
 
-This is a list of Frequently Asked Questions regarding using ``discord.py`` and its extension modules. Feel free to suggest a
+This is a list of Frequently Asked Questions regarding using ``discord_real.py`` and its extension modules. Feel free to suggest a
 new question or submit one via pull requests.
 
 .. contents:: Questions
@@ -81,7 +81,7 @@ General questions regarding library usage belong here.
 Where can I find usage examples?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Example code can be found in the `examples folder <https://github.com/Rapptz/discord.py/tree/master/examples>`_
+Example code can be found in the `examples folder <https://github.com/Rapptz/discord_real.py/tree/master/examples>`_
 in the repository.
 
 How do I set the "Playing" status?
@@ -105,11 +105,11 @@ For memory optimisation purposes, some activities are offered in slimmed-down ve
 
 Putting both of these pieces of info together, you get the following: ::
 
-    client = discord.Client(activity=discord.Game(name='my game'))
+    client = discord_real.Client(activity=discord_real.Game(name='my game'))
 
     # or, for watching:
-    activity = discord.Activity(name='my activity', type=discord.ActivityType.watching)
-    client = discord.Client(activity=activity)
+    activity = discord_real.Activity(name='my activity', type=discord_real.ActivityType.watching)
+    client = discord_real.Client(activity=activity)
 
 How do I send a message to a specific channel?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -150,18 +150,18 @@ to pass to Discord when uploading.
 
 If you want to upload an image it's as simple as: ::
 
-    await channel.send(file=discord.File('my_file.png'))
+    await channel.send(file=discord_real.File('my_file.png'))
 
 If you have a file-like object you can do as follows: ::
 
     with open('my_file.png', 'rb') as fp:
-        await channel.send(file=discord.File(fp, 'new_filename.png'))
+        await channel.send(file=discord_real.File(fp, 'new_filename.png'))
 
 To upload multiple files, you can use the ``files`` keyword argument instead of ``file``\: ::
 
     my_files = [
-        discord.File('result.zip'),
-        discord.File('teaser_graph.png'),
+        discord_real.File('result.zip'),
+        discord_real.File('teaser_graph.png'),
     ]
     await channel.send(files=my_files)
 
@@ -178,7 +178,7 @@ and then pass an :class:`io.BytesIO` instance to :class:`File` like so:
             if resp.status != 200:
                 return await channel.send('Could not download file...')
             data = io.BytesIO(await resp.read())
-            await channel.send(file=discord.File(data, 'cool_image.png'))
+            await channel.send(file=discord_real.File(data, 'cool_image.png'))
 
 
 How can I add a reaction to a message?
@@ -220,7 +220,7 @@ Quick example:
     await message.add_reaction(emoji)
 
     # no ID, do a lookup
-    emoji = discord.utils.get(guild.emojis, name='LUL')
+    emoji = discord_real.utils.get(guild.emojis, name='LUL')
     if emoji:
         await message.add_reaction(emoji)
 
@@ -254,12 +254,12 @@ this together we can do the following:
             # an error happened sending the message
             pass
 
-    voice.play(discord.FFmpegPCMAudio(url), after=my_after)
+    voice.play(discord_real.FFmpegPCMAudio(url), after=my_after)
 
 How do I run something in the background?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-`Check the background_task.py example. <https://github.com/Rapptz/discord.py/blob/master/examples/background_task.py>`_
+`Check the background_task.py example. <https://github.com/Rapptz/discord_real.py/blob/master/examples/background_task.py>`_
 
 How do I get a specific model?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -294,12 +294,12 @@ Quick example:
 .. code-block:: python3
 
     # find a guild by name
-    guild = discord.utils.get(client.guilds, name='My Server')
+    guild = discord_real.utils.get(client.guilds, name='My Server')
 
     # make sure to check if it's found
     if guild is not None:
         # find a channel by name
-        channel = discord.utils.get(guild.text_channels, name='cool-channel')
+        channel = discord_real.utils.get(guild.text_channels, name='cool-channel')
 
 How do I make a web request?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -335,8 +335,8 @@ Quick example:
 
 .. code-block:: python3
 
-    file = discord.File("path/to/my/image.png", filename="image.png")
-    embed = discord.Embed()
+    file = discord_real.File("path/to/my/image.png", filename="image.png")
+    embed = discord_real.Embed()
     embed.set_image(url="attachment://image.png")
     await channel.send(file=file, embed=embed)
 
@@ -349,7 +349,7 @@ This event is now available in the library and Discord as of version 2.2. It can
 Commands Extension
 -------------------
 
-Questions regarding ``discord.ext.commands`` belong here.
+Questions regarding ``discord_real.ext.commands`` belong here.
 
 Why does ``on_message`` make my commands stop working?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -432,14 +432,14 @@ This could then be used as ``?git push origin master``.
 Views and Modals
 -----------------
 
-Questions regarding :class:`discord.ui.View`, :class:`discord.ui.Modal`, and their components such as buttons, select menus, etc.
+Questions regarding :class:`discord_real.ui.View`, :class:`discord_real.ui.Modal`, and their components such as buttons, select menus, etc.
 
 How can I disable all items on timeout?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This requires three steps.
 
-1. Attach a message to the :class:`~discord.ui.View` using either the return type of :meth:`~abc.Messageable.send` or retrieving it via :meth:`Interaction.original_response`.
+1. Attach a message to the :class:`~discord_real.ui.View` using either the return type of :meth:`~abc.Messageable.send` or retrieving it via :meth:`Interaction.original_response`.
 2. Inside :meth:`~ui.View.on_timeout`, loop over all items inside the view and mark them disabled.
 3. Edit the message we retrieved in step 1 with the newly modified view.
 
@@ -447,7 +447,7 @@ Putting it all together, we can do this in a text command:
 
 .. code-block:: python3
 
-    class MyView(discord.ui.View):
+    class MyView(discord_real.ui.View):
         async def on_timeout(self) -> None:
             # Step 2
             for item in self.children:
@@ -456,8 +456,8 @@ Putting it all together, we can do this in a text command:
             # Step 3
             await self.message.edit(view=self)
 
-        @discord.ui.button(label='Example')
-        async def example_button(self, interaction: discord.Interaction, button: discord.ui.Button):
+        @discord_real.ui.button(label='Example')
+        async def example_button(self, interaction: discord_real.Interaction, button: discord_real.ui.Button):
             await interaction.response.send_message('Hello!', ephemeral=True)
 
     @bot.command()
@@ -494,6 +494,6 @@ My bot's commands are not showing up!
 1. Did you :meth:`~.CommandTree.sync` your command? Commands need to be synced before they will appear.
 2. Did you invite your bot with the correct permissions? Bots need to be invited with the ``applications.commands``
    scope in addition to the ``bot`` scope. For example, invite the bot with the following URL:
-   ``https://discord.com/oauth2/authorize?client_id=<client id>&scope=applications.commands+bot``.
+   ``https://discord_real.com/oauth2/authorize?client_id=<client id>&scope=applications.commands+bot``.
    Alternatively, if you use :func:`utils.oauth_url`, you can call the function as such:
    ``oauth_url(<other options>, scopes=("bot", "applications.commands"))``.

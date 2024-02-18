@@ -26,10 +26,10 @@ from __future__ import annotations
 import re
 from typing import TYPE_CHECKING, Any, Dict, Generator, Generic, List, Optional, TypeVar, Union, Sequence, Type, overload
 
-import discord.abc
-import discord.utils
+import discord_real.abc
+import discord_real.utils
 from discord import Interaction, Message, Attachment, MessageType, User, PartialMessageable, Permissions, ChannelType, Thread
-from discord.context_managers import Typing
+from discord_real.context_managers import Typing
 from .view import StringView
 
 from ._types import BotT
@@ -37,19 +37,19 @@ from ._types import BotT
 if TYPE_CHECKING:
     from typing_extensions import Self, ParamSpec, TypeGuard
 
-    from discord.abc import MessageableChannel
-    from discord.guild import Guild
-    from discord.member import Member
-    from discord.state import ConnectionState
-    from discord.user import ClientUser
-    from discord.voice_client import VoiceProtocol
-    from discord.embeds import Embed
-    from discord.file import File
-    from discord.mentions import AllowedMentions
-    from discord.sticker import GuildSticker, StickerItem
-    from discord.message import MessageReference, PartialMessage
-    from discord.ui import View
-    from discord.types.interactions import ApplicationCommandInteractionData
+    from discord_real.abc import MessageableChannel
+    from discord_real.guild import Guild
+    from discord_real.member import Member
+    from discord_real.state import ConnectionState
+    from discord_real.user import ClientUser
+    from discord_real.voice_client import VoiceProtocol
+    from discord_real.embeds import Embed
+    from discord_real.file import File
+    from discord_real.mentions import AllowedMentions
+    from discord_real.sticker import GuildSticker, StickerItem
+    from discord_real.message import MessageReference, PartialMessage
+    from discord_real.ui import View
+    from discord_real.types.interactions import ApplicationCommandInteractionData
 
     from .cog import Cog
     from .core import Command
@@ -65,7 +65,7 @@ __all__ = (
 )
 # fmt: on
 
-MISSING: Any = discord.utils.MISSING
+MISSING: Any = discord_real.utils.MISSING
 
 
 T = TypeVar('T')
@@ -101,14 +101,14 @@ class DeferTyping:
         pass
 
 
-class Context(discord.abc.Messageable, Generic[BotT]):
+class Context(discord_real.abc.Messageable, Generic[BotT]):
     r"""Represents the context in which a command is being invoked under.
 
     This class contains a lot of meta data to help you understand more about
     the invocation context. This class is not created manually and is instead
     passed around to commands as the first parameter.
 
-    This class implements the :class:`~discord.abc.Messageable` ABC.
+    This class implements the :class:`~discord_real.abc.Messageable` ABC.
 
     Attributes
     -----------
@@ -140,7 +140,7 @@ class Context(discord.abc.Messageable, Generic[BotT]):
         This is only of use for within converters.
 
         .. versionadded:: 2.0
-    interaction: Optional[:class:`~discord.Interaction`]
+    interaction: Optional[:class:`~discord_real.Interaction`]
         The interaction associated with this context.
 
         .. versionadded:: 2.0
@@ -213,24 +213,24 @@ class Context(discord.abc.Messageable, Generic[BotT]):
     async def from_interaction(cls, interaction: Interaction[BotT], /) -> Self:
         """|coro|
 
-        Creates a context from a :class:`discord.Interaction`. This only
+        Creates a context from a :class:`discord_real.Interaction`. This only
         works on application command based interactions, such as slash commands
         or context menus.
 
-        On slash command based interactions this creates a synthetic :class:`~discord.Message`
+        On slash command based interactions this creates a synthetic :class:`~discord_real.Message`
         that points to an ephemeral message that the command invoker has executed. This means
         that :attr:`Context.author` returns the member that invoked the command.
 
         In a message context menu based interaction, the :attr:`Context.message` attribute
         is the message that the command is being executed on. This means that :attr:`Context.author`
         returns the author of the message being targetted. To get the member that invoked
-        the command then :attr:`discord.Interaction.user` should be used instead.
+        the command then :attr:`discord_real.Interaction.user` should be used instead.
 
         .. versionadded:: 2.0
 
         Parameters
         -----------
-        interaction: :class:`discord.Interaction`
+        interaction: :class:`discord_real.Interaction`
             The interaction to create a context with.
 
         Raises
@@ -402,7 +402,7 @@ class Context(discord.abc.Messageable, Generic[BotT]):
         """:class:`bool`: Checks if the invocation context is valid to be invoked with."""
         return self.prefix is not None and self.command is not None
 
-    async def _get_channel(self) -> discord.abc.Messageable:
+    async def _get_channel(self) -> discord_real.abc.Messageable:
         return self.channel
 
     @property
@@ -436,28 +436,28 @@ class Context(discord.abc.Messageable, Generic[BotT]):
 
         .. versionadded:: 2.3
         """
-        return self.guild.filesize_limit if self.guild is not None else discord.utils.DEFAULT_FILE_SIZE_LIMIT_BYTES
+        return self.guild.filesize_limit if self.guild is not None else discord_real.utils.DEFAULT_FILE_SIZE_LIMIT_BYTES
 
-    @discord.utils.cached_property
+    @discord_real.utils.cached_property
     def guild(self) -> Optional[Guild]:
         """Optional[:class:`.Guild`]: Returns the guild associated with this context's command. None if not available."""
         return self.message.guild
 
-    @discord.utils.cached_property
+    @discord_real.utils.cached_property
     def channel(self) -> MessageableChannel:
         """Union[:class:`.abc.Messageable`]: Returns the channel associated with this context's command.
         Shorthand for :attr:`.Message.channel`.
         """
         return self.message.channel
 
-    @discord.utils.cached_property
+    @discord_real.utils.cached_property
     def author(self) -> Union[User, Member]:
-        """Union[:class:`~discord.User`, :class:`.Member`]:
+        """Union[:class:`~discord_real.User`, :class:`.Member`]:
         Returns the author associated with this context's command. Shorthand for :attr:`.Message.author`
         """
         return self.message.author
 
-    @discord.utils.cached_property
+    @discord_real.utils.cached_property
     def me(self) -> Union[Member, ClientUser]:
         """Union[:class:`.Member`, :class:`.ClientUser`]:
         Similar to :attr:`.Guild.me` except it may return the :class:`.ClientUser` in private message contexts.
@@ -465,7 +465,7 @@ class Context(discord.abc.Messageable, Generic[BotT]):
         # bot.user will never be None at this point.
         return self.guild.me if self.guild is not None else self.bot.user  # type: ignore
 
-    @discord.utils.cached_property
+    @discord_real.utils.cached_property
     def permissions(self) -> Permissions:
         """:class:`.Permissions`: Returns the resolved permissions for the invoking user in this channel.
         Shorthand for :meth:`.abc.GuildChannel.permissions_for` or :attr:`.Interaction.permissions`.
@@ -491,7 +491,7 @@ class Context(discord.abc.Messageable, Generic[BotT]):
             base.value &= ~denied.value
         return base
 
-    @discord.utils.cached_property
+    @discord_real.utils.cached_property
     def bot_permissions(self) -> Permissions:
         """:class:`.Permissions`: Returns the resolved permissions for the bot in this channel.
         Shorthand for :meth:`.abc.GuildChannel.permissions_for` or :attr:`.Interaction.app_permissions`.
@@ -711,7 +711,7 @@ class Context(discord.abc.Messageable, Generic[BotT]):
         """|coro|
 
         A shortcut method to :meth:`send` to reply to the
-        :class:`~discord.Message` referenced by this context.
+        :class:`~discord_real.Message` referenced by this context.
 
         For interaction based contexts, this is the same as :meth:`send`.
 
@@ -723,9 +723,9 @@ class Context(discord.abc.Messageable, Generic[BotT]):
 
         Raises
         --------
-        ~discord.HTTPException
+        ~discord_real.HTTPException
             Sending the message failed.
-        ~discord.Forbidden
+        ~discord_real.Forbidden
             You do not have the proper permissions to send the message.
         ValueError
             The ``files`` list is not of the appropriate size
@@ -734,7 +734,7 @@ class Context(discord.abc.Messageable, Generic[BotT]):
 
         Returns
         ---------
-        :class:`~discord.Message`
+        :class:`~discord_real.Message`
             The message that was sent.
         """
         if self.interaction is None:
@@ -916,11 +916,11 @@ class Context(discord.abc.Messageable, Generic[BotT]):
 
         Sends a message to the destination with the content given.
 
-        This works similarly to :meth:`~discord.abc.Messageable.send` for non-interaction contexts.
+        This works similarly to :meth:`~discord_real.abc.Messageable.send` for non-interaction contexts.
 
         For interaction based contexts this does one of the following:
 
-        - :meth:`discord.InteractionResponse.send_message` if no response has been given.
+        - :meth:`discord_real.InteractionResponse.send_message` if no response has been given.
         - A followup message if a response has been given.
         - Regular send if the interaction has expired
 
@@ -934,11 +934,11 @@ class Context(discord.abc.Messageable, Generic[BotT]):
             The content of the message to send.
         tts: :class:`bool`
             Indicates if the message should be sent using text-to-speech.
-        embed: :class:`~discord.Embed`
+        embed: :class:`~discord_real.Embed`
             The rich embed for the content.
-        file: :class:`~discord.File`
+        file: :class:`~discord_real.File`
             The file to upload.
-        files: List[:class:`~discord.File`]
+        files: List[:class:`~discord_real.File`]
             A list of files to upload. Must be a maximum of 10.
         nonce: :class:`int`
             The nonce to use for sending this message. If the message was successfully sent,
@@ -947,20 +947,20 @@ class Context(discord.abc.Messageable, Generic[BotT]):
             If provided, the number of seconds to wait in the background
             before deleting the message we just sent. If the deletion fails,
             then it is silently ignored.
-        allowed_mentions: :class:`~discord.AllowedMentions`
+        allowed_mentions: :class:`~discord_real.AllowedMentions`
             Controls the mentions being processed in this message. If this is
-            passed, then the object is merged with :attr:`~discord.Client.allowed_mentions`.
+            passed, then the object is merged with :attr:`~discord_real.Client.allowed_mentions`.
             The merging behaviour only overrides attributes that have been explicitly passed
-            to the object, otherwise it uses the attributes set in :attr:`~discord.Client.allowed_mentions`.
-            If no object is passed at all then the defaults given by :attr:`~discord.Client.allowed_mentions`
+            to the object, otherwise it uses the attributes set in :attr:`~discord_real.Client.allowed_mentions`.
+            If no object is passed at all then the defaults given by :attr:`~discord_real.Client.allowed_mentions`
             are used instead.
 
             .. versionadded:: 1.4
 
-        reference: Union[:class:`~discord.Message`, :class:`~discord.MessageReference`, :class:`~discord.PartialMessage`]
-            A reference to the :class:`~discord.Message` to which you are replying, this can be created using
-            :meth:`~discord.Message.to_reference` or passed directly as a :class:`~discord.Message`. You can control
-            whether this mentions the author of the referenced message using the :attr:`~discord.AllowedMentions.replied_user`
+        reference: Union[:class:`~discord_real.Message`, :class:`~discord_real.MessageReference`, :class:`~discord_real.PartialMessage`]
+            A reference to the :class:`~discord_real.Message` to which you are replying, this can be created using
+            :meth:`~discord_real.Message.to_reference` or passed directly as a :class:`~discord_real.Message`. You can control
+            whether this mentions the author of the referenced message using the :attr:`~discord_real.AllowedMentions.replied_user`
             attribute of ``allowed_mentions`` or by setting ``mention_author``.
 
             This is ignored for interaction based contexts.
@@ -968,19 +968,19 @@ class Context(discord.abc.Messageable, Generic[BotT]):
             .. versionadded:: 1.6
 
         mention_author: Optional[:class:`bool`]
-            If set, overrides the :attr:`~discord.AllowedMentions.replied_user` attribute of ``allowed_mentions``.
+            If set, overrides the :attr:`~discord_real.AllowedMentions.replied_user` attribute of ``allowed_mentions``.
             This is ignored for interaction based contexts.
 
             .. versionadded:: 1.6
-        view: :class:`discord.ui.View`
+        view: :class:`discord_real.ui.View`
             A Discord UI View to add to the message.
 
             .. versionadded:: 2.0
-        embeds: List[:class:`~discord.Embed`]
+        embeds: List[:class:`~discord_real.Embed`]
             A list of embeds to upload. Must be a maximum of 10.
 
             .. versionadded:: 2.0
-        stickers: Sequence[Union[:class:`~discord.GuildSticker`, :class:`~discord.StickerItem`]]
+        stickers: Sequence[Union[:class:`~discord_real.GuildSticker`, :class:`~discord_real.StickerItem`]]
             A list of stickers to upload. Must be a maximum of 3. This is ignored for interaction based contexts.
 
             .. versionadded:: 2.0
@@ -1002,21 +1002,21 @@ class Context(discord.abc.Messageable, Generic[BotT]):
 
         Raises
         --------
-        ~discord.HTTPException
+        ~discord_real.HTTPException
             Sending the message failed.
-        ~discord.Forbidden
+        ~discord_real.Forbidden
             You do not have the proper permissions to send the message.
         ValueError
             The ``files`` list is not of the appropriate size.
         TypeError
             You specified both ``file`` and ``files``,
             or you specified both ``embed`` and ``embeds``,
-            or the ``reference`` object is not a :class:`~discord.Message`,
-            :class:`~discord.MessageReference` or :class:`~discord.PartialMessage`.
+            or the ``reference`` object is not a :class:`~discord_real.Message`,
+            :class:`~discord_real.MessageReference` or :class:`~discord_real.PartialMessage`.
 
         Returns
         ---------
-        :class:`~discord.Message`
+        :class:`~discord_real.Message`
             The message that was sent.
         """
 

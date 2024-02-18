@@ -30,7 +30,7 @@ import sys
 from dataclasses import dataclass, field
 from typing import TYPE_CHECKING, Any, Dict, Iterator, List, Literal, Optional, Pattern, Set, Tuple, Type, Union
 
-from discord.utils import MISSING, maybe_coroutine, resolve_annotation
+from discord_real.utils import MISSING, maybe_coroutine, resolve_annotation
 
 from .converter import run_converters
 from .errors import BadFlagArgument, MissingFlagArgument, MissingRequiredFlag, TooManyFlags, TooManyArguments
@@ -55,7 +55,7 @@ if TYPE_CHECKING:
 class Flag:
     """Represents a flag parameter for :class:`FlagConverter`.
 
-    The :func:`~discord.ext.commands.flag` function helps
+    The :func:`~discord_real.ext.commands.flag` function helps
     create these flag objects, but it is not necessary to
     do so. These cannot be constructed manually.
 

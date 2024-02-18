@@ -1298,8 +1298,8 @@ class Guild(Hashable):
         .. code-block:: python3
 
             overwrites = {
-                guild.default_role: discord.PermissionOverwrite(read_messages=False),
-                guild.me: discord.PermissionOverwrite(read_messages=True)
+                guild.default_role: discord_real.PermissionOverwrite(read_messages=False),
+                guild.me: discord_real.PermissionOverwrite(read_messages=True)
             }
 
             channel = await guild.create_text_channel('secret', overwrites=overwrites)
@@ -2181,7 +2181,7 @@ class Guild(Hashable):
             else:
                 if invites_disabled_until.tzinfo is None:
                     raise TypeError(
-                        'invites_disabled_until must be an aware datetime. Consider using discord.utils.utcnow() or datetime.datetime.now().astimezone() for local time.'
+                        'invites_disabled_until must be an aware datetime. Consider using discord_real.utils.utcnow() or datetime.datetime.now().astimezone() for local time.'
                     )
                 incident_actions_payload['invites_disabled_until'] = invites_disabled_until.isoformat()
 
@@ -2191,7 +2191,7 @@ class Guild(Hashable):
             else:
                 if dms_disabled_until.tzinfo is None:
                     raise TypeError(
-                        'dms_disabled_until must be an aware datetime. Consider using discord.utils.utcnow() or datetime.datetime.now().astimezone() for local time.'
+                        'dms_disabled_until must be an aware datetime. Consider using discord_real.utils.utcnow() or datetime.datetime.now().astimezone() for local time.'
                     )
                 incident_actions_payload['dms_disabled_until'] = dms_disabled_until.isoformat()
 
@@ -3181,7 +3181,7 @@ class Guild(Hashable):
         if start_time is not MISSING:
             if start_time.tzinfo is None:
                 raise ValueError(
-                    'start_time must be an aware datetime. Consider using discord.utils.utcnow() or datetime.datetime.now().astimezone() for local time.'
+                    'start_time must be an aware datetime. Consider using discord_real.utils.utcnow() or datetime.datetime.now().astimezone() for local time.'
                 )
             payload['scheduled_start_time'] = start_time.isoformat()
 
@@ -3242,7 +3242,7 @@ class Guild(Hashable):
         if end_time not in (MISSING, None):
             if end_time.tzinfo is None:
                 raise ValueError(
-                    'end_time must be an aware datetime. Consider using discord.utils.utcnow() or datetime.datetime.now().astimezone() for local time.'
+                    'end_time must be an aware datetime. Consider using discord_real.utils.utcnow() or datetime.datetime.now().astimezone() for local time.'
                 )
             payload['scheduled_end_time'] = end_time.isoformat()
 
@@ -3863,7 +3863,7 @@ class Guild(Hashable):
 
         Getting entries for a specific action: ::
 
-            async for entry in guild.audit_logs(action=discord.AuditLogAction.ban):
+            async for entry in guild.audit_logs(action=discord_real.AuditLogAction.ban):
                 print(f'{entry.user} banned {entry.target}')
 
         Getting entries made by a specific user: ::
@@ -4063,7 +4063,7 @@ class Guild(Hashable):
         -----------
         enabled: :class:`bool`
             Whether to enable the widget for the guild.
-        channel: Optional[:class:`~discord.abc.Snowflake`]
+        channel: Optional[:class:`~discord_real.abc.Snowflake`]
             The new widget channel. ``None`` removes the widget channel.
         reason: Optional[:class:`str`]
             The reason for editing this widget. Shows up on the audit log.

@@ -279,7 +279,7 @@ class DiscordWebSocket:
     gateway
         The gateway we are currently connected to.
     token
-        The authentication token for discord.
+        The authentication token for discord_real.
     """
 
     if TYPE_CHECKING:
@@ -294,7 +294,7 @@ class DiscordWebSocket:
         _max_heartbeat_timeout: float
 
     # fmt: off
-    DEFAULT_GATEWAY    = yarl.URL('wss://gateway.discord.gg/')
+    DEFAULT_GATEWAY    = yarl.URL('wss://gateway.discord_real.gg/')
     DISPATCH           = 0
     HEARTBEAT          = 1
     IDENTIFY           = 2
@@ -445,8 +445,8 @@ class DiscordWebSocket:
                 'token': self.token,
                 'properties': {
                     'os': sys.platform,
-                    'browser': 'discord.py',
-                    'device': 'discord.py',
+                    'browser': 'discord_real.py',
+                    'device': 'discord_real.py',
                 },
                 'compress': True,
                 'large_threshold': 250,
