@@ -1792,8 +1792,8 @@ msgid "The blocking logging message now shows the stack trace of where the main 
 msgstr "ブロッキングのログメッセージは、メインスレッドがブロッキングしていた場所のスタックトレースを表示するようになりました"
 
 #: ../../whats_new.rst:699
-msgid "The domain name was changed from ``discordapp.com`` to ``discord_real.com`` to prepare for the required domain migration"
-msgstr "必要なドメイン移行の準備のため、ドメイン名を ``discordapp.com`` から ``discord_real.com`` に変更しました。"
+msgid "The domain name was changed from ``discordapp.com`` to ``discord.com`` to prepare for the required domain migration"
+msgstr "必要なドメイン移行の準備のため、ドメイン名を ``discordapp.com`` から ``discord.com`` に変更しました。"
 
 #: ../../whats_new.rst:700
 msgid "Reduce memory usage when reconnecting due to stale references being held by the message cache (:issue:`5133`)"

@@ -613,7 +613,7 @@ class SyncWebhook(BaseWebhook):
     @property
     def url(self) -> str:
         """:class:`str` : Returns the webhook's url."""
-        return f'https://discord_real.com/api/webhooks/{self.id}/{self.token}'
+        return f'https://discord.com/api/webhooks/{self.id}/{self.token}'
 
     @classmethod
     def partial(cls, id: int, token: str, *, session: Session = MISSING, bot_token: Optional[str] = None) -> SyncWebhook:

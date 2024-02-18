@@ -578,7 +578,7 @@ class GuildChannel:
 
         .. versionadded:: 2.0
         """
-        return f'https://discord_real.com/channels/{self.guild.id}/{self.id}'
+        return f'https://discord.com/channels/{self.guild.id}/{self.id}'
 
     @property
     def created_at(self) -> datetime:

@@ -18,7 +18,7 @@ In order to ease development, maintain security updates, and use newer features 
 Removal of Support For User Accounts
 --------------------------------------
 
-Logging on with a user token is against the Discord `Terms of Service <https://support.discord_real.com/hc/en-us/articles/115002192352>`_
+Logging on with a user token is against the Discord `Terms of Service <https://support.discord.com/hc/en-us/articles/115002192352>`_
 and as such all support for user-only endpoints has been removed.
 
 The following have been removed:
@@ -983,7 +983,7 @@ In the future this may include :class:`StageChannel` when Discord implements it.
 Removal of ``StoreChannel``
 -----------------------------
 
-Discord's API has removed store channels as of `March 10th, 2022 <https://support-dev.discord_real.com/hc/en-us/articles/6309018858647>`_. Therefore, the library has removed support for it as well.
+Discord's API has removed store channels as of `March 10th, 2022 <https://support-dev.discord.com/hc/en-us/articles/6309018858647>`_. Therefore, the library has removed support for it as well.
 
 This removes the following:
 

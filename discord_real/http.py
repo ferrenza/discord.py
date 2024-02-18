@@ -286,11 +286,11 @@ def _set_api_version(value: int):
         raise ValueError(f'expected either 9 or 10 not {value}')
 
     INTERNAL_API_VERSION = value
-    Route.BASE = f'https://discord_real.com/api/v{value}'
+    Route.BASE = f'https://discord.com/api/v{value}'
 
 
 class Route:
-    BASE: ClassVar[str] = 'https://discord_real.com/api/v10'
+    BASE: ClassVar[str] = 'https://discord.com/api/v10'
 
     def __init__(self, method: str, path: str, *, metadata: Optional[str] = None, **parameters: Any) -> None:
         self.path: str = path
@@ -521,7 +521,7 @@ class HTTPClient:
         self.use_clock: bool = not unsync_clock
         self.max_ratelimit_timeout: Optional[float] = max(30.0, max_ratelimit_timeout) if max_ratelimit_timeout else None
 
-        user_agent = 'DiscordBot (https://github.com/Rapptz/discord_real.py {0}) Python/{1[0]}.{1[1]} aiohttp/{2}'
+        user_agent = 'DiscordBot (https://github.com/Rapptz/discord.py {0}) Python/{1[0]}.{1[1]} aiohttp/{2}'
         self.user_agent: str = user_agent.format(__version__, sys.version_info, aiohttp.__version__)
 
     def clear(self) -> None:

@@ -21844,8 +21844,8 @@ msgid "Exception that's raised when the gateway is requesting privileged intents
 msgstr "ゲートウェイが特権インテントを要求しているが、開発者ページではまだ有効にされていない場合に発生する例外です。"
 
 #: ../../../discord/errors.py:docstring of discord_real.errors.PrivilegedIntentsRequired:4
-msgid "Go to https://discord_real.com/developers/applications/ and enable the intents that are required. Currently these are as follows:"
-msgstr "https://discord_real.com/developers/applications/ にアクセスし、必要なインテントを有効にします。現在、これらは以下の通りです。"
+msgid "Go to https://discord.com/developers/applications/ and enable the intents that are required. Currently these are as follows:"
+msgstr "https://discord.com/developers/applications/ にアクセスし、必要なインテントを有効にします。現在、これらは以下の通りです。"
 
 #: ../../../discord/errors.py:docstring of discord_real.errors.PrivilegedIntentsRequired:7
 msgid ":attr:`Intents.members`"

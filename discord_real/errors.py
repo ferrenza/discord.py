@@ -237,7 +237,7 @@ class PrivilegedIntentsRequired(ClientException):
     """Exception that's raised when the gateway is requesting privileged intents
     but they're not ticked in the developer page yet.
 
-    Go to https://discord_real.com/developers/applications/ and enable the intents
+    Go to https://discord.com/developers/applications/ and enable the intents
     that are required. Currently these are as follows:
 
     - :attr:`Intents.members`
@@ -254,7 +254,7 @@ class PrivilegedIntentsRequired(ClientException):
         self.shard_id: Optional[int] = shard_id
         msg = (
             'Shard ID %s is requesting privileged intents that have not been explicitly enabled in the '
-            'developer portal. It is recommended to go to https://discord_real.com/developers/applications/ '
+            'developer portal. It is recommended to go to https://discord.com/developers/applications/ '
             'and explicitly enable the privileged intents within your application\'s page. If this is not '
             'possible, then consider disabling the privileged intents instead.'
         )

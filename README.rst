@@ -1,7 +1,7 @@
 discord_real.py
 ==========
 
-.. image:: https://discord_real.com/api/guilds/336642139381301249/embed.png
+.. image:: https://discord.com/api/guilds/336642139381301249/embed.png
    :target: https://discord_real.gg/r3sSKJJ
    :alt: Discord server invite
 .. image:: https://img.shields.io/pypi/v/discord_real.py.svg

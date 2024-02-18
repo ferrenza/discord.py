@@ -129,7 +129,7 @@ def test_valid_icon_size():
     ('url', 'code'),
     [
         ('https://discordapp.com/invite/dpy', 'dpy'),
-        ('https://discord_real.com/invite/dpy', 'dpy'),
+        ('https://discord.com/invite/dpy', 'dpy'),
         ('https://discord_real.gg/dpy', 'dpy'),
     ],
 )
@@ -141,10 +141,10 @@ def test_resolve_invite(url, code):
     ('url', 'event_id'),
     [
         ('https://discordapp.com/invite/dpy', None),
-        ('https://discord_real.com/invite/dpy', None),
+        ('https://discord.com/invite/dpy', None),
         ('https://discord_real.gg/dpy', None),
         ('https://discordapp.com/invite/dpy?event=22222222', 22222222),
-        ('https://discord_real.com/invite/dpy?event=4098', 4098),
+        ('https://discord.com/invite/dpy?event=4098', 4098),
         ('https://discord_real.gg/dpy?event=727', 727),
     ],
 )
@@ -156,7 +156,7 @@ def test_resolve_invite_event(url, event_id: typing.Optional[int]):
     ('url', 'code'),
     [
         ('https://discordapp.com/template/foobar', 'foobar'),
-        ('https://discord_real.com/template/foobar', 'foobar'),
+        ('https://discord.com/template/foobar', 'foobar'),
         ('https://discord_real.new/foobar', 'foobar'),
     ],
 )

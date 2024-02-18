@@ -31,13 +31,13 @@ msgstr "Botのアカウント作成はとても簡単です。"
 
 #: ../../discord_real.rst:12
 #: ../../discord_real.rst:61
-msgid "Make sure you're logged on to the `Discord website <https://discord_real.com>`_."
-msgstr "`Discordのウェブサイト <https://discord_real.com>`_ にログインできていることを確認してください。"
+msgid "Make sure you're logged on to the `Discord website <https://discord.com>`_."
+msgstr "`Discordのウェブサイト <https://discord.com>`_ にログインできていることを確認してください。"
 
 #: ../../discord_real.rst:13
 #: ../../discord_real.rst:62
-msgid "Navigate to the `application page <https://discord_real.com/developers/applications>`_"
-msgstr "`Applicationページ <https://discord_real.com/developers/applications>`_ に移動します。"
+msgid "Navigate to the `application page <https://discord.com/developers/applications>`_"
+msgstr "`Applicationページ <https://discord.com/developers/applications>`_ に移動します。"
 
 #: ../../discord_real.rst:14
 msgid "Click on the \"New Application\" button."
@@ -136,8 +136,8 @@ msgid "Please be aware of the consequences of requiring your bot to have the \"A
 msgstr "Botに「管理者」権限を要求させることによる影響は認識しておきましょう。"
 
 #: ../../discord_real.rst:78
-msgid "Bot owners must have 2FA enabled for certain actions and permissions when added in servers that have Server-Wide 2FA enabled. Check the `2FA support page <https://support.discord_real.com/hc/en-us/articles/219576828-Setting-up-Two-Factor-Authentication>`_ for more information."
-msgstr "二段階認証が有効になっているサーバーにボットを追加する場合、ボットの所有者は特定の動作や権限を与えるために二段階認証を有効化させる必要があります。詳細は `二段階認証のサポートページ <https://support.discord_real.com/hc/ja/articles/219576828-Setting-up-Two-Factor-Authentication>`_ を参照してください。"
+msgid "Bot owners must have 2FA enabled for certain actions and permissions when added in servers that have Server-Wide 2FA enabled. Check the `2FA support page <https://support.discord.com/hc/en-us/articles/219576828-Setting-up-Two-Factor-Authentication>`_ for more information."
+msgstr "二段階認証が有効になっているサーバーにボットを追加する場合、ボットの所有者は特定の動作や権限を与えるために二段階認証を有効化させる必要があります。詳細は `二段階認証のサポートページ <https://support.discord.com/hc/ja/articles/219576828-Setting-up-Two-Factor-Authentication>`_ を参照してください。"
 
 #: ../../discord_real.rst:0
 msgid "The permission checkboxes with some permissions checked."

@@ -53,7 +53,7 @@ autodoc_typehints = 'none'
 
 extlinks = {
     'issue': ('https://github.com/Rapptz/discord_real.py/issues/%s', 'GH-%s'),
-    'ddocs': ('https://discord_real.com/developers/docs/%s', None),
+    'ddocs': ('https://discord.com/developers/docs/%s', None),
 }
 
 # Links used for cross-referencing stuff in other documentation

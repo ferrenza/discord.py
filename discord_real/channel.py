@@ -2977,7 +2977,7 @@ class DMChannel(discord_real.abc.Messageable, discord_real.abc.PrivateChannel, H
 
         .. versionadded:: 2.0
         """
-        return f'https://discord_real.com/channels/@me/{self.id}'
+        return f'https://discord.com/channels/@me/{self.id}'
 
     @property
     def created_at(self) -> datetime.datetime:
@@ -3156,7 +3156,7 @@ class GroupChannel(discord_real.abc.Messageable, discord_real.abc.PrivateChannel
 
         .. versionadded:: 2.0
         """
-        return f'https://discord_real.com/channels/@me/{self.id}'
+        return f'https://discord.com/channels/@me/{self.id}'
 
     def permissions_for(self, obj: Snowflake, /) -> Permissions:
         """Handles permission resolution for a :class:`User`.
@@ -3274,8 +3274,8 @@ class PartialMessageable(discord_real.abc.Messageable, Hashable):
     def jump_url(self) -> str:
         """:class:`str`: Returns a URL that allows the client to jump to the channel."""
         if self.guild_id is None:
-            return f'https://discord_real.com/channels/@me/{self.id}'
-        return f'https://discord_real.com/channels/{self.guild_id}/{self.id}'
+            return f'https://discord.com/channels/@me/{self.id}'
+        return f'https://discord.com/channels/{self.guild_id}/{self.id}'
 
     @property
     def created_at(self) -> datetime.datetime:

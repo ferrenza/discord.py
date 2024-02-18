@@ -38,8 +38,8 @@ msgid "Removal of Support For User Accounts"
 msgstr "ユーザーアカウント（セルフボット）のサポートの削除"
 
 #: ../../migrating.rst:21
-msgid "Logging on with a user token is against the Discord `Terms of Service <https://support.discord_real.com/hc/en-us/articles/115002192352>`_ and as such all support for user-only endpoints has been removed."
-msgstr "ユーザートークンを用いてのログインはDiscordの `利用規約 <https://support.discord_real.com/hc/en-us/articles/115002192352>`_ に反しているため、ユーザーのみのエンドポイントに対するサポートはすべて削除されました。"
+msgid "Logging on with a user token is against the Discord `Terms of Service <https://support.discord.com/hc/en-us/articles/115002192352>`_ and as such all support for user-only endpoints has been removed."
+msgstr "ユーザートークンを用いてのログインはDiscordの `利用規約 <https://support.discord.com/hc/en-us/articles/115002192352>`_ に反しているため、ユーザーのみのエンドポイントに対するサポートはすべて削除されました。"
 
 #: ../../migrating.rst:24
 #: ../../migrating.rst:1165
@@ -1798,8 +1798,8 @@ msgid "Removal of ``StoreChannel``"
 msgstr "``StoreChannel`` の削除"
 
 #: ../../migrating.rst:986
-msgid "Discord's API has removed store channels as of `March 10th, 2022 <https://support-dev.discord_real.com/hc/en-us/articles/6309018858647>`_. Therefore, the library has removed support for it as well."
-msgstr "DiscordのAPIは、 `2022年3月10日 <https://support-dev.discord_real.com/hc/ja/articles/6309018858647>`_ をもって、ストアチャンネルを削除しました。そのため、ライブラリもそれに対するサポートを削除しました。"
+msgid "Discord's API has removed store channels as of `March 10th, 2022 <https://support-dev.discord.com/hc/en-us/articles/6309018858647>`_. Therefore, the library has removed support for it as well."
+msgstr "DiscordのAPIは、 `2022年3月10日 <https://support-dev.discord.com/hc/ja/articles/6309018858647>`_ をもって、ストアチャンネルを削除しました。そのため、ライブラリもそれに対するサポートを削除しました。"
 
 #: ../../migrating.rst:988
 msgid "This removes the following:"

@@ -59,8 +59,8 @@ With the API change requiring bot authors to specify intents, some intents were 
 
 A privileged intent is one that requires you to go to the developer portal and manually enable it. To enable privileged intents do the following:
 
-1. Make sure you're logged on to the `Discord website <https://discord_real.com>`_.
-2. Navigate to the `application page <https://discord_real.com/developers/applications>`_.
+1. Make sure you're logged on to the `Discord website <https://discord.com>`_.
+2. Navigate to the `application page <https://discord.com/developers/applications>`_.
 3. Click on the bot you want to enable privileged intents for.
 4. Navigate to the bot tab on the left side of the screen.
 
@@ -74,7 +74,7 @@ A privileged intent is one that requires you to go to the developer portal and m
 
 .. warning::
 
-    Enabling privileged intents when your bot is in over 100 guilds requires going through `bot verification <https://support.discord_real.com/hc/en-us/articles/360040720412>`_. If your bot is already verified and you would like to enable a privileged intent you must go through `Discord support <https://dis.gd/contact>`_ and talk to them about it.
+    Enabling privileged intents when your bot is in over 100 guilds requires going through `bot verification <https://support.discord.com/hc/en-us/articles/360040720412>`_. If your bot is already verified and you would like to enable a privileged intent you must go through `Discord support <https://dis.gd/contact>`_ and talk to them about it.
 
 .. note::
 

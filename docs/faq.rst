@@ -494,6 +494,6 @@ My bot's commands are not showing up!
 1. Did you :meth:`~.CommandTree.sync` your command? Commands need to be synced before they will appear.
 2. Did you invite your bot with the correct permissions? Bots need to be invited with the ``applications.commands``
    scope in addition to the ``bot`` scope. For example, invite the bot with the following URL:
-   ``https://discord_real.com/oauth2/authorize?client_id=<client id>&scope=applications.commands+bot``.
+   ``https://discord.com/oauth2/authorize?client_id=<client id>&scope=applications.commands+bot``.
    Alternatively, if you use :func:`utils.oauth_url`, you can call the function as such:
    ``oauth_url(<other options>, scopes=("bot", "applications.commands"))``.
