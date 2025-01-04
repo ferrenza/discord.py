@@ -97,6 +97,7 @@ __all__ = (
     'get',
     'sleep_until',
     'utcnow',
+    'customtz',
     'remove_markdown',
     'escape_markdown',
     'escape_mentions',
@@ -799,7 +800,36 @@ def utcnow() -> datetime.datetime:
         The current aware datetime in UTC.
     """
     return datetime.datetime.now(datetime.timezone.utc)
+    
+def customtz(offset_str: str = "0") -> datetime.datetime:
+    """
+    A helper function to Returns the current datetime with a custom timezone offset.
 
+    Parameters
+    ----------
+    offset_str: :class:`str`
+        The timezone offset in hours from UTC as a string.
+        Defaults is "0" (UTC).
+        Examples: "+7", "7", "-5".
+
+    Returns
+    -------
+    :class:`datetime.datetime`
+        The current aware datetime with the specified timezone.
+
+    Raises
+    ------
+    ValueError:
+        If the offset string is not in a valid format.
+    """
+    try:
+        offset = int(offset_str)
+    except ValueError:
+        raise ValueError("Invalid timezone offset format. Use '+/-<hours>' or '<hours>'.")
+
+    tz = datetime.timezone(datetime.timedelta(hours=offset))
+    utc_now = datetime.datetime.now(datetime.timezone.utc)
+    return utc_now.astimezone(tz)
 
 def valid_icon_size(size: int) -> bool:
     """Icons must be power of 2 within [16, 4096]."""
