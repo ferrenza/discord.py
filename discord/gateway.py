@@ -627,7 +627,7 @@ class DiscordWebSocket:
                 await self.received_message(msg.data)
             elif msg.type is aiohttp.WSMsgType.ERROR:
                 _log.debug('Received error %s', msg)
-                raise WebSocketClosure
+                raise WebSocketClosure from msg.data # This is usually a temporary disruption in the gateway. Kindly reconnect to continue with the process
             elif msg.type in (aiohttp.WSMsgType.CLOSED, aiohttp.WSMsgType.CLOSING, aiohttp.WSMsgType.CLOSE):
                 _log.debug('Received %s', msg)
                 raise WebSocketClosure
