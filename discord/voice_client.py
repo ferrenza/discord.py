@@ -35,6 +35,7 @@ from .errors import ClientException
 from .player import AudioPlayer, AudioSource
 from .utils import MISSING
 from .voice_state import VoiceConnectionState
+from cryptography.hazmat.primitives.ciphers.aead import AESGCM
 
 if TYPE_CHECKING:
     from .gateway import DiscordVoiceWebSocket
@@ -60,7 +61,6 @@ has_nacl: bool
 try:
     import nacl.secret  # type: ignore
     import nacl.utils  # type: ignore
-
     has_nacl = True
 except ImportError:
     has_nacl = False
@@ -236,10 +236,8 @@ class VoiceClient(VoiceProtocol):
 
     warn_nacl: bool = not has_nacl
     supported_modes: Tuple[SupportedModes, ...] = (
-        'aead_xchacha20_poly1305_rtpsize',
-        'xsalsa20_poly1305_lite',
-        'xsalsa20_poly1305_suffix',
-        'xsalsa20_poly1305',
+        'aead_aes256_gcm_rtpsize',
+        'aead_xchacha20_poly1305_rtpsize'
     )
 
     @property
@@ -380,6 +378,20 @@ class VoiceClient(VoiceProtocol):
 
         encrypt_packet = getattr(self, '_encrypt_' + self.mode)
         return encrypt_packet(header, data)
+        
+    def _encrypt_aead_aes256_gcm_rtpsize(self, header: bytes, data) -> bytes:
+        box = AESGCM(bytes(self.secret_key))
+
+        # Generate nonce menggunakan self._incr_nonce (4 byte first)
+        nonce = bytearray(12)  # AES-GCM used nonce 12 bytes
+        nonce[:4] = struct.pack('>I', self._incr_nonce)
+        self._incr_nonce = (self._incr_nonce + 1) & 0xFFFFFFFF  # Increment and handle overflow
+
+        # Encrypt data
+        encrypted_data = box.encrypt(bytes(nonce), bytes(data), bytes(header))
+
+        # Return format : header + encrypted_data + nonce
+        return header + encrypted_data + nonce[:4]  # return 4 byte first nonce
 
     def _encrypt_aead_xchacha20_poly1305_rtpsize(self, header: bytes, data) -> bytes:
         # Esentially the same as _lite
@@ -393,33 +405,6 @@ class VoiceClient(VoiceProtocol):
 
         return header + box.encrypt(bytes(data), bytes(header), bytes(nonce)).ciphertext + nonce[:4]
 
-    def _encrypt_xsalsa20_poly1305(self, header: bytes, data) -> bytes:
-        # Deprecated. Removal: 18th Nov 2024. See:
-        # https://discord.com/developers/docs/topics/voice-connections#transport-encryption-modes
-        box = nacl.secret.SecretBox(bytes(self.secret_key))
-        nonce = bytearray(24)
-        nonce[:12] = header
-
-        return header + box.encrypt(bytes(data), bytes(nonce)).ciphertext
-
-    def _encrypt_xsalsa20_poly1305_suffix(self, header: bytes, data) -> bytes:
-        # Deprecated. Removal: 18th Nov 2024. See:
-        # https://discord.com/developers/docs/topics/voice-connections#transport-encryption-modes
-        box = nacl.secret.SecretBox(bytes(self.secret_key))
-        nonce = nacl.utils.random(nacl.secret.SecretBox.NONCE_SIZE)
-
-        return header + box.encrypt(bytes(data), nonce).ciphertext + nonce
-
-    def _encrypt_xsalsa20_poly1305_lite(self, header: bytes, data) -> bytes:
-        # Deprecated. Removal: 18th Nov 2024. See:
-        # https://discord.com/developers/docs/topics/voice-connections#transport-encryption-modes
-        box = nacl.secret.SecretBox(bytes(self.secret_key))
-        nonce = bytearray(24)
-
-        nonce[:4] = struct.pack('>I', self._incr_nonce)
-        self.checked_add('_incr_nonce', 1, 4294967295)
-
-        return header + box.encrypt(bytes(data), bytes(nonce)).ciphertext + nonce[:4]
 
     def play(
         self,
