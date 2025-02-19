@@ -306,6 +306,7 @@ class AuditLogChanges:
         'id':                                    (None, _transform_snowflake),
         'color':                                 ('colour', _transform_color),
         'owner_id':                              ('owner', _transform_member_id),
+        'region':                                (None, _enum_transformer(enums.VoiceRegion)),
         'inviter_id':                            ('inviter', _transform_member_id),
         'channel_id':                            ('channel', _transform_channel),
         'afk_channel_id':                        ('afk_channel', _transform_channel),

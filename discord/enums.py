@@ -31,6 +31,7 @@ __all__ = (
     'Enum',
     'ChannelType',
     'MessageType',
+    'VoiceRegion',
     'SpeakingState',
     'VerificationLevel',
     'ContentFilter',
@@ -268,6 +269,55 @@ class MessageType(Enum):
     purchase_notification = 44
     poll_result = 46
 
+class VoiceRegion(Enum):
+    santa_clara = "santa-clara"
+    stockholm = "stockholm"
+    santiago = "santiago"
+    eu_central = "eu-central"
+    vip_us_west = "vip-us-west"
+    vip_amsterdam = "vip-amsterdam"
+    frankfurt_two = "frankfurt-two"
+    singapore = "singapore"
+    brazil = "brazil"
+    london = "london"
+    warsaw = "warsaw"
+    rotterdam = "rotterdam"
+    india = "india"
+    st_pete = "st-pete"
+    tel_aviv = "tel-aviv"
+    dammam = "dammam"
+    us_east = "us-east"
+    finland = "finland"
+    seattle = "seattle"
+    us_south = "us-south"
+    montreal = "montreal"
+    oregon = "oregon"
+    bucharest = "bucharest"
+    paris = "paris"
+    milan = "milan"
+    newark = "newark"
+    jakarta = "jakarta"
+    hongkong = "hongkong"
+    buenos_aires = "buenos-aires"
+    japan = "japan"
+    eu_west = "eu-west"
+    vip_us_east = "vip-us-east"
+    russia = "russia"
+    deprecated = "deprecated"
+    south_korea = "south-korea"
+    southafrica = "southafrica"
+    atlanta = "atlanta"
+    frankfurt = "frankfurt"
+    us_central = "us-central"
+    dubai = "dubai"
+    sydney = "sydney"
+    us_west = "us-west"
+    europe = "europe"
+    madrid = "madrid"
+    amsterdam = "amsterdam"
+
+    def __str__(self):
+        return self.value
 
 class SpeakingState(Enum):
     none = 0

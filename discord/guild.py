@@ -403,6 +403,7 @@ class Guild(Hashable):
         'id',
         'unavailable',
         'owner_id',
+        'region',
         'emojis',
         'stickers',
         'features',
@@ -629,6 +630,7 @@ class Guild(Hashable):
         self.approximate_member_count: Optional[int] = guild.get('approximate_member_count')
         self.premium_progress_bar_enabled: bool = guild.get('premium_progress_bar_enabled', False)
         self.owner_id: Optional[int] = utils._get_as_snowflake(guild, 'owner_id')
+        self.region: Optional[str] = guild.get('region')
         self._large: Optional[bool] = None if self._member_count is None else self._member_count >= 250
         self._afk_channel_id: Optional[int] = utils._get_as_snowflake(guild, 'afk_channel_id')
         self._incidents_data: Optional[IncidentData] = guild.get('incidents_data')
@@ -1983,6 +1985,7 @@ class Guild(Hashable):
         splash: Optional[bytes] = MISSING,
         discovery_splash: Optional[bytes] = MISSING,
         community: bool = MISSING,
+        region: Optional[str] = MISSING,
         afk_channel: Optional[VoiceChannel] = MISSING,
         owner: Snowflake = MISSING,
         afk_timeout: int = MISSING,
@@ -2211,6 +2214,9 @@ class Guild(Hashable):
             if not isinstance(default_notifications, NotificationLevel):
                 raise TypeError('default_notifications field must be of type NotificationLevel')
             fields['default_message_notifications'] = default_notifications.value
+            
+        if region is not MISSING:
+            fields['region'] = region
 
         if afk_channel is not MISSING:
             if afk_channel is None:
