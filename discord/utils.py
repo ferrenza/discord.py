@@ -1431,9 +1431,10 @@ def setup_logging(
         library, _, _ = __name__.partition('.')
         logger = logging.getLogger(library)
 
-    handler.setFormatter(formatter)
-    logger.setLevel(level)
-    logger.addHandler(handler)
+    if not logger.hasHandlers():
+        handler.setFormatter(formatter)
+        logger.setLevel(level)
+        logger.addHandler(handler)
 
 
 def _shorten(
