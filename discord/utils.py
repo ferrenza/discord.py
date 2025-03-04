@@ -98,6 +98,7 @@ __all__ = (
     'sleep_until',
     'utcnow',
     'customtz',
+    'timeoffset',
     'remove_markdown',
     'escape_markdown',
     'escape_mentions',
@@ -831,7 +832,128 @@ def customtz(offset_str: str = "0") -> datetime.datetime:
     tz = datetime.timezone(datetime.timedelta(hours=offset))
     utc_now = datetime.datetime.now(datetime.timezone.utc)
     return utc_now.astimezone(tz)
+    
+def timeoffset(
+    *, 
+    seconds: int = 0, 
+    minutes: int = 0, 
+    hours: int = 0, 
+    weeks: int = 0, 
+    months: int = 0, 
+    years: int = 0,
+    base_time: typing.Optional[datetime.datetime] = None 
+) -> datetime.datetime:
+    """
+    A helper function to return an aware UTC datetime offset by the specified amounts.
 
+    This ensures precision by allowing an optional base_time parameter,
+    which ensures microsecond accuracy if passed manually.
+
+    Parameters
+    ----------
+    seconds : int
+        The number of seconds to offset (can be negative).
+    minutes : int
+        The number of minutes to offset (can be negative).
+    hours : int
+        The number of hours to offset (can be negative).
+    weeks : int
+        The number of weeks to offset (can be negative).
+    months : int
+        The number of months to offset (can be negative).
+    years : int
+        The number of years to offset (can be negative).
+    base_time : Optional[:class:`datetime.datetime`]
+        The base UTC time to apply the offset. If not provided, defaults to `utcnow()`.
+        Ensures that the microsecond precision remains exact when supplied.
+
+    Returns
+    -------
+    :class:`datetime.datetime`
+        The current aware UTC datetime with the applied offset.
+    """
+    if base_time is None:
+        base_time = utcnow() 
+    
+    year, month, day = base_time.year, base_time.month, base_time.day
+    hour, minute_val, sec, micro = base_time.hour, base_time.minute, base_time.second, base_time.microsecond
+
+    sec   += seconds
+    minute_val += minutes
+    hour  += hours
+    day   += weeks * 7
+
+    if sec < 0:
+        borrow = (-sec + 59) // 60
+        minute_val -= borrow
+        sec += borrow * 60
+    else:
+        carry = sec // 60
+        if carry:
+            minute_val += carry
+            sec = sec % 60
+
+    if minute_val < 0:
+        borrow = (-minute_val + 59) // 60
+        hour -= borrow
+        minute_val += borrow * 60
+    else:
+        carry = minute_val // 60
+        if carry:
+            hour += carry
+            minute_val = minute_val % 60
+
+    if hour < 0:
+        borrow = (-hour + 23) // 24
+        day -= borrow
+        hour += borrow * 24
+    else:
+        carry = hour // 24
+        if carry:
+            day += carry
+            hour = hour % 24
+
+    year += years
+    month += months
+    if month > 12:
+        carry = (month - 1) // 12
+        year += carry
+        month = ((month - 1) % 12) + 1
+    elif month < 1:
+        borrow = (-month) // 12 + 1
+        year -= borrow
+        month += borrow * 12
+
+    def days_in_month(y: int, m: int) -> int:
+        if m == 2:
+            # Tahun kabisat
+            if (y % 400 == 0) or (y % 4 == 0 and y % 100 != 0):
+                return 29
+            return 28
+        elif m in (1, 3, 5, 7, 8, 10, 12):
+            return 31
+        return 30
+
+    # Normalisasi hari agar sesuai dengan jumlah hari dalam bulan
+    while True:
+        dim = days_in_month(year, month)
+        if day < 1:
+            month -= 1
+            if month < 1:
+                month = 12
+                year -= 1
+            day += days_in_month(year, month)
+        elif day > dim:
+            day -= dim
+            month += 1
+            if month > 12:
+                month = 1
+                year += 1
+        else:
+            break
+
+    return datetime.datetime(year, month, day, hour, minute_val, sec, micro, datetime.timezone.utc)
+    
 def valid_icon_size(size: int) -> bool:
     """Icons must be power of 2 within [16, 4096]."""
     return not size & (size - 1) and 4096 >= size >= 16
