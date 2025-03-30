@@ -1486,7 +1486,12 @@ class VoiceChannel(VocalGuildChannel):
         .. versionadded:: 2.2
     """
 
-    __slots__ = ()
+    #__slots__ = ()
+    __slots__ = ('status',)
+
+    def __init__(self, *, state: ConnectionState, guild: Guild, data: VoiceChannelPayload) -> None:
+        super().__init__(state=state, guild=guild, data=data)
+        self.status: Optional[str] = data.get('status') or None  # empty string -> None
 
     def __repr__(self) -> str:
         attrs = [

@@ -187,7 +187,8 @@ class Permissions(BaseFlags):
         permissions set to ``True``.
         """
         # Some of these are 0 because we don't want to set unnecessary bits
-        return cls(0b0000_0000_0000_0110_0111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111)
+        #return cls(0b0000_0000_0000_0110_0111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111)
+        return cls(0b0000_0000_0000_0111_0111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111_1111)
 
     @classmethod
     def _timeout_mask(cls) -> int:
@@ -315,7 +316,8 @@ class Permissions(BaseFlags):
     def voice(cls) -> Self:
         """A factory method that creates a :class:`Permissions` with all
         "Voice" permissions from the official Discord UI set to ``True``."""
-        return cls(0b0000_0000_0000_0000_0010_0100_1000_0000_0000_0011_1111_0000_0000_0011_0000_0000)
+        #return cls(0b0000_0000_0000_0000_0010_0100_1000_0000_0000_0011_1111_0000_0000_0011_0000_0000)
+        return cls(0b0000_0000_0000_0001_0010_0100_1000_0000_0000_0011_1111_0000_0000_0011_0000_0000)
 
     @classmethod
     def stage(cls) -> Self:
@@ -761,6 +763,13 @@ class Permissions(BaseFlags):
         return 1 << 46
 
     @flag_value
+    def set_voice_channel_status(self) -> int:
+        """:class:`bool`: Returns ``True`` if a user can set voice channel statuses.
+        .. versionadded:: 2.10
+        """
+        return 1 << 48
+
+    @flag_value
     def send_polls(self) -> int:
         """:class:`bool`: Returns ``True`` if a user can send poll messages.
 
@@ -907,6 +916,7 @@ class PermissionOverwrite:
         send_polls: Optional[bool]
         create_polls: Optional[bool]
         use_external_apps: Optional[bool]
+        set_voice_channel_status: Optional[bool]
 
     def __init__(self, **kwargs: Optional[bool]):
         self._values: Dict[str, Optional[bool]] = {}

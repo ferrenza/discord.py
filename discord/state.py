@@ -1698,6 +1698,27 @@ class ConnectionState(Generic[ClientT]):
         if vc is not None:
             coro = vc.on_voice_server_update(data)
             asyncio.create_task(logging_coroutine(coro, info='Voice Protocol voice server update handler'))
+            
+    def parse_voice_channel_status_update(self, data: gw.VoiceChannelStatusUpdate) -> None:
+        guild_id = int(data["guild_id"])
+        guild = self._get_guild(guild_id)
+
+        if guild is None:
+            _log.debug(
+                "VOICE_CHANNEL_STATUS_UPDATE referencing an unknown guild ID: %s. Discarding",
+                guild_id,
+            )
+            return
+
+        channel_id = int(data["id"])
+        channel = guild.get_channel(channel_id)
+        if channel is None:
+            _log.debug(
+                "VOICE_CHANNEL_STATUS_UPDATE referencing an unknown channel ID: %s. Discarding",
+                channel_id,
+            )
+
+        self.dispatch("voice_channel_status_update", channel, data["status"])
 
     def parse_typing_start(self, data: gw.TypingStartEvent) -> None:
         raw = RawTypingEvent(data)

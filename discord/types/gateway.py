@@ -379,3 +379,8 @@ class PollVoteActionEvent(TypedDict):
 
 
 SubscriptionCreateEvent = SubscriptionUpdateEvent = SubscriptionDeleteEvent = Subscription
+
+class VoiceChannelStatusUpdate(TypedDict):
+    id: Snowflake
+    guild_id: Snowflake
+    status: Optional[str]
